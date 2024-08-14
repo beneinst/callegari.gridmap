@@ -62,9 +62,9 @@ Uri: http://192.168.1.145/griglia-con-valori.html
 File Name: C:\Downloaded Web Sites\192.168.1.145\griglia-con-valori.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/images/centro-radionica-03u.png
-File Name: C:\Downloaded Web Sites\192.168.1.145\images\centro-radionica-03u.png
-Content Type: image/png
+Uri: http://192.168.1.145/images/centro-radionica-03u-new4.jpg
+File Name: C:\Downloaded Web Sites\192.168.1.145\images\centro-radionica-03u-new4.jpg
+Content Type: image/jpeg
 
 Uri: http://192.168.1.145/images/pianta-italia_ok.jpg
 File Name: C:\Downloaded Web Sites\192.168.1.145\images\pianta-italia_ok.jpg
@@ -86,7 +86,7 @@ Uri: http://192.168.1.145/media/legacy/js/jquery-noconflict.min.js?504da4
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\legacy\js\jquery-noconflict.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/system/css/joomla-fontawesome.min.css?2711a0
+Uri: http://192.168.1.145/media/system/css/joomla-fontawesome.min.css?ea23d3
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\system\css\joomla-fontawesome.min.css
 Content Type: text/css
 
@@ -186,8 +186,8 @@ Uri: http://192.168.1.145/templates/shaper_helixultimate/css/bootstrap.min.css
 File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\css\bootstrap.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/templates/shaper_helixultimate/css/presets/default.css
-File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\css\presets\default.css
+Uri: http://192.168.1.145/templates/shaper_helixultimate/css/presets/preset5.css
+File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\css\presets\preset5.css
 Content Type: text/css
 
 Uri: http://192.168.1.145/templates/shaper_helixultimate/css/template.css
