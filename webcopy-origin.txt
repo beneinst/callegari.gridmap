@@ -106,10 +106,6 @@ Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-v4comp
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.1.145/images/image003y.png
-File Name: C:\Downloaded Web Sites\192.168.1.145\images\image003y.png
-Content Type: image/png
-
 Uri: http://192.168.1.145/images/Italy-CRC2.jpg
 File Name: C:\Downloaded Web Sites\192.168.1.145\images\Italy-CRC2.jpg
 Content Type: image/jpeg
@@ -146,7 +142,7 @@ Uri: http://192.168.1.145/media/legacy/js/jquery-noconflict.min.js?504da4
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\legacy\js\jquery-noconflict.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/system/css/joomla-fontawesome.min.css?bbc811
+Uri: http://192.168.1.145/media/system/css/joomla-fontawesome.min.css?193503
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\system\css\joomla-fontawesome.min.css
 Content Type: text/css
 
