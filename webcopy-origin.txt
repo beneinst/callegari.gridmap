@@ -106,13 +106,17 @@ Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-v4comp
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.1.145/images/2024/08/13/centro-radionica-03u.png
-File Name: C:\Downloaded Web Sites\192.168.1.145\images\2024\08\13\centro-radionica-03u.png
+Uri: http://192.168.1.145/images/image003y.png
+File Name: C:\Downloaded Web Sites\192.168.1.145\images\image003y.png
 Content Type: image/png
 
 Uri: http://192.168.1.145/images/Italy-CRC2.jpg
 File Name: C:\Downloaded Web Sites\192.168.1.145\images\Italy-CRC2.jpg
 Content Type: image/jpeg
+
+Uri: http://192.168.1.145/images/logocrs-new.png
+File Name: C:\Downloaded Web Sites\192.168.1.145\images\logocrs-new.png
+Content Type: image/png
 
 Uri: http://192.168.1.145/images/pianta-italia_ok.jpg
 File Name: C:\Downloaded Web Sites\192.168.1.145\images\pianta-italia_ok.jpg
@@ -142,7 +146,7 @@ Uri: http://192.168.1.145/media/legacy/js/jquery-noconflict.min.js?504da4
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\legacy\js\jquery-noconflict.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/system/css/joomla-fontawesome.min.css?b8849c
+Uri: http://192.168.1.145/media/system/css/joomla-fontawesome.min.css?bbc811
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\system\css\joomla-fontawesome.min.css
 Content Type: text/css
 
