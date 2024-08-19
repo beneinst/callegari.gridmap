@@ -2,21 +2,33 @@ Uri: http://192.168.1.145/
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.htm
 Content Type: text/html
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/animate.min.css?f0e5a433315546f965c8eafdf01f63c5
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/animate.min.css?2cf0875e1daf356bc4e64c053e7a4150
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-5.min.css?f0e5a433315546f965c8eafdf01f63c5
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-5.min.css?2cf0875e1daf356bc4e64c053e7a4150
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-5.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?f0e5a433315546f965c8eafdf01f63c5
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?2cf0875e1daf356bc4e64c053e7a4150
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
+Content Type: text/css
+
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?2cf0875e1daf356bc4e64c053e7a4150
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/sppagebuilder.css?f0e5a433315546f965c8eafdf01f63c5
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/magnific-popup.css
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\magnific-popup.css
+Content Type: text/css
+
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/sppagebuilder.css?2cf0875e1daf356bc4e64c053e7a4150
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\sppagebuilder.css
 Content Type: text/css
+
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/addons/image.js
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\addons\image.js
+Content Type: text/javascript
 
 Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/addons/text_block.js
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\addons\text_block.js
@@ -26,13 +38,25 @@ Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/common.js
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\common.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/jquery.parallax.js?f0e5a433315546f965c8eafdf01f63c5
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/jquery.magnific-popup.min.js
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\jquery.magnific-popup.min.js
+Content Type: text/javascript
+
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/jquery.parallax.js?2cf0875e1daf356bc4e64c053e7a4150
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\jquery.parallax.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/sppagebuilder.js?f0e5a433315546f965c8eafdf01f63c5
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/sppagebuilder.js?2cf0875e1daf356bc4e64c053e7a4150
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\sppagebuilder.js
 Content Type: text/javascript
+
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-brands-400-6.ttf
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-brands-400-6.ttf
+Content Type: font/ttf
+
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-brands-400-6.woff2
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-brands-400-6.woff2
+Content Type: font/woff2
 
 Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-brands-400.ttf
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-brands-400.ttf
@@ -42,6 +66,14 @@ Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-brands
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-brands-400.woff
 Content Type: font/woff
 
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-regular-400-6.ttf
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.ttf
+Content Type: font/ttf
+
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-regular-400-6.woff2
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.woff2
+Content Type: font/woff2
+
 Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-regular-400.ttf
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-regular-400.ttf
 Content Type: font/ttf
@@ -49,6 +81,14 @@ Content Type: font/ttf
 Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-regular-400.woff
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-regular-400.woff
 Content Type: font/woff
+
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.ttf
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.ttf
+Content Type: font/ttf
+
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.woff2
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.woff2
+Content Type: font/woff2
 
 Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-solid-900.ttf
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-solid-900.ttf
@@ -58,12 +98,20 @@ Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-solid-
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-solid-900.woff
 Content Type: font/woff
 
-Uri: http://192.168.1.145/griglia-con-valori.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\griglia-con-valori.html
-Content Type: text/html
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-v4compatibility.ttf
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.ttf
+Content Type: font/ttf
 
-Uri: http://192.168.1.145/images/centro-radionica-03u-new4.jpg
-File Name: C:\Downloaded Web Sites\192.168.1.145\images\centro-radionica-03u-new4.jpg
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-v4compatibility.woff2
+File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.woff2
+Content Type: font/woff2
+
+Uri: http://192.168.1.145/images/2024/08/13/centro-radionica-03u.png
+File Name: C:\Downloaded Web Sites\192.168.1.145\images\2024\08\13\centro-radionica-03u.png
+Content Type: image/png
+
+Uri: http://192.168.1.145/images/Italy-CRC2.jpg
+File Name: C:\Downloaded Web Sites\192.168.1.145\images\Italy-CRC2.jpg
 Content Type: image/jpeg
 
 Uri: http://192.168.1.145/images/pianta-italia_ok.jpg
@@ -75,18 +123,26 @@ File Name: C:\Downloaded Web Sites\192.168.1.145\images\world-154527_1280.png
 Content Type: image/png
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=1
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-1.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-2.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=2
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-3.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=3
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=4
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-1.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/media/legacy/js/jquery-noconflict.min.js?504da4
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\legacy\js\jquery-noconflict.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/system/css/joomla-fontawesome.min.css?ea23d3
+Uri: http://192.168.1.145/media/system/css/joomla-fontawesome.min.css?b8849c
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\system\css\joomla-fontawesome.min.css
 Content Type: text/css
 
@@ -182,12 +238,28 @@ Uri: http://192.168.1.145/plugins/system/helixultimate/assets/css/system-j4.min.
 File Name: C:\Downloaded Web Sites\192.168.1.145\plugins\system\helixultimate\assets\css\system-j4.min.css
 Content Type: text/css
 
+Uri: http://192.168.1.145/stardard-per-crc/griglia-a-punti-con-valori-prc.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-a-punti-con-valori-prc.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/griglia-con-valori.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-con-valori.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/griglia-per-valori-con-prc.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-per-valori-con-prc.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/home.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\home.html
+Content Type: text/html
+
 Uri: http://192.168.1.145/templates/shaper_helixultimate/css/bootstrap.min.css
 File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\css\bootstrap.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/templates/shaper_helixultimate/css/presets/preset5.css
-File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\css\presets\preset5.css
+Uri: http://192.168.1.145/templates/shaper_helixultimate/css/presets/default.css
+File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\css\presets\default.css
 Content Type: text/css
 
 Uri: http://192.168.1.145/templates/shaper_helixultimate/css/template.css

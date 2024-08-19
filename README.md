@@ -1,1 +1,0 @@
-# callegari.gridmap
