@@ -2,6 +2,14 @@ Uri: http://192.168.1.145/
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.htm
 Content Type: text/html
 
+Uri: http://192.168.1.145/cache/com_templates/templates/shaper_helixultimate/a389b878476f072b6c51a2d1962afb96.js
+File Name: C:\Downloaded Web Sites\192.168.1.145\cache\com_templates\templates\shaper_helixultimate\a389b878476f072b6c51a2d1962afb96.js
+Content Type: text/javascript
+
+Uri: http://192.168.1.145/cache/com_templates/templates/shaper_helixultimate/fb817c72c8b2deba9a3408628bfaf71f.css
+File Name: C:\Downloaded Web Sites\192.168.1.145\cache\com_templates\templates\shaper_helixultimate\fb817c72c8b2deba9a3408628bfaf71f.css
+Content Type: text/css
+
 Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/animate.min.css?2cf0875e1daf356bc4e64c053e7a4150
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
@@ -106,49 +114,73 @@ Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-v4comp
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.1.145/images/Italy-CRC2.jpg
-File Name: C:\Downloaded Web Sites\192.168.1.145\images\Italy-CRC2.jpg
-Content Type: image/jpeg
-
-Uri: http://192.168.1.145/images/logoCRS-new-removebg-preview.png
-File Name: C:\Downloaded Web Sites\192.168.1.145\images\logoCRS-new-removebg-preview.png
-Content Type: image/png
-
-Uri: http://192.168.1.145/images/logocrs-new.png
-File Name: C:\Downloaded Web Sites\192.168.1.145\images\logocrs-new.png
-Content Type: image/png
-
-Uri: http://192.168.1.145/images/pianta-italia_ok.jpg
-File Name: C:\Downloaded Web Sites\192.168.1.145\images\pianta-italia_ok.jpg
-Content Type: image/jpeg
-
 Uri: http://192.168.1.145/images/world-154527_1280.png
 File Name: C:\Downloaded Web Sites\192.168.1.145\images\world-154527_1280.png
 Content Type: image/png
 
+Uri: http://192.168.1.145/index.php?option=com_finder&view=search&format=opensearch&Itemid=119
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php
+Content Type: application/opensearchdescription+xml
+
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=1
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-2.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=1&Itemid=101
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-9.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=2
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-3.html
 Content Type: text/html
 
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=2&Itemid=108
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-10.html
+Content Type: text/html
+
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=3
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=3&Itemid=115
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-7.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=4
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-1.html
 Content Type: text/html
 
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=4&Itemid=116
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-8.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=5&Itemid=119
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-6.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=6
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-4.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=6&Itemid=121
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-11.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=8
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-5.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=8&Itemid=122
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-12.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/media/com_finder/js/finder.min.js?5729ed
+File Name: C:\Downloaded Web Sites\192.168.1.145\media\com_finder\js\finder.min.js
+Content Type: text/javascript
+
 Uri: http://192.168.1.145/media/legacy/js/jquery-noconflict.min.js?504da4
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\legacy\js\jquery-noconflict.min.js
 Content Type: text/javascript
-
-Uri: http://192.168.1.145/media/system/css/joomla-fontawesome.min.css?193503
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\system\css\joomla-fontawesome.min.css
-Content Type: text/css
 
 Uri: http://192.168.1.145/media/system/js/core.min.js?83f2c9
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\system\js\core.min.js
@@ -160,6 +192,14 @@ Content Type: text/javascript
 
 Uri: http://192.168.1.145/media/system/js/showon.min.js?891646
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\system\js\showon.min.js
+Content Type: text/javascript
+
+Uri: http://192.168.1.145/media/vendor/awesomplete/css/awesomplete.css?1.1.5
+File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\awesomplete\css\awesomplete.css
+Content Type: text/css
+
+Uri: http://192.168.1.145/media/vendor/awesomplete/js/awesomplete.min.js?1.1.5
+File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\awesomplete\js\awesomplete.min.js
 Content Type: text/javascript
 
 Uri: http://192.168.1.145/media/vendor/bootstrap/js/alert.min.js?5.3.2
@@ -238,45 +278,17 @@ Uri: http://192.168.1.145/media/vendor/jquery/js/jquery.min.js?3.7.1
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\jquery\js\jquery.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/plugins/system/helixultimate/assets/css/system-j4.min.css
-File Name: C:\Downloaded Web Sites\192.168.1.145\plugins\system\helixultimate\assets\css\system-j4.min.css
-Content Type: text/css
-
-Uri: http://192.168.1.145/stardard-per-crc/griglia-a-punti-con-valori-prc.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-a-punti-con-valori-prc.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/stardard-per-crc/griglia-con-valori.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-con-valori.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/stardard-per-crc/griglia-per-valori-con-prc.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-per-valori-con-prc.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/stardard-per-crc/home.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\home.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/templates/shaper_helixultimate/css/bootstrap.min.css
-File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\css\bootstrap.min.css
-Content Type: text/css
-
-Uri: http://192.168.1.145/templates/shaper_helixultimate/css/presets/default.css
-File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\css\presets\default.css
-Content Type: text/css
-
-Uri: http://192.168.1.145/templates/shaper_helixultimate/css/template.css
-File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\css\template.css
-Content Type: text/css
-
 Uri: http://192.168.1.145/templates/shaper_helixultimate/images/menu-bg.jpg
 File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\images\menu-bg.jpg
 Content Type: image/jpeg
 
-Uri: http://192.168.1.145/templates/shaper_helixultimate/js/main.js
-File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\js\main.js
+Uri: http://192.168.1.145/templates/shaper_helixultimate/js/lazysizes.min.js
+File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\js\lazysizes.min.js
 Content Type: text/javascript
+
+Uri: https://cdn.jsdelivr.net/npm/chart.js
+File Name: C:\Downloaded Web Sites\192.168.1.145\npm\chart.js
+Content Type: application/javascript
 
 Uri: https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js
 File Name: C:\Downloaded Web Sites\192.168.1.145\ajax\libs\html2canvas\1.4.1\html2canvas.min.js
