@@ -322,10 +322,6 @@ Uri: http://192.168.1.145/templates/shaper_helixultimate/js/lazysizes.min.js
 File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\js\lazysizes.min.js
 Content Type: text/javascript
 
-Uri: https://beneinst.github.io/callegari.gridmap/images/pianta-italia_ok.jpg
-File Name: C:\Downloaded Web Sites\192.168.1.145\callegari.gridmap\images\pianta-italia_ok.jpg
-Content Type: image/jpeg
-
 Uri: https://cdn.jsdelivr.net/npm/chart.js
 File Name: C:\Downloaded Web Sites\192.168.1.145\npm\chart.js
 Content Type: application/javascript
