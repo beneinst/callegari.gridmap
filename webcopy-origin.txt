@@ -366,8 +366,8 @@ Uri: http://192.168.1.145/templates/shaper_helixultimate/js/lazysizes.min.js
 File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\js\lazysizes.min.js
 Content Type: text/javascript
 
-Uri: https://cdn.jsdelivr.net/npm/chart.js
-File Name: C:\Downloaded Web Sites\192.168.1.145\npm\chart.js
+Uri: https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js
+File Name: C:\Downloaded Web Sites\192.168.1.145\npm\chart.js@3.7.1\dist\chart.min.js
 Content Type: application/javascript
 
 Uri: https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js
