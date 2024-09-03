@@ -9,7 +9,7 @@
 	<meta name="generator" content="Helix Ultimate - The Most Popular Joomla! Template Framework.">
 	<title>Interactive Grid Map</title>
 	<link href="images/world-154527_1280.png" rel="icon" type="image/vnd.microsoft.icon">
-	<link href="index.php?option=com_finder&amp;view=search&amp;format=opensearch&amp;Itemid=119" rel="search" title="OpenSearch Work On Joomla" type="application/opensearchdescription+xml">
+	<link href="index.php?option=com_finder&amp;view=search&amp;format=opensearch&amp;Itemid=119" rel="search" title="OpenSearch Oreste | Callegari G." type="application/opensearchdescription+xml">
 <link href="media/vendor/awesomplete/css/awesomplete.css?1.1.5" rel="stylesheet">
 	<link href="media/vendor/joomla-custom-elements/css/joomla-alert.min.css?0.2.0" rel="stylesheet">
 	<link href="components/com_sppagebuilder/assets/css/font-awesome-6.min.css?2cf0875e1daf356bc4e64c053e7a4150" rel="stylesheet">
@@ -25,7 +25,7 @@
 </style>
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/index.php?option=com_finder&task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.1.145/","base":"","baseFull":"http://192.168.1.145/"},"csrf.token":"8fe4a54b392377c8f1736af3cba26379"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/index.php?option=com_finder&task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.1.145/","base":"","baseFull":"http://192.168.1.145/"},"csrf.token":"4cb82fed002f8d69b21e0d084c5b26a9"}</script>
 	<script src="media/system/js/core.min.js?e20992"></script>
 	<script src="media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -107,9 +107,9 @@
 	<meta property="og:title" content="Interactive Grid Map">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=8">
-	<meta property="og:site_name" content="Work On Joomla">
+	<meta property="og:site_name" content="Oreste | Callegari G.">
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:site" content="Work On Joomla">
+	<meta name="twitter:site" content="Oreste | Callegari G.">
 <style>
 #sp-header.header-with-modal-menu {
     display: none;
@@ -354,6 +354,9 @@
             font-size: 16px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         #earthquakeForm button {
@@ -397,13 +400,15 @@
 <body>
     <div class="container">
         <form id="earthquakeForm">
-            <input type="number" id="fks" placeholder="FKR (es. 6820)" required="">
-            <input type="number" id="valore" placeholder="Valore (es. 5)" step="0.01" required="">
-            <input type="text" id="area" placeholder="Area (es. A1)" required="">
+            <input type="number" id="fks" placeholder="FKR (es. 6820)">
+            <input type="number" id="valore" placeholder="Valore (es. 5)" step="0.01">
+            <input type="text" id="area" placeholder="Area (es. A1)">
+            <input type="text" id="allData" placeholder="Tutti i Dati (es. 6820,5,A1)">
             <button type="submit">Aggiungi dati</button>
         </form>
         <p></p>
         <h6>Grafico Valori di FKR</h6>
+      <p></p>
         <canvas id="grafico"></canvas>
         <div id="risultati">
             <p>Media FKR: <span id="mediaFKS">-</span></p>
@@ -419,9 +424,25 @@
         document.getElementById('earthquakeForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            let fks = parseFloat(document.getElementById('fks').value);
-            let valore = parseFloat(document.getElementById('valore').value);
-            let area = document.getElementById('area').value;
+            let fks, valore, area;
+            let isValid = false;
+            
+            if (document.getElementById('allData').value.trim()) {
+                [fks, valore, area] = document.getElementById('allData').value.split(',');
+                fks = parseFloat(fks);
+                valore = parseFloat(valore);
+                isValid = !isNaN(fks) && !isNaN(valore) && area;
+            } else {
+                fks = parseFloat(document.getElementById('fks').value);
+                valore = parseFloat(document.getElementById('valore').value);
+                area = document.getElementById('area').value.trim();
+                isValid = !isNaN(fks) && !isNaN(valore) && area !== '';
+            }
+            
+            if (!isValid) {
+                alert('Per favore, inserisci dati validi in tutti i campi o usa il campo "Tutti i Dati".');
+                return;
+            }
             
             dati.push({fks, valore, area});
             
@@ -503,7 +524,6 @@
 
         document.getElementById('downloadBtn').addEventListener('click', function() {
             let canvas = document.getElementById('grafico');
-            let ctx = canvas.getContext('2d');
             
             let tempCanvas = document.createElement('canvas');
             tempCanvas.width = 1920;
@@ -525,10 +545,12 @@
             tempCtx.fillText(`Media FKR: ${mediaFKS}`, tempCanvas.width / 4, tempCanvas.height - 20);
             tempCtx.fillText(`Media Valore: ${mediaValore}`, (3 * tempCanvas.width) / 4, tempCanvas.height - 20);
             
-            let link = document.createElement('a');
-            link.download = 'grafico_FKR_con_medie.jpg';
-            link.href = tempCanvas.toDataURL('image/jpeg');
-            link.click();
+            tempCanvas.toBlob(function(blob) {
+                let link = document.createElement('a');
+                link.download = 'grafico_FKR_con_medie.png';
+                link.href = URL.createObjectURL(blob);
+                link.click();
+            }, 'image/png');
         });
     </script>
 </body>
