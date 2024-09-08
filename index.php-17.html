@@ -25,7 +25,7 @@
 </style>
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/index.php?option=com_finder&task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.1.145/","base":"","baseFull":"http://192.168.1.145/"},"csrf.token":"cc3e0f9cd3cebddf909bb191356fc3aa"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/index.php?option=com_finder&task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.1.145/","base":"","baseFull":"http://192.168.1.145/"},"csrf.token":"a7926d1082519953aa1649c14b52219f"}</script>
 	<script src="media/system/js/core.min.js?e20992"></script>
 	<script src="media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -343,7 +343,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Grid Map</title>
     <style>
-        body {
+          body {
             font-family: Arial, sans-serif;
             padding: 20px;
             margin: 0;
@@ -518,133 +518,143 @@
 
     <script src="ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const gridSizeX = 9;
-            const gridSizeY = 15;
-            const letters = 'abcdefghilmnopq';
-            const points = [];
-            const gridContainer = document.getElementById('gridContainer');
-            const labelsContainer = document.getElementById('labelsContainer');
-            const pointsContainer = document.getElementById('pointsContainer');
-            const inputPoint = document.getElementById('inputPoint');
-            const addPointButton = document.getElementById('addPoint');
-            const removeLastPointButton = document.getElementById('removeLastPoint');
-            const downloadImageButton = document.getElementById('downloadImage');
-            const alertDialog = document.getElementById('alertDialog');
-            const alertMessageElement = document.getElementById('alertMessage');
-            const alertOkButton = document.getElementById('alertOk');
+    document.addEventListener('DOMContentLoaded', function () {
+        const gridSizeX = 9;
+        const gridSizeY = 15;
+        const letters = 'abcdefghilmnopq';
+        const points = [];
+        const gridContainer = document.getElementById('gridContainer');
+        const labelsContainer = document.getElementById('labelsContainer');
+        const pointsContainer = document.getElementById('pointsContainer');
+        const inputPoint = document.getElementById('inputPoint');
+        const addPointButton = document.getElementById('addPoint');
+        const removeLastPointButton = document.getElementById('removeLastPoint');
+        const downloadImageButton = document.getElementById('downloadImage');
+        const alertDialog = document.getElementById('alertDialog');
+        const alertMessageElement = document.getElementById('alertMessage');
+        const alertOkButton = document.getElementById('alertOk');
 
-            function drawGrid() {
-                gridContainer.innerHTML = '';
-                labelsContainer.innerHTML = '';
+        function drawGrid() {
+            gridContainer.innerHTML = '';
+            labelsContainer.innerHTML = '';
 
-                for (let i = 0; i <= gridSizeX; i++) {
-                    const line = document.createElement('div');
-                    line.className = 'grid-line vertical';
-                    line.style.left = `${(i / gridSizeX) * 100}%`;
-                    gridContainer.appendChild(line);
-                }
-
-                for (let i = 0; i <= gridSizeY; i++) {
-                    const line = document.createElement('div');
-                    line.className = 'grid-line horizontal';
-                    line.style.top = `${(i / gridSizeY) * 100}%`;
-                    gridContainer.appendChild(line);
-                }
-
-                for (let i = 0; i <= 8; i++) {
-                    const label = document.createElement('div');
-                    label.className = 'label-col';
-                    label.style.left = `${(i + 0.5) / gridSizeX * 100}%`;
-                    label.textContent = i;
-                    labelsContainer.appendChild(label);
-                }
-
-                letters.split('').forEach((letter, i) => {
-                    const label = document.createElement('div');
-                    label.className = 'label-row';
-                    label.style.top = `${((i + 0.5) / gridSizeY) * 100}%`;
-                    label.textContent = ` ${letter} `;
-                    labelsContainer.appendChild(label);
-                });
+            for (let i = 0; i <= gridSizeX; i++) {
+                const line = document.createElement('div');
+                line.className = 'grid-line vertical';
+                line.style.left = `${(i / gridSizeX) * 100}%`;
+                gridContainer.appendChild(line);
             }
 
-            function addPoint() {
-                const input = inputPoint.value.trim();
-                const match = input.match(/^([a-q])(\d)(?:,|\s+)(\d+)$/i);
-                
-                if (!match) {
-                    alertMessageElement.textContent = 'Formato non valido. Usa il formato: LetteraNumeroCella,Valore (es. a0,650 o a0 650)';
-                    alertDialog.classList.remove('hidden');
-                    return;
-                }
-
-                const [, row, col, value] = match;
-                
-                if (!letters.includes(row.toLowerCase()) || parseInt(col) < 0 || parseInt(col) > 8) {
-                    alertMessageElement.textContent = 'Coordinate non valide. La lettera deve essere tra a-q e il numero tra 0-8.';
-                    alertDialog.classList.remove('hidden');
-                    return;
-                }
-
-                const numValue = parseInt(value);
-                let color;
-                if (value.startsWith('6')) {
-                    color = '#00bfff';
-                } else if (value.startsWith('7')) {
-                    color = 'red';
-                } else {
-                    color = 'yellow';
-                }
-
-                const point = { row, col, color, value: numValue };
-                points.push(point);
-
-                const pointElement = document.createElement('div');
-                pointElement.className = 'point';
-                pointElement.style.backgroundColor = color;
-
-                const colIndex = parseInt(col);
-                pointElement.style.left = `${(colIndex + 0.5) / gridSizeX * 100}%`;
-
-                const rowIndex = letters.indexOf(row.toLowerCase());
-                pointElement.style.top = `${((rowIndex + 0.5) / gridSizeY) * 100}%`;
-
-                pointElement.title = `${row}${col}: ${value}`;
-                pointsContainer.appendChild(pointElement);
-
-                inputPoint.value = '';
+            for (let i = 0; i <= gridSizeY; i++) {
+                const line = document.createElement('div');
+                line.className = 'grid-line horizontal';
+                line.style.top = `${(i / gridSizeY) * 100}%`;
+                gridContainer.appendChild(line);
             }
 
-            function removeLastPoint() {
-                if (points.length > 0) {
-                    pointsContainer.removeChild(pointsContainer.lastChild);
-                    points.pop();
-                }
+            for (let i = 0; i <= 8; i++) {
+                const label = document.createElement('div');
+                label.className = 'label-col';
+                label.style.left = `${(i + 0.5) / gridSizeX * 100}%`;
+                label.textContent = i;
+                labelsContainer.appendChild(label);
             }
 
-            function downloadImage() {
-                html2canvas(document.querySelector('.custom-grid-map')).then(canvas => {
-                    const link = document.createElement('a');
-                    link.href = canvas.toDataURL('image/png');
-                    link.download = 'mappa_punti.png';
-                    link.click();
-                });
-            }
-
-            addPointButton.addEventListener('click', addPoint);
-            removeLastPointButton.addEventListener('click', removeLastPoint);
-            downloadImageButton.addEventListener('click', downloadImage);
-            alertOkButton.addEventListener('click', function () {
-                alertDialog.classList.add('hidden');
+            letters.split('').forEach((letter, i) => {
+                const label = document.createElement('div');
+                label.className = 'label-row';
+                label.style.top = `${((i + 0.5) / gridSizeY) * 100}%`;
+                label.textContent = ` ${letter} `;
+                labelsContainer.appendChild(label);
             });
+        }
 
-            drawGrid();
+        function addPoint() {
+            const input = inputPoint.value.trim();
+            const match = input.match(/^([a-q])(\d)(?:,|\s+)(\d+)$/i);
+            
+            if (!match) {
+                showAlert('Formato non valido. Usa il formato: LetteraNumeroCella,Valore (es. a0,650 o a0 650)');
+                return;
+            }
+
+            const [, row, col, value] = match;
+            
+            if (!letters.includes(row.toLowerCase()) || parseInt(col) < 0 || parseInt(col) > 8) {
+                showAlert('Coordinate non valide. La lettera deve essere tra a-q e il numero tra 0-8.');
+                return;
+            }
+
+            const numValue = parseInt(value);
+            let color;
+            if (value.startsWith('6')) {
+                color = '#00bfff';
+            } else if (value.startsWith('7')) {
+                color = 'red';
+            } else {
+                color = 'yellow';
+            }
+
+            const point = { row, col, color, value: numValue };
+            points.push(point);
+
+            const pointElement = document.createElement('div');
+            pointElement.className = 'point';
+            pointElement.style.backgroundColor = color;
+
+            const colIndex = parseInt(col);
+            pointElement.style.left = `${(colIndex + 0.5) / gridSizeX * 100}%`;
+
+            const rowIndex = letters.indexOf(row.toLowerCase());
+            pointElement.style.top = `${((rowIndex + 0.5) / gridSizeY) * 100}%`;
+
+            pointElement.title = `${row}${col}: ${value}`;
+            pointsContainer.appendChild(pointElement);
+
+            inputPoint.value = '';
+        }
+
+        function removeLastPoint() {
+            if (points.length > 0) {
+                pointsContainer.removeChild(pointsContainer.lastChild);
+                points.pop();
+            }
+        }
+
+        function downloadImage() {
+            html2canvas(document.querySelector('.custom-grid-map')).then(canvas => {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'mappa_punti.png';
+                link.click();
+            });
+        }
+
+        function showAlert(message) {
+            alertMessageElement.textContent = message;
+            alertDialog.style.display = 'block';
+        }
+
+        // Event Listeners
+        addPointButton.addEventListener('click', addPoint);
+        removeLastPointButton.addEventListener('click', removeLastPoint);
+        downloadImageButton.addEventListener('click', downloadImage);
+        alertOkButton.addEventListener('click', function () {
+            alertDialog.style.display = 'none';
         });
+
+        // Nuova funzionalità: Aggiunta del punto con il tasto Enter
+        inputPoint.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                addPoint();
+            }
+        });
+
+        drawGrid();
+    });
     </script>
 </body>
-</html>
-</div>
+</html></div>
 </div></div></div></div></div></div></div></div></div></section><section id="section-id-1723583145647" class="sppb-section"><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1723583145646"><div id="column-id-1723583145646" class="sppb-column "><div class="sppb-column-addons"><div id="sppb-addon-wrapper-pRcyRp2oMAILeAlp5Uaec" class="sppb-addon-wrapper  addon-root-divider"><div id="sppb-addon-pRcyRp2oMAILeAlp5Uaec" class="clearfix  "><div class="sppb-addon-divider-wrap divider-position"><div class="sppb-divider sppb-divider-border " role="none"></div></div></div></div></div></div></div></div></div></section><section id="section-id-1724655797897" class="sppb-section"><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1724655797896"><div id="column-id-1724655797896" class="sppb-column "><div class="sppb-column-addons"><div id="sppb-addon-wrapper-0Xy5-iraKYcH5iUs_LLZd" class="sppb-addon-wrapper  addon-root-button"><div id="sppb-addon-0Xy5-iraKYcH5iUs_LLZd" class="clearfix  "><div class="sppb-button-wrapper"><a href="index.php-1.html?option=com_sppagebuilder&view=page&id=4" id="btn-0Xy5-iraKYcH5iUs_LLZd" class="sppb-btn  sppb-btn-custom sppb-btn-rounded sppb-btn-outline"><i class="fas fa-globe-americas" aria-hidden="true"></i>  Vai a Standard CRC (Valori)</a></div></div></div><div id="sppb-addon-wrapper-1724655887295" class="sppb-addon-wrapper  addon-root-empty-space"><div id="sppb-addon-1724655887295" class="clearfix  "><div class="sppb-empty-space  clearfix"></div></div></div></div></div></div></div></div></section><section id="section-id-1724084868302" class="sppb-section"><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1724084868301"><div id="column-id-1724084868301" class="sppb-column "><div class="sppb-column-addons"><div id="sppb-addon-wrapper-1724314202744" class="sppb-addon-wrapper  addon-root-module"><div id="sppb-addon-1724314202744" class="clearfix  "><div class="sppb-addon sppb-addon-module "><div class="sppb-addon-content">
 <div id="mod-custom123" class="mod-custom custom">
     <div style="text-align: center;">
