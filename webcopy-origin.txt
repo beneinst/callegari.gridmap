@@ -10,19 +10,19 @@ Uri: http://192.168.1.145/cache/com_templates/templates/shaper_helixultimate/fb8
 File Name: C:\Downloaded Web Sites\192.168.1.145\cache\com_templates\templates\shaper_helixultimate\fb817c72c8b2deba9a3408628bfaf71f.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/animate.min.css?2cf0875e1daf356bc4e64c053e7a4150
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/animate.min.css?6154af81569d53466543cb2a7085250a
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-5.min.css?2cf0875e1daf356bc4e64c053e7a4150
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-5.min.css?6154af81569d53466543cb2a7085250a
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-5.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?2cf0875e1daf356bc4e64c053e7a4150
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?6154af81569d53466543cb2a7085250a
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?2cf0875e1daf356bc4e64c053e7a4150
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?6154af81569d53466543cb2a7085250a
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
 Content Type: text/css
 
@@ -30,7 +30,7 @@ Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/magnific-popup
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\magnific-popup.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/sppagebuilder.css?2cf0875e1daf356bc4e64c053e7a4150
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/sppagebuilder.css?6154af81569d53466543cb2a7085250a
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\sppagebuilder.css
 Content Type: text/css
 
@@ -50,11 +50,11 @@ Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/jquery.magnific
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\jquery.magnific-popup.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/jquery.parallax.js?2cf0875e1daf356bc4e64c053e7a4150
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/jquery.parallax.js?6154af81569d53466543cb2a7085250a
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\jquery.parallax.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/sppagebuilder.js?2cf0875e1daf356bc4e64c053e7a4150
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/sppagebuilder.js?6154af81569d53466543cb2a7085250a
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\sppagebuilder.js
 Content Type: text/javascript
 
