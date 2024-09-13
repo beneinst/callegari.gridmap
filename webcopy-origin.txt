@@ -10,6 +10,10 @@ Uri: http://192.168.1.145/cache/com_templates/templates/shaper_helixultimate/fb8
 File Name: C:\Downloaded Web Sites\192.168.1.145\cache\com_templates\templates\shaper_helixultimate\fb817c72c8b2deba9a3408628bfaf71f.css
 Content Type: text/css
 
+Uri: http://192.168.1.145/component/finder/search.opensearch?Itemid=119
+File Name: C:\Downloaded Web Sites\192.168.1.145\component\finder\search.opensearch
+Content Type: application/opensearchdescription+xml
+
 Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/animate.min.css?6154af81569d53466543cb2a7085250a
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
@@ -114,180 +118,112 @@ Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-v4comp
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.woff2
 Content Type: font/woff2
 
+Uri: http://192.168.1.145/fks-fkr-per-area/grafico-valori-fkr.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\fks-fkr-per-area\grafico-valori-fkr.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/fks-fkr-per-area/grafico-valori-fks.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\fks-fkr-per-area\grafico-valori-fks.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/grafico-a-spirale-della-profondità-0-30-100-km/grafico-a-spirale-della-profondità-0-100-km.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\grafico-a-spirale-della-profondità-0-30-100-km\grafico-a-spirale-della-profondità-0-100-km.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/grafico-a-spirale-della-profondità-0-30-100-km/grafico-a-spirale-della-profondità-0-30-km.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\grafico-a-spirale-della-profondità-0-30-100-km\grafico-a-spirale-della-profondità-0-30-km.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/griglia-faglie/faglie-attive-centro-nord.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\griglia-faglie\faglie-attive-centro-nord.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/griglia-faglie/faglie-attive-centro-sud.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\griglia-faglie\faglie-attive-centro-sud.html
+Content Type: text/html
+
 Uri: http://192.168.1.145/images/world-154527_1280.png
 File Name: C:\Downloaded Web Sites\192.168.1.145\images\world-154527_1280.png
 Content Type: image/png
-
-Uri: http://192.168.1.145/index.php?option=com_finder&view=search&format=opensearch&Itemid=119
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php
-Content Type: application/opensearchdescription+xml
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=1
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-2.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=1&Itemid=101
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-22.html
-Content Type: text/html
-
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=10
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-11.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=10&Itemid=126
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-34.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-9.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=11
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-12.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=11&Itemid=127
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-35.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=12
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-13.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=12&Itemid=128
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-36.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=13
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-4.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=13&Itemid=129
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-24.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=14
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-16.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=14&Itemid=133
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-38.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=15
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-17.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=15&Itemid=134
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-40.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=16
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-15.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=16&Itemid=132
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-39.html
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=12
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-16.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=14
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-12.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=15
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-13.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=16
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-11.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=17
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-18.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=17&Itemid=135
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-41.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=18
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-14.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=18&Itemid=130
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-37.html
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=18
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-10.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=19
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-6.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=19&Itemid=142
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-27.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=2
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-3.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=2&Itemid=108
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-23.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=20
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-7.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=20&Itemid=143
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-29.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=21
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=22
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-5.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=21&Itemid=144
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-25.html
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=22&Itemid=147
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-19.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=22&Itemid=147
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-30.html
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=23
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-3.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=23&Itemid=145
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-26.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-17.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=24
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-4.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=24&Itemid=146
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-28.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-18.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=3
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=3&Itemid=115
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-20.html
-Content Type: text/html
-
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=4
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-1.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=4&Itemid=116
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-21.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=5&Itemid=119
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-19.html
-Content Type: text/html
-
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=6
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-8.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=6&Itemid=121
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-31.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-6.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=8
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-9.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=8&Itemid=122
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-32.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-7.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=9
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-10.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=9&Itemid=125
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-33.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-8.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/media/com_finder/js/finder.min.js?5729ed
@@ -393,6 +329,70 @@ Content Type: text/css
 Uri: http://192.168.1.145/media/vendor/jquery/js/jquery.min.js?3.7.1
 File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\jquery\js\jquery.min.js
 Content Type: text/javascript
+
+Uri: http://192.168.1.145/profondimetri/profondimetri-130km.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\profondimetri\profondimetri-130km.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/profondimetri/profondimetri-15km.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\profondimetri\profondimetri-15km.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/profondimetri/profondimetri-30km.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\profondimetri\profondimetri-30km.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/profondimetri/profondimetri-500km.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\profondimetri\profondimetri-500km.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/profondimetri/profondimetri-6350km.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\profondimetri\profondimetri-6350km.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/griglia-a-punti-con-valori-prc.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-a-punti-con-valori-prc.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/griglia-con-valori.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-con-valori.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/griglia-per-valori-con-prc.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-per-valori-con-prc.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/home.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\home.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/italia-3-misto.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\italia-3-misto.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/mappa-dell-abbruzzo-punti-e-valori.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-dell-abbruzzo-punti-e-valori.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/mappa-dell-abbruzzo-x-mobile.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-dell-abbruzzo-x-mobile.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/mappa-della-calabria-punti-e-valori.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-della-calabria-punti-e-valori.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/mappa-della-calabria-x-mobile.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-della-calabria-x-mobile.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/mappa-della-sicilia-punti-e-valori.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-della-sicilia-punti-e-valori.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/stardard-per-crc/mappa-della-sicilia-x-mobile.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-della-sicilia-x-mobile.html
+Content Type: text/html
 
 Uri: http://192.168.1.145/templates/shaper_helixultimate/images/menu-bg.jpg
 File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\images\menu-bg.jpg
