@@ -146,10 +146,6 @@ Uri: http://192.168.1.145/images/world-154527_1280.png
 File Name: C:\Downloaded Web Sites\192.168.1.145\images\world-154527_1280.png
 Content Type: image/png
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=1
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-2.html
-Content Type: text/html
-
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=10
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-9.html
 Content Type: text/html
@@ -160,6 +156,10 @@ Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=12
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-16.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=13
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-2.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=14
