@@ -14,19 +14,19 @@ Uri: http://192.168.1.145/component/finder/search.opensearch?Itemid=119
 File Name: C:\Downloaded Web Sites\192.168.1.145\component\finder\search.opensearch
 Content Type: application/opensearchdescription+xml
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/animate.min.css?6154af81569d53466543cb2a7085250a
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/animate.min.css?9b160b415b961aeb41b64305a23d2953
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-5.min.css?6154af81569d53466543cb2a7085250a
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-5.min.css?9b160b415b961aeb41b64305a23d2953
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-5.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?6154af81569d53466543cb2a7085250a
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?9b160b415b961aeb41b64305a23d2953
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?6154af81569d53466543cb2a7085250a
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?9b160b415b961aeb41b64305a23d2953
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
 Content Type: text/css
 
@@ -34,7 +34,7 @@ Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/magnific-popup
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\magnific-popup.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/sppagebuilder.css?6154af81569d53466543cb2a7085250a
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/sppagebuilder.css?9b160b415b961aeb41b64305a23d2953
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\sppagebuilder.css
 Content Type: text/css
 
@@ -54,11 +54,11 @@ Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/jquery.magnific
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\jquery.magnific-popup.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/jquery.parallax.js?6154af81569d53466543cb2a7085250a
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/jquery.parallax.js?9b160b415b961aeb41b64305a23d2953
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\jquery.parallax.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/sppagebuilder.js?6154af81569d53466543cb2a7085250a
+Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/sppagebuilder.js?9b160b415b961aeb41b64305a23d2953
 File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\sppagebuilder.js
 Content Type: text/javascript
 
@@ -147,11 +147,11 @@ File Name: C:\Downloaded Web Sites\192.168.1.145\images\world-154527_1280.png
 Content Type: image/png
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=11
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-14.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-15.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=12
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-15.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-16.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=13
@@ -159,23 +159,23 @@ File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-2.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=14
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-11.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=15
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-12.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=16
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-10.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=17
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=15
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-13.html
 Content Type: text/html
 
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=16
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-11.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=17
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-14.html
+Content Type: text/html
+
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=18
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-9.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-10.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=22
@@ -203,7 +203,7 @@ File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-18.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=25
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-16.html
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-6.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=3
@@ -215,15 +215,15 @@ File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-1.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=6
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-6.html
-Content Type: text/html
-
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=8
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-7.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=9
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=8
 File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-8.html
+Content Type: text/html
+
+Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=9
+File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-9.html
 Content Type: text/html
 
 Uri: http://192.168.1.145/media/com_finder/js/finder.min.js?5729ed
