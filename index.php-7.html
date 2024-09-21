@@ -25,7 +25,7 @@
 </style>
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/component/finder/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.1.145/","base":"","baseFull":"http://192.168.1.145/"},"csrf.token":"7ce254734606a31b2046624b77616d5f"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/component/finder/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.1.145/","base":"","baseFull":"http://192.168.1.145/"},"csrf.token":"3f191d977171e61dabb2292ad6f2f38e"}</script>
 	<script src="media/system/js/core.min.js?e20992"></script>
 	<script src="media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -355,6 +355,9 @@
     <title>Grafico Valori di FKS</title>
     <script src="npm/chart.js%403.7.1/dist/chart.min.js"></script>
     <style>
+   body {
+            color: #333333; /* Colore del testo più scuro */
+        }
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -363,7 +366,7 @@
         input, button {
             padding: 10px;
             font-size: 16px;
-            border: 1px solid #ddd;
+            border: 1px solid #999; /* Bordo più scuro */
             border-radius: 4px;
             margin-bottom: 10px;
             width: 100%;
@@ -371,7 +374,7 @@
         }
         
         #earthquakeForm button {
-            background-color: #007BFF;
+            background-color: #0056b3; /* Blu più scuro */
             color: white;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -379,11 +382,11 @@
         }
         
         #earthquakeForm button:hover {
-            background-color: #0056b3;
+            background-color: #003d7a; /* Blu ancora più scuro al passaggio del mouse */
         }
         
         #downloadBtn {
-            background-color: #4CAF50;
+            background-color: #3d8b40; /* Verde più scuro */
             color: white;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -393,7 +396,7 @@
         }
         
         #downloadBtn:hover {
-            background-color: #45a049;
+            background-color: #2d6930; /* Verde ancora più scuro al passaggio del mouse */
         }
 
         #risultati {
@@ -411,7 +414,7 @@
 <body>
     <div class="container">
         <form id="earthquakeForm">
-            <input type="number" id="fks" placeholder="FKS (es. 6820)">
+            <input type="number" id="FKS" placeholder="FKS (es. 6820)">
             <input type="number" id="valore" placeholder="Valore (es. 5)" step="0.01">
             <input type="text" id="area" placeholder="Area (es. A1)">
             <input type="text" id="allData" placeholder="Tutti i Dati (es. 6820,5,A1)">
@@ -435,19 +438,19 @@
         document.getElementById('earthquakeForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            let fks, valore, area;
+            let FKS, valore, area;
             let isValid = false;
             
             if (document.getElementById('allData').value.trim()) {
-                [fks, valore, area] = document.getElementById('allData').value.split(',');
-                fks = parseFloat(fks);
+                [FKS, valore, area] = document.getElementById('allData').value.split(',');
+                FKS = parseFloat(FKS);
                 valore = parseFloat(valore);
-                isValid = !isNaN(fks) && !isNaN(valore) && area;
+                isValid = !isNaN(FKS) && !isNaN(valore) && area;
             } else {
-                fks = parseFloat(document.getElementById('fks').value);
+                FKS = parseFloat(document.getElementById('FKS').value);
                 valore = parseFloat(document.getElementById('valore').value);
                 area = document.getElementById('area').value.trim();
-                isValid = !isNaN(fks) && !isNaN(valore) && area !== '';
+                isValid = !isNaN(FKS) && !isNaN(valore) && area !== '';
             }
             
             if (!isValid) {
@@ -455,7 +458,7 @@
                 return;
             }
             
-            dati.push({fks, valore, area});
+            dati.push({FKS, valore, area});
             
             aggiornaMediae();
             aggiornaGrafico();
@@ -464,7 +467,7 @@
         });
 
         function aggiornaMediae() {
-            let sommaFKS = dati.reduce((sum, item) => sum + item.fks, 0);
+            let sommaFKS = dati.reduce((sum, item) => sum + item.FKS, 0);
             let sommaValore = dati.reduce((sum, item) => sum + item.valore, 0);
             
             let mediaFKS = Math.round(sommaFKS / dati.length);
@@ -489,15 +492,15 @@
                     labels: dati.map(item => item.area),
                     datasets: [{
                         label: 'FKS',
-                        data: dati.map(item => item.fks),
-                        backgroundColor: 'rgba(255, 99, 132, 0.8)',
-                        borderColor: 'rgb(255, 99, 132)',
+                        data: dati.map(item => item.FKS),
+                        backgroundColor: 'rgba(200, 50, 50, 0.8)', // Rosso più scuro
+                        borderColor: 'rgb(180, 50, 50)', // Bordo rosso più scuro
                         borderWidth: 1
                     }, {
                         label: 'Valore',
                         data: dati.map(item => item.valore),
-                        backgroundColor: 'rgba(54, 162, 235, 0.8)',
-                        borderColor: 'rgb(54, 162, 235)',
+                        backgroundColor: 'rgba(30, 100, 180, 0.8)', // Blu più scuro
+                        borderColor: 'rgb(30, 100, 180)', // Bordo blu più scuro
                         borderWidth: 1
                     }]
                 },
@@ -507,7 +510,11 @@
                         x: {
                             title: {
                                 display: true,
-                                text: 'Aree'
+                                text: 'Aree',
+                                color: '#000000' // Colore del testo più scuro
+                            },
+                            ticks: {
+                                color: '#000000' // Colore del testo degli assi più scuro
                             }
                         },
                         y: {
@@ -515,13 +522,20 @@
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: 'Dati FKS'
+                                text: 'Dati FKS',
+                                color: '#000000' // Colore del testo più scuro
+                            },
+                            ticks: {
+                                color: '#333' // Colore del testo degli assi più scuro
                             }
                         }
                     },
                     plugins: {
                         legend: {
                             position: 'top',
+                            labels: {
+                                color: '#000000' // Colore del testo della legenda più scuro
+                            }
                         },
                         title: {
                             display: false
@@ -532,6 +546,7 @@
 
             document.getElementById('downloadBtn').style.display = 'block';
         }
+		
 
         document.getElementById('downloadBtn').addEventListener('click', function() {
             let canvas = document.getElementById('grafico');
@@ -546,7 +561,7 @@
             
             tempCtx.drawImage(canvas, 0, 0, tempCanvas.width, tempCanvas.height);
             
-            let mediaFKS = Math.round(dati.reduce((sum, item) => sum + item.fks, 0) / dati.length);
+            let mediaFKS = Math.round(dati.reduce((sum, item) => sum + item.FKS, 0) / dati.length);
             let mediaValore = Math.round(dati.reduce((sum, item) => sum + item.valore, 0) / dati.length);
             
             tempCtx.font = '24px Arial';
