@@ -1,428 +1,428 @@
-Uri: http://192.168.1.145/
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.htm
+Uri: http://172.27.161.18/
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.htm
 Content Type: text/html
 
-Uri: http://192.168.1.145/cache/com_templates/templates/shaper_helixultimate/a389b878476f072b6c51a2d1962afb96.js
-File Name: C:\Downloaded Web Sites\192.168.1.145\cache\com_templates\templates\shaper_helixultimate\a389b878476f072b6c51a2d1962afb96.js
+Uri: http://172.27.161.18/cache/com_templates/templates/shaper_helixultimate/a389b878476f072b6c51a2d1962afb96.js
+File Name: C:\Downloaded Web Sites\172.27.161.18\cache\com_templates\templates\shaper_helixultimate\a389b878476f072b6c51a2d1962afb96.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/cache/com_templates/templates/shaper_helixultimate/fb817c72c8b2deba9a3408628bfaf71f.css
-File Name: C:\Downloaded Web Sites\192.168.1.145\cache\com_templates\templates\shaper_helixultimate\fb817c72c8b2deba9a3408628bfaf71f.css
+Uri: http://172.27.161.18/cache/com_templates/templates/shaper_helixultimate/fb817c72c8b2deba9a3408628bfaf71f.css
+File Name: C:\Downloaded Web Sites\172.27.161.18\cache\com_templates\templates\shaper_helixultimate\fb817c72c8b2deba9a3408628bfaf71f.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/component/finder/search.opensearch?Itemid=119
-File Name: C:\Downloaded Web Sites\192.168.1.145\component\finder\search.opensearch
+Uri: http://172.27.161.18/component/finder/search.opensearch?Itemid=119
+File Name: C:\Downloaded Web Sites\172.27.161.18\component\finder\search.opensearch
 Content Type: application/opensearchdescription+xml
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/animate.min.css?9b160b415b961aeb41b64305a23d2953
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\animate.min.css
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/css/animate.min.css?431006b7798dde30d7728c5df9bb0948
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-5.min.css?9b160b415b961aeb41b64305a23d2953
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-5.min.css
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/css/font-awesome-5.min.css?431006b7798dde30d7728c5df9bb0948
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\css\font-awesome-5.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?9b160b415b961aeb41b64305a23d2953
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?431006b7798dde30d7728c5df9bb0948
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?9b160b415b961aeb41b64305a23d2953
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?431006b7798dde30d7728c5df9bb0948
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/magnific-popup.css
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\magnific-popup.css
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/css/magnific-popup.css
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\css\magnific-popup.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/css/sppagebuilder.css?9b160b415b961aeb41b64305a23d2953
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\css\sppagebuilder.css
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/css/sppagebuilder.css?431006b7798dde30d7728c5df9bb0948
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\css\sppagebuilder.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/addons/image.js
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\addons\image.js
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/js/addons/image.js
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\js\addons\image.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/addons/text_block.js
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\addons\text_block.js
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/js/addons/text_block.js
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\js\addons\text_block.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/common.js
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\common.js
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/js/common.js
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\js\common.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/jquery.magnific-popup.min.js
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\jquery.magnific-popup.min.js
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/js/jquery.magnific-popup.min.js
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\js\jquery.magnific-popup.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/jquery.parallax.js?9b160b415b961aeb41b64305a23d2953
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\jquery.parallax.js
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/js/jquery.parallax.js?431006b7798dde30d7728c5df9bb0948
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\js\jquery.parallax.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/js/sppagebuilder.js?9b160b415b961aeb41b64305a23d2953
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\js\sppagebuilder.js
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/js/sppagebuilder.js?431006b7798dde30d7728c5df9bb0948
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\js\sppagebuilder.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-brands-400-6.ttf
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-brands-400-6.ttf
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-brands-400-6.ttf
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-brands-400-6.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-brands-400-6.woff2
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-brands-400-6.woff2
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-brands-400-6.woff2
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-brands-400-6.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-brands-400.ttf
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-brands-400.ttf
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-brands-400.ttf
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-brands-400.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-brands-400.woff
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-brands-400.woff
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-brands-400.woff
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-brands-400.woff
 Content Type: font/woff
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-regular-400-6.ttf
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.ttf
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-regular-400-6.ttf
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-regular-400-6.woff2
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.woff2
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-regular-400-6.woff2
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-regular-400.ttf
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-regular-400.ttf
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-regular-400.ttf
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-regular-400.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-regular-400.woff
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-regular-400.woff
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-regular-400.woff
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-regular-400.woff
 Content Type: font/woff
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.ttf
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.ttf
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.ttf
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.woff2
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.woff2
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.woff2
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-solid-900.ttf
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-solid-900.ttf
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-solid-900.ttf
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-solid-900.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-solid-900.woff
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-solid-900.woff
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-solid-900.woff
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-solid-900.woff
 Content Type: font/woff
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-v4compatibility.ttf
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.ttf
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-v4compatibility.ttf
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.1.145/components/com_sppagebuilder/assets/webfonts/fa-v4compatibility.woff2
-File Name: C:\Downloaded Web Sites\192.168.1.145\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.woff2
+Uri: http://172.27.161.18/components/com_sppagebuilder/assets/webfonts/fa-v4compatibility.woff2
+File Name: C:\Downloaded Web Sites\172.27.161.18\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.1.145/fks-fkr-per-area/grafico-valori-fkr.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\fks-fkr-per-area\grafico-valori-fkr.html
+Uri: http://172.27.161.18/fks-fkr-per-area/grafico-valori-fkr.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\fks-fkr-per-area\grafico-valori-fkr.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/fks-fkr-per-area/grafico-valori-fks.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\fks-fkr-per-area\grafico-valori-fks.html
+Uri: http://172.27.161.18/fks-fkr-per-area/grafico-valori-fks.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\fks-fkr-per-area\grafico-valori-fks.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/grafico-a-spirale-della-profondità-0-30-100-km/grafico-a-spirale-della-profondità-0-100-km.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\grafico-a-spirale-della-profondità-0-30-100-km\grafico-a-spirale-della-profondità-0-100-km.html
+Uri: http://172.27.161.18/grafico-a-spirale-della-profondità-0-30-100-km/grafico-a-spirale-della-profondità-0-100-km.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\grafico-a-spirale-della-profondità-0-30-100-km\grafico-a-spirale-della-profondità-0-100-km.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/grafico-a-spirale-della-profondità-0-30-100-km/grafico-a-spirale-della-profondità-0-30-km.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\grafico-a-spirale-della-profondità-0-30-100-km\grafico-a-spirale-della-profondità-0-30-km.html
+Uri: http://172.27.161.18/grafico-a-spirale-della-profondità-0-30-100-km/grafico-a-spirale-della-profondità-0-30-km.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\grafico-a-spirale-della-profondità-0-30-100-km\grafico-a-spirale-della-profondità-0-30-km.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/griglia-faglie/faglie-attive-centro-nord.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\griglia-faglie\faglie-attive-centro-nord.html
+Uri: http://172.27.161.18/griglia-faglie/faglie-attive-centro-nord.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\griglia-faglie\faglie-attive-centro-nord.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/griglia-faglie/faglie-attive-centro-sud.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\griglia-faglie\faglie-attive-centro-sud.html
+Uri: http://172.27.161.18/griglia-faglie/faglie-attive-centro-sud.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\griglia-faglie\faglie-attive-centro-sud.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/images/world-154527_1280.png
-File Name: C:\Downloaded Web Sites\192.168.1.145\images\world-154527_1280.png
+Uri: http://172.27.161.18/images/world-154527_1280.png
+File Name: C:\Downloaded Web Sites\172.27.161.18\images\world-154527_1280.png
 Content Type: image/png
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=11
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-16.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=11
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-16.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=12
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-17.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=12
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-17.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=13
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-2.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=13
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-2.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=14
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-12.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=14
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-12.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=15
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-13.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=15
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-13.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=16
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-11.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=16
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-11.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=17
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-15.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=17
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-15.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=18
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-10.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=18
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-10.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=22
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-3.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=22
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-3.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=22&Itemid=147
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-20.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=22&Itemid=147
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-20.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=23
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-4.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=23
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-4.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=23&Itemid=145
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-18.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=23&Itemid=145
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-18.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=24
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-5.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=24
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-5.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=24&Itemid=146
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-19.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=24&Itemid=146
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-19.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=25
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-6.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=25
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-6.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=26
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-14.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=26
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-14.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=3
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=3
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=4
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-1.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=4
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-1.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=6
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-7.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=6
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-7.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=8
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-8.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=8
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-8.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/index.php?option=com_sppagebuilder&view=page&id=9
-File Name: C:\Downloaded Web Sites\192.168.1.145\index.php-9.html
+Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=9
+File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-9.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/media/com_finder/js/finder.min.js?5729ed
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\com_finder\js\finder.min.js
+Uri: http://172.27.161.18/media/com_finder/js/finder.min.js?5729ed
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\com_finder\js\finder.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/legacy/js/jquery-noconflict.min.js?504da4
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\legacy\js\jquery-noconflict.min.js
+Uri: http://172.27.161.18/media/legacy/js/jquery-noconflict.min.js?504da4
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\legacy\js\jquery-noconflict.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/system/js/core.min.js?e20992
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\system\js\core.min.js
+Uri: http://172.27.161.18/media/system/js/core.min.js?e20992
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\system\js\core.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/system/js/messages.min.js?7a5169
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\system\js\messages.min.js
+Uri: http://172.27.161.18/media/system/js/messages.min.js?7a5169
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\system\js\messages.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/system/js/showon.min.js?891646
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\system\js\showon.min.js
+Uri: http://172.27.161.18/media/system/js/showon.min.js?891646
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\system\js\showon.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/awesomplete/css/awesomplete.css?1.1.5
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\awesomplete\css\awesomplete.css
+Uri: http://172.27.161.18/media/vendor/awesomplete/css/awesomplete.css?1.1.5
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\awesomplete\css\awesomplete.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/media/vendor/awesomplete/js/awesomplete.min.js?1.1.5
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\awesomplete\js\awesomplete.min.js
+Uri: http://172.27.161.18/media/vendor/awesomplete/js/awesomplete.min.js?1.1.5
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\awesomplete\js\awesomplete.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/bootstrap/js/alert.min.js?5.3.2
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\bootstrap\js\alert.min.js
+Uri: http://172.27.161.18/media/vendor/bootstrap/js/alert.min.js?5.3.2
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\bootstrap\js\alert.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/bootstrap/js/button.min.js?5.3.2
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\bootstrap\js\button.min.js
+Uri: http://172.27.161.18/media/vendor/bootstrap/js/button.min.js?5.3.2
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\bootstrap\js\button.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/bootstrap/js/carousel.min.js?5.3.2
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\bootstrap\js\carousel.min.js
+Uri: http://172.27.161.18/media/vendor/bootstrap/js/carousel.min.js?5.3.2
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\bootstrap\js\carousel.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/bootstrap/js/collapse.min.js?5.3.2
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\bootstrap\js\collapse.min.js
+Uri: http://172.27.161.18/media/vendor/bootstrap/js/collapse.min.js?5.3.2
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\bootstrap\js\collapse.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/bootstrap/js/dropdown.min.js?5.3.2
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\bootstrap\js\dropdown.min.js
+Uri: http://172.27.161.18/media/vendor/bootstrap/js/dropdown.min.js?5.3.2
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\bootstrap\js\dropdown.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/bootstrap/js/modal.min.js?5.3.2
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\bootstrap\js\modal.min.js
+Uri: http://172.27.161.18/media/vendor/bootstrap/js/modal.min.js?5.3.2
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\bootstrap\js\modal.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/bootstrap/js/offcanvas.min.js?5.3.2
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\bootstrap\js\offcanvas.min.js
+Uri: http://172.27.161.18/media/vendor/bootstrap/js/offcanvas.min.js?5.3.2
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\bootstrap\js\offcanvas.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/bootstrap/js/popover.min.js?5.3.2
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\bootstrap\js\popover.min.js
+Uri: http://172.27.161.18/media/vendor/bootstrap/js/popover.min.js?5.3.2
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\bootstrap\js\popover.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/bootstrap/js/scrollspy.min.js?5.3.2
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\bootstrap\js\scrollspy.min.js
+Uri: http://172.27.161.18/media/vendor/bootstrap/js/scrollspy.min.js?5.3.2
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\bootstrap\js\scrollspy.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/bootstrap/js/tab.min.js?5.3.2
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\bootstrap\js\tab.min.js
+Uri: http://172.27.161.18/media/vendor/bootstrap/js/tab.min.js?5.3.2
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\bootstrap\js\tab.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/bootstrap/js/toast.min.js?5.3.2
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\bootstrap\js\toast.min.js
+Uri: http://172.27.161.18/media/vendor/bootstrap/js/toast.min.js?5.3.2
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\bootstrap\js\toast.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/media/vendor/fontawesome-free/webfonts/fa-brands-400.ttf?v=193142
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\fontawesome-free\webfonts\fa-brands-400.ttf
+Uri: http://172.27.161.18/media/vendor/fontawesome-free/webfonts/fa-brands-400.ttf?v=193142
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\fontawesome-free\webfonts\fa-brands-400.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.1.145/media/vendor/fontawesome-free/webfonts/fa-brands-400.woff2?v=b6356c
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\fontawesome-free\webfonts\fa-brands-400.woff2
+Uri: http://172.27.161.18/media/vendor/fontawesome-free/webfonts/fa-brands-400.woff2?v=b6356c
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\fontawesome-free\webfonts\fa-brands-400.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.1.145/media/vendor/fontawesome-free/webfonts/fa-regular-400.ttf?v=a0cc1c
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\fontawesome-free\webfonts\fa-regular-400.ttf
+Uri: http://172.27.161.18/media/vendor/fontawesome-free/webfonts/fa-regular-400.ttf?v=a0cc1c
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\fontawesome-free\webfonts\fa-regular-400.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.1.145/media/vendor/fontawesome-free/webfonts/fa-regular-400.woff2?v=023a4a
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\fontawesome-free\webfonts\fa-regular-400.woff2
+Uri: http://172.27.161.18/media/vendor/fontawesome-free/webfonts/fa-regular-400.woff2?v=023a4a
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\fontawesome-free\webfonts\fa-regular-400.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.1.145/media/vendor/fontawesome-free/webfonts/fa-solid-900.ttf?v=25914c
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\fontawesome-free\webfonts\fa-solid-900.ttf
+Uri: http://172.27.161.18/media/vendor/fontawesome-free/webfonts/fa-solid-900.ttf?v=25914c
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\fontawesome-free\webfonts\fa-solid-900.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.1.145/media/vendor/fontawesome-free/webfonts/fa-solid-900.woff2?v=6c4eee
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\fontawesome-free\webfonts\fa-solid-900.woff2
+Uri: http://172.27.161.18/media/vendor/fontawesome-free/webfonts/fa-solid-900.woff2?v=6c4eee
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\fontawesome-free\webfonts\fa-solid-900.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.1.145/media/vendor/joomla-custom-elements/css/joomla-alert.min.css?0.2.0
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\joomla-custom-elements\css\joomla-alert.min.css
+Uri: http://172.27.161.18/media/vendor/joomla-custom-elements/css/joomla-alert.min.css?0.2.0
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\joomla-custom-elements\css\joomla-alert.min.css
 Content Type: text/css
 
-Uri: http://192.168.1.145/media/vendor/jquery/js/jquery.min.js?3.7.1
-File Name: C:\Downloaded Web Sites\192.168.1.145\media\vendor\jquery\js\jquery.min.js
+Uri: http://172.27.161.18/media/vendor/jquery/js/jquery.min.js?3.7.1
+File Name: C:\Downloaded Web Sites\172.27.161.18\media\vendor\jquery\js\jquery.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.1.145/profondimetri/profondimetri-130km.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\profondimetri\profondimetri-130km.html
+Uri: http://172.27.161.18/profondimetri/profondimetri-130km.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\profondimetri\profondimetri-130km.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/profondimetri/profondimetri-15km.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\profondimetri\profondimetri-15km.html
+Uri: http://172.27.161.18/profondimetri/profondimetri-15km.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\profondimetri\profondimetri-15km.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/profondimetri/profondimetri-30km.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\profondimetri\profondimetri-30km.html
+Uri: http://172.27.161.18/profondimetri/profondimetri-30km.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\profondimetri\profondimetri-30km.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/profondimetri/profondimetri-500km.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\profondimetri\profondimetri-500km.html
+Uri: http://172.27.161.18/profondimetri/profondimetri-500km.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\profondimetri\profondimetri-500km.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/profondimetri/profondimetri-6350km.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\profondimetri\profondimetri-6350km.html
+Uri: http://172.27.161.18/profondimetri/profondimetri-6350km.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\profondimetri\profondimetri-6350km.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/profondimetri/profondimetri-750-km.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\profondimetri\profondimetri-750-km.html
+Uri: http://172.27.161.18/profondimetri/profondimetri-750-km.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\profondimetri\profondimetri-750-km.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/griglia-a-punti-con-valori-prc.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-a-punti-con-valori-prc.html
+Uri: http://172.27.161.18/stardard-per-crc/griglia-a-punti-con-valori-prc.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\griglia-a-punti-con-valori-prc.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/griglia-con-valori.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-con-valori.html
+Uri: http://172.27.161.18/stardard-per-crc/griglia-con-valori.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\griglia-con-valori.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/griglia-per-mappa-universale.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-per-mappa-universale.html
+Uri: http://172.27.161.18/stardard-per-crc/griglia-per-mappa-universale.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\griglia-per-mappa-universale.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/griglia-per-valori-con-prc.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\griglia-per-valori-con-prc.html
+Uri: http://172.27.161.18/stardard-per-crc/griglia-per-valori-con-prc.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\griglia-per-valori-con-prc.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/home.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\home.html
+Uri: http://172.27.161.18/stardard-per-crc/home.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\home.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/italia-3-misto.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\italia-3-misto.html
+Uri: http://172.27.161.18/stardard-per-crc/italia-3-misto.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\italia-3-misto.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/mappa-dell-abbruzzo-punti-e-valori.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-dell-abbruzzo-punti-e-valori.html
+Uri: http://172.27.161.18/stardard-per-crc/mappa-dell-abbruzzo-punti-e-valori.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\mappa-dell-abbruzzo-punti-e-valori.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/mappa-dell-abbruzzo-x-mobile.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-dell-abbruzzo-x-mobile.html
+Uri: http://172.27.161.18/stardard-per-crc/mappa-dell-abbruzzo-x-mobile.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\mappa-dell-abbruzzo-x-mobile.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/mappa-della-calabria-punti-e-valori.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-della-calabria-punti-e-valori.html
+Uri: http://172.27.161.18/stardard-per-crc/mappa-della-calabria-punti-e-valori.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\mappa-della-calabria-punti-e-valori.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/mappa-della-calabria-x-mobile.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-della-calabria-x-mobile.html
+Uri: http://172.27.161.18/stardard-per-crc/mappa-della-calabria-x-mobile.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\mappa-della-calabria-x-mobile.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/mappa-della-sicilia-punti-e-valori.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-della-sicilia-punti-e-valori.html
+Uri: http://172.27.161.18/stardard-per-crc/mappa-della-sicilia-punti-e-valori.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\mappa-della-sicilia-punti-e-valori.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/stardard-per-crc/mappa-della-sicilia-x-mobile.html
-File Name: C:\Downloaded Web Sites\192.168.1.145\stardard-per-crc\mappa-della-sicilia-x-mobile.html
+Uri: http://172.27.161.18/stardard-per-crc/mappa-della-sicilia-x-mobile.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\mappa-della-sicilia-x-mobile.html
 Content Type: text/html
 
-Uri: http://192.168.1.145/templates/shaper_helixultimate/images/menu-bg.jpg
-File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\images\menu-bg.jpg
+Uri: http://172.27.161.18/templates/shaper_helixultimate/images/menu-bg.jpg
+File Name: C:\Downloaded Web Sites\172.27.161.18\templates\shaper_helixultimate\images\menu-bg.jpg
 Content Type: image/jpeg
 
-Uri: http://192.168.1.145/templates/shaper_helixultimate/js/lazysizes.min.js
-File Name: C:\Downloaded Web Sites\192.168.1.145\templates\shaper_helixultimate\js\lazysizes.min.js
+Uri: http://172.27.161.18/templates/shaper_helixultimate/js/lazysizes.min.js
+File Name: C:\Downloaded Web Sites\172.27.161.18\templates\shaper_helixultimate\js\lazysizes.min.js
 Content Type: text/javascript
 
 Uri: https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js
-File Name: C:\Downloaded Web Sites\192.168.1.145\npm\chart.js@3.7.1\dist\chart.min.js
+File Name: C:\Downloaded Web Sites\172.27.161.18\npm\chart.js@3.7.1\dist\chart.min.js
 Content Type: application/javascript
 
 Uri: https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js
-File Name: C:\Downloaded Web Sites\192.168.1.145\ajax\libs\Chart.js\3.7.0\chart.min.js
+File Name: C:\Downloaded Web Sites\172.27.161.18\ajax\libs\Chart.js\3.7.0\chart.min.js
 Content Type: application/javascript
 
 Uri: https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js
-File Name: C:\Downloaded Web Sites\192.168.1.145\ajax\libs\html2canvas\1.4.1\html2canvas.min.js
+File Name: C:\Downloaded Web Sites\172.27.161.18\ajax\libs\html2canvas\1.4.1\html2canvas.min.js
 Content Type: application/javascript
 
