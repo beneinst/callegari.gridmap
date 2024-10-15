@@ -146,84 +146,32 @@ Uri: http://172.27.161.18/images/world-154527_1280.png
 File Name: C:\Downloaded Web Sites\172.27.161.18\images\world-154527_1280.png
 Content Type: image/png
 
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=11
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-18.html
+Uri: http://172.27.161.18/mappa-estesa-della-basilicata.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\mappa-estesa-della-basilicata.html
 Content Type: text/html
 
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=12
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-19.html
+Uri: http://172.27.161.18/mappa-estesa-della-campania.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\mappa-estesa-della-campania.html
 Content Type: text/html
 
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=13
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-4.html
+Uri: http://172.27.161.18/mappa-estesa-della-puglia.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\mappa-estesa-della-puglia.html
 Content Type: text/html
 
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=14
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-14.html
+Uri: http://172.27.161.18/mappa-plancia-crc-campania.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\mappa-plancia-crc-campania.html
 Content Type: text/html
 
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=15
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-15.html
+Uri: http://172.27.161.18/mappa-plancia-crc-della-basilicata.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\mappa-plancia-crc-della-basilicata.html
 Content Type: text/html
 
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=16
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-13.html
+Uri: http://172.27.161.18/mappa-plancia-crc-della-puglia.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\mappa-plancia-crc-della-puglia.html
 Content Type: text/html
 
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=17
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-17.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=18
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-12.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=22
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-7.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=23
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-5.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=24
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-6.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=25
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-8.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=26
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-16.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=27
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-3.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=28
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-2.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=3
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=4
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-1.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=6
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-9.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=8
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-10.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/index.php?option=com_sppagebuilder&view=page&id=9
-File Name: C:\Downloaded Web Sites\172.27.161.18\index.php-11.html
+Uri: http://172.27.161.18/mappa-plancia-crc-della-sicilia.html
+File Name: C:\Downloaded Web Sites\172.27.161.18\mappa-plancia-crc-della-sicilia.html
 Content Type: text/html
 
 Uri: http://172.27.161.18/media/com_finder/js/finder.min.js?5729ed
@@ -364,10 +312,6 @@ Content Type: text/html
 
 Uri: http://172.27.161.18/stardard-per-crc/griglia-a-punti-con-valori-prc.html
 File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\griglia-a-punti-con-valori-prc.html
-Content Type: text/html
-
-Uri: http://172.27.161.18/stardard-per-crc/griglia-con-valori.html
-File Name: C:\Downloaded Web Sites\172.27.161.18\stardard-per-crc\griglia-con-valori.html
 Content Type: text/html
 
 Uri: http://172.27.161.18/stardard-per-crc/griglia-per-mappa-universale.html
