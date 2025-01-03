@@ -14,19 +14,15 @@ Uri: http://192.168.178.26/component/finder/search.opensearch?Itemid=119
 File Name: C:\Downloaded Web Sites\192.168.178.26\component\finder\search.opensearch
 Content Type: application/opensearchdescription+xml
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/animate.min.css?431006b7798dde30d7728c5df9bb0948
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/animate.min.css?7bdda2ba97a09ec689190d2c91f579fe
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/font-awesome-5.min.css?431006b7798dde30d7728c5df9bb0948
-File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\font-awesome-5.min.css
-Content Type: text/css
-
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?431006b7798dde30d7728c5df9bb0948
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?7bdda2ba97a09ec689190d2c91f579fe
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
 Content Type: text/css
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?431006b7798dde30d7728c5df9bb0948
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?7bdda2ba97a09ec689190d2c91f579fe
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
 Content Type: text/css
 
@@ -34,7 +30,7 @@ Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/magnific-popu
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\magnific-popup.css
 Content Type: text/css
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/sppagebuilder.css?431006b7798dde30d7728c5df9bb0948
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/sppagebuilder.css?7bdda2ba97a09ec689190d2c91f579fe
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\sppagebuilder.css
 Content Type: text/css
 
@@ -54,11 +50,11 @@ Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/jquery.magnifi
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\js\jquery.magnific-popup.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/jquery.parallax.js?431006b7798dde30d7728c5df9bb0948
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/jquery.parallax.js?7bdda2ba97a09ec689190d2c91f579fe
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\js\jquery.parallax.js
 Content Type: text/javascript
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/sppagebuilder.js?431006b7798dde30d7728c5df9bb0948
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/sppagebuilder.js?7bdda2ba97a09ec689190d2c91f579fe
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\js\sppagebuilder.js
 Content Type: text/javascript
 
@@ -70,14 +66,6 @@ Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-brand
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-brands-400-6.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-brands-400.ttf
-File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-brands-400.ttf
-Content Type: font/ttf
-
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-brands-400.woff
-File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-brands-400.woff
-Content Type: font/woff
-
 Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-regular-400-6.ttf
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.ttf
 Content Type: font/ttf
@@ -86,14 +74,6 @@ Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-regul
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-regular-400.ttf
-File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-regular-400.ttf
-Content Type: font/ttf
-
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-regular-400.woff
-File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-regular-400.woff
-Content Type: font/woff
-
 Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.ttf
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.ttf
 Content Type: font/ttf
@@ -101,14 +81,6 @@ Content Type: font/ttf
 Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.woff2
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.woff2
 Content Type: font/woff2
-
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-solid-900.ttf
-File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-solid-900.ttf
-Content Type: font/ttf
-
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-solid-900.woff
-File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-solid-900.woff
-Content Type: font/woff
 
 Uri: http://192.168.178.26/components/com_sppagebuilder/assets/webfonts/fa-v4compatibility.ttf
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.ttf
@@ -134,6 +106,10 @@ Uri: http://192.168.178.26/grafico-a-spirale-della-profondità-0-30-100-km/grafi
 File Name: C:\Downloaded Web Sites\192.168.178.26\grafico-a-spirale-della-profondità-0-30-100-km\grafico-a-spirale-della-profondità-0-30-km.html
 Content Type: text/html
 
+Uri: http://192.168.178.26/grafico-valori-fk-l0.html
+File Name: C:\Downloaded Web Sites\192.168.178.26\grafico-valori-fk-l0.html
+Content Type: text/html
+
 Uri: http://192.168.178.26/griglia-faglie/faglie-attive-centro-nord.html
 File Name: C:\Downloaded Web Sites\192.168.178.26\griglia-faglie\faglie-attive-centro-nord.html
 Content Type: text/html
@@ -145,6 +121,10 @@ Content Type: text/html
 Uri: http://192.168.178.26/images/world-154527_1280.png
 File Name: C:\Downloaded Web Sites\192.168.178.26\images\world-154527_1280.png
 Content Type: image/png
+
+Uri: http://192.168.178.26/index.php?option=com_sppagebuilder&view=page&id=36
+File Name: C:\Downloaded Web Sites\192.168.178.26\index.php.html
+Content Type: text/html
 
 Uri: http://192.168.178.26/mappa-estesa-della-basilicata.html
 File Name: C:\Downloaded Web Sites\192.168.178.26\mappa-estesa-della-basilicata.html
