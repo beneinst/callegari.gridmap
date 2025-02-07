@@ -14,19 +14,19 @@ Uri: http://192.168.178.26/component/finder/search.opensearch?Itemid=119
 File Name: C:\Downloaded Web Sites\192.168.178.26\component\finder\search.opensearch
 Content Type: application/opensearchdescription+xml
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/animate.min.css?db5fbbc34070d36ea9b98958ab6f065c
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/animate.min.css?9db842b3dc3336737559eb4abc0f1b3d
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/dynamic-content.css?db5fbbc34070d36ea9b98958ab6f065c
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/dynamic-content.css?9db842b3dc3336737559eb4abc0f1b3d
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\dynamic-content.css
 Content Type: text/css
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?db5fbbc34070d36ea9b98958ab6f065c
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?9db842b3dc3336737559eb4abc0f1b3d
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
 Content Type: text/css
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?db5fbbc34070d36ea9b98958ab6f065c
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?9db842b3dc3336737559eb4abc0f1b3d
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
 Content Type: text/css
 
@@ -34,7 +34,7 @@ Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/magnific-popu
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\magnific-popup.css
 Content Type: text/css
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/sppagebuilder.css?db5fbbc34070d36ea9b98958ab6f065c
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/css/sppagebuilder.css?9db842b3dc3336737559eb4abc0f1b3d
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\css\sppagebuilder.css
 Content Type: text/css
 
@@ -50,7 +50,7 @@ Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/common.js
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\js\common.js
 Content Type: text/javascript
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/dynamic-content.js?db5fbbc34070d36ea9b98958ab6f065c
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/dynamic-content.js?9db842b3dc3336737559eb4abc0f1b3d
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\js\dynamic-content.js
 Content Type: text/javascript
 
@@ -58,11 +58,11 @@ Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/jquery.magnifi
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\js\jquery.magnific-popup.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/jquery.parallax.js?db5fbbc34070d36ea9b98958ab6f065c
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/jquery.parallax.js?9db842b3dc3336737559eb4abc0f1b3d
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\js\jquery.parallax.js
 Content Type: text/javascript
 
-Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/sppagebuilder.js?db5fbbc34070d36ea9b98958ab6f065c
+Uri: http://192.168.178.26/components/com_sppagebuilder/assets/js/sppagebuilder.js?9db842b3dc3336737559eb4abc0f1b3d
 File Name: C:\Downloaded Web Sites\192.168.178.26\components\com_sppagebuilder\assets\js\sppagebuilder.js
 Content Type: text/javascript
 
@@ -125,6 +125,10 @@ Content Type: text/html
 Uri: http://192.168.178.26/griglia-faglie/faglie-attive-centro-sud.html
 File Name: C:\Downloaded Web Sites\192.168.178.26\griglia-faglie\faglie-attive-centro-sud.html
 Content Type: text/html
+
+Uri: http://192.168.178.26/images/2024/08/19/oig4.jpg
+File Name: C:\Downloaded Web Sites\192.168.178.26\images\2024\08\19\oig4.jpg
+Content Type: image/jpeg
 
 Uri: http://192.168.178.26/images/world-154527_1280.png
 File Name: C:\Downloaded Web Sites\192.168.178.26\images\world-154527_1280.png
