@@ -27,7 +27,7 @@
 </style>
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/component/finder/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.178.26/","base":"","baseFull":"http://192.168.178.26/"},"csrf.token":"6fda519cc97ed2bfe74d692f10c2445c"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/component/finder/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.178.26/","base":"","baseFull":"http://192.168.178.26/"},"csrf.token":"71ad143c4bd45b20a89c990acfbadece"}</script>
 	<script src="media/system/js/core.min.js?2cb912"></script>
 	<script src="media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -87,6 +87,36 @@
     z-index: 10;
 }
 
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    opacity: 1; /* Assicurati che l'opacità iniziale sia 1 */
+    transition: opacity 0.2s ease-in-out; /* Aggiungi una transizione fluida */
+}
+
+.button:hover {
+    opacity: 0.8; /* Riduci l'opacità al passaggio del mouse */
+}
+
+.bg-blue {
+    background-color: #3498db;
+}
+
+.bg-red {
+    background-color: #e74c3c;
+}
+
+.bg-green {
+    background-color: #2ecc71;
+}
 </style>
 			</head>
 	<body class="site helix-ultimate hu com_sppagebuilder com-sppagebuilder view-page layout-default task-none itemid-168 it-it ltr layout-fluid offcanvas-init offcanvs-position-left">
@@ -756,7 +786,7 @@ button.bg-green { background-color: #28a745; }
                 const originalWidth = canvas.width;
                 const originalHeight = canvas.height;
 
-                const maxHeight = 1080 * 10;
+                const maxHeight = 1080 * 5;
                 const scaleFactor = maxHeight / originalHeight;
                 const scaledWidth = originalWidth * scaleFactor;
 
@@ -823,7 +853,7 @@ button.bg-green { background-color: #28a745; }
 
 .custom-menu .menu-label {
   font-weight: bold;
-  color: #417598;
+  color: #28264D;
   padding: 8px 12px;
   cursor: pointer;
   border-radius: 5px;
@@ -835,7 +865,7 @@ button.bg-green { background-color: #28a745; }
 }
 
 .custom-menu .menu-label:hover {
-  background-color: #417598;
+  background-color: #28264D;
   color: #ffffff;
 }
 
@@ -865,7 +895,7 @@ button.bg-green { background-color: #28a745; }
 }
 
 .custom-menu a:hover {
-  background-color: #417598;
+  background-color: #28264D;
   color: #ffffff;
 }
 
@@ -960,7 +990,7 @@ button.bg-green { background-color: #28a745; }
 			
 	
 <div class="row">
-	<div id="sp-footer1" class="col-lg-12 "><div class="sp-column "><span class="sp-copyright"><p style="text-align:center;"><span style="color:#b1cae6;">© 2024 Italy Grid Map | Centro Studi di Radionica e Radiobiologia Callegari</span></p><p></p><p style="text-align:center;"><span style="color:#b1cae6;">Sviluppato da</span> <a href="mailto:gerardo.dorrico@gmail.com">Gerardo D'Orrico</a></p></span></div></div></div>
+	<div id="sp-footer1" class="col-lg-12 "><div class="sp-column "><span class="sp-copyright"><p style="text-align:center;"><span style="color:#b1cae6;">© 2025 Italy Grid Map. Tutti i diritti riservati | Centro Studi di Radionica e Radiobiologia Callegari - Sez. Calabria, Villapiana CS</span><span style="color:#b1cae6;"> | Sviluppato da</span> <a href="mailto:gerardo.dorrico@gmail.com">Gerardo D'Orrico</a></p></span></div></div></div>
 							</div>
 			</div>
 			

@@ -134,8 +134,12 @@ Uri: http://192.168.178.26/images/world-154527_1280.png
 File Name: C:\Downloaded Web Sites\192.168.178.26\images\world-154527_1280.png
 Content Type: image/png
 
-Uri: http://192.168.178.26/index.php?option=com_sppagebuilder&view=page&id=36
+Uri: http://192.168.178.26/index.php?option=com_sppagebuilder&view=page&id=34
 File Name: C:\Downloaded Web Sites\192.168.178.26\index.php.html
+Content Type: text/html
+
+Uri: http://192.168.178.26/index.php?option=com_sppagebuilder&view=page&id=36
+File Name: C:\Downloaded Web Sites\192.168.178.26\index.php-1.html
 Content Type: text/html
 
 Uri: http://192.168.178.26/mappa-estesa-della-basilicata.html
