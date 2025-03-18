@@ -27,7 +27,7 @@
 </style>
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/component/finder/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.163.128/","base":"","baseFull":"http://192.168.163.128/"},"csrf.token":"1e1175d6152535e8306fc38ca53ba7a5"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/component/finder/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.163.128/","base":"","baseFull":"http://192.168.163.128/"},"csrf.token":"39c3fe08b145969860e3bd35abecd60b"}</script>
 	<script src="../media/system/js/core.min.js?2cb912"></script>
 	<script src="../media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="../media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -615,366 +615,367 @@ button {
             };
         }
 
-           function updateChart() {
-    const ctx = document.getElementById('accDecChart').getContext('2d');
-    const areaName = document.getElementById('areaName').value || 'non specificata';
-    const fkValue = document.getElementById('fkValue').value || 'Non specificato';
-    const dateValue = document.getElementById('dateInput').value || 'Data non specificata';
+        function updateChart() {
+            const ctx = document.getElementById('accDecChart').getContext('2d');
+            const areaName = document.getElementById('areaName').value || 'non specificata';
+            const fkValue = document.getElementById('fkValue').value || 'Non specificato';
+            const dateValue = document.getElementById('dateInput').value || 'Data non specificata';
 
-    if (myChart) {
-        myChart.destroy();
-    }
-
-    const averages = calculateAverages();
-    const stepSize = getStepSize(currentMaxDepth);
-    
-   // Calcolo dinamico dei limiti dell'asse x
-let baseLimit = 60; // Valore di base
-let minAccDec = -baseLimit;
-let maxAccDec = baseLimit;
-
-if (chartData.length > 0) {
-    const accDecValues = chartData.map(d => d.accDec);
-    const minValue = Math.min(...accDecValues);
-    const maxValue = Math.max(...accDecValues);
-    
-    // Aggiungi un margine del 20% o almeno 10 unità
-    const margin = Math.max(Math.abs(maxValue - minValue) * 0.2, 10);
-
-    // Calcola il massimo valore assoluto per mantenere l'asse X centrato
-    const dynamicLimit = Math.max(Math.abs(minValue - margin), Math.abs(maxValue + margin), baseLimit);
-
-    minAccDec = -dynamicLimit;
-    maxAccDec = dynamicLimit;
-}
-
-
-    myChart = new Chart(ctx, {
-        type: 'scatter',
-        data: {
-            datasets: [{
-                label: 'Acc/Dec vs Profondità',
-                data: chartData.map(d => ({
-                    x: d.accDec,
-                    y: d.profKm,
-                    value: d.value // Aggiungiamo il valore ai dati del punto
-                })),
-                backgroundColor: '#E74C3C',  // Rosso corallo per i punti
-                borderColor: '#2C3E50',      // Blu scuro per le linee
-                pointRadius: 8,
-                pointHoverRadius: 10,
-                showLine: true,
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            aspectRatio: 1,
-            scales: {
-                x: {
-                    type: 'linear',
-                    position: 'bottom',
-                    title: {
-                        display: true,
-                        text: 'Acc/Dec',
-                        font: {
-                            size: 16,
-                            weight: 'bold'
-                        }
-                    },
-                    min: minAccDec, // Utilizzo dei valori dinamici
-                    max: maxAccDec, // Utilizzo dei valori dinamici
-                    ticks: {
-                        stepSize: 20,
-                        font: {
-                            size: 14,
-                            color: '#444444'
-                        }
-                    },
-                    grid: {
-                        color: 'rgba(44, 62, 80, 0.1)'
-                    }
-                },
-                y: {
-                    type: 'linear',
-                    position: 'left',
-                    reverse: true,
-                    title: {
-                        display: true,
-                        text: 'Prof/KM',
-                        font: {
-                            size: 16,
-                            weight: 'bold'
-                        }
-                    },
-                    min: 0,
-                    max: currentMaxDepth,
-                    ticks: {
-                        stepSize: stepSize,
-                        callback: function(value, index, values) {
-                            return value.toFixed(2) + ' Km';
-                        },
-                        font: {
-                            color: '#444444'
-                        }
-                    },
-                    grid: {
-                        color: 'rgba(44, 62, 80, 0.1)'
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    callbacks: {
-                        label: (context) => `Prof/KM: ${context.raw.y.toFixed(2)}, Acc/Dec: ${context.raw.x.toFixed(3)}`
-                    }
-                },
-                title: {
-                    display: true,
-                    text: `Area ${areaName} - ${dateValue}`,
-                    font: {
-                        size: 24,
-                        weight: 'bold'
-                    },
-                    color: '#2C3E50'
-                },
-                subtitle: {
-                    display: true,
-                    text: [
-                        `Fk di Riferimento: ${fkValue}`,
-                        `Media Totale Acc/Dec: ${averages.avgAccDec.toFixed(3)}`,
-                        `Media Prof KM: ${averages.avgProfKm.toFixed(2)}   Media Valori: ${averages.avgValue.toFixed(2)}`
-                    ],
-                    font: {
-                        size: 18
-                    },
-                    color: '#34495E',
-                    padding: {
-                        top: 10,
-                        bottom: 20
-                    }
-                }
+            if (myChart) {
+                myChart.destroy();
             }
+
+            const averages = calculateAverages();
+            const stepSize = getStepSize(currentMaxDepth);
+            
+            // Calcolo dinamico dei limiti dell'asse x
+            let baseLimit = 60; // Valore di base
+            let minAccDec = -baseLimit;
+            let maxAccDec = baseLimit;
+
+            if (chartData.length > 0) {
+                const accDecValues = chartData.map(d => d.accDec);
+                const minValue = Math.min(...accDecValues);
+                const maxValue = Math.max(...accDecValues);
+                
+                // Aggiungi un margine del 20% o almeno 10 unità
+                const margin = Math.max(Math.abs(maxValue - minValue) * 0.2, 10);
+
+                // Calcola il massimo valore assoluto per mantenere l'asse X centrato
+                const dynamicLimit = Math.max(Math.abs(minValue - margin), Math.abs(maxValue + margin), baseLimit);
+
+                minAccDec = -dynamicLimit;
+                maxAccDec = dynamicLimit;
+            }
+
+
+            myChart = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Acc/Dec vs Profondità',
+                        data: chartData.map(d => ({
+                            x: d.accDec,
+                            y: d.profKm,
+                            value: d.value // Aggiungiamo il valore ai dati del punto
+                        })),
+                        backgroundColor: '#E74C3C',  // Rosso corallo per i punti
+                        borderColor: '#2C3E50',      // Blu scuro per le linee
+                        pointRadius: 8,
+                        pointHoverRadius: 10,
+                        showLine: true,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    aspectRatio: 1,
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            title: {
+                                display: true,
+                                text: 'Acc/Dec',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                }
+                            },
+                            min: minAccDec,
+                            max: maxAccDec,
+                            ticks: {
+                                stepSize: 20,
+                                font: {
+                                    size: 14
+                                },
+                                color: '#222222' // Nuovo colore per i numeri dell'asse X
+                            },
+                            grid: {
+                                color: 'rgba(44, 62, 80, 0.1)'
+                            }
+                        },
+                        y: {
+                            type: 'linear',
+                            position: 'left',
+                            reverse: true,
+                            title: {
+                                display: true,
+                                text: 'Prof/KM',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                }
+                            },
+                            min: 0,
+                            max: currentMaxDepth,
+                            ticks: {
+                                stepSize: stepSize,
+                                callback: function(value, index, values) {
+                                    return value.toFixed(2) + ' Km';
+                                },
+                                color: '#222222' // Nuovo colore per i numeri dell'asse Y
+                            },
+                            grid: {
+                                color: 'rgba(44, 62, 80, 0.1)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => `Prof/KM: ${context.raw.y.toFixed(2)}, Acc/Dec: ${context.raw.x.toFixed(3)}`
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: `Area ${areaName} - ${dateValue}`,
+                            font: {
+                                size: 24,
+                                weight: 'bold'
+                            },
+                            color: '#2C3E50'
+                        },
+                        subtitle: {
+                            display: true,
+                            text: [
+                                `Fk di Riferimento: ${fkValue}`,
+                                `Media Totale Acc/Dec: ${averages.avgAccDec.toFixed(3)}`,
+                                `Media Prof KM: ${averages.avgProfKm.toFixed(2)}   Media Valori: ${averages.avgValue.toFixed(2)}`
+                            ],
+                            font: {
+                                size: 18
+                            },
+                            color: '#34495E',
+                            padding: {
+                                top: 10,
+                                bottom: 20
+                            }
+                        }
+                    }
+                }
+            });
         }
-    });
-}
 
           
-function downloadLastTooltip() {
-    if (chartData.length === 0) {
-        alert('Non ci sono dati nel grafico');
-        return;
-    }
-    const canvas = document.getElementById('accDecChart');
-    const ctx = canvas.getContext('2d');
-    
-    const desiredWidth = 1082 * 8;
-    const desiredHeight = 1080 * 8;
-    
-    const newCanvas = document.createElement('canvas');
-    newCanvas.width = desiredWidth;
-    newCanvas.height = desiredHeight;
-    const newCtx = newCanvas.getContext('2d');
-    
-    // Sfondo bianco (mantenuto per consistenza)
-    newCtx.fillStyle = '#FFFFFF';
-    newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
-    
-    const scaleFactor = Math.min(desiredWidth / canvas.width, desiredHeight / canvas.height);
-    newCtx.scale(scaleFactor, scaleFactor);
-    
-    // Disegna il grafico originale
-    newCtx.drawImage(canvas, 0, 0);
-    
-    // Prendi l'ultimo punto
-    const lastPoint = chartData[chartData.length - 1];
-    
-    // Converti le coordinate del punto
-    const xScale = myChart.scales.x;
-    const yScale = myChart.scales.y;
-    const x = xScale.getPixelForValue(lastPoint.accDec);
-    const y = yScale.getPixelForValue(lastPoint.profKm);
-    
-    // Configurazione del tooltip
-    newCtx.font = '13px Arial';
-    newCtx.fillStyle = '#2C3E50'; // Blu scuro per il testo
-    const tooltipText = `Prof/KM: ${lastPoint.profKm.toFixed(2)}, Acc/Dec: ${lastPoint.accDec.toFixed(3)}`;
-    const metrics = newCtx.measureText(tooltipText);
-    const padding = 8;
-    const dotSize = 8;
-    const tooltipWidth = metrics.width + (padding * 3) + dotSize;
-    const tooltipHeight = 24;
-    
-    // Distanza aumentata tra tooltip e punto
-    const tooltipOffset = 25; // Aumentato da 12
-    
-    // Disegna il background del tooltip
-    newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)'; // Blu-grigio scuro con maggiore opacità
-    roundRect(newCtx, x - tooltipWidth/2, y - tooltipHeight - tooltipOffset, tooltipWidth, tooltipHeight, 12);
-    newCtx.fill();
-    
-    // Freccia migliorata
-    newCtx.beginPath();
-    newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)'; // Stesso colore del tooltip
-    
-    // Punta della freccia
-    const arrowHeight = 10; // Altezza della freccia
-    const arrowWidth = 12;  // Larghezza della freccia
-    
-    // Coordinate della freccia triangolare
-    newCtx.moveTo(x - arrowWidth/2, y - tooltipOffset);
-    newCtx.lineTo(x, y - tooltipOffset + arrowHeight);
-    newCtx.lineTo(x + arrowWidth/2, y - tooltipOffset);
-    
-    // Collegamento con il tooltip
-    newCtx.lineTo(x + arrowWidth/2, y - tooltipOffset);
-    newCtx.lineTo(x - arrowWidth/2, y - tooltipOffset);
-    
-    newCtx.closePath();
-    newCtx.fill();
-    
-    // Contorno della freccia per migliorare la visibilità
-    newCtx.strokeStyle = 'rgba(41, 58, 74, 1)'; // Bordo leggermente più scuro
-    newCtx.lineWidth = 0.5;
-    newCtx.stroke();
-    
-    // Disegna il punto rosa
-    newCtx.beginPath();
-    newCtx.fillStyle = '#E74C3C'; // Rosso corallo
-    newCtx.strokeStyle = '#FFFFFF'; // Bordo bianco
-    newCtx.lineWidth = 0.5;
-    newCtx.arc(x - tooltipWidth/2 + padding + dotSize/2, y - tooltipHeight/2 - tooltipOffset, dotSize/2, 0, Math.PI * 2);
-    newCtx.fill();
-    newCtx.stroke();
-    
-    // Disegna il testo del tooltip
-    newCtx.fillStyle = '#ECF0F1'; // Grigio chiaro per il testo
-    newCtx.textAlign = 'left';
-    newCtx.textBaseline = 'middle';
-    newCtx.fillText(tooltipText, x - tooltipWidth/2 + padding * 2 + dotSize, y - tooltipHeight/2 - tooltipOffset);
-    
-    // Highlight del punto sul grafico
-    newCtx.beginPath();
-    newCtx.arc(x, y, dotSize, 0, Math.PI * 2);
-    newCtx.fillStyle = 'rgba(231, 76, 60, 0.6)'; // Rosso corallo semi-trasparente
-    newCtx.fill();
-    newCtx.strokeStyle = '#FFFFFF';
-    newCtx.lineWidth = 1;
-    newCtx.stroke();
-    
-    function roundRect(ctx, x, y, width, height, radius) {
-        if (width < 2 * radius) radius = width / 2;
-        if (height < 2 * radius) radius = height / 2;
-        ctx.beginPath();
-        ctx.moveTo(x + radius, y);
-        ctx.arcTo(x + width, y, x + width, y + height, radius);
-        ctx.arcTo(x + width, y + height, x, y + height, radius);
-        ctx.arcTo(x, y + height, x, y, radius);
-        ctx.arcTo(x, y, x + width, y, radius);
-        ctx.closePath();
-    }
-    
-    const imageURL = newCanvas.toDataURL('image/png');
-    const downloadLink = document.createElement('a');
-    downloadLink.href = imageURL;
-    downloadLink.download = `grafico_acc_dec_punto_${chartData.length}.png`;
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-}
+        function downloadLastTooltip() {
+            if (chartData.length === 0) {
+                alert('Non ci sono dati nel grafico');
+                return;
+            }
+            const canvas = document.getElementById('accDecChart');
+            const ctx = canvas.getContext('2d');
+            
+            const desiredWidth = 1082 * 8;
+            const desiredHeight = 1080 * 8;
+            
+            const newCanvas = document.createElement('canvas');
+            newCanvas.width = desiredWidth;
+            newCanvas.height = desiredHeight;
+            const newCtx = newCanvas.getContext('2d');
+            
+            // Sfondo bianco (mantenuto per consistenza)
+            newCtx.fillStyle = '#FFFFFF';
+            newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+            
+            const scaleFactor = Math.min(desiredWidth / canvas.width, desiredHeight / canvas.height);
+            newCtx.scale(scaleFactor, scaleFactor);
+            
+            // Disegna il grafico originale
+            newCtx.drawImage(canvas, 0, 0);
+            
+            // Prendi l'ultimo punto
+            const lastPoint = chartData[chartData.length - 1];
+            
+            // Converti le coordinate del punto
+            const xScale = myChart.scales.x;
+            const yScale = myChart.scales.y;
+            const x = xScale.getPixelForValue(lastPoint.accDec);
+            const y = yScale.getPixelForValue(lastPoint.profKm);
+            
+            // Configurazione del tooltip
+            newCtx.font = '14px Arial'; // Aumentato da 13px a 14px
+            newCtx.fillStyle = '#2C3E50'; // Blu scuro per il testo
+            const tooltipText = `Prof/KM: ${lastPoint.profKm.toFixed(2)}, Acc/Dec: ${lastPoint.accDec.toFixed(3)}`;
+            const metrics = newCtx.measureText(tooltipText);
+            const padding = 8;
+            const dotSize = 8;
+            const tooltipWidth = metrics.width + (padding * 3) + dotSize;
+            const tooltipHeight = 24;
+            
+            // Distanza aumentata tra tooltip e punto
+            const tooltipOffset = 25; // Aumentato da 12
+            
+            // Disegna il background del tooltip
+            newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)'; // Blu-grigio scuro con maggiore opacità
+            roundRect(newCtx, x - tooltipWidth/2, y - tooltipHeight - tooltipOffset, tooltipWidth, tooltipHeight, 12);
+            newCtx.fill();
+            
+            // Freccia migliorata
+            newCtx.beginPath();
+            newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)'; // Stesso colore del tooltip
+            
+            // Punta della freccia
+            const arrowHeight = 10; // Altezza della freccia
+            const arrowWidth = 12;  // Larghezza della freccia
+            
+            // Coordinate della freccia triangolare
+            newCtx.moveTo(x - arrowWidth/2, y - tooltipOffset);
+            newCtx.lineTo(x, y - tooltipOffset + arrowHeight);
+            newCtx.lineTo(x + arrowWidth/2, y - tooltipOffset);
+            
+            // Collegamento con il tooltip
+            newCtx.lineTo(x + arrowWidth/2, y - tooltipOffset);
+            newCtx.lineTo(x - arrowWidth/2, y - tooltipOffset);
+            
+            newCtx.closePath();
+            newCtx.fill();
+            
+            // Contorno della freccia per migliorare la visibilità
+            newCtx.strokeStyle = 'rgba(41, 58, 74, 1)'; // Bordo leggermente più scuro
+            newCtx.lineWidth = 0.5;
+            newCtx.stroke();
+            
+            // Disegna il punto rosa
+            newCtx.beginPath();
+            newCtx.fillStyle = '#E74C3C'; // Rosso corallo
+            newCtx.strokeStyle = '#FFFFFF'; // Bordo bianco
+            newCtx.lineWidth = 0.5;
+            newCtx.arc(x - tooltipWidth/2 + padding + dotSize/2, y - tooltipHeight/2 - tooltipOffset, dotSize/2, 0, Math.PI * 2);
+            newCtx.fill();
+            newCtx.stroke();
+            
+            // Disegna il testo del tooltip
+            newCtx.fillStyle = '#ECF0F1'; // Grigio chiaro per il testo
+            newCtx.textAlign = 'left';
+            newCtx.textBaseline = 'middle';
+            newCtx.fillText(tooltipText, x - tooltipWidth/2 + padding * 2 + dotSize, y - tooltipHeight/2 - tooltipOffset);
+            
+            // Highlight del punto sul grafico - MODIFICATO: tolto lo spazio tra linea e punto
+            newCtx.beginPath();
+            newCtx.arc(x, y, dotSize, 0, Math.PI * 2.7); // Rimosso +2 per togliere lo spazio
+            newCtx.fillStyle = 'rgba(255, 87, 51, 0.7)'; // Colore più vivace e leggermente più opaco
+            newCtx.fill();
+            newCtx.strokeStyle = '#FFFFFF';
+            newCtx.lineWidth = 1.9; // Aumentato da 1 a 1.5
+            newCtx.stroke();
+            
+            function roundRect(ctx, x, y, width, height, radius) {
+                if (width < 2 * radius) radius = width / 2;
+                if (height < 2 * radius) radius = height / 2;
+                ctx.beginPath();
+                ctx.moveTo(x + radius, y);
+                ctx.arcTo(x + width, y, x + width, y + height, radius);
+                ctx.arcTo(x + width, y + height, x, y + height, radius);
+                ctx.arcTo(x, y + height, x, y, radius);
+                ctx.arcTo(x, y, x + width, y, radius);
+                ctx.closePath();
+            }
+            
+            const imageURL = newCanvas.toDataURL('image/png');
+            const downloadLink = document.createElement('a');
+            downloadLink.href = imageURL;
+            downloadLink.download = `grafico_acc_dec_punto_${chartData.length}.png`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
 
 
-function downloadImage() {
-    const canvas = document.getElementById('accDecChart');
-    const ctx = canvas.getContext('2d');
-    
-    const desiredWidth = 1082 * 10;
-    const desiredHeight = 1080 * 10;
-    
-    const newCanvas = document.createElement('canvas');
-    newCanvas.width = desiredWidth;
-    newCanvas.height = desiredHeight;
-    const newCtx = newCanvas.getContext('2d');
-    
-    // Sfondo bianco
-    newCtx.fillStyle = '#FFFFFF';
-    newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
-    
-    const scaleFactor = Math.min(desiredWidth / canvas.width, desiredHeight / canvas.height);
-    newCtx.scale(scaleFactor, scaleFactor);
-    
-    // Prima disegna il grafico originale
-    newCtx.drawImage(canvas, 0, 0);
-    
-    // Aggiorna il colore del testo del titolo e delle etichette
-    newCtx.fillStyle = '#2C3E50';  // Blu scuro per il testo principale
-    
-    // Poi aggiungi le etichette
-    chartData.forEach((point, index) => {
-        const xScale = myChart.scales.x;
-        const yScale = myChart.scales.y;
-        
-        const x = xScale.getPixelForValue(point.accDec);
-        const y = yScale.getPixelForValue(point.profKm);
-        
-        newCtx.font = '600 11px Arial';
-        newCtx.textAlign = 'center';
-        newCtx.textBaseline = 'middle';
-        
-        const label = `${point.profKm}/${point.value}`;
-        
-        const padding = 4;
-        const textMetrics = newCtx.measureText(label);
-        const bgWidth = textMetrics.width + (padding * 2);
-        const bgHeight = 20;
-        const cornerRadius = 5;
-        
-        const rectX = x - (bgWidth / 2);
-        const rectY = y - (bgHeight / 2);
-        
-        newCtx.beginPath();
-        newCtx.moveTo(rectX + cornerRadius, rectY);
-        newCtx.lineTo(rectX + bgWidth - cornerRadius, rectY);
-        newCtx.quadraticCurveTo(rectX + bgWidth, rectY, rectX + bgWidth, rectY + cornerRadius);
-        newCtx.lineTo(rectX + bgWidth, rectY + bgHeight - cornerRadius);
-        newCtx.quadraticCurveTo(rectX + bgWidth, rectY + bgHeight, rectX + bgWidth - cornerRadius, rectY + bgHeight);
-        newCtx.lineTo(rectX + cornerRadius, rectY + bgHeight);
-        newCtx.quadraticCurveTo(rectX, rectY + bgHeight, rectX, rectY + bgHeight - cornerRadius);
-        newCtx.lineTo(rectX, rectY + cornerRadius);
-        newCtx.quadraticCurveTo(rectX, rectY, rectX + cornerRadius, rectY);
-        newCtx.closePath();
-        
-        newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)';  // Blu-grigio scuro come sfondo
-        newCtx.fill();
-        
-        newCtx.strokeStyle = '#E74C3C';  // Rosso corallo per il bordo
-        newCtx.lineWidth = 1;
-        newCtx.stroke();
-        
-        newCtx.fillStyle = '#ECF0F1';  // Grigio chiaro per il testo
-        newCtx.fillText(label, x, y);
-    });
-    
-    const imageURL = newCanvas.toDataURL('image/png');
-    const downloadLink = document.createElement('a');
-    downloadLink.href = imageURL;
-    downloadLink.download = 'grafico_acc_dec_profondita.png';
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-}
+        function downloadImage() {
+            const canvas = document.getElementById('accDecChart');
+            const ctx = canvas.getContext('2d');
+            
+            const desiredWidth = 1082 * 10;
+            const desiredHeight = 1080 * 10;
+            
+            const newCanvas = document.createElement('canvas');
+            newCanvas.width = desiredWidth;
+            newCanvas.height = desiredHeight;
+            const newCtx = newCanvas.getContext('2d');
+            
+            // Sfondo bianco
+            newCtx.fillStyle = '#FFFFFF';
+            newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+            
+            const scaleFactor = Math.min(desiredWidth / canvas.width, desiredHeight / canvas.height);
+            newCtx.scale(scaleFactor, scaleFactor);
+            
+            // Prima disegna il grafico originale
+            newCtx.drawImage(canvas, 0, 0);
+            
+            // Aggiorna il colore del testo del titolo e delle etichette
+            newCtx.fillStyle = '#2C3E50';  // Blu scuro per il testo principale
+            
+            // Poi aggiungi le etichette
+            chartData.forEach((point, index) => {
+                const xScale = myChart.scales.x;
+                const yScale = myChart.scales.y;
+                
+                const x = xScale.getPixelForValue(point.accDec);
+                const y = yScale.getPixelForValue(point.profKm);
+                
+                // MODIFICATO: dimensione testo e stile - aumentato di 1px
+                newCtx.font = '600 12.7px Arial'; // Aumentato da 12px a 13px
+                newCtx.textAlign = 'center';
+                newCtx.textBaseline = 'middle';
+                
+                const label = `${point.profKm}/${point.value}`;
+                
+                // MODIFICATO: dimensioni del rettangolo di sfondo
+                const padding = 6; // Aumentato da 4 a 6
+                const textMetrics = newCtx.measureText(label);
+                const bgWidth = textMetrics.width + (padding * 2);
+                const bgHeight = 22; // Aumentato da 20 a 22
+                const cornerRadius = 5;
+                
+                const rectX = x - (bgWidth / 2);
+                const rectY = y - (bgHeight / 2);
+                
+                newCtx.beginPath();
+                newCtx.moveTo(rectX + cornerRadius, rectY);
+                newCtx.lineTo(rectX + bgWidth - cornerRadius, rectY);
+                newCtx.quadraticCurveTo(rectX + bgWidth, rectY, rectX + bgWidth, rectY + cornerRadius);
+                newCtx.lineTo(rectX + bgWidth, rectY + bgHeight - cornerRadius);
+                newCtx.quadraticCurveTo(rectX + bgWidth, rectY + bgHeight, rectX + bgWidth - cornerRadius, rectY + bgHeight);
+                newCtx.lineTo(rectX + cornerRadius, rectY + bgHeight);
+                newCtx.quadraticCurveTo(rectX, rectY + bgHeight, rectX, rectY + bgHeight - cornerRadius);
+                newCtx.lineTo(rectX, rectY + cornerRadius);
+                newCtx.quadraticCurveTo(rectX, rectY, rectX + cornerRadius, rectY);
+                newCtx.closePath();
+                
+                newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)';  // Blu-grigio scuro come sfondo
+                newCtx.fill();
+                
+                // MODIFICATO: colore del bordo più vivace
+                newCtx.strokeStyle = '#FF5733';  // Rosso più vivace
+                newCtx.lineWidth = 1;
+                newCtx.stroke();
+                
+                newCtx.fillStyle = '#ECF0F1';  // Grigio chiaro per il testo
+                newCtx.fillText(label, x, y);
+            });
+            
+            const imageURL = newCanvas.toDataURL('image/png');
+            const downloadLink = document.createElement('a');
+            downloadLink.href = imageURL;
+            downloadLink.download = 'grafico_acc_dec_profondita.png';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
 
-// Event listener per l'input
-document.getElementById('bulkInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        processBulkInput();
-    }
-});
+        // Event listener per l'input
+        document.getElementById('bulkInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                processBulkInput();
+            }
+        });
 
-updateChart();
+        updateChart();
     </script>
 </body>
 </html></div>
