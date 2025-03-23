@@ -126,9 +126,9 @@ Uri: http://192.168.163.128/griglia-faglie/faglie-attive-centro-sud.html
 File Name: D:\Siti GitHub\192.168.163.128\griglia-faglie\faglie-attive-centro-sud.html
 Content Type: text/html
 
-Uri: http://192.168.163.128/images/2024/08/19/oig4.jpg
-File Name: D:\Siti GitHub\192.168.163.128\images\2024\08\19\oig4.jpg
-Content Type: image/jpeg
+Uri: http://192.168.163.128/images/2025/03/23/pianta-italia_ok_edited3.png
+File Name: D:\Siti GitHub\192.168.163.128\images\2025\03\23\pianta-italia_ok_edited3.png
+Content Type: image/png
 
 Uri: http://192.168.163.128/images/world-154527_1280.png
 File Name: D:\Siti GitHub\192.168.163.128\images\world-154527_1280.png
