@@ -27,7 +27,7 @@
 </style>
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/component/finder/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.163.128/","base":"","baseFull":"http://192.168.163.128/"},"csrf.token":"36902c2c7221e0e6de0568b3a72ece71"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s</code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"/component/finder/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http://192.168.163.128/","base":"","baseFull":"http://192.168.163.128/"},"csrf.token":"10724bbc488e308a06999430790107e6"}</script>
 	<script src="../media/system/js/core.min.js?2cb912"></script>
 	<script src="../media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="../media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -365,7 +365,7 @@
 
    <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Tahoma, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -784,27 +784,30 @@ function updateChart() {
                     display: true,
                     text: `Area ${areaName} - ${dateValue} | Fk ${fkValue}`,
                     font: {
-                        size: 24,
+                        size: 25,
                         weight: 'bold'
                     },
                     color: textColor
                 },
-                subtitle: {
-                    display: true,
-                    text: [
-                        `Media Totale Acc/Dec: ${averages.avgAccDec.toFixed(3)}    Min: ${averages.minAccDec.toFixed(3)}    Max: ${averages.maxAccDec.toFixed(3)}`,
-                        `Media Prof KM: ${averages.avgProfKm.toFixed(2)}`,
-                        `Media Valori: ${averages.avgValue.toFixed(2)}    Min: ${averages.minValue.toFixed(2)}    Max: ${averages.maxValue.toFixed(2)}`
-                    ],
-                    font: {
-                        size: 16,
-                        weight: 'bold'
-                    },
-                    color: textColor,
-                    padding: {
-                        top: 10,
-                        bottom: 20
-                    }
+            subtitle: {
+    display: true,
+    text: [
+        `Acc/Dec: ⚪ Media ${averages.avgAccDec.toFixed(3)}  ▽ Min ${averages.minAccDec.toFixed(3)}  △ Max ${averages.maxAccDec.toFixed(3)}`,
+        `Valori: ⚪ Media ${averages.avgValue.toFixed(2)}  ▽ Min ${averages.minValue.toFixed(2)}  △ Max ${averages.maxValue.toFixed(2)}`,
+        `Prof KM: ⚪ Media ${averages.avgProfKm.toFixed(2)}`
+
+    ],
+    font: {
+        size: 16.2,
+        weight: 'normal', // Modificato da 'bold' a 'semibold'
+        lineHeight: 1.6   // Aggiunta la proprietà lineHeight
+    },
+    color: textColor,
+    padding: {
+        top: 5,
+        bottom: 12
+    }
+
                 }
             }
         }
@@ -856,6 +859,7 @@ function updateChart() {
             // Configurazione del tooltip
             newCtx.font = '14px Arial';
             newCtx.fillStyle = '#2C3E50'; // Blu scuro per il testo
+            newCtx.fillStyle = 'blue'; // Aggiunta per impostare il colore di riempimento del testo a blu
             const tooltipText = `Prof/KM: ${lastPoint.profKm.toFixed(2)}, Acc/Dec: ${lastPoint.accDec.toFixed(3)}`;
             const metrics = newCtx.measureText(tooltipText);
             const padding = 8;
@@ -986,6 +990,7 @@ function updateChart() {
                 newCtx.font = '500 16.8px Arial'; // Aumentato da 12px a 13px
                 newCtx.textAlign = 'center';
                 newCtx.textBaseline = 'middle';
+                newCtx.fillStyle = 'blue'; // Aggiunta per impostare il colore di riempimento del testo a blu
                 
                 const label = `${point.profKm}/${point.value}`;
                 
