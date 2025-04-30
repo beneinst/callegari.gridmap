@@ -14,19 +14,19 @@ Uri: http://192.168.163.128/component/finder/search.opensearch?Itemid=119
 File Name: D:\Siti GitHub\192.168.163.128\component\finder\search.opensearch
 Content Type: application/opensearchdescription+xml
 
-Uri: http://192.168.163.128/components/com_sppagebuilder/assets/css/animate.min.css?1271c4068d793b193f22ffb9baa074e0
+Uri: http://192.168.163.128/components/com_sppagebuilder/assets/css/animate.min.css?11bef8658ddfbcbeaa9fd983bfc25168
 File Name: D:\Siti GitHub\192.168.163.128\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
 
-Uri: http://192.168.163.128/components/com_sppagebuilder/assets/css/dynamic-content.css?1271c4068d793b193f22ffb9baa074e0
+Uri: http://192.168.163.128/components/com_sppagebuilder/assets/css/dynamic-content.css?11bef8658ddfbcbeaa9fd983bfc25168
 File Name: D:\Siti GitHub\192.168.163.128\components\com_sppagebuilder\assets\css\dynamic-content.css
 Content Type: text/css
 
-Uri: http://192.168.163.128/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?1271c4068d793b193f22ffb9baa074e0
+Uri: http://192.168.163.128/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?11bef8658ddfbcbeaa9fd983bfc25168
 File Name: D:\Siti GitHub\192.168.163.128\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
 Content Type: text/css
 
-Uri: http://192.168.163.128/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?1271c4068d793b193f22ffb9baa074e0
+Uri: http://192.168.163.128/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?11bef8658ddfbcbeaa9fd983bfc25168
 File Name: D:\Siti GitHub\192.168.163.128\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
 Content Type: text/css
 
@@ -34,7 +34,7 @@ Uri: http://192.168.163.128/components/com_sppagebuilder/assets/css/magnific-pop
 File Name: D:\Siti GitHub\192.168.163.128\components\com_sppagebuilder\assets\css\magnific-popup.css
 Content Type: text/css
 
-Uri: http://192.168.163.128/components/com_sppagebuilder/assets/css/sppagebuilder.css?1271c4068d793b193f22ffb9baa074e0
+Uri: http://192.168.163.128/components/com_sppagebuilder/assets/css/sppagebuilder.css?11bef8658ddfbcbeaa9fd983bfc25168
 File Name: D:\Siti GitHub\192.168.163.128\components\com_sppagebuilder\assets\css\sppagebuilder.css
 Content Type: text/css
 
@@ -50,7 +50,7 @@ Uri: http://192.168.163.128/components/com_sppagebuilder/assets/js/common.js
 File Name: D:\Siti GitHub\192.168.163.128\components\com_sppagebuilder\assets\js\common.js
 Content Type: text/javascript
 
-Uri: http://192.168.163.128/components/com_sppagebuilder/assets/js/dynamic-content.js?1271c4068d793b193f22ffb9baa074e0
+Uri: http://192.168.163.128/components/com_sppagebuilder/assets/js/dynamic-content.js?11bef8658ddfbcbeaa9fd983bfc25168
 File Name: D:\Siti GitHub\192.168.163.128\components\com_sppagebuilder\assets\js\dynamic-content.js
 Content Type: text/javascript
 
@@ -58,11 +58,11 @@ Uri: http://192.168.163.128/components/com_sppagebuilder/assets/js/jquery.magnif
 File Name: D:\Siti GitHub\192.168.163.128\components\com_sppagebuilder\assets\js\jquery.magnific-popup.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.163.128/components/com_sppagebuilder/assets/js/jquery.parallax.js?1271c4068d793b193f22ffb9baa074e0
+Uri: http://192.168.163.128/components/com_sppagebuilder/assets/js/jquery.parallax.js?11bef8658ddfbcbeaa9fd983bfc25168
 File Name: D:\Siti GitHub\192.168.163.128\components\com_sppagebuilder\assets\js\jquery.parallax.js
 Content Type: text/javascript
 
-Uri: http://192.168.163.128/components/com_sppagebuilder/assets/js/sppagebuilder.js?1271c4068d793b193f22ffb9baa074e0
+Uri: http://192.168.163.128/components/com_sppagebuilder/assets/js/sppagebuilder.js?11bef8658ddfbcbeaa9fd983bfc25168
 File Name: D:\Siti GitHub\192.168.163.128\components\com_sppagebuilder\assets\js\sppagebuilder.js
 Content Type: text/javascript
 
@@ -166,7 +166,7 @@ Uri: http://192.168.163.128/media/com_finder/js/finder.min.js?755761
 File Name: D:\Siti GitHub\192.168.163.128\media\com_finder\js\finder.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.163.128/media/com_wrapper/js/iframe-height.min.js?8b23d0
+Uri: http://192.168.163.128/media/com_wrapper/js/iframe-height.min.js?3b678b
 File Name: D:\Siti GitHub\192.168.163.128\media\com_wrapper\js\iframe-height.min.js
 Content Type: text/javascript
 
