@@ -126,10 +126,6 @@ Uri: http://192.168.163.128/griglia-faglie/faglie-attive-centro-sud.html
 File Name: D:\Siti GitHub\192.168.163.128\griglia-faglie\faglie-attive-centro-sud.html
 Content Type: text/html
 
-Uri: http://192.168.163.128/images/2025/03/23/pianta-italia_ok_edited3.png
-File Name: D:\Siti GitHub\192.168.163.128\images\2025\03\23\pianta-italia_ok_edited3.png
-Content Type: image/png
-
 Uri: http://192.168.163.128/images/world-154527_1280.png
 File Name: D:\Siti GitHub\192.168.163.128\images\world-154527_1280.png
 Content Type: image/png
@@ -168,6 +164,10 @@ Content Type: text/html
 
 Uri: http://192.168.163.128/media/com_finder/js/finder.min.js?755761
 File Name: D:\Siti GitHub\192.168.163.128\media\com_finder\js\finder.min.js
+Content Type: text/javascript
+
+Uri: http://192.168.163.128/media/com_wrapper/js/iframe-height.min.js?8b23d0
+File Name: D:\Siti GitHub\192.168.163.128\media\com_wrapper\js\iframe-height.min.js
 Content Type: text/javascript
 
 Uri: http://192.168.163.128/media/legacy/js/jquery-noconflict.min.js?504da4
