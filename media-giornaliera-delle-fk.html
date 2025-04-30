@@ -28,7 +28,7 @@
 </style>
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"4e444c5c33e9451c902e92f954454f81"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"cc1898d2ebebf340aafdd9410e9cb06f"}</script>
 	<script src="media/system/js/core.min.js?2cb912"></script>
 	<script src="media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -500,6 +500,32 @@
             font-style: italic;
             color: #4b5563;
         }
+        .options {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .first-column-label {
+            display: inline-block;
+            margin-bottom: 3px;
+            font-weight: 500;
+        }
+        #customLabel {
+            width: 100px;
+            padding: 5px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -510,19 +536,38 @@
         <div class="input-section">
             <h3>Inserisci i dati</h3>
             
+            <div class="options">
+                <label>Seleziona modalità per la prima colonna:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="modeGiorno" name="columnMode" value="giorno" checked="">
+                        <label for="modeGiorno">Giorno</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="modeArea" name="columnMode" value="area">
+                        <label for="modeArea">Area</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="modeCustom" name="columnMode" value="custom">
+                        <label for="modeCustom">Personalizzato:</label>
+                        <input type="text" id="customLabel" placeholder="Es. Codice" maxlength="20">
+                    </div>
+                </div>
+            </div>
+            
             <div class="file-input">
-                <label for="fileInput">Carica file TXT (formato: giorno,media_fks,media_valorepolo18):</label>
+                <label for="fileInput">Carica file TXT (formato: <span class="first-column-label">giorno</span>,media_fks,media_valorepolo18):</label>
                 <input type="file" id="fileInput" accept=".txt">
                 <div id="fileName"></div>
-                <p class="example-format">Formato esempio: 1,9.441,22.03<br>2,9.123,23.45<br>3,9.007,23.6</p>
+                <p class="example-format">Formato esempio: 1,9.441,22.03<br>A5,9.123,23.45<br>BE5,9.007,23.6</p>
             </div>
             
             <div class="manual-input">
                 <label for="dataInput">O inserisci manualmente (un dato per riga, separato da virgole):</label>
                 <textarea id="dataInput" placeholder="giorno,media_fks,media_valorepolo18
 1,9.441,22.03
-2,9.123,23.45
-3,9.007,23.6"></textarea>
+A5,9.123,23.45
+BE5,9.007,23.6"></textarea>
                 <div id="inputError" class="error hidden"></div>
             </div>
             
@@ -548,6 +593,7 @@
         // Variabili globali
         let chartInstance = null;
         let chartData = [];
+        let firstColumnMode = "giorno"; // Default
         
         // Elementi DOM
         const fileInput = document.getElementById('fileInput');
@@ -561,6 +607,9 @@
         const averagesEl = document.getElementById('averages');
         const inputError = document.getElementById('inputError');
         const tableContainer = document.getElementById('tableContainer');
+        const firstColumnLabels = document.querySelectorAll('.first-column-label');
+        const customLabelInput = document.getElementById('customLabel');
+        const modeRadios = document.querySelectorAll('input[name="columnMode"]');
         
         // Event Listeners
         fileInput.addEventListener('change', handleFileSelect);
@@ -568,6 +617,48 @@
         downloadButton.addEventListener('click', downloadChart);
         downloadTableButton.addEventListener('click', downloadTable);
         resetButton.addEventListener('click', resetAll);
+        
+        // Aggiorniamo l'etichetta della prima colonna in base alla modalità selezionata
+        modeRadios.forEach(radio => {
+            radio.addEventListener('change', updateFirstColumnLabel);
+        });
+        
+        customLabelInput.addEventListener('input', function() {
+            if (document.getElementById('modeCustom').checked) {
+                updateFirstColumnLabel();
+            }
+        });
+        
+        // Funzione per aggiornare l'etichetta della prima colonna
+        function updateFirstColumnLabel() {
+            let label = "giorno";
+            
+            modeRadios.forEach(radio => {
+                if (radio.checked) {
+                    firstColumnMode = radio.value;
+                    
+                    if (radio.value === "giorno") {
+                        label = "giorno";
+                    } else if (radio.value === "area") {
+                        label = "area";
+                    } else if (radio.value === "custom") {
+                        label = customLabelInput.value || "codice";
+                    }
+                }
+            });
+            
+            // Aggiorna tutte le etichette nella pagina
+            firstColumnLabels.forEach(el => {
+                el.textContent = label;
+            });
+            
+            // Aggiorna il placeholder del textarea
+            const placeholder = `${label},media_fks,media_valorepolo18
+1,9.441,22.03
+A5,9.123,23.45
+BE5,9.007,23.6`;
+            dataInput.placeholder = placeholder;
+        }
         
         // Gestione del file caricato
         function handleFileSelect(event) {
@@ -621,46 +712,84 @@
                 downloadTableButton.disabled = false;
             } catch (error) {
                 showError('Errore durante l\'elaborazione dei dati: ' + error.message);
+                console.error('Errore dettagliato:', error);
             }
         }
         
-        // Parsing del testo in input
+        // Parsing del testo in input - VERSIONE MIGLIORATA
         function parseInputData(inputText) {
             const lines = inputText.split('\n');
             const data = [];
+            
+            // Ottieni l'etichetta corrente della prima colonna per il filtraggio delle intestazioni
+            let currentLabel = "";
+            modeRadios.forEach(radio => {
+                if (radio.checked) {
+                    if (radio.value === "giorno") {
+                        currentLabel = "giorno";
+                    } else if (radio.value === "area") {
+                        currentLabel = "area";
+                    } else if (radio.value === "custom") {
+                        currentLabel = customLabelInput.value.toLowerCase() || "codice";
+                    }
+                }
+            });
             
             for (let i = 0; i < lines.length; i++) {
                 const line = lines[i].trim();
                 if (!line) continue; // Salta linee vuote
                 
-                // Ignora le linee che iniziano con un commento o intestazioni
-                if (line.startsWith('#') || line.toLowerCase().includes('giorno')) continue;
+                // Array di parole chiave comuni nelle intestazioni
+                const headerKeywords = ['giorno', 'area', 'codice', 'media_fks', 'media_valorepolo18', 'fk', 'valore', 
+                                        'polo', currentLabel.toLowerCase()];
                 
-                const parts = line.split(',');
-                if (parts.length < 3) {
-                    console.warn(`Riga ${i+1} ignorata: formato non valido`);
+                // Ignora le linee che sembrano intestazioni o commenti
+                const lowerLine = line.toLowerCase();
+                if (line.startsWith('#') || 
+                    headerKeywords.some(keyword => lowerLine.includes(keyword)) && 
+                    headerKeywords.filter(keyword => lowerLine.includes(keyword)).length > 1) {
+                    console.log(`Riga ${i+1} ignorata come intestazione: ${line}`);
                     continue;
                 }
                 
-                const giorno = parseInt(parts[0].trim());
-                const fk = parseFloat(parts[1].trim());
-                const valore = parseFloat(parts[2].trim());
+                const parts = line.split(',');
+                if (parts.length < 3) {
+                    console.warn(`Riga ${i+1} ignorata: formato non valido (necessarie almeno 3 colonne)`);
+                    continue;
+                }
                 
-                if (isNaN(giorno) || isNaN(fk) || isNaN(valore)) {
-                    console.warn(`Riga ${i+1} ignorata: valori non numerici`);
+                const identifier = parts[0].trim(); // Può essere alfanumerico o qualsiasi testo
+                const fk = parseFloat(parts[1].trim().replace(',', '.'));
+                const valore = parseFloat(parts[2].trim().replace(',', '.'));
+                
+                if (identifier === '') {
+                    console.warn(`Riga ${i+1} ignorata: identificatore vuoto`);
+                    continue;
+                }
+                
+                if (isNaN(fk) || isNaN(valore)) {
+                    console.warn(`Riga ${i+1} ignorata: valori numerici non validi`);
                     continue;
                 }
                 
                 data.push({
-                    giorno,
+                    identifier,
                     fk,
                     valore,
                     label: `${fk.toFixed(3)} / ${valore.toFixed(2)}`
                 });
             }
             
-            // Ordina per giorno
-            data.sort((a, b) => a.giorno - b.giorno);
+            // Ordinamento dei dati
+            // Se i dati sono tutti numerici, ordina numericamente
+            const allNumeric = data.every(item => !isNaN(parseFloat(item.identifier)));
+            
+            if (allNumeric) {
+                data.sort((a, b) => parseFloat(a.identifier) - parseFloat(b.identifier));
+            } else {
+                // Altrimenti, ordina alfabeticamente
+                data.sort((a, b) => a.identifier.localeCompare(b.identifier));
+            }
             
             return data;
         }
@@ -678,8 +807,22 @@
             const maxValore = Math.max(...data.map(item => item.valore));
             const minValore = Math.min(...data.map(item => item.valore));
             
+            // Ottieni l'etichetta corrente della prima colonna
+            let firstColumnLabel = "Giorno";
+            modeRadios.forEach(radio => {
+                if (radio.checked) {
+                    if (radio.value === "giorno") {
+                        firstColumnLabel = "Giorno";
+                    } else if (radio.value === "area") {
+                        firstColumnLabel = "Area";
+                    } else if (radio.value === "custom") {
+                        firstColumnLabel = customLabelInput.value || "Codice";
+                    }
+                }
+            });
+            
             // Prepara i dati per il grafico
-            const chartLabels = data.map(item => `Giorno ${item.giorno}`);
+            const chartLabels = data.map(item => `${firstColumnLabel} ${item.identifier}`);
             const fkData = data.map(item => item.fk);
             const valoreData = data.map(item => item.valore);
             
@@ -739,7 +882,7 @@
                         x: {
                             title: {
                                 display: true,
-                                text: 'Giorno',
+                                text: firstColumnLabel,
                                 font: {
                                     weight: 'bold'
                                 }
@@ -749,8 +892,8 @@
                             type: 'linear',
                             display: true,
                             position: 'left',
-                            min: Math.floor(minFk * 0.9),
-                            max: Math.ceil(maxFk * 1.1),
+                            min: Math.floor(minFk * 0.9 * 10) / 10,
+                            max: Math.ceil(maxFk * 1.1 * 10) / 10,
                             title: {
                                 display: true,
                                 text: 'Media Giornaliera (Fks)',
@@ -763,8 +906,8 @@
                             type: 'linear',
                             display: true,
                             position: 'right',
-                            min: Math.floor(minValore * 0.9),
-                            max: Math.ceil(maxValore * 1.1),
+                            min: Math.floor(minValore * 0.9 * 10) / 10,
+                            max: Math.ceil(maxValore * 1.1 * 10) / 10,
                             grid: {
                                 drawOnChartArea: false
                             },
@@ -851,13 +994,27 @@
         
         // Creazione della tabella dei dati
         function createTable(data, avgFk, avgValore) {
+            // Ottieni l'etichetta corrente della prima colonna
+            let firstColumnLabel = "Giorno";
+            modeRadios.forEach(radio => {
+                if (radio.checked) {
+                    if (radio.value === "giorno") {
+                        firstColumnLabel = "Giorno";
+                    } else if (radio.value === "area") {
+                        firstColumnLabel = "Area";
+                    } else if (radio.value === "custom") {
+                        firstColumnLabel = customLabelInput.value || "Codice";
+                    }
+                }
+            });
+            
             let tableHTML = `
                 <h3>Tabella dei valori</h3>
                 <div style="overflow-x: auto;">
                     <table>
                         <thead>
                             <tr>
-                                <th>Giorno</th>
+                                <th>${firstColumnLabel}</th>
                                 <th>Media Giornaliera (Fks)</th>
                                 <th>Valore (Fk Polo 18)</th>
                                 <th>Fk / Valore</th>
@@ -870,7 +1027,7 @@
             data.forEach((item, index) => {
                 tableHTML += `
                     <tr class="${index % 2 === 0 ? 'even-row' : ''}">
-                        <td>${item.giorno}</td>
+                        <td>${item.identifier}</td>
                         <td>${item.fk.toFixed(3)}</td>
                         <td>${item.valore.toFixed(2)}</td>
                         <td>${item.fk.toFixed(3)} / ${item.valore.toFixed(2)}</td>
@@ -938,6 +1095,20 @@
             const avgFk = calculateAverage(chartData, 'fk');
             const avgValore = calculateAverage(chartData, 'valore');
             
+            // Ottieni l'etichetta corrente della prima colonna
+            let firstColumnLabel = "Giorno";
+            modeRadios.forEach(radio => {
+                if (radio.checked) {
+                    if (radio.value === "giorno") {
+                        firstColumnLabel = "Giorno";
+                    } else if (radio.value === "area") {
+                        firstColumnLabel = "Area";
+                    } else if (radio.value === "custom") {
+                        firstColumnLabel = customLabelInput.value || "Codice";
+                    }
+                }
+            });
+            
             // Crea una versione HTML della tabella con stile
             let tableHTML = `
             <!DOCTYPE html>
@@ -996,7 +1167,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Giorno</th>
+                            <th>${firstColumnLabel}</th>
                             <th>Media Giornaliera (Fks)</th>
                             <th>Valore (Fk Polo 18)</th>
                             <th>Fk / Valore</th>
@@ -1005,11 +1176,11 @@
                     <tbody>
             `;
             
-            // Aggiungi righe per ogni dato
+          // Aggiungi righe per ogni dato
             chartData.forEach((item, index) => {
                 tableHTML += `
                         <tr>
-                            <td>${item.giorno}</td>
+                            <td>${item.identifier}</td>
                             <td>${item.fk.toFixed(3)}</td>
                             <td>${item.valore.toFixed(2)}</td>
                             <td>${item.fk.toFixed(3)} / ${item.valore.toFixed(2)}</td>
@@ -1028,47 +1199,28 @@
                     </tbody>
                 </table>
                 
-                <p class="note">Generato il ${new Date().toLocaleDateString('it-IT')} alle ${new Date().toLocaleTimeString('it-IT')}</p>
-            </body>
-            </html>
+                <p class="note">Tabella generata dall'applicazione "Media giornaliera delle Fk"</p>
+            
             `;
             
-            // Crea un blob con il contenuto HTML
-            const blob = new Blob([tableHTML], { type: 'text/html' });
+            // Crea un Blob con l'HTML della tabella
+            const blob = new Blob([tableHTML], {type: 'text/html'});
+            
+            // Crea un URL per il blob
             const url = URL.createObjectURL(blob);
             
             // Crea un elemento di download
             const downloadLink = document.createElement('a');
             downloadLink.href = url;
-            downloadLink.download = 'tabella_media_giornaliera_fk.html';
+            downloadLink.download = 'tabella_media_fk.html';
             
             // Simula un click per avviare il download
             document.body.appendChild(downloadLink);
             downloadLink.click();
             document.body.removeChild(downloadLink);
             
-            // Libera l'URL
+            // Rilascia l'URL
             URL.revokeObjectURL(url);
-        }
-        
-        // Reset di tutti i campi
-        function resetAll() {
-            fileInput.value = '';
-            fileName.textContent = '';
-            dataInput.value = '';
-            inputError.classList.add('hidden');
-            results.classList.add('hidden');
-            downloadButton.disabled = true;
-            downloadTableButton.disabled = true;
-            
-            if (chartInstance) {
-                chartInstance.destroy();
-                chartInstance = null;
-            }
-            
-            averagesEl.innerHTML = '';
-            tableContainer.innerHTML = '';
-            chartData = [];
         }
         
         // Mostra un messaggio di errore
@@ -1077,29 +1229,28 @@
             inputError.classList.remove('hidden');
         }
         
-        // Precarica i dati di esempio
-        function loadExampleData() {
-            // Puoi modificare i dati di esempio qui
-            const exampleData = `1,9.441,22.03
-3,9.007,23.6
-4,9.111,22.4
-5,9.850,21.03
-6,9.982,22.7
-7,10.242,26.2
-8,9.614,25.05
-9,9.550,24.4
-10,9.848,25.4
-11,9.946,23.6
-12,9.271,27.3
-13,9.400,22
-14,9.580,23.1
-15,9.335,22.7`;
-
-            dataInput.value = exampleData;
+        // Reset di tutti i dati e campi
+        function resetAll() {
+            fileInput.value = '';
+            fileName.textContent = '';
+            dataInput.value = '';
+            inputError.classList.add('hidden');
+            
+            if (chartInstance) {
+                chartInstance.destroy();
+                chartInstance = null;
+            }
+            
+            chartData = [];
+            results.classList.add('hidden');
+            averagesEl.innerHTML = '';
+            tableContainer.innerHTML = '';
+            downloadButton.disabled = true;
+            downloadTableButton.disabled = true;
         }
         
-        // Carica dati di esempio all'avvio
-        loadExampleData();
+        // Inizializza la pagina
+        updateFirstColumnLabel(); // Imposta le etichette iniziali
     </script>
 </body>
 </html></div>
