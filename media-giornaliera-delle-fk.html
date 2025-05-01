@@ -28,7 +28,7 @@
 </style>
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"9c3ca9db410a62216cac9c60db069a6b"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"20da9d5435c1c2e6463aa0b759438032"}</script>
 	<script src="media/system/js/core.min.js?2cb912"></script>
 	<script src="media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -366,6 +366,7 @@
     <title>Media giornaliera delle Fk</title>
     <script src="ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <script src="ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+	<script src="ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -686,19 +687,33 @@ BE5,9.007,23.6`;
             }
             
             try {
-                // Parsing dei dati
-                chartData = parseInputData(inputText);
-                if (chartData.length === 0) {
-                    showError('Nessun dato valido trovato. Verifica il formato.');
-                    return;
+        // Parsing dei dati
+        chartData = parseInputData(inputText);
+        if (chartData.length === 0) {
+            showError('Nessun dato valido trovato. Verifica il formato.');
+            return;
+        }
+        
+        // Calcola le medie
+        const avgFk = calculateAverage(chartData, 'fk');
+        const avgValore = calculateAverage(chartData, 'valore');
+        
+        // Ottieni l'etichetta corrente per la personalizzazione del messaggio
+        let categoryLabel = "giorno";
+        modeRadios.forEach(radio => {
+            if (radio.checked) {
+                if (radio.value === "giorno") {
+                    categoryLabel = "giorno";
+                } else if (radio.value === "area") {
+                    categoryLabel = "area";
+                } else if (radio.value === "custom") {
+                    categoryLabel = customLabelInput.value.toLowerCase() || "codice";
                 }
-                
-                // Calcola le medie
-                const avgFk = calculateAverage(chartData, 'fk');
-                const avgValore = calculateAverage(chartData, 'valore');
-                
-                // Mostra le medie
-                averagesEl.innerHTML = `<h3>La Media del mese è la Fk ${avgFk.toFixed(3)}, con un Valore Medio al Polo 18 di ${avgValore.toFixed(2)}/90.</h3>`;
+            }
+        });
+        
+        // Mostra le medie con riferimento alla categoria scelta
+        averagesEl.innerHTML = `<h3>La Media per ${categoryLabel} di Fk è ${avgFk.toFixed(3)}, con un Valore Medio al Polo 18 di ${avgValore.toFixed(2)}/90.</h3>`;
                 
                 // Crea il grafico
                 createChart(chartData, avgFk, avgValore);
@@ -799,198 +814,230 @@ BE5,9.007,23.6`;
             return data.reduce((sum, item) => sum + item[field], 0) / data.length;
         }
         
-        // Creazione del grafico
-        function createChart(data, avgFk, avgValore) {
-            // Trova min e max per una migliore scala
-            const maxFk = Math.max(...data.map(item => item.fk));
-            const minFk = Math.min(...data.map(item => item.fk));
-            const maxValore = Math.max(...data.map(item => item.valore));
-            const minValore = Math.min(...data.map(item => item.valore));
-            
-            // Ottieni l'etichetta corrente della prima colonna
-            let firstColumnLabel = "Giorno";
-            modeRadios.forEach(radio => {
-                if (radio.checked) {
-                    if (radio.value === "giorno") {
-                        firstColumnLabel = "Giorno";
-                    } else if (radio.value === "area") {
-                        firstColumnLabel = "Area";
-                    } else if (radio.value === "custom") {
-                        firstColumnLabel = customLabelInput.value || "Codice";
-                    }
-                }
-            });
-            
-            // Prepara i dati per il grafico
-            const chartLabels = data.map(item => `${firstColumnLabel} ${item.identifier}`);
-            const fkData = data.map(item => item.fk);
-            const valoreData = data.map(item => item.valore);
-            
-            // Se esiste già un grafico, distruggilo
-            if (chartInstance) {
-                chartInstance.destroy();
+     // MODIFICA: Aggiornare la funzione createChart per gestire le etichette dei punti in modo appropriato
+function createChart(data, avgFk, avgValore) {
+    // Trova min e max per una migliore scala
+    const maxFk = Math.max(...data.map(item => item.fk));
+    const minFk = Math.min(...data.map(item => item.fk));
+    const maxValore = Math.max(...data.map(item => item.valore));
+    const minValore = Math.min(...data.map(item => item.valore));
+    
+    // Ottieni l'etichetta corrente della prima colonna
+    let firstColumnLabel = "Giorno";
+    modeRadios.forEach(radio => {
+        if (radio.checked) {
+            if (radio.value === "giorno") {
+                firstColumnLabel = "Giorno";
+            } else if (radio.value === "area") {
+                firstColumnLabel = "Area";
+            } else if (radio.value === "custom") {
+                firstColumnLabel = customLabelInput.value || "Codice";
             }
-            
-            // Ottieni il contesto del canvas
-            const ctx = document.getElementById('mediaChart').getContext('2d');
-            
-            // Crea il nuovo grafico
-            chartInstance = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: chartLabels,
-                    datasets: [
-                        {
-                            label: 'Media Giornaliera (Fks)',
-                            data: fkData,
-                            borderColor: '#2563eb',
-                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                            borderWidth: 2,
-                            pointBackgroundColor: 'white',
-                            pointBorderColor: '#2563eb',
-                            pointBorderWidth: 2,
-                            pointRadius: 4,
-                            pointHoverRadius: 8,
-                            tension: 0.3,
-                            yAxisID: 'y'
-                        },
-                        {
-                            label: 'Valore (Fk Polo 18)',
-                            data: valoreData,
-                            borderColor: '#dc2626',
-                            backgroundColor: 'rgba(220, 38, 38, 0.1)',
-                            borderWidth: 2,
-                            pointBackgroundColor: 'white',
-                            pointBorderColor: '#dc2626',
-                            pointBorderWidth: 2,
-                            pointRadius: 4,
-                            pointHoverRadius: 8,
-                            tension: 0.3,
-                            yAxisID: 'y1'
-                        }
-                    ]
+        }
+    });
+    
+    // Prepara i dati per il grafico
+    const chartLabels = data.map(item => item.identifier);
+    const fkData = data.map(item => item.fk);
+    const valoreData = data.map(item => item.valore);
+    
+    // Se esiste già un grafico, distruggilo
+    if (chartInstance) {
+        chartInstance.destroy();
+    }
+    
+    // Ottieni il contesto del canvas
+    const ctx = document.getElementById('mediaChart').getContext('2d');
+    
+    // Crea il nuovo grafico
+    chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: chartLabels,
+            datasets: [
+                {
+                    label: 'Media Giornaliera (Fks)',
+                    data: fkData,
+                    borderColor: '#2563eb',
+                    backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'white',
+                    pointBorderColor: '#2563eb',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 8,
+                    tension: 0.3,
+                    yAxisID: 'y'
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    animation: {
-                        duration: 1500,
-                        easing: 'easeOutQuart'
-                    },
-                    backgroundColor: 'white',
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: firstColumnLabel,
-                                font: {
-                                    weight: 'bold'
-                                }
-                            }
-                        },
-                        y: {
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
-                            min: Math.floor(minFk * 0.9 * 10) / 10,
-                            max: Math.ceil(maxFk * 1.1 * 10) / 10,
-                            title: {
-                                display: true,
-                                text: 'Media Giornaliera (Fks)',
-                                font: {
-                                    weight: 'bold'
-                                }
-                            }
-                        },
-                        y1: {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            min: Math.floor(minValore * 0.9 * 10) / 10,
-                            max: Math.ceil(maxValore * 1.1 * 10) / 10,
-                            grid: {
-                                drawOnChartArea: false
-                            },
-                            title: {
-                                display: true,
-                                text: 'Valore (Fk Polo 18)',
-                                font: {
-                                    weight: 'bold'
-                                }
-                            }
+                {
+                    label: 'Valore (Fk Polo 18)',
+                    data: valoreData,
+                    borderColor: '#dc2626',
+                    backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'white',
+                    pointBorderColor: '#dc2626',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 8,
+                    tension: 0.3,
+                    yAxisID: 'y1'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: {
+                duration: 1500,
+                easing: 'easeOutQuart'
+            },
+            backgroundColor: 'white',
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: firstColumnLabel,
+                        font: {
+                            weight: 'bold'
                         }
+                    }
+                },
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    min: Math.floor(minFk * 0.9 * 10) / 10,
+                    max: Math.ceil(maxFk * 1.1 * 10) / 10,
+                    title: {
+                        display: true,
+                        text: 'Media Giornaliera (Fks)',
+                        font: {
+                            weight: 'bold'
+                        }
+                    }
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    min: Math.floor(minValore * 0.9 * 10) / 10,
+                    max: Math.ceil(maxValore * 1.1 * 10) / 10,
+                    grid: {
+                        drawOnChartArea: false
                     },
-                    interaction: {
-                        mode: 'index',
-                        intersect: false
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'top'
-                        },
-                        tooltip: {
-                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                            titleColor: '#111827',
-                            bodyColor: '#111827',
-                            borderColor: '#d1d5db',
-                            borderWidth: 1,
-                            padding: 10,
-                            displayColors: true,
-                            callbacks: {
-                                afterBody: function(tooltipItems) {
-                                    const index = tooltipItems[0].dataIndex;
-                                    const fk = fkData[index];
-                                    const valore = valoreData[index];
-                                    return `${fk.toFixed(3)} / ${valore.toFixed(2)}`;
-                                }
-                            }
-                        },
-                        annotation: {
-                            annotations: {
-                                avgFkLine: {
-                                    type: 'line',
-                                    yMin: avgFk,
-                                    yMax: avgFk,
-                                    borderColor: 'rgba(37, 99, 235, 0.5)',
-                                    borderWidth: 2,
-                                    borderDash: [6, 6],
-                                    label: {
-                                        display: true,
-                                        content: `Media Fk: ${avgFk.toFixed(3)}`,
-                                        position: 'start',
-                                        backgroundColor: 'rgba(37, 99, 235, 0.7)',
-                                        color: 'white',
-                                        font: {
-                                            weight: 'bold'
-                                        }
-                                    },
-                                    scaleID: 'y'
-                                },
-                                avgValoreLine: {
-                                    type: 'line',
-                                    yMin: avgValore,
-                                    yMax: avgValore,
-                                    borderColor: 'rgba(220, 38, 38, 0.5)',
-                                    borderWidth: 2,
-                                    borderDash: [6, 6],
-                                    label: {
-                                        display: true,
-                                        content: `Media Valore: ${avgValore.toFixed(2)}`,
-                                        position: 'end',
-                                        backgroundColor: 'rgba(220, 38, 38, 0.7)',
-                                        color: 'white',
-                                        font: {
-                                            weight: 'bold'
-                                        }
-                                    },
-                                    scaleID: 'y1'
-                                }
-                            }
+                    title: {
+                        display: true,
+                        text: 'Valore (Fk Polo 18)',
+                        font: {
+                            weight: 'bold'
                         }
                     }
                 }
-            });
+            },
+            interaction: {
+                mode: 'index',
+                intersect: false
+            },
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    titleColor: '#111827',
+                    bodyColor: '#111827',
+                    borderColor: '#d1d5db',
+                    borderWidth: 1,
+                    padding: 10,
+                    displayColors: true,
+                    callbacks: {
+                        afterBody: function(tooltipItems) {
+                            const index = tooltipItems[0].dataIndex;
+                            const fk = fkData[index];
+                            const valore = valoreData[index];
+                            return `${fk.toFixed(3)} / ${valore.toFixed(2)}`;
+                        }
+                    }
+                },
+                annotation: {
+                    annotations: {
+                        avgFkLine: {
+                            type: 'line',
+                            yMin: avgFk,
+                            yMax: avgFk,
+                            borderColor: 'rgba(37, 99, 235, 0.5)',
+                            borderWidth: 2,
+                            borderDash: [6, 6],
+                            label: {
+                                display: true,
+                                content: `Media Fk: ${avgFk.toFixed(3)}`,
+                                position: 'start',
+                                backgroundColor: 'rgba(37, 99, 235, 0.7)',
+                                color: 'white',
+                                font: {
+                                    weight: 'bold'
+                                }
+                            },
+                            scaleID: 'y'
+                        },
+                        avgValoreLine: {
+                            type: 'line',
+                            yMin: avgValore,
+                            yMax: avgValore,
+                            borderColor: 'rgba(220, 38, 38, 0.5)',
+                            borderWidth: 2,
+                            borderDash: [6, 6],
+                            label: {
+                                display: true,
+                                content: `Media Valore: ${avgValore.toFixed(2)}`,
+                                position: 'end',
+                                backgroundColor: 'rgba(220, 38, 38, 0.7)',
+                                color: 'white',
+                                font: {
+                                    weight: 'bold'
+                                }
+                            },
+                            scaleID: 'y1'
+                        }
+                    }
+                },
+                // MODIFICATO: Plugin datalabels configurato per visualizzare le etichette in modo sfalsato
+               datalabels: {
+    formatter: function(value, context) {
+        // Formatta il valore con 3 decimali per Fk (indice 0) e 2 decimali per Valore Polo 18 (indice 1)
+        if (context.datasetIndex === 0) {
+            return value.toFixed(3);
+        } else {
+            return value.toFixed(2);
         }
+    },
+    align: 'top',
+    anchor: 'end',
+    offset: function(context) {
+        // Ridotta la distanza: 5px per Fk (blu), 12(4)px per Valore (rosso)
+        return context.datasetIndex === 0 ? 4 : 4;
+    },
+    color: function(context) {
+        return context.dataset.borderColor;
+    },
+    font: {
+        family: 'Arial',
+        size: 12,
+        weight: 'bold'
+    },
+                    // Mostra le etichette solo per la visualizzazione su schermo
+                    display: function(context) {
+                        // Mostra etichette solo per il primo dataset (Fk blu)
+                        return context.datasetIndex === 0,1;
+                    }
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    });
+}
+
         
         // Creazione della tabella dei dati
         function createTable(data, avgFk, avgValore) {
@@ -1050,64 +1097,68 @@ BE5,9.007,23.6`;
             tableContainer.innerHTML = tableHTML;
         }
         
-        // Scarica il grafico come immagine JPG con sfondo bianco
-        function downloadChart() {
-            if (!chartInstance) return;
-            
-            const canvas = document.getElementById('mediaChart');
-            const ctx = canvas.getContext('2d');
-            
-            // Salva lo stato attuale del canvas
-            ctx.save();
-            
-            // Memorizza l'immagine attuale come dati
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            
-            // Imposta uno sfondo bianco
-            ctx.globalCompositeOperation = 'destination-over';
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Converti il canvas in URL di dati con sfondo bianco
-            const imageURL = canvas.toDataURL('image/jpeg', 1.0);
-            
-            // Ripristina lo stato originale del canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.putImageData(imageData, 0, 0);
-            ctx.restore();
-            
-            // Crea un elemento di download
-            const downloadLink = document.createElement('a');
-            downloadLink.href = imageURL;
-            downloadLink.download = 'media_giornaliera_fk.jpg';
-            
-            // Simula un click per avviare il download
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-        }
+        // MODIFICA 3: Aggiornare la funzione downloadChart per includere i valori nelle etichette
+function downloadChart() {
+    if (!chartInstance) return;
+    
+    const canvas = document.getElementById('mediaChart');
+    const ctx = canvas.getContext('2d');
+    
+    // Salva lo stato attuale del canvas
+    ctx.save();
+    
+    // Memorizza l'immagine attuale come dati
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    
+    // Imposta uno sfondo bianco
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Converti il canvas in URL di dati con sfondo bianco
+    const imageURL = canvas.toDataURL('image/jpeg', 1.0);
+    
+    // Ripristina lo stato originale del canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.putImageData(imageData, 0, 0);
+    ctx.restore();
+    
+    // Crea un elemento di download
+    const downloadLink = document.createElement('a');
+    downloadLink.href = imageURL;
+    downloadLink.download = 'media_giornaliera_fk.jpg';
+    
+    // Simula un click per avviare il download
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+}
         
         // Scarica la tabella in formato HTML
         function downloadTable() {
-            if (chartData.length === 0) return;
-            
-            // Calcola medie
-            const avgFk = calculateAverage(chartData, 'fk');
-            const avgValore = calculateAverage(chartData, 'valore');
-            
-            // Ottieni l'etichetta corrente della prima colonna
-            let firstColumnLabel = "Giorno";
-            modeRadios.forEach(radio => {
-                if (radio.checked) {
-                    if (radio.value === "giorno") {
-                        firstColumnLabel = "Giorno";
-                    } else if (radio.value === "area") {
-                        firstColumnLabel = "Area";
-                    } else if (radio.value === "custom") {
-                        firstColumnLabel = customLabelInput.value || "Codice";
-                    }
-                }
-            });
+    if (chartData.length === 0) return;
+    
+    // Calcola medie
+    const avgFk = calculateAverage(chartData, 'fk');
+    const avgValore = calculateAverage(chartData, 'valore');
+    
+    // Ottieni l'etichetta corrente della prima colonna
+    let firstColumnLabel = "Giorno";
+    let categoryLabel = "giorno";
+    modeRadios.forEach(radio => {
+        if (radio.checked) {
+            if (radio.value === "giorno") {
+                firstColumnLabel = "Giorno";
+                categoryLabel = "giorno";
+            } else if (radio.value === "area") {
+                firstColumnLabel = "Area";
+                categoryLabel = "area";
+            } else if (radio.value === "custom") {
+                firstColumnLabel = customLabelInput.value || "Codice";
+                categoryLabel = customLabelInput.value.toLowerCase() || "codice";
+            }
+        }
+    });
             
             // Crea una versione HTML della tabella con stile
             let tableHTML = `
@@ -1161,9 +1212,8 @@ BE5,9.007,23.6`;
                 <h2>alla K Radioscopia in microonde hertziane in telereperto</h2>
                 
                 <p style="text-align: center; font-weight: bold;">
-                    La Media del mese è la Fk ${avgFk.toFixed(3)}, con un Valore Medio al Polo 18 di ${avgValore.toFixed(2)}/90.
-                </p>
-                
+            La Media per ${categoryLabel} di Fk è ${avgFk.toFixed(3)}, con un Valore Medio al Polo 18 di ${avgValore.toFixed(2)}/90.
+        </p>
                 <table>
                     <thead>
                         <tr>

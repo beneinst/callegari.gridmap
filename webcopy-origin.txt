@@ -342,6 +342,10 @@ Uri: https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/char
 File Name: D:\Siti GitHub\192.168.163.128\ajax\libs\chartjs-plugin-annotation\3.0.1\chartjs-plugin-annotation.min.js
 Content Type: application/javascript
 
+Uri: https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js
+File Name: D:\Siti GitHub\192.168.163.128\ajax\libs\chartjs-plugin-datalabels\2.2.0\chartjs-plugin-datalabels.min.js
+Content Type: application/javascript
+
 Uri: https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js
 File Name: D:\Siti GitHub\192.168.163.128\ajax\libs\html2canvas\1.4.1\html2canvas.min.js
 Content Type: application/javascript
