@@ -28,7 +28,7 @@
 </style>
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"2e3b81a8ccbf4d88ee20fa3c093d9a7e"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"7cc9503d8a7c04a977021291cf589a53"}</script>
 	<script src="../media/system/js/core.min.js?2cb912"></script>
 	<script src="../media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="../media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -492,6 +492,8 @@ button {
         fill: rgba(43, 56, 86, 1) !important;
     }
 }
+
+
 /* Aggiungi questi stili nella sezione style esistente */
 #bulkModal {
     display: none;
@@ -586,7 +588,7 @@ button {
             <option value="750">750 Km</option>
             <option value="6350">6350 Km</option>
         </select>
-        <div class="button-container">
+       <div class="button-container">
     <button onclick="processBulkInput()" class="bg-blue">Inserisci Dati</button>
     <button onclick="removeLastData()" class="bg-red">Cancella Ultimo</button>
     <button onclick="openBulkModal()" class="bg-blue">Carica Multipli</button>
@@ -913,7 +915,23 @@ function updateChart() {
     });
 }
 
-        // Existing downloadLastTooltip() and downloadImage() functions remain the same...
+        // Function to download image
+        function downloadImage() {
+            if (chartData.length === 0) {
+                alert('Non ci sono dati nel grafico');
+                return;
+            }
+            
+            const canvas = document.getElementById('accDecChart');
+            const imageURL = canvas.toDataURL('image/png');
+            const downloadLink = document.createElement('a');
+            downloadLink.href = imageURL;
+            downloadLink.download = 'grafico_acc_dec.png';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+
 		 function downloadLastTooltip() {
             if (chartData.length === 0) {
                 alert('Non ci sono dati nel grafico');
@@ -946,28 +964,33 @@ function updateChart() {
             newCtx.textAlign = 'left';
             newCtx.fillText('🔬 ORCLAV', 20, 20); // Posizione in alto a sinistra
             
-            // Prendi l'ultimo punto
-            const lastPoint = chartData[chartData.length - 1];
-            
-            // Converti le coordinate del punto
-            const xScale = myChart.scales.x;
-            const yScale = myChart.scales.y;
-            const x = xScale.getPixelForValue(lastPoint.accDec);
-            const y = yScale.getPixelForValue(lastPoint.profKm);
-            
-            // Configurazione del tooltip
-            newCtx.font = '14px Arial';
-            newCtx.fillStyle = '#2C3E50'; // Blu scuro per il testo
-            newCtx.fillStyle = 'blue'; // Aggiunta per impostare il colore di riempimento del testo a blu
-            const tooltipText = `Prof/KM: ${lastPoint.profKm.toFixed(2)}, Acc/Dec: ${lastPoint.accDec.toFixed(3)}`;
-            const metrics = newCtx.measureText(tooltipText);
-            const padding = 8;
-            const dotSize = 8;
-            const tooltipWidth = metrics.width + (padding * 3) + dotSize;
-            const tooltipHeight = 24;
-            
-            // Distanza aumentata tra tooltip e punto
-            const tooltipOffset = 25;
+           // Prendi l'ultimo punto
+const lastPoint = chartData[chartData.length - 1];
+
+// Converti le coordinate del punto - CORREZIONE QUI
+const xScale = myChart.scales.x;
+const yScale = myChart.scales.y;
+
+// Usa direttamente le coordinate del canvas originale
+// Il fattore di scala è già applicato dal context
+const x = xScale.getPixelForValue(lastPoint.accDec);
+const y = yScale.getPixelForValue(lastPoint.profKm);
+
+// Resto del codice rimane uguale...
+// Configurazione del tooltip
+newCtx.font = '14px Arial';
+newCtx.fillStyle = '#2C3E50';
+newCtx.fillStyle = 'blue';
+const tooltipText = `Prof/KM: ${lastPoint.profKm.toFixed(2)}, Acc/Dec: ${lastPoint.accDec.toFixed(3)}`;
+const metrics = newCtx.measureText(tooltipText);
+const padding = 8;
+const dotSize = 8;
+const tooltipWidth = metrics.width + (padding * 3) + dotSize;
+const tooltipHeight = 24;
+
+// Distanza aumentata tra tooltip e punto
+const tooltipOffset = 5;
+
             
             // Disegna il background del tooltip
             newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)'; // Blu-grigio scuro con maggiore opacità
@@ -999,30 +1022,40 @@ function updateChart() {
             newCtx.lineWidth = 0.5;
             newCtx.stroke();
             
-            // Disegna il punto rosa
-            newCtx.beginPath();
-            newCtx.fillStyle = '#E74C3C'; // Rosso corallo
-            newCtx.strokeStyle = '#FFFFFF'; // Bordo bianco
-            newCtx.lineWidth = 0.5;
-            newCtx.arc(x - tooltipWidth/2 + padding + dotSize/2, y - tooltipHeight/2 - tooltipOffset, dotSize/2, 0, Math.PI * 2);
-            newCtx.fill();
-            newCtx.stroke();
-            
-            // Disegna il testo del tooltip
-            newCtx.fillStyle = '#ECF0F1'; // Grigio chiaro per il testo
-            newCtx.textAlign = 'left';
-            newCtx.textBaseline = 'middle';
-            newCtx.fillText(tooltipText, x - tooltipWidth/2 + padding * 2 + dotSize, y - tooltipHeight/2 - tooltipOffset);
-            
-            // Highlight dell'ultimo punto - usando lo stesso stile degli altri punti ma più grande
-            newCtx.beginPath();
-            const largerDotSize = 12; // Dimensione maggiore per l'ultimo punto
-            newCtx.arc(x, y, largerDotSize, 0, Math.PI * 2);
-            newCtx.fillStyle = 'rgba(231, 76, 60, 1)'; // Stesso colore degli altri punti (rosso corallo)
-            newCtx.fill();
-            newCtx.strokeStyle = 'rgba(21, 49, 126, 1)'; // Blu scuro per il bordo, come gli altri punti
-            newCtx.lineWidth = 2; // Stessa larghezza del bordo
-            newCtx.stroke();
+           // 🔴 PUNTO ROSSO accanto al testo (nella tooltip)
+newCtx.beginPath();
+newCtx.fillStyle = '#E74C3C'; // Rosso corallo
+newCtx.strokeStyle = '#FFFFFF'; // Bordo bianco
+newCtx.lineWidth = 0.5;
+
+// coordinate accanto al testo tooltip
+const labelDotX = x - tooltipWidth / 2 + padding + dotSize / 2;
+const labelDotY = y - tooltipHeight - tooltipOffset + tooltipHeight / 2;
+
+newCtx.arc(labelDotX, labelDotY, dotSize / 2, 0, Math.PI * 2);
+newCtx.fill();
+newCtx.stroke();
+
+// 📝 Testo della tooltip
+newCtx.fillStyle = '#ECF0F1'; // Grigio chiaro
+newCtx.textAlign = 'left';
+newCtx.textBaseline = 'middle';
+newCtx.fillText(
+    tooltipText,
+    x - tooltipWidth / 2 + padding * 2 + dotSize,
+    y - tooltipHeight - tooltipOffset + tooltipHeight / 2
+);
+
+// 🔴 Punto grande evidenziato (perfettamente sovrapposto a quello piccolo)
+newCtx.beginPath();
+const largerDotSize = 122;
+newCtx.arc(x, y, largerDotSize / 2, 0, Math.PI * 2);  // usa x, y direttamente
+newCtx.fillStyle = 'rgba(231, 76, 60, 1)';
+newCtx.fill();
+newCtx.strokeStyle = 'rgba(21, 49, 126, 1)';
+newCtx.lineWidth = 2;
+newCtx.stroke();
+
             
             function roundRect(ctx, x, y, width, height, radius) {
                 if (width < 2 * radius) radius = width / 2;
@@ -1044,329 +1077,8 @@ function updateChart() {
             downloadLink.click();
             document.body.removeChild(downloadLink);
         }
-function openBulkModal() {
-    document.getElementById('bulkModal').style.display = 'block';
-}
-
-function closeBulkModal() {
-    document.getElementById('bulkModal').style.display = 'none';
-    document.getElementById('bulkTextarea').value = '';
-    hideProgress();
-}
-
-function showProgress(current, total, text) {
-    const progressBar = document.getElementById('progressBar');
-    const progressFill = document.getElementById('progressFill');
-    const progressText = document.getElementById('progressText');
-    
-    progressBar.style.display = 'block';
-    const percentage = (current / total) * 100;
-    progressFill.style.width = percentage + '%';
-    progressText.textContent = text;
-}
-
-function hideProgress() {
-    document.getElementById('progressBar').style.display = 'none';
-    document.getElementById('progressText').textContent = '';
-}
-
-function processBulkData() {
-    const bulkText = document.getElementById('bulkTextarea').value.trim();
-    if (!bulkText) {
-        alert('Inserisci i dati nel formato corretto');
-        return;
-    }
-
-    const lines = bulkText.split('\n').filter(line => line.trim());
-    let validData = [];
-    let errorLines = [];
-
-    // Validazione dati
-    for (let i = 0; i < lines.length; i++) {
-        const values = lines[i].trim().split(',');
-        if (values.length !== 4) {
-            errorLines.push(`Riga ${i + 1}: Formato non valido`);
-            continue;
-        }
-
-        const [area, profKm, value, fks] = values;
-        const profKmNum = parseFloat(profKm);
-        const valueNum = parseFloat(value);
-        const fksNum = parseFloat(fks);
-
-        if (isNaN(profKmNum) || isNaN(valueNum) || isNaN(fksNum)) {
-            errorLines.push(`Riga ${i + 1}: Valori numerici non validi`);
-            continue;
-        }
-
-        if (profKmNum > currentMaxDepth) {
-            errorLines.push(`Riga ${i + 1}: Profondità ${profKmNum} supera il limite di ${currentMaxDepth} Km`);
-            continue;
-        }
-
-        validData.push({
-            area: area.trim(),
-            profKm: profKmNum,
-            value: valueNum,
-            fks: fksNum
-        });
-    }
-
-    if (errorLines.length > 0) {
-        alert('Errori trovati:\n' + errorLines.join('\n'));
-        return;
-    }
-
-    if (validData.length === 0) {
-        alert('Nessun dato valido trovato');
-        return;
-    }
-
-    // Ordina i dati per profondità decrescente
-    validData.sort((a, b) => b.profKm - a.profKm);
-
-    // Aggiungi i dati al grafico
-    showProgress(0, validData.length, 'Caricamento dati...');
-
-    setTimeout(() => {
-        chartData = []; // Reset dei dati esistenti
-        
-        validData.forEach((data, index) => {
-            document.getElementById('areaName').value = data.area;
-            document.getElementById('fkValue').value = data.fks;
-            document.getElementById('dateInput').value = document.getElementById('dateInput').value || new Date().toLocaleDateString('it-IT');
-
-            let accDec = 0;
-            if (chartData.length > 0) {
-                const prevData = chartData[chartData.length - 1];
-                const diffQuota = prevData.profKm - data.profKm;
-                const diffValore = data.value - prevData.value;
-                accDec = diffQuota !== 0 ? diffValore / Math.abs(diffQuota) : 0;
-            }
-
-            chartData.push({
-                profKm: data.profKm,
-                value: data.value,
-                accDec: accDec
-            });
-
-            showProgress(index + 1, validData.length, `Caricati ${index + 1}/${validData.length} punti`);
-        });
-
-        updateChart();
-        
-        setTimeout(() => {
-            hideProgress();
-            alert(`${validData.length} punti caricati con successo!`);
-            closeBulkModal();
-        }, 500);
-    }, 100);
-}
-
-function processBulkDataWithDownloads() {
-    const bulkText = document.getElementById('bulkTextarea').value.trim();
-    if (!bulkText) {
-        alert('Inserisci i dati nel formato corretto');
-        return;
-    }
-
-    // Prima carica i dati
-    processBulkDataAndDownload();
-}
-
-function processBulkDataAndDownload() {
-    const bulkText = document.getElementById('bulkTextarea').value.trim();
-    const lines = bulkText.split('\n').filter(line => line.trim());
-    let validData = [];
-
-    // Validazione (stessa logica di processBulkData)
-    for (let i = 0; i < lines.length; i++) {
-        const values = lines[i].trim().split(',');
-        if (values.length !== 4) continue;
-
-        const [area, profKm, value, fks] = values;
-        const profKmNum = parseFloat(profKm);
-        const valueNum = parseFloat(value);
-        const fksNum = parseFloat(fks);
-
-        if (isNaN(profKmNum) || isNaN(valueNum) || isNaN(fksNum)) continue;
-        if (profKmNum > currentMaxDepth) continue;
-
-        validData.push({
-            area: area.trim(),
-            profKm: profKmNum,
-            value: valueNum,
-            fks: fksNum
-        });
-    }
-
-    if (validData.length === 0) {
-        alert('Nessun dato valido trovato');
-        return;
-    }
-
-    // Ordina i dati
-    validData.sort((a, b) => b.profKm - a.profKm);
-
-    // Reset e carica tutti i dati
-    chartData = [];
-    validData.forEach((data, index) => {
-        document.getElementById('areaName').value = data.area;
-        document.getElementById('fkValue').value = data.fks;
-
-        let accDec = 0;
-        if (chartData.length > 0) {
-            const prevData = chartData[chartData.length - 1];
-            const diffQuota = prevData.profKm - data.profKm;
-            const diffValore = data.value - prevData.value;
-            accDec = diffQuota !== 0 ? diffValore / Math.abs(diffQuota) : 0;
-        }
-
-        chartData.push({
-            profKm: data.profKm,
-            value: data.value,
-            accDec: accDec
-        });
-    });
-
-    updateChart();
-
-    // Ora scarica ogni punto singolarmente
-    showProgress(0, chartData.length + 1, 'Inizio download...');
-    
-    downloadAllPointsSequentially(0);
-}
-
-function downloadAllPointsSequentially(currentIndex) {
-    if (currentIndex >= chartData.length) {
-        // Tutti i punti scaricati, ora scarica il grafico completo
-        showProgress(chartData.length, chartData.length + 1, 'Scaricando grafico completo...');
-        
-        setTimeout(() => {
-            downloadImage();
-            hideProgress();
-            alert(`Download completato! Scaricati ${chartData.length} punti + grafico completo`);
-            closeBulkModal();
-        }, 1000);
-        return;
-    }
-
-    showProgress(currentIndex + 1, chartData.length + 1, `Scaricando punto ${currentIndex + 1}/${chartData.length}...`);
-
-    // Simula il download del punto specifico
-    downloadSpecificPoint(currentIndex);
-    
-    // Continua con il prossimo punto dopo un breve delay
-    setTimeout(() => {
-        downloadAllPointsSequentially(currentIndex + 1);
-    }, 800);
-}
-
-function downloadSpecificPoint(pointIndex) {
-    if (pointIndex < 0 || pointIndex >= chartData.length) return;
-
-    const canvas = document.getElementById('accDecChart');
-    const desiredWidth = 1082 * 4;
-    const desiredHeight = 1080 * 4;
-    
-    const newCanvas = document.createElement('canvas');
-    newCanvas.width = desiredWidth;
-    newCanvas.height = desiredHeight;
-    const newCtx = newCanvas.getContext('2d');
-    
-    newCtx.fillStyle = '#FFFFFF';
-    newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
-    
-    const scaleFactor = Math.min(desiredWidth / canvas.width, desiredHeight / canvas.height);
-    newCtx.scale(scaleFactor, scaleFactor);
-    
-    newCtx.drawImage(canvas, 0, 0);
-    
-    // Aggiungi ORCLAV
-    newCtx.font = '14px monospace';
-    newCtx.fillStyle = 'rgba(43, 56, 86, 1)';
-    newCtx.textAlign = 'left';
-    newCtx.fillText('🔬 ORCLAV', 20, 20);
-    
-    // Highlight del punto specifico
-    const targetPoint = chartData[pointIndex];
-    const xScale = myChart.scales.x;
-    const yScale = myChart.scales.y;
-    const x = xScale.getPixelForValue(targetPoint.accDec);
-    const y = yScale.getPixelForValue(targetPoint.profKm);
-    
-    // Tooltip per il punto specifico
-    newCtx.font = '14px Arial';
-    const tooltipText = `Prof/KM: ${targetPoint.profKm.toFixed(2)}, Acc/Dec: ${targetPoint.accDec.toFixed(3)}`;
-    const metrics = newCtx.measureText(tooltipText);
-    const padding = 8;
-    const dotSize = 8;
-    const tooltipWidth = metrics.width + (padding * 3) + dotSize;
-    const tooltipHeight = 24;
-    const tooltipOffset = 25;
-    
-    // Background tooltip
-    newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)';
-    roundRect(newCtx, x - tooltipWidth/2, y - tooltipHeight - tooltipOffset, tooltipWidth, tooltipHeight, 12);
-    newCtx.fill();
-    
-    // Freccia
-    newCtx.beginPath();
-    newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)';
-    const arrowHeight = 10;
-    const arrowWidth = 12;
-    newCtx.moveTo(x - arrowWidth/2, y - tooltipOffset);
-    newCtx.lineTo(x, y - tooltipOffset + arrowHeight);
-    newCtx.lineTo(x + arrowWidth/2, y - tooltipOffset);
-    newCtx.closePath();
-    newCtx.fill();
-    
-    // Punto highlight
-    newCtx.beginPath();
-    newCtx.fillStyle = '#E74C3C';
-    newCtx.strokeStyle = '#FFFFFF';
-    newCtx.lineWidth = 0.5;
-    newCtx.arc(x - tooltipWidth/2 + padding + dotSize/2, y - tooltipHeight/2 - tooltipOffset, dotSize/2, 0, Math.PI * 2);
-    newCtx.fill();
-    newCtx.stroke();
-    
-    // Testo tooltip
-    newCtx.fillStyle = '#ECF0F1';
-    newCtx.textAlign = 'left';
-    newCtx.textBaseline = 'middle';
-    newCtx.fillText(tooltipText, x - tooltipWidth/2 + padding * 2 + dotSize, y - tooltipHeight/2 - tooltipOffset);
-    
-    // Punto principale evidenziato
-    newCtx.beginPath();
-    newCtx.arc(x, y, 12, 0, Math.PI * 2);
-    newCtx.fillStyle = 'rgba(231, 76, 60, 1)';
-    newCtx.fill();
-    newCtx.strokeStyle = 'rgba(21, 49, 126, 1)';
-    newCtx.lineWidth = 2;
-    newCtx.stroke();
-    
-    function roundRect(ctx, x, y, width, height, radius) {
-        if (width < 2 * radius) radius = width / 2;
-        if (height < 2 * radius) radius = height / 2;
-        ctx.beginPath();
-        ctx.moveTo(x + radius, y);
-        ctx.arcTo(x + width, y, x + width, y + height, radius);
-        ctx.arcTo(x + width, y + height, x, y + height, radius);
-        ctx.arcTo(x, y + height, x, y, radius);
-        ctx.arcTo(x, y, x + width, y, radius);
-        ctx.closePath();
-    }
-    
-    const imageURL = newCanvas.toDataURL('image/png');
-    const downloadLink = document.createElement('a');
-    downloadLink.href = imageURL;
-    downloadLink.download = `punto_${pointIndex + 1}_prof_${targetPoint.profKm}.png`;
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-}
-
-        function downloadImage() {
+		
+		   function downloadImage() {
             const canvas = document.getElementById('accDecChart');
             const ctx = canvas.getContext('2d');
             
@@ -1416,72 +1128,235 @@ function downloadSpecificPoint(pointIndex) {
                 // MODIFICATO: dimensioni del rettangolo di sfondo
                 const padding = 5; // Aumentato da 4 a 6
                 const textMetrics = newCtx.measureText(label);
-                const bgWidth = textMetrics.width + (padding * 2);
-                const bgHeight = 20; // Aumentato da 20 a 22
-                const cornerRadius = 7;
+                const bgWidth = textMetrics.
+				
+				width + padding * 2;
+                const bgHeight = 20; // Aumentato da 16 a 20
                 
-                const rectX = x - (bgWidth / 2);
-                const rectY = y - (bgHeight / 2);
+                // Sfondo semi-trasparente per l'etichetta
+                newCtx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+                newCtx.fillRect(x - bgWidth/2, y - bgHeight/2 - 25, bgWidth, bgHeight);
                 
-                newCtx.beginPath();
-                newCtx.moveTo(rectX + cornerRadius, rectY);
-                newCtx.lineTo(rectX + bgWidth - cornerRadius, rectY);
-                newCtx.quadraticCurveTo(rectX + bgWidth, rectY, rectX + bgWidth, rectY + cornerRadius);
-                newCtx.lineTo(rectX + bgWidth, rectY + bgHeight - cornerRadius);
-                newCtx.quadraticCurveTo(rectX + bgWidth, rectY + bgHeight, rectX + bgWidth - cornerRadius, rectY + bgHeight);
-                newCtx.lineTo(rectX + cornerRadius, rectY + bgHeight);
-                newCtx.quadraticCurveTo(rectX, rectY + bgHeight, rectX, rectY + bgHeight - cornerRadius);
-                newCtx.lineTo(rectX, rectY + cornerRadius);
-                newCtx.quadraticCurveTo(rectX, rectY, rectX + cornerRadius, rectY);
-                newCtx.closePath();
-                
-                newCtx.fillStyle = '#15317E';  // Blu-grigio scuro come sfondo
-                newCtx.fill();
-                
-                // MODIFICATO: colore del bordo più vivace
-                newCtx.strokeStyle = '#e74c3c';  // Rosso più vivace
+                // Bordo dell'etichetta
+                newCtx.strokeStyle = 'rgba(43, 56, 86, 0.8)';
                 newCtx.lineWidth = 1;
-                newCtx.stroke();
+                newCtx.strokeRect(x - bgWidth/2, y - bgHeight/2 - 25, bgWidth, bgHeight);
                 
-                newCtx.fillStyle = '#ECF0F1';  // Grigio chiaro per il testo
-                newCtx.fillText(label, x, y);
+                // Testo dell'etichetta
+                newCtx.fillStyle = 'rgba(43, 56, 86, 1)';
+                newCtx.fillText(label, x, y - 25);
             });
             
             const imageURL = newCanvas.toDataURL('image/png');
             const downloadLink = document.createElement('a');
             downloadLink.href = imageURL;
-            downloadLink.download = 'grafico_acc_dec_profondita.png';
+            downloadLink.download = 'grafico_acc_dec_completo.png';
             document.body.appendChild(downloadLink);
             downloadLink.click();
             document.body.removeChild(downloadLink);
         }
 
+        // Modal functions
+        function openBulkModal() {
+            document.getElementById('bulkModal').style.display = 'block';
+        }
 
-        // Event listener per l'input
+        function closeBulkModal() {
+            document.getElementById('bulkModal').style.display = 'none';
+            document.getElementById('bulkTextarea').value = '';
+            document.getElementById('progressBar').style.display = 'none';
+        }
+
+        function processBulkData() {
+            const textarea = document.getElementById('bulkTextarea');
+            const lines = textarea.value.trim().split('\n').filter(line => line.trim() !== '');
+            
+            if (lines.length === 0) {
+                alert('Inserisci almeno una riga di dati');
+                return;
+            }
+
+            const progressBar = document.getElementById('progressBar');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            progressBar.style.display = 'block';
+            progressText.textContent = `Elaborazione in corso... 0/${lines.length}`;
+            
+            let processedCount = 0;
+            const errors = [];
+
+            lines.forEach((line, index) => {
+                const values = line.trim().split(',');
+                if (values.length !== 4) {
+                    errors.push(`Riga ${index + 1}: Formato non valido`);
+                    return;
+                }
+
+                const [area, profKm, value, fks] = values;
+                const profKmNum = parseFloat(profKm);
+                const valueNum = parseFloat(value);
+                const fksNum = parseFloat(fks);
+
+                if (isNaN(profKmNum) || isNaN(valueNum) || isNaN(fksNum)) {
+                    errors.push(`Riga ${index + 1}: Valori numerici non validi`);
+                    return;
+                }
+
+                if (profKmNum > currentMaxDepth) {
+                    errors.push(`Riga ${index + 1}: Profondità superiore al limite`);
+                    return;
+                }
+
+                document.getElementById('areaName').value = area;
+                document.getElementById('fkValue').value = fksNum;
+
+                let accDec = 0;
+                if (chartData.length > 0) {
+                    const prevData = chartData[chartData.length - 1];
+                    const diffQuota = prevData.profKm - profKmNum;
+                    const diffValore = valueNum - prevData.value;
+                    accDec = diffQuota !== 0 ? diffValore / Math.abs(diffQuota) : 0;
+                }
+
+                chartData.push({
+                    profKm: profKmNum,
+                    value: valueNum,
+                    accDec
+                });
+
+                processedCount++;
+                const progress = (processedCount / lines.length) * 100;
+                progressFill.style.width = progress + '%';
+                progressText.textContent = `Elaborazione in corso... ${processedCount}/${lines.length}`;
+            });
+
+            updateChart();
+            
+            setTimeout(() => {
+                progressBar.style.display = 'none';
+                if (errors.length > 0) {
+                    alert(`Elaborazione completata con ${errors.length} errori:\n${errors.join('\n')}`);
+                } else {
+                    alert(`Tutti i ${processedCount} punti sono stati caricati con successo!`);
+                }
+                closeBulkModal();
+            }, 500);
+        }
+
+        function processBulkDataWithDownloads() {
+            const textarea = document.getElementById('bulkTextarea');
+            const lines = textarea.value.trim().split('\n').filter(line => line.trim() !== '');
+            
+            if (lines.length === 0) {
+                alert('Inserisci almeno una riga di dati');
+                return;
+            }
+
+            const progressBar = document.getElementById('progressBar');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            progressBar.style.display = 'block';
+            progressText.textContent = `Elaborazione in corso... 0/${lines.length}`;
+            
+            let processedCount = 0;
+            const errors = [];
+            const downloadPromises = [];
+
+            lines.forEach((line, index) => {
+                const values = line.trim().split(',');
+                if (values.length !== 4) {
+                    errors.push(`Riga ${index + 1}: Formato non valido`);
+                    return;
+                }
+
+                const [area, profKm, value, fks] = values;
+                const profKmNum = parseFloat(profKm);
+                const valueNum = parseFloat(value);
+                const fksNum = parseFloat(fks);
+
+                if (isNaN(profKmNum) || isNaN(valueNum) || isNaN(fksNum)) {
+                    errors.push(`Riga ${index + 1}: Valori numerici non validi`);
+                    return;
+                }
+
+                if (profKmNum > currentMaxDepth) {
+                    errors.push(`Riga ${index + 1}: Profondità superiore al limite`);
+                    return;
+                }
+
+                document.getElementById('areaName').value = area;
+                document.getElementById('fkValue').value = fksNum;
+
+                let accDec = 0;
+                if (chartData.length > 0) {
+                    const prevData = chartData[chartData.length - 1];
+                    const diffQuota = prevData.profKm - profKmNum;
+                    const diffValore = valueNum - prevData.value;
+                    accDec = diffQuota !== 0 ? diffValore / Math.abs(diffQuota) : 0;
+                }
+
+                chartData.push({
+                    profKm: profKmNum,
+                    value: valueNum,
+                    accDec
+                });
+
+                processedCount++;
+                const progress = (processedCount / lines.length) * 100;
+                progressFill.style.width = progress + '%';
+                progressText.textContent = `Elaborazione in corso... ${processedCount}/${lines.length}`;
+
+                // Aggiorna il grafico e scarica l'immagine per ogni punto
+                updateChart();
+                
+                setTimeout(() => {
+                    downloadLastTooltip();
+                }, index * 100); // Ritardo incrementale per evitare conflitti
+            });
+
+            // Scarica anche il grafico completo alla fine
+            setTimeout(() => {
+                updateChart();
+                downloadImage();
+                
+                progressBar.style.display = 'none';
+                if (errors.length > 0) {
+                    alert(`Elaborazione completata con ${errors.length} errori:\n${errors.join('\n')}\nTutte le immagini sono state scaricate!`);
+                } else {
+                    alert(`Tutti i ${processedCount} punti sono stati caricati con successo!\nTutte le immagini sono state scaricate!`);
+                }
+                closeBulkModal();
+            }, lines.length * 100 + 1000);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('bulkModal');
+            if (event.target == modal) {
+                closeBulkModal();
+            }
+        }
+
+        // Close modal with X button
+        document.querySelector('.close').onclick = function() {
+            closeBulkModal();
+        }
+
+        // Initialize chart
+        updateChart();
+
+        // Focus on input field when page loads
+        document.getElementById('bulkInput').focus();
+
+        // Add Enter key support for bulk input
         document.getElementById('bulkInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 processBulkInput();
             }
         });
-
-        updateChart();
-		
-		
-		document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('bulkModal');
-    const closeBtn = document.querySelector('.close');
-    
-    closeBtn.onclick = function() {
-        closeBulkModal();
-    }
-    
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            closeBulkModal();
-        }
-    }
-});
-</script>
+    </script>
 </body>
 </html></div>
 </div></div></div></div></div></div></div></div></div></section><section id="section-id-1724310613563" class="sppb-section"><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1724310613562"><div id="column-id-1724310613562" class="sppb-column "><div class="sppb-column-addons"><div id="sppb-addon-wrapper-1724310705884" class="sppb-addon-wrapper  addon-root-module"><div id="sppb-addon-1724310705884" class="clearfix  "><div class="sppb-addon sppb-addon-module "><div class="sppb-addon-content">

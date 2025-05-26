@@ -166,7 +166,7 @@ Uri: http://192.168.163.128/media/com_finder/js/finder.min.js?755761
 File Name: D:\Siti GitHub\192.168.163.128\media\com_finder\js\finder.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.163.128/media/com_wrapper/js/iframe-height.min.js?93ac5a
+Uri: http://192.168.163.128/media/com_wrapper/js/iframe-height.min.js?25b9ea
 File Name: D:\Siti GitHub\192.168.163.128\media\com_wrapper\js\iframe-height.min.js
 Content Type: text/javascript
 
