@@ -28,7 +28,7 @@
 </style>
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"15950b684a3b68c85d1e31f7563cff36"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"1f631864a3dc2b5982a1946bd759763a"}</script>
 	<script src="media/system/js/core.min.js?2cb912"></script>
 	<script src="media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -664,9 +664,9 @@
         /* SE VUOI MANTENERE SOLO IL GRAFICO "Correlazione Parametri" */
         /* Rimuovi il commento (//) dalle righe seguenti per attivarle */
         
-        #chartsSection .chart-card:not(:has(#correlationChart)) {
+    /*    #chartsSection .chart-card:not(:has(#correlationChart)) {
             display: none;
-        }
+        }  */
         #chartsSection {
             grid-template-columns: 1fr;
             max-width: 1600px; 
@@ -1129,11 +1129,10 @@ function updateCharts() {
                 position: 'top',
                 labels: {
                     usePointStyle: true,
-					boxWidth: 26,         // Larghezza del rettangolo
-        boxHeight: 16,
+					
                     padding: 20,
                     font: {
-                        size: 12.5,
+                        size: 12,
                         weight: 'bold'
                     }
                 }
@@ -1175,11 +1174,12 @@ function updateCharts() {
                     maxRotation: 45
                 }
             },
-           y: {
+          // Nella sezione del grafico combinato (correlationChart), sostituisci la configurazione dell'asse y con:
+
+y: {
     type: 'linear',
     display: true,
     position: 'left',
-    reverse: true, // Questa proprietà inverte l'asse
     title: {
         display: true,
         text: 'Profondità (km)',
@@ -1191,17 +1191,15 @@ function updateCharts() {
     },
     ticks: {
         color: 'rgba(75, 192, 192, 1)',
-        callback: function(value, index, values) {
-            // Inverte i valori mostrati sulle etichette
-            const maxValue = Math.max(...sismiData.map(d => d.prof));
-            const minValue = Math.min(...sismiData.map(d => d.prof));
-            return (maxValue + minValue - value).toFixed(1);
+        callback: function(value) {
+            return value.toFixed(1);
         }
     },
     grid: {
         display: true,
         color: 'rgba(75, 192, 192, 0.1)'
-    }
+    },
+    reverse: true
 },
             y1: {
                 type: 'linear',
