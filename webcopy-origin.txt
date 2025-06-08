@@ -2,6 +2,10 @@ Uri: http://192.168.163.128/
 File Name: D:\Siti GitHub\192.168.163.128\index.htm
 Content Type: text/html
 
+Uri: http://192.168.163.128/analisi-delle-aree-per-profondità.html
+File Name: D:\Siti GitHub\192.168.163.128\analisi-delle-aree-per-profondità.html
+Content Type: text/html
+
 Uri: http://192.168.163.128/cache/com_templates/templates/shaper_helixultimate/a389b878476f072b6c51a2d1962afb96.js
 File Name: D:\Siti GitHub\192.168.163.128\cache\com_templates\templates\shaper_helixultimate\a389b878476f072b6c51a2d1962afb96.js
 Content Type: text/javascript
