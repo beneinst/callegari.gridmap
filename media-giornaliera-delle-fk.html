@@ -29,7 +29,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"ddcf6d651d3c14e0fdf81fd66e93738d"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"e2b86fca9ff6af61b870952139605b45"}</script>
 	<script src="media/system/js/core.min.js?2cb912"></script>
 	<script src="media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -394,8 +394,14 @@
         }
         .chart-container {
             position: relative;
-            height: 500px;
-            margin: 30px 0;
+           width: 100% !important;
+    height: 600px !important;
+    max-width: none !important;
+    max-height: none !important;
+            
+            margin: 10px 0;
+            /* AGGIUNTO: Padding interno per evitare che il grafico tocchi i bordi */
+            padding: 5px;
         }
         .input-section {
             margin-bottom: 30px;
@@ -898,6 +904,15 @@ function createChart(data, avgFk, avgValore) {
                 easing: 'easeOutQuart'
             },
             backgroundColor: 'white',
+            // AGGIUNTO: Layout padding per dare spazio intorno al grafico
+            layout: {
+                padding: {
+                    top: 5,
+                    bottom: 5,
+                    left: 5,
+                    right: 5
+                }
+            },
             scales: {
                 x: {
                     title: {
@@ -1007,7 +1022,6 @@ function createChart(data, avgFk, avgValore) {
                         }
                     }
                 },
-                // MODIFICATO: Plugin datalabels configurato per visualizzare le etichette in modo sfalsato
                datalabels: {
     formatter: function(value, context) {
         // Formatta il valore con 3 decimali per Fk (indice 0) e 2 decimali per Valore Polo 18 (indice 1)
@@ -1109,9 +1123,9 @@ function downloadChart() {
     const canvas = document.getElementById('mediaChart');
     
     // Dimensioni target per alta qualità
-    const targetWidth = 1920;
-    const targetHeight = 1080;
-    const scale = 2; // Ridotto per evitare problemi di memoria
+    const targetWidth = 1920 * 6;
+    const targetHeight = 1080 * 6;
+    const scale = 16; // Ridotto per evitare problemi di memoria
     
     // Crea un canvas temporaneo
     const tempCanvas = document.createElement('canvas');
@@ -1126,11 +1140,11 @@ function downloadChart() {
         tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
         
         // Margine fisso di 5px per lato
-        const margin = 5;
+        const margin = 0;
         
         // Calcola le dimensioni disponibili sottraendo i margini
-        const availableWidth = tempCanvas.width - (margin * 2);
-        const availableHeight = tempCanvas.height - (margin * 2);
+        const availableWidth = tempCanvas.width - (margin * 5);
+        const availableHeight = tempCanvas.height - (margin * 5);
         
         // Ottieni le dimensioni reali del grafico dal container
         const chartContainer = canvas.parentElement;
@@ -1145,240 +1159,129 @@ function downloadChart() {
             drawWidth = availableWidth;
             drawHeight = availableWidth / aspectRatio;
         } else {
-            // Il grafico è più alto - limita dall'altezza  
+            // Il grafico è più alto - limita dall'altezza
             drawHeight = availableHeight;
             drawWidth = availableHeight * aspectRatio;
         }
         
-        // Centra il grafico nell'area disponibile
-        const offsetX = margin + (availableWidth - drawWidth) / 2;
-        const offsetY = margin + (availableHeight - drawHeight) / 2;
+        // Centra il grafico nel canvas
+        const startX = margin + (availableWidth - drawWidth) / 2;
+        const startY = margin + (availableHeight - drawHeight) / 2;
         
-        // Disegna il grafico scalandolo alle dimensioni calcolate
-        tempCtx.drawImage(canvas, offsetX, offsetY, drawWidth, drawHeight);
+        // Disegna il grafico scalato nel canvas temporaneo
+        tempCtx.drawImage(canvas, startX, startY, drawWidth, drawHeight);
         
-        // Aggiungi un bordo sottile (opzionale)
-        tempCtx.strokeStyle = '#e5e7eb';
-        tempCtx.lineWidth = 1;
-        tempCtx.strokeRect(offsetX, offsetY, drawWidth, drawHeight);
+        // Crea il link per il download
+        const link = document.createElement('a');
+        link.download = 'grafico_media_fk.jpg';
         
-        // Converti in JPEG con qualità alta
-        const imageURL = tempCanvas.toDataURL('image/jpeg', 0.95);
+        // Converti in JPG con qualità alta
+        const dataURL = tempCanvas.toDataURL('image/jpeg', 0.95);
+        link.href = dataURL;
         
-        // Verifica che l'URL sia valido
-        if (imageURL === 'data:,') {
-            throw new Error('Impossibile generare l\'immagine');
-        }
-        
-        // Crea e avvia il download
-        const downloadLink = document.createElement('a');
-        downloadLink.href = imageURL;
-        downloadLink.download = `media_giornaliera_fk_${targetWidth}x${targetHeight}.jpg`;
-        
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-        
-        console.log(`Immagine generata: ${tempCanvas.width}x${tempCanvas.height} pixels con margini di ${margin}px`);
+        // Avvia il download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
         
     } catch (error) {
-        console.error('Errore nella generazione dell\'immagine:', error);
-        
-        // Fallback semplificato
-        try {
-            const simpleCanvas = document.createElement('canvas');
-            simpleCanvas.width = 1200;
-            simpleCanvas.height = 800;
-            
-            const simpleCtx = simpleCanvas.getContext('2d');
-            simpleCtx.fillStyle = 'white';
-            simpleCtx.fillRect(0, 0, simpleCanvas.width, simpleCanvas.height);
-            
-            // Disegna con margine di 5px
-            simpleCtx.drawImage(canvas, 5, 5, simpleCanvas.width - 10, simpleCanvas.height - 10);
-            
-            const fallbackURL = simpleCanvas.toDataURL('image/jpeg', 0.9);
-            
-            const downloadLink = document.createElement('a');
-            downloadLink.href = fallbackURL;
-            downloadLink.download = 'media_giornaliera_fk_fallback.jpg';
-            
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-            
-        } catch (fallbackError) {
-            alert('Errore nel download dell\'immagine. Prova con un browser diverso.');
-        }
+        console.error('Errore durante la creazione del download:', error);
+        alert('Errore durante la creazione dell\'immagine. Riprova.');
     }
-}        
-        // Scarica la tabella in formato HTML
-        function downloadTable() {
+}
+
+// Download della tabella come CSV
+function downloadTable() {
     if (chartData.length === 0) return;
-    
-    // Calcola medie
-    const avgFk = calculateAverage(chartData, 'fk');
-    const avgValore = calculateAverage(chartData, 'valore');
     
     // Ottieni l'etichetta corrente della prima colonna
     let firstColumnLabel = "Giorno";
-    let categoryLabel = "giorno";
     modeRadios.forEach(radio => {
         if (radio.checked) {
             if (radio.value === "giorno") {
                 firstColumnLabel = "Giorno";
-                categoryLabel = "giorno";
             } else if (radio.value === "area") {
-                firstColumnLabel = "Area";
-                categoryLabel = "area";
+                firstColumnLabel = "Area";  
             } else if (radio.value === "custom") {
                 firstColumnLabel = customLabelInput.value || "Codice";
-                categoryLabel = customLabelInput.value.toLowerCase() || "codice";
             }
         }
     });
-            
-            // Crea una versione HTML della tabella con stile
-            let tableHTML = `
-            <!DOCTYPE html>
-            <html lang="it">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Tabella Media Giornaliera Fk</title>
-                <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                        margin: 20px;
-                        line-height: 1.6;
-                    }
-                    h1, h2 {
-                        text-align: center;
-                        color: #333;
-                    }
-                    table {
-                        width: 100%;
-                        border-collapse: collapse;
-                        margin: 20px 0;
-                    }
-                    th, td {
-                        border: 1px solid #ccc;
-                        padding: 8px 12px;
-                        text-align: center;
-                    }
-                    th {
-                        background-color: #f0f0f0;
-                        font-weight: bold;
-                    }
-                    tr:nth-child(even) {
-                        background-color: #f9f9f9;
-                    }
-                    .average-row {
-                        background-color: #e6f0ff;
-                        font-weight: bold;
-                    }
-                    .note {
-                        font-style: italic;
-                        color: #666;
-                        text-align: center;
-                        margin-top: 20px;
-                    }
-                </style>
-            </head>
-            <body>
-                <h1>Media giornaliera delle Fk rilevate in ITALIA</h1>
-                <h2>alla K Radioscopia in microonde hertziane in telereperto</h2>
-                
-                <p style="text-align: center; font-weight: bold;">
-            La Media per ${categoryLabel} di Fk è ${avgFk.toFixed(3)}, con un Valore Medio al Polo 18 di ${avgValore.toFixed(2)}/90.
-        </p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>${firstColumnLabel}</th>
-                            <th>Media Giornaliera (Fks)</th>
-                            <th>Valore (Fk Polo 18)</th>
-                            <th>Fk / Valore</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-            
-          // Aggiungi righe per ogni dato
-            chartData.forEach((item, index) => {
-                tableHTML += `
-                        <tr>
-                            <td>${item.identifier}</td>
-                            <td>${item.fk.toFixed(3)}</td>
-                            <td>${item.valore.toFixed(2)}</td>
-                            <td>${item.fk.toFixed(3)} / ${item.valore.toFixed(2)}</td>
-                        </tr>
-                `;
-            });
-            
-            // Aggiungi riga per la media
-            tableHTML += `
-                        <tr class="average-row">
-                            <td>Media</td>
-                            <td>${avgFk.toFixed(3)}</td>
-                            <td>${avgValore.toFixed(2)}</td>
-                            <td>${avgFk.toFixed(3)} / ${avgValore.toFixed(2)}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <p class="note">Tabella generata dall'applicazione "Media giornaliera delle Fk"</p>
-            
-            `;
-            
-            // Crea un Blob con l'HTML della tabella
-            const blob = new Blob([tableHTML], {type: 'text/html'});
-            
-            // Crea un URL per il blob
-            const url = URL.createObjectURL(blob);
-            
-            // Crea un elemento di download
-            const downloadLink = document.createElement('a');
-            downloadLink.href = url;
-            downloadLink.download = 'tabella_media_fk.html';
-            
-            // Simula un click per avviare il download
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-            
-            // Rilascia l'URL
-            URL.revokeObjectURL(url);
-        }
-        
-        // Mostra un messaggio di errore
-        function showError(message) {
-            inputError.textContent = message;
-            inputError.classList.remove('hidden');
-        }
-        
-        // Reset di tutti i dati e campi
-        function resetAll() {
-            fileInput.value = '';
-            fileName.textContent = '';
-            dataInput.value = '';
-            inputError.classList.add('hidden');
-            
-            if (chartInstance) {
-                chartInstance.destroy();
-                chartInstance = null;
-            }
-            
-            chartData = [];
-            results.classList.add('hidden');
-            averagesEl.innerHTML = '';
-            tableContainer.innerHTML = '';
-            downloadButton.disabled = true;
-            downloadTableButton.disabled = true;
-        }
-        
-        // Inizializza la pagina
-        updateFirstColumnLabel(); // Imposta le etichette iniziali
+    
+    // Calcola le medie
+    const avgFk = calculateAverage(chartData, 'fk');
+    const avgValore = calculateAverage(chartData, 'valore');
+    
+    // Crea il contenuto CSV
+    let csvContent = `${firstColumnLabel},Media Giornaliera (Fks),Valore (Fk Polo 18),Fk / Valore\n`;
+    
+    // Aggiungi i dati
+    chartData.forEach(item => {
+        csvContent += `${item.identifier},${item.fk.toFixed(3)},${item.valore.toFixed(2)},${item.fk.toFixed(3)} / ${item.valore.toFixed(2)}\n`;
+    });
+    
+    // Aggiungi la riga della media
+    csvContent += `Media,${avgFk.toFixed(3)},${avgValore.toFixed(2)},${avgFk.toFixed(3)} / ${avgValore.toFixed(2)}\n`;
+    
+    // Crea il file e scarica
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'tabella_media_fk.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+}
+
+// Reset di tutti i dati
+function resetAll() {
+    // Distruggi il grafico esistente
+    if (chartInstance) {
+        chartInstance.destroy();
+        chartInstance = null;
+    }
+    
+    // Resetta i dati
+    chartData = [];
+    
+    // Pulisci gli input
+    fileInput.value = '';
+    dataInput.value = '';
+    fileName.textContent = '';
+    
+    // Nascondi i risultati
+    results.classList.add('hidden');
+    inputError.classList.add('hidden');
+    
+    // Disabilita i pulsanti di download
+    downloadButton.disabled = true;
+    downloadTableButton.disabled = true;
+    
+    // Pulisci i contenitori
+    averagesEl.innerHTML = '';
+    tableContainer.innerHTML = '';
+    
+    // Resetta la modalità alla default
+    document.getElementById('modeGiorno').checked = true;
+    customLabelInput.value = '';
+    updateFirstColumnLabel();
+}
+
+// Mostra errori
+function showError(message) {
+    inputError.textContent = message;
+    inputError.classList.remove('hidden');
+}
+
+// Inizializzazione
+document.addEventListener('DOMContentLoaded', function() {
+    // Registra i plugin di Chart.js
+    Chart.register(ChartDataLabels);
+    
+    // Imposta l'etichetta iniziale
+    updateFirstColumnLabel();
+});
     </script>
 </body>
 </html></div>
