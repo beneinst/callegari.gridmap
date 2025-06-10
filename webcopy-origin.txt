@@ -282,6 +282,10 @@ Uri: http://192.168.163.128/media/vendor/jquery/js/jquery.min.js?3.7.1
 File Name: D:\Siti GitHub\192.168.163.128\media\vendor\jquery\js\jquery.min.js
 Content Type: text/javascript
 
+Uri: http://192.168.163.128/plancia-crc-griglia-per-mappa-universale-punti-e-valori.html
+File Name: D:\Siti GitHub\192.168.163.128\plancia-crc-griglia-per-mappa-universale-punti-e-valori.html
+Content Type: text/html
+
 Uri: http://192.168.163.128/profondimetri/profondimetri-15km.html
 File Name: D:\Siti GitHub\192.168.163.128\profondimetri\profondimetri-15km.html
 Content Type: text/html
