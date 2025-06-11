@@ -29,7 +29,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"9ac1204bf4cac12ff911c8d0bbd31a55"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.128\/","base":"","baseFull":"http:\/\/192.168.163.128\/"},"csrf.token":"d1df9e4b6d2f2ee178791ff821ad614f"}</script>
 	<script src="../media/system/js/core.min.js?2cb912"></script>
 	<script src="../media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="../media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -541,113 +541,113 @@ button {
 
 
     <script>
-        let chartData = [];
-        let myChart;
-        let currentMaxDepth = 15; // Default value
+       let chartData = [];
+let myChart;
+let currentMaxDepth = 15; // Default value
 
-        function updateDepthRange() {
-            currentMaxDepth = parseFloat(document.getElementById('depthSelector').value);
-            updateChart();
-        }
+function updateDepthRange() {
+    currentMaxDepth = parseFloat(document.getElementById('depthSelector').value);
+    updateChart();
+}
 
-        function getStepSize(maxDepth) {
-            if (maxDepth <= 15) return 2.5;
-            if (maxDepth <= 30) return 5;
-            if (maxDepth <= 130) return 20;
-            if (maxDepth <= 570) return 50;
-            if (maxDepth <= 750) return 100;
-            return 500;
-        }
+function getStepSize(maxDepth) {
+    if (maxDepth <= 15) return 2.5;
+    if (maxDepth <= 30) return 5;
+    if (maxDepth <= 130) return 20;
+    if (maxDepth <= 570) return 50;
+    if (maxDepth <= 750) return 100;
+    return 500;
+}
 
-        function calculateXAxisLimits(chartData) {
-            if (chartData.length === 0) return { min: -30, max: 30 };
+function calculateXAxisLimits(chartData) {
+    if (chartData.length === 0) return { min: -30, max: 30 };
 
-            const accDecValues = chartData.map(d => d.accDec);
-            const minValue = Math.min(...accDecValues);
-            const maxValue = Math.max(...accDecValues);
+    const accDecValues = chartData.map(d => d.accDec);
+    const minValue = Math.min(...accDecValues);
+    const maxValue = Math.max(...accDecValues);
 
-            // Se tutti i valori sono molto vicini allo zero
-            if (Math.abs(maxValue - minValue) < 5) {
-                return { 
-                    min: Math.min(-10, minValue - 5), 
-                    max: Math.max(10, maxValue + 5) 
-                };
-            }
+    // Se tutti i valori sono molto vicini allo zero
+    if (Math.abs(maxValue - minValue) < 5) {
+        return { 
+            min: Math.min(-10, minValue - 5), 
+            max: Math.max(10, maxValue + 5) 
+        };
+    }
 
-            const margin = Math.max(Math.abs(maxValue - minValue) * 0.4, 20);
-            const dynamicLimit = Math.max(
-                Math.abs(minValue - margin), 
-                Math.abs(maxValue + margin), 
-                30
-            );
+    const margin = Math.max(Math.abs(maxValue - minValue) * 0.4, 20);
+    const dynamicLimit = Math.max(
+        Math.abs(minValue - margin), 
+        Math.abs(maxValue + margin), 
+        30
+    );
 
-            return { 
-                min: -dynamicLimit, 
-                max: dynamicLimit 
-            };
-        }
+    return { 
+        min: -dynamicLimit, 
+        max: dynamicLimit 
+    };
+}
 
-        function processBulkInput() {
-            const bulkInput = document.getElementById('bulkInput').value.trim();
-            if (!bulkInput) {
-                alert('Inserisci i dati nel formato corretto');
-                return;
-            }
+function processBulkInput() {
+    const bulkInput = document.getElementById('bulkInput').value.trim();
+    if (!bulkInput) {
+        alert('Inserisci i dati nel formato corretto');
+        return;
+    }
 
-            const values = bulkInput.split(',');
-            if (values.length !== 4) {
-                alert('Formato non valido. Usa: AREA,Prof/Km,Valore,FKS');
-                return;
-            }
+    const values = bulkInput.split(',');
+    if (values.length !== 4) {
+        alert('Formato non valido. Usa: AREA,Prof/Km,Valore,FKS');
+        return;
+    }
 
-            const [area, profKm, value, fks] = values;
-            
-            const profKmNum = parseFloat(profKm);
-            const valueNum = parseFloat(value);
-            const fksNum = parseFloat(fks);
+    const [area, profKm, value, fks] = values;
+    
+    const profKmNum = parseFloat(profKm);
+    const valueNum = parseFloat(value);
+    const fksNum = parseFloat(fks);
 
-            if (isNaN(profKmNum) || isNaN(valueNum) || isNaN(fksNum)) {
-                alert('I valori numerici non sono validi');
-                return;
-            }
+    if (isNaN(profKmNum) || isNaN(valueNum) || isNaN(fksNum)) {
+        alert('I valori numerici non sono validi');
+        return;
+    }
 
-            if (profKmNum > currentMaxDepth) {
-                alert(`La profondità non può superare ${currentMaxDepth} Km`);
-                return;
-            }
+    if (profKmNum > currentMaxDepth) {
+        alert(`La profondità non può superare ${currentMaxDepth} Km`);
+        return;
+    }
 
-            document.getElementById('areaName').value = area;
-            document.getElementById('fkValue').value = fksNum;
+    document.getElementById('areaName').value = area;
+    document.getElementById('fkValue').value = fksNum;
 
-            let accDec = 0;
-            if (chartData.length > 0) {
-                const prevData = chartData[chartData.length - 1];
-                const diffQuota = prevData.profKm - profKmNum;
-                const diffValore = valueNum - prevData.value;
-                accDec = diffQuota !== 0 ? diffValore / Math.abs(diffQuota) : 0;
-            }
+    let accDec = 0;
+    if (chartData.length > 0) {
+        const prevData = chartData[chartData.length - 1];
+        const diffQuota = prevData.profKm - profKmNum;
+        const diffValore = valueNum - prevData.value;
+        accDec = diffQuota !== 0 ? diffValore / Math.abs(diffQuota) : 0;
+    }
 
-            chartData.push({
-                profKm: profKmNum,
-                value: valueNum,
-                accDec
-            });
-            updateChart();
+    chartData.push({
+        profKm: profKmNum,
+        value: valueNum,
+        accDec
+    });
+    updateChart();
 
-            document.getElementById('bulkInput').value = '';
-            document.getElementById('bulkInput').focus();
-        }
+    document.getElementById('bulkInput').value = '';
+    document.getElementById('bulkInput').focus();
+}
 
-        function removeLastData() {
-            if (chartData.length > 0) {
-                chartData.pop();
-                updateChart();
-            } else {
-                alert('Non ci sono dati da rimuovere.');
-            }
-        }
+function removeLastData() {
+    if (chartData.length > 0) {
+        chartData.pop();
+        updateChart();
+    } else {
+        alert('Non ci sono dati da rimuovere.');
+    }
+}
 
-        // Funzione modificata per includere i valori minimi e massimi
+// Funzione modificata per includere i valori minimi e massimi
 function calculateAverages() {
     if (chartData.length === 0) return {
         avgAccDec: 0,
@@ -681,6 +681,25 @@ function calculateAverages() {
         minValue: minValue,
         maxValue: maxValue
     };
+}
+
+// Funzione per formattare il valore FK mantenendo gli zeri finali
+function formatFkValue(value) {
+    const num = parseFloat(value);
+    if (isNaN(num)) return 'Non specificato';
+    
+    // Converte in stringa e conta i decimali
+    const str = value.toString();
+    const decimalIndex = str.indexOf('.');
+    
+    if (decimalIndex === -1) {
+        // Numero intero, aggiungi .000
+        return num.toFixed(3);
+    } else {
+        // Ha decimali, mantieni il formato originale
+        const decimals = str.length - decimalIndex - 1;
+        return num.toFixed(Math.max(decimals, 3));
+    }
 }
 
 function updateChart() {
@@ -723,8 +742,7 @@ function updateChart() {
         },
         options: {
             responsive: true,
-            
-			aspectRatio: 1,
+            aspectRatio: 1,
             scales: {
                 x: {
                     type: 'linear',
@@ -791,272 +809,266 @@ function updateChart() {
                     }
                 },
                 title: {
-    display: true,
-    text: `Area ${areaName} - ${dateValue} | Fk ${fkValue.toLocaleString('it-IT', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}`,
-    font: {
-        size: 25,
-        weight: 'bold'
-    },
-    color: textColor
-},
-
-            subtitle: {
-    display: true,
-    text: [
-        `Acc/Dec: ⚪ Media ${averages.avgAccDec.toFixed(3)}  ▽ Min ${averages.minAccDec.toFixed(3)}  △ Max ${averages.maxAccDec.toFixed(3)}`,
-        `Valori: ⚪ Media ${averages.avgValue.toFixed(2)}  ▽ Min ${averages.minValue.toFixed(2)}  △ Max ${averages.maxValue.toFixed(2)}`,
-        `Prof KM: ⚪ Media ${averages.avgProfKm.toFixed(2)}`
-
-    ],
-    font: {
-        size: 18,
-        weight: 'normal', // Modificato da 'bold' a 'semibold'
-        lineHeight: 1.6   // Aggiunta la proprietà lineHeight
-    },
-    color: textColor,
-    padding: {
-        top: 5,
-        bottom: 12
-    }
-
+                    display: true,
+                    text: `Area ${areaName} - ${dateValue} | Fk ${formatFkValue(fkValue)}`,
+                    font: {
+                        size: 25,
+                        weight: 'bold'
+                    },
+                    color: textColor
+                },
+                subtitle: {
+                    display: true,
+                    text: [
+                        `Acc/Dec: ⚪ Media ${averages.avgAccDec.toFixed(3)}  ▽ Min ${averages.minAccDec.toFixed(3)}  △ Max ${averages.maxAccDec.toFixed(3)}`,
+                        `Valori: ⚪ Media ${averages.avgValue.toFixed(2)}  ▽ Min ${averages.minValue.toFixed(2)}  △ Max ${averages.maxValue.toFixed(2)}`,
+                        `Prof KM: ⚪ Media ${averages.avgProfKm.toFixed(2)}`
+                    ],
+                    font: {
+                        size: 18,
+                        weight: 'normal', // Modificato da 'bold' a 'semibold'
+                        lineHeight: 1.6   // Aggiunta la proprietà lineHeight
+                    },
+                    color: textColor,
+                    padding: {
+                        top: 5,
+                        bottom: 12
+                    }
                 }
             }
         }
     });
 }
 
-        // Existing downloadLastTooltip() and downloadImage() functions remain the same...
-		 function downloadLastTooltip() {
-            if (chartData.length === 0) {
-                alert('Non ci sono dati nel grafico');
-                return;
-            }
-            const canvas = document.getElementById('accDecChart');
-            const ctx = canvas.getContext('2d');
-            
-            const desiredWidth = 1082 * 4;
-            const desiredHeight = 1080 * 4;
-            
-            const newCanvas = document.createElement('canvas');
-            newCanvas.width = desiredWidth;
-            newCanvas.height = desiredHeight;
-            const newCtx = newCanvas.getContext('2d');
-            
-            // Sfondo bianco (mantenuto per consistenza)
-            newCtx.fillStyle = '#FFFFFF';
-            newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
-            
-            const scaleFactor = Math.min(desiredWidth / canvas.width, desiredHeight / canvas.height);
-            newCtx.scale(scaleFactor, scaleFactor);
-            
-            // Disegna il grafico originale
-            newCtx.drawImage(canvas, 0, 0);
-            
-            // Aggiungi il testo ORCLAV - Villapiana
-            newCtx.font = '14px monospace';
-            newCtx.fillStyle = 'rgba(43, 56, 86, 1)'; // Blu scuro
-            newCtx.textAlign = 'left';
-            newCtx.fillText('🔬 ORCLAV', 20, 20); // Posizione in alto a sinistra
-            
-            // Prendi l'ultimo punto
-            const lastPoint = chartData[chartData.length - 1];
-            
-            // Converti le coordinate del punto
-            const xScale = myChart.scales.x;
-            const yScale = myChart.scales.y;
-            const x = xScale.getPixelForValue(lastPoint.accDec);
-            const y = yScale.getPixelForValue(lastPoint.profKm);
-            
-            // Configurazione del tooltip
-            newCtx.font = '14px Arial';
-            newCtx.fillStyle = '#2C3E50'; // Blu scuro per il testo
-            newCtx.fillStyle = 'blue'; // Aggiunta per impostare il colore di riempimento del testo a blu
-            const tooltipText = `Prof/KM: ${lastPoint.profKm.toFixed(2)}, Acc/Dec: ${lastPoint.accDec.toFixed(3)}`;
-            const metrics = newCtx.measureText(tooltipText);
-            const padding = 8;
-            const dotSize = 8;
-            const tooltipWidth = metrics.width + (padding * 3) + dotSize;
-            const tooltipHeight = 24;
-            
-            // Distanza aumentata tra tooltip e punto
-            const tooltipOffset = 25;
-            
-            // Disegna il background del tooltip
-            newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)'; // Blu-grigio scuro con maggiore opacità
-            roundRect(newCtx, x - tooltipWidth/2, y - tooltipHeight - tooltipOffset, tooltipWidth, tooltipHeight, 12);
-            newCtx.fill();
-            
-            // Freccia migliorata
-            newCtx.beginPath();
-            newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)'; // Stesso colore del tooltip
-            
-            // Punta della freccia
-            const arrowHeight = 10; // Altezza della freccia
-            const arrowWidth = 12;  // Larghezza della freccia
-            
-            // Coordinate della freccia triangolare
-            newCtx.moveTo(x - arrowWidth/2, y - tooltipOffset);
-            newCtx.lineTo(x, y - tooltipOffset + arrowHeight);
-            newCtx.lineTo(x + arrowWidth/2, y - tooltipOffset);
-            
-            // Collegamento con il tooltip
-            newCtx.lineTo(x + arrowWidth/2, y - tooltipOffset);
-            newCtx.lineTo(x - arrowWidth/2, y - tooltipOffset);
-            
-            newCtx.closePath();
-            newCtx.fill();
-            
-            // Contorno della freccia per migliorare la visibilità
-            newCtx.strokeStyle = 'rgba(41, 58, 74, 1)'; // Bordo leggermente più scuro
-            newCtx.lineWidth = 0.5;
-            newCtx.stroke();
-            
-            // Disegna il punto rosa
-            newCtx.beginPath();
-            newCtx.fillStyle = '#E74C3C'; // Rosso corallo
-            newCtx.strokeStyle = '#FFFFFF'; // Bordo bianco
-            newCtx.lineWidth = 0.5;
-            newCtx.arc(x - tooltipWidth/2 + padding + dotSize/2, y - tooltipHeight/2 - tooltipOffset, dotSize/2, 0, Math.PI * 2);
-            newCtx.fill();
-            newCtx.stroke();
-            
-            // Disegna il testo del tooltip
-            newCtx.fillStyle = '#ECF0F1'; // Grigio chiaro per il testo
-            newCtx.textAlign = 'left';
-            newCtx.textBaseline = 'middle';
-            newCtx.fillText(tooltipText, x - tooltipWidth/2 + padding * 2 + dotSize, y - tooltipHeight/2 - tooltipOffset);
-            
-            // Highlight dell'ultimo punto - usando lo stesso stile degli altri punti ma più grande
-            newCtx.beginPath();
-            const largerDotSize = 12; // Dimensione maggiore per l'ultimo punto
-            newCtx.arc(x, y, largerDotSize, 0, Math.PI * 2);
-            newCtx.fillStyle = 'rgba(231, 76, 60, 1)'; // Stesso colore degli altri punti (rosso corallo)
-            newCtx.fill();
-            newCtx.strokeStyle = 'rgba(21, 49, 126, 1)'; // Blu scuro per il bordo, come gli altri punti
-            newCtx.lineWidth = 2; // Stessa larghezza del bordo
-            newCtx.stroke();
-            
-            function roundRect(ctx, x, y, width, height, radius) {
-                if (width < 2 * radius) radius = width / 2;
-                if (height < 2 * radius) radius = height / 2;
-                ctx.beginPath();
-                ctx.moveTo(x + radius, y);
-                ctx.arcTo(x + width, y, x + width, y + height, radius);
-                ctx.arcTo(x + width, y + height, x, y + height, radius);
-                ctx.arcTo(x, y + height, x, y, radius);
-                ctx.arcTo(x, y, x + width, y, radius);
-                ctx.closePath();
-            }
-            
-            const imageURL = newCanvas.toDataURL('image/png');
-            const downloadLink = document.createElement('a');
-            downloadLink.href = imageURL;
-            downloadLink.download = `grafico_acc_dec_punto_${chartData.length}.png`;
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-        }
+// Resto delle funzioni rimane invariato...
+function downloadLastTooltip() {
+    if (chartData.length === 0) {
+        alert('Non ci sono dati nel grafico');
+        return;
+    }
+    const canvas = document.getElementById('accDecChart');
+    const ctx = canvas.getContext('2d');
+    
+    const desiredWidth = 1082 * 4;
+    const desiredHeight = 1080 * 4;
+    
+    const newCanvas = document.createElement('canvas');
+    newCanvas.width = desiredWidth;
+    newCanvas.height = desiredHeight;
+    const newCtx = newCanvas.getContext('2d');
+    
+    // Sfondo bianco (mantenuto per consistenza)
+    newCtx.fillStyle = '#FFFFFF';
+    newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+    
+    const scaleFactor = Math.min(desiredWidth / canvas.width, desiredHeight / canvas.height);
+    newCtx.scale(scaleFactor, scaleFactor);
+    
+    // Disegna il grafico originale
+    newCtx.drawImage(canvas, 0, 0);
+    
+    // Aggiungi il testo ORCLAV - Villapiana
+    newCtx.font = '14px monospace';
+    newCtx.fillStyle = 'rgba(43, 56, 86, 1)'; // Blu scuro
+    newCtx.textAlign = 'left';
+    newCtx.fillText('🔬 ORCLAV', 20, 20); // Posizione in alto a sinistra
+    
+    // Prendi l'ultimo punto
+    const lastPoint = chartData[chartData.length - 1];
+    
+    // Converti le coordinate del punto
+    const xScale = myChart.scales.x;
+    const yScale = myChart.scales.y;
+    const x = xScale.getPixelForValue(lastPoint.accDec);
+    const y = yScale.getPixelForValue(lastPoint.profKm);
+    
+    // Configurazione del tooltip
+    newCtx.font = '14px Arial';
+    newCtx.fillStyle = '#2C3E50'; // Blu scuro per il testo
+    newCtx.fillStyle = 'blue'; // Aggiunta per impostare il colore di riempimento del testo a blu
+    const tooltipText = `Prof/KM: ${lastPoint.profKm.toFixed(2)}, Acc/Dec: ${lastPoint.accDec.toFixed(3)}`;
+    const metrics = newCtx.measureText(tooltipText);
+    const padding = 8;
+    const dotSize = 8;
+    const tooltipWidth = metrics.width + (padding * 3) + dotSize;
+    const tooltipHeight = 24;
+    
+    // Distanza aumentata tra tooltip e punto
+    const tooltipOffset = 25;
+    
+    // Disegna il background del tooltip
+    newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)'; // Blu-grigio scuro con maggiore opacità
+    roundRect(newCtx, x - tooltipWidth/2, y - tooltipHeight - tooltipOffset, tooltipWidth, tooltipHeight, 12);
+    newCtx.fill();
+    
+    // Freccia migliorata
+    newCtx.beginPath();
+    newCtx.fillStyle = 'rgba(52, 73, 94, 0.95)'; // Stesso colore del tooltip
+    
+    // Punta della freccia
+    const arrowHeight = 10; // Altezza della freccia
+    const arrowWidth = 12;  // Larghezza della freccia
+    
+    // Coordinate della freccia triangolare
+    newCtx.moveTo(x - arrowWidth/2, y - tooltipOffset);
+    newCtx.lineTo(x, y - tooltipOffset + arrowHeight);
+    newCtx.lineTo(x + arrowWidth/2, y - tooltipOffset);
+    
+    // Collegamento con il tooltip
+    newCtx.lineTo(x + arrowWidth/2, y - tooltipOffset);
+    newCtx.lineTo(x - arrowWidth/2, y - tooltipOffset);
+    
+    newCtx.closePath();
+    newCtx.fill();
+    
+    // Contorno della freccia per migliorare la visibilità
+    newCtx.strokeStyle = 'rgba(41, 58, 74, 1)'; // Bordo leggermente più scuro
+    newCtx.lineWidth = 0.5;
+    newCtx.stroke();
+    
+    // Disegna il punto rosa
+    newCtx.beginPath();
+    newCtx.fillStyle = '#E74C3C'; // Rosso corallo
+    newCtx.strokeStyle = '#FFFFFF'; // Bordo bianco
+    newCtx.lineWidth = 0.5;
+    newCtx.arc(x - tooltipWidth/2 + padding + dotSize/2, y - tooltipHeight/2 - tooltipOffset, dotSize/2, 0, Math.PI * 2);
+    newCtx.fill();
+    newCtx.stroke();
+    
+    // Disegna il testo del tooltip
+    newCtx.fillStyle = '#ECF0F1'; // Grigio chiaro per il testo
+    newCtx.textAlign = 'left';
+    newCtx.textBaseline = 'middle';
+    newCtx.fillText(tooltipText, x - tooltipWidth/2 + padding * 2 + dotSize, y - tooltipHeight/2 - tooltipOffset);
+    
+    // Highlight dell'ultimo punto - usando lo stesso stile degli altri punti ma più grande
+    newCtx.beginPath();
+    const largerDotSize = 12; // Dimensione maggiore per l'ultimo punto
+    newCtx.arc(x, y, largerDotSize, 0, Math.PI * 2);
+    newCtx.fillStyle = 'rgba(231, 76, 60, 1)'; // Stesso colore degli altri punti (rosso corallo)
+    newCtx.fill();
+    newCtx.strokeStyle = 'rgba(21, 49, 126, 1)'; // Blu scuro per il bordo, come gli altri punti
+    newCtx.lineWidth = 2; // Stessa larghezza del bordo
+    newCtx.stroke();
+    
+    function roundRect(ctx, x, y, width, height, radius) {
+        if (width < 2 * radius) radius = width / 2;
+        if (height < 2 * radius) radius = height / 2;
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.arcTo(x + width, y, x + width, y + height, radius);
+        ctx.arcTo(x + width, y + height, x, y + height, radius);
+        ctx.arcTo(x, y + height, x, y, radius);
+        ctx.arcTo(x, y, x + width, y, radius);
+        ctx.closePath();
+    }
+    
+    const imageURL = newCanvas.toDataURL('image/png');
+    const downloadLink = document.createElement('a');
+    downloadLink.href = imageURL;
+    downloadLink.download = `grafico_acc_dec_punto_${chartData.length}.png`;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+}
 
+function downloadImage() {
+    const canvas = document.getElementById('accDecChart');
+    const ctx = canvas.getContext('2d');
+    
+    const desiredWidth = 1082 * 4;
+    const desiredHeight = 1080 * 4;
+    
+    const newCanvas = document.createElement('canvas');
+    newCanvas.width = desiredWidth;
+    newCanvas.height = desiredHeight;
+    const newCtx = newCanvas.getContext('2d');
+    
+    // Sfondo bianco
+    newCtx.fillStyle = '#FFFFFF';
+    newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+    
+    const scaleFactor = Math.min(desiredWidth / canvas.width, desiredHeight / canvas.height);
+    newCtx.scale(scaleFactor, scaleFactor);
+    
+    // Prima disegna il grafico originale
+    newCtx.drawImage(canvas, 0, 0);
+    
+    // Aggiungi il testo ORCLAV - Villapiana
+    newCtx.font = '14px monospace';
+    newCtx.fillStyle = 'rgba(43, 56, 86, 1)'; // Blu scuro
+    newCtx.textAlign = 'left';
+    newCtx.fillText('🔬 ORCLAV', 20, 20); // Posizione in alto a sinistra
+    
+    // Aggiorna il colore del testo del titolo e delle etichette
+    newCtx.fillStyle = 'rgba(43, 56, 86, 1)';  // Blu scuro per il testo principale
+    
+    // Poi aggiungi le etichette
+    chartData.forEach((point, index) => {
+        const xScale = myChart.scales.x;
+        const yScale = myChart.scales.y;
+        
+        const x = xScale.getPixelForValue(point.accDec);
+        const y = yScale.getPixelForValue(point.profKm);
+        
+        // MODIFICATO: dimensione testo e stile - aumentato di 1px
+        newCtx.font = '500 16.8px Arial'; // Aumentato da 12px a 13px
+        newCtx.textAlign = 'center';
+        newCtx.textBaseline = 'middle';
+        newCtx.fillStyle = 'blue'; // Aggiunta per impostare il colore di riempimento del testo a blu
+        
+        const label = `${point.profKm}/${point.value}`;
+        
+        // MODIFICATO: dimensioni del rettangolo di sfondo
+        const padding = 5; // Aumentato da 4 a 6
+        const textMetrics = newCtx.measureText(label);
+        const bgWidth = textMetrics.width + (padding * 2);
+        const bgHeight = 20; // Aumentato da 20 a 22
+        const cornerRadius = 7;
+        
+        const rectX = x - (bgWidth / 2);
+        const rectY = y - (bgHeight / 2);
+        
+        newCtx.beginPath();
+        newCtx.moveTo(rectX + cornerRadius, rectY);
+        newCtx.lineTo(rectX + bgWidth - cornerRadius, rectY);
+        newCtx.quadraticCurveTo(rectX + bgWidth, rectY, rectX + bgWidth, rectY + cornerRadius);
+        newCtx.lineTo(rectX + bgWidth, rectY + bgHeight - cornerRadius);
+        newCtx.quadraticCurveTo(rectX + bgWidth, rectY + bgHeight, rectX + bgWidth - cornerRadius, rectY + bgHeight);
+        newCtx.lineTo(rectX + cornerRadius, rectY + bgHeight);
+        newCtx.quadraticCurveTo(rectX, rectY + bgHeight, rectX, rectY + bgHeight - cornerRadius);
+        newCtx.lineTo(rectX, rectY + cornerRadius);
+        newCtx.quadraticCurveTo(rectX, rectY, rectX + cornerRadius, rectY);
+        newCtx.closePath();
+        
+        newCtx.fillStyle = '#15317E';  // Blu-grigio scuro come sfondo
+        newCtx.fill();
+        
+        // MODIFICATO: colore del bordo più vivace
+        newCtx.strokeStyle = '#e74c3c';  // Rosso più vivace
+        newCtx.lineWidth = 1;
+        newCtx.stroke();
+        
+        newCtx.fillStyle = '#ECF0F1';  // Grigio chiaro per il testo
+        newCtx.fillText(label, x, y);
+    });
+    
+    const imageURL = newCanvas.toDataURL('image/png');
+    const downloadLink = document.createElement('a');
+    downloadLink.href = imageURL;
+    downloadLink.download = 'grafico_acc_dec_profondita.png';
+    document.body.appendChild(downloadLink);
+    document.body.removeChild(downloadLink);
+}
 
-        function downloadImage() {
-            const canvas = document.getElementById('accDecChart');
-            const ctx = canvas.getContext('2d');
-            
-            const desiredWidth = 1082 * 4;
-            const desiredHeight = 1080 * 4;
-            
-            const newCanvas = document.createElement('canvas');
-            newCanvas.width = desiredWidth;
-            newCanvas.height = desiredHeight;
-            const newCtx = newCanvas.getContext('2d');
-            
-            // Sfondo bianco
-            newCtx.fillStyle = '#FFFFFF';
-            newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
-            
-            const scaleFactor = Math.min(desiredWidth / canvas.width, desiredHeight / canvas.height);
-            newCtx.scale(scaleFactor, scaleFactor);
-            
-            // Prima disegna il grafico originale
-            newCtx.drawImage(canvas, 0, 0);
-            
-            // Aggiungi il testo ORCLAV - Villapiana
-            newCtx.font = '14px monospace';
-            newCtx.fillStyle = 'rgba(43, 56, 86, 1)'; // Blu scuro
-            newCtx.textAlign = 'left';
-            newCtx.fillText('🔬 ORCLAV', 20, 20); // Posizione in alto a sinistra
-            
-            // Aggiorna il colore del testo del titolo e delle etichette
-            newCtx.fillStyle = 'rgba(43, 56, 86, 1)';  // Blu scuro per il testo principale
-            
-            // Poi aggiungi le etichette
-            chartData.forEach((point, index) => {
-                const xScale = myChart.scales.x;
-                const yScale = myChart.scales.y;
-                
-                const x = xScale.getPixelForValue(point.accDec);
-                const y = yScale.getPixelForValue(point.profKm);
-                
-                // MODIFICATO: dimensione testo e stile - aumentato di 1px
-                newCtx.font = '500 16.8px Arial'; // Aumentato da 12px a 13px
-                newCtx.textAlign = 'center';
-                newCtx.textBaseline = 'middle';
-                newCtx.fillStyle = 'blue'; // Aggiunta per impostare il colore di riempimento del testo a blu
-                
-                const label = `${point.profKm}/${point.value}`;
-                
-                // MODIFICATO: dimensioni del rettangolo di sfondo
-                const padding = 5; // Aumentato da 4 a 6
-                const textMetrics = newCtx.measureText(label);
-                const bgWidth = textMetrics.width + (padding * 2);
-                const bgHeight = 20; // Aumentato da 20 a 22
-                const cornerRadius = 7;
-                
-                const rectX = x - (bgWidth / 2);
-                const rectY = y - (bgHeight / 2);
-                
-                newCtx.beginPath();
-                newCtx.moveTo(rectX + cornerRadius, rectY);
-                newCtx.lineTo(rectX + bgWidth - cornerRadius, rectY);
-                newCtx.quadraticCurveTo(rectX + bgWidth, rectY, rectX + bgWidth, rectY + cornerRadius);
-                newCtx.lineTo(rectX + bgWidth, rectY + bgHeight - cornerRadius);
-                newCtx.quadraticCurveTo(rectX + bgWidth, rectY + bgHeight, rectX + bgWidth - cornerRadius, rectY + bgHeight);
-                newCtx.lineTo(rectX + cornerRadius, rectY + bgHeight);
-                newCtx.quadraticCurveTo(rectX, rectY + bgHeight, rectX, rectY + bgHeight - cornerRadius);
-                newCtx.lineTo(rectX, rectY + cornerRadius);
-                newCtx.quadraticCurveTo(rectX, rectY, rectX + cornerRadius, rectY);
-                newCtx.closePath();
-                
-                newCtx.fillStyle = '#15317E';  // Blu-grigio scuro come sfondo
-                newCtx.fill();
-                
-                // MODIFICATO: colore del bordo più vivace
-                newCtx.strokeStyle = '#e74c3c';  // Rosso più vivace
-                newCtx.lineWidth = 1;
-                newCtx.stroke();
-                
-                newCtx.fillStyle = '#ECF0F1';  // Grigio chiaro per il testo
-                newCtx.fillText(label, x, y);
-            });
-            
-            const imageURL = newCanvas.toDataURL('image/png');
-            const downloadLink = document.createElement('a');
-            downloadLink.href = imageURL;
-            downloadLink.download = 'grafico_acc_dec_profondita.png';
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-        }
+// Event listener per l'input
+document.getElementById('bulkInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        processBulkInput();
+    }
+});
 
-
-        // Event listener per l'input
-        document.getElementById('bulkInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                processBulkInput();
-            }
-        });
-
-        updateChart();
+updateChart();
     </script>
 </body>
 </html></div>
