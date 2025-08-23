@@ -1,376 +1,376 @@
-Uri: http://192.168.231.128/
-File Name: D:\Backup\Site\192.168.231.128\index.htm
+Uri: http://192.168.163.135/
+File Name: D:\Siti GitHub\192.168.163.135\index.htm
 Content Type: text/html
 
-Uri: http://192.168.231.128/analisi-delle-aree-per-profondità.html
-File Name: D:\Backup\Site\192.168.231.128\analisi-delle-aree-per-profondità.html
+Uri: http://192.168.163.135/analisi-delle-aree-per-profondità.html
+File Name: D:\Siti GitHub\192.168.163.135\analisi-delle-aree-per-profondità.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/cache/com_templates/templates/shaper_helixultimate/a389b878476f072b6c51a2d1962afb96.js
-File Name: D:\Backup\Site\192.168.231.128\cache\com_templates\templates\shaper_helixultimate\a389b878476f072b6c51a2d1962afb96.js
+Uri: http://192.168.163.135/cache/com_templates/templates/shaper_helixultimate/a389b878476f072b6c51a2d1962afb96.js
+File Name: D:\Siti GitHub\192.168.163.135\cache\com_templates\templates\shaper_helixultimate\a389b878476f072b6c51a2d1962afb96.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/cache/com_templates/templates/shaper_helixultimate/fb817c72c8b2deba9a3408628bfaf71f.css
-File Name: D:\Backup\Site\192.168.231.128\cache\com_templates\templates\shaper_helixultimate\fb817c72c8b2deba9a3408628bfaf71f.css
+Uri: http://192.168.163.135/cache/com_templates/templates/shaper_helixultimate/fb817c72c8b2deba9a3408628bfaf71f.css
+File Name: D:\Siti GitHub\192.168.163.135\cache\com_templates\templates\shaper_helixultimate\fb817c72c8b2deba9a3408628bfaf71f.css
 Content Type: text/css
 
-Uri: http://192.168.231.128/component/finder/search.opensearch?Itemid=119
-File Name: D:\Backup\Site\192.168.231.128\component\finder\search.opensearch
+Uri: http://192.168.163.135/component/finder/search.opensearch?Itemid=119
+File Name: D:\Siti GitHub\192.168.163.135\component\finder\search.opensearch
 Content Type: application/opensearchdescription+xml
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/css/animate.min.css?28fcdefe8a87593f1f43b7d9951e0cba
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\css\animate.min.css
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/css/animate.min.css?032af75ad5933f9f9a025db2a15c10bb
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/css/dynamic-content.css?28fcdefe8a87593f1f43b7d9951e0cba
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\css\dynamic-content.css
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/css/dynamic-content.css?032af75ad5933f9f9a025db2a15c10bb
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\css\dynamic-content.css
 Content Type: text/css
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?28fcdefe8a87593f1f43b7d9951e0cba
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?032af75ad5933f9f9a025db2a15c10bb
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
 Content Type: text/css
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?28fcdefe8a87593f1f43b7d9951e0cba
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?032af75ad5933f9f9a025db2a15c10bb
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
 Content Type: text/css
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/css/magnific-popup.css
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\css\magnific-popup.css
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/css/magnific-popup.css
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\css\magnific-popup.css
 Content Type: text/css
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/css/sppagebuilder.css?28fcdefe8a87593f1f43b7d9951e0cba
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\css\sppagebuilder.css
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/css/sppagebuilder.css?032af75ad5933f9f9a025db2a15c10bb
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\css\sppagebuilder.css
 Content Type: text/css
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/js/addons/image.js
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\js\addons\image.js
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/js/addons/image.js
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\js\addons\image.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/js/addons/text_block.js
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\js\addons\text_block.js
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/js/addons/text_block.js
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\js\addons\text_block.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/js/common.js
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\js\common.js
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/js/common.js
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\js\common.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/js/dynamic-content.js?28fcdefe8a87593f1f43b7d9951e0cba
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\js\dynamic-content.js
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/js/dynamic-content.js?032af75ad5933f9f9a025db2a15c10bb
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\js\dynamic-content.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/js/jquery.magnific-popup.min.js
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\js\jquery.magnific-popup.min.js
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/js/jquery.magnific-popup.min.js
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\js\jquery.magnific-popup.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/js/jquery.parallax.js?28fcdefe8a87593f1f43b7d9951e0cba
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\js\jquery.parallax.js
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/js/jquery.parallax.js?032af75ad5933f9f9a025db2a15c10bb
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\js\jquery.parallax.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/js/sppagebuilder.js?28fcdefe8a87593f1f43b7d9951e0cba
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\js\sppagebuilder.js
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/js/sppagebuilder.js?032af75ad5933f9f9a025db2a15c10bb
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\js\sppagebuilder.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/webfonts/fa-brands-400-6.ttf
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\webfonts\fa-brands-400-6.ttf
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/webfonts/fa-brands-400-6.ttf
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\webfonts\fa-brands-400-6.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/webfonts/fa-brands-400-6.woff2
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\webfonts\fa-brands-400-6.woff2
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/webfonts/fa-brands-400-6.woff2
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\webfonts\fa-brands-400-6.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/webfonts/fa-regular-400-6.ttf
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.ttf
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/webfonts/fa-regular-400-6.ttf
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/webfonts/fa-regular-400-6.woff2
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.woff2
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/webfonts/fa-regular-400-6.woff2
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\webfonts\fa-regular-400-6.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.ttf
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.ttf
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.ttf
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.woff2
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.woff2
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/webfonts/fa-solid-900-6.woff2
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\webfonts\fa-solid-900-6.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/webfonts/fa-v4compatibility.ttf
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.ttf
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/webfonts/fa-v4compatibility.ttf
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.231.128/components/com_sppagebuilder/assets/webfonts/fa-v4compatibility.woff2
-File Name: D:\Backup\Site\192.168.231.128\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.woff2
+Uri: http://192.168.163.135/components/com_sppagebuilder/assets/webfonts/fa-v4compatibility.woff2
+File Name: D:\Siti GitHub\192.168.163.135\components\com_sppagebuilder\assets\webfonts\fa-v4compatibility.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.231.128/corr-fks-fkr-generale.html
-File Name: D:\Backup\Site\192.168.231.128\corr-fks-fkr-generale.html
+Uri: http://192.168.163.135/corr-fks-fkr-generale.html
+File Name: D:\Siti GitHub\192.168.163.135\corr-fks-fkr-generale.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/corr-fks-fkr-profondità.html
-File Name: D:\Backup\Site\192.168.231.128\corr-fks-fkr-profondità.html
+Uri: http://192.168.163.135/corr-fks-fkr-profondità.html
+File Name: D:\Siti GitHub\192.168.163.135\corr-fks-fkr-profondità.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/fks-fkr-per-area/grafico-valori-fkr.html
-File Name: D:\Backup\Site\192.168.231.128\fks-fkr-per-area\grafico-valori-fkr.html
+Uri: http://192.168.163.135/fks-fkr-per-area/grafico-valori-fkr.html
+File Name: D:\Siti GitHub\192.168.163.135\fks-fkr-per-area\grafico-valori-fkr.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/fks-fkr-per-area/grafico-valori-fks.html
-File Name: D:\Backup\Site\192.168.231.128\fks-fkr-per-area\grafico-valori-fks.html
+Uri: http://192.168.163.135/fks-fkr-per-area/grafico-valori-fks.html
+File Name: D:\Siti GitHub\192.168.163.135\fks-fkr-per-area\grafico-valori-fks.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/grafico-a-spirale-della-profondità-0-30-100-km/grafico-a-spirale-della-profondità-0-100-km.html
-File Name: D:\Backup\Site\192.168.231.128\grafico-a-spirale-della-profondità-0-30-100-km\grafico-a-spirale-della-profondità-0-100-km.html
+Uri: http://192.168.163.135/grafico-a-spirale-della-profondità-0-30-100-km/grafico-a-spirale-della-profondità-0-100-km.html
+File Name: D:\Siti GitHub\192.168.163.135\grafico-a-spirale-della-profondità-0-30-100-km\grafico-a-spirale-della-profondità-0-100-km.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/grafico-a-spirale-della-profondità-0-30-100-km/grafico-a-spirale-della-profondità-0-30-km.html
-File Name: D:\Backup\Site\192.168.231.128\grafico-a-spirale-della-profondità-0-30-100-km\grafico-a-spirale-della-profondità-0-30-km.html
+Uri: http://192.168.163.135/grafico-a-spirale-della-profondità-0-30-100-km/grafico-a-spirale-della-profondità-0-30-km.html
+File Name: D:\Siti GitHub\192.168.163.135\grafico-a-spirale-della-profondità-0-30-100-km\grafico-a-spirale-della-profondità-0-30-km.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/grafico-valori-fk-l0.html
-File Name: D:\Backup\Site\192.168.231.128\grafico-valori-fk-l0.html
+Uri: http://192.168.163.135/grafico-valori-fk-l0.html
+File Name: D:\Siti GitHub\192.168.163.135\grafico-valori-fk-l0.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/griglia-faglie/faglie-attive-centro-nord.html
-File Name: D:\Backup\Site\192.168.231.128\griglia-faglie\faglie-attive-centro-nord.html
+Uri: http://192.168.163.135/griglia-faglie/faglie-attive-centro-nord.html
+File Name: D:\Siti GitHub\192.168.163.135\griglia-faglie\faglie-attive-centro-nord.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/griglia-faglie/faglie-attive-centro-sud.html
-File Name: D:\Backup\Site\192.168.231.128\griglia-faglie\faglie-attive-centro-sud.html
+Uri: http://192.168.163.135/griglia-faglie/faglie-attive-centro-sud.html
+File Name: D:\Siti GitHub\192.168.163.135\griglia-faglie\faglie-attive-centro-sud.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/images/world-154527_1280.png
-File Name: D:\Backup\Site\192.168.231.128\images\world-154527_1280.png
+Uri: http://192.168.163.135/images/world-154527_1280.png
+File Name: D:\Siti GitHub\192.168.163.135\images\world-154527_1280.png
 Content Type: image/png
 
-Uri: http://192.168.231.128/mappa-estesa-della-basilicata.html
-File Name: D:\Backup\Site\192.168.231.128\mappa-estesa-della-basilicata.html
+Uri: http://192.168.163.135/mappa-estesa-della-basilicata.html
+File Name: D:\Siti GitHub\192.168.163.135\mappa-estesa-della-basilicata.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/mappa-estesa-della-campania.html
-File Name: D:\Backup\Site\192.168.231.128\mappa-estesa-della-campania.html
+Uri: http://192.168.163.135/mappa-estesa-della-campania.html
+File Name: D:\Siti GitHub\192.168.163.135\mappa-estesa-della-campania.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/mappa-estesa-della-puglia.html
-File Name: D:\Backup\Site\192.168.231.128\mappa-estesa-della-puglia.html
+Uri: http://192.168.163.135/mappa-estesa-della-puglia.html
+File Name: D:\Siti GitHub\192.168.163.135\mappa-estesa-della-puglia.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/mappa-plancia-crc-campania.html
-File Name: D:\Backup\Site\192.168.231.128\mappa-plancia-crc-campania.html
+Uri: http://192.168.163.135/mappa-plancia-crc-campania.html
+File Name: D:\Siti GitHub\192.168.163.135\mappa-plancia-crc-campania.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/mappa-plancia-crc-della-basilicata.html
-File Name: D:\Backup\Site\192.168.231.128\mappa-plancia-crc-della-basilicata.html
+Uri: http://192.168.163.135/mappa-plancia-crc-della-basilicata.html
+File Name: D:\Siti GitHub\192.168.163.135\mappa-plancia-crc-della-basilicata.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/mappa-plancia-crc-della-puglia.html
-File Name: D:\Backup\Site\192.168.231.128\mappa-plancia-crc-della-puglia.html
+Uri: http://192.168.163.135/mappa-plancia-crc-della-puglia.html
+File Name: D:\Siti GitHub\192.168.163.135\mappa-plancia-crc-della-puglia.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/mappa-plancia-crc-della-sicilia.html
-File Name: D:\Backup\Site\192.168.231.128\mappa-plancia-crc-della-sicilia.html
+Uri: http://192.168.163.135/mappa-plancia-crc-della-sicilia.html
+File Name: D:\Siti GitHub\192.168.163.135\mappa-plancia-crc-della-sicilia.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/media-giornaliera-delle-fk.html
-File Name: D:\Backup\Site\192.168.231.128\media-giornaliera-delle-fk.html
+Uri: http://192.168.163.135/media-giornaliera-delle-fk.html
+File Name: D:\Siti GitHub\192.168.163.135\media-giornaliera-delle-fk.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/media/com_finder/js/finder.min.js?755761
-File Name: D:\Backup\Site\192.168.231.128\media\com_finder\js\finder.min.js
+Uri: http://192.168.163.135/media/com_finder/js/finder.min.js?755761
+File Name: D:\Siti GitHub\192.168.163.135\media\com_finder\js\finder.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/com_wrapper/js/iframe-height.min.js?aa8e05
-File Name: D:\Backup\Site\192.168.231.128\media\com_wrapper\js\iframe-height.min.js
+Uri: http://192.168.163.135/media/com_wrapper/js/iframe-height.min.js?3b9747
+File Name: D:\Siti GitHub\192.168.163.135\media\com_wrapper\js\iframe-height.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/legacy/js/jquery-noconflict.min.js?504da4
-File Name: D:\Backup\Site\192.168.231.128\media\legacy\js\jquery-noconflict.min.js
+Uri: http://192.168.163.135/media/legacy/js/jquery-noconflict.min.js?504da4
+File Name: D:\Siti GitHub\192.168.163.135\media\legacy\js\jquery-noconflict.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/system/js/core.min.js?2cb912
-File Name: D:\Backup\Site\192.168.231.128\media\system\js\core.min.js
+Uri: http://192.168.163.135/media/system/js/core.min.js?2cb912
+File Name: D:\Siti GitHub\192.168.163.135\media\system\js\core.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/system/js/messages.min.js?9a4811
-File Name: D:\Backup\Site\192.168.231.128\media\system\js\messages.min.js
+Uri: http://192.168.163.135/media/system/js/messages.min.js?9a4811
+File Name: D:\Siti GitHub\192.168.163.135\media\system\js\messages.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/system/js/showon.min.js?e51227
-File Name: D:\Backup\Site\192.168.231.128\media\system\js\showon.min.js
+Uri: http://192.168.163.135/media/system/js/showon.min.js?e51227
+File Name: D:\Siti GitHub\192.168.163.135\media\system\js\showon.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/awesomplete/css/awesomplete.css?1.1.7
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\awesomplete\css\awesomplete.css
+Uri: http://192.168.163.135/media/vendor/awesomplete/css/awesomplete.css?1.1.7
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\awesomplete\css\awesomplete.css
 Content Type: text/css
 
-Uri: http://192.168.231.128/media/vendor/awesomplete/js/awesomplete.min.js?1.1.7
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\awesomplete\js\awesomplete.min.js
+Uri: http://192.168.163.135/media/vendor/awesomplete/js/awesomplete.min.js?1.1.7
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\awesomplete\js\awesomplete.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/bootstrap/js/alert.min.js?5.3.3
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\bootstrap\js\alert.min.js
+Uri: http://192.168.163.135/media/vendor/bootstrap/js/alert.min.js?5.3.3
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\bootstrap\js\alert.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/bootstrap/js/button.min.js?5.3.3
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\bootstrap\js\button.min.js
+Uri: http://192.168.163.135/media/vendor/bootstrap/js/button.min.js?5.3.3
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\bootstrap\js\button.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/bootstrap/js/carousel.min.js?5.3.3
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\bootstrap\js\carousel.min.js
+Uri: http://192.168.163.135/media/vendor/bootstrap/js/carousel.min.js?5.3.3
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\bootstrap\js\carousel.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/bootstrap/js/collapse.min.js?5.3.3
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\bootstrap\js\collapse.min.js
+Uri: http://192.168.163.135/media/vendor/bootstrap/js/collapse.min.js?5.3.3
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\bootstrap\js\collapse.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/bootstrap/js/dropdown.min.js?5.3.3
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\bootstrap\js\dropdown.min.js
+Uri: http://192.168.163.135/media/vendor/bootstrap/js/dropdown.min.js?5.3.3
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\bootstrap\js\dropdown.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/bootstrap/js/modal.min.js?5.3.3
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\bootstrap\js\modal.min.js
+Uri: http://192.168.163.135/media/vendor/bootstrap/js/modal.min.js?5.3.3
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\bootstrap\js\modal.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/bootstrap/js/offcanvas.min.js?5.3.3
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\bootstrap\js\offcanvas.min.js
+Uri: http://192.168.163.135/media/vendor/bootstrap/js/offcanvas.min.js?5.3.3
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\bootstrap\js\offcanvas.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/bootstrap/js/popover.min.js?5.3.3
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\bootstrap\js\popover.min.js
+Uri: http://192.168.163.135/media/vendor/bootstrap/js/popover.min.js?5.3.3
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\bootstrap\js\popover.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/bootstrap/js/scrollspy.min.js?5.3.3
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\bootstrap\js\scrollspy.min.js
+Uri: http://192.168.163.135/media/vendor/bootstrap/js/scrollspy.min.js?5.3.3
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\bootstrap\js\scrollspy.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/bootstrap/js/tab.min.js?5.3.3
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\bootstrap\js\tab.min.js
+Uri: http://192.168.163.135/media/vendor/bootstrap/js/tab.min.js?5.3.3
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\bootstrap\js\tab.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/bootstrap/js/toast.min.js?5.3.3
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\bootstrap\js\toast.min.js
+Uri: http://192.168.163.135/media/vendor/bootstrap/js/toast.min.js?5.3.3
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\bootstrap\js\toast.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/media/vendor/fontawesome-free/webfonts/fa-brands-400.ttf?v=15d54d
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\fontawesome-free\webfonts\fa-brands-400.ttf
+Uri: http://192.168.163.135/media/vendor/fontawesome-free/webfonts/fa-brands-400.ttf?v=15d54d
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\fontawesome-free\webfonts\fa-brands-400.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.231.128/media/vendor/fontawesome-free/webfonts/fa-brands-400.woff2?v=cbcf42
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\fontawesome-free\webfonts\fa-brands-400.woff2
+Uri: http://192.168.163.135/media/vendor/fontawesome-free/webfonts/fa-brands-400.woff2?v=cbcf42
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\fontawesome-free\webfonts\fa-brands-400.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.231.128/media/vendor/fontawesome-free/webfonts/fa-regular-400.ttf?v=262525
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\fontawesome-free\webfonts\fa-regular-400.ttf
+Uri: http://192.168.163.135/media/vendor/fontawesome-free/webfonts/fa-regular-400.ttf?v=262525
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\fontawesome-free\webfonts\fa-regular-400.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.231.128/media/vendor/fontawesome-free/webfonts/fa-regular-400.woff2?v=896727
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\fontawesome-free\webfonts\fa-regular-400.woff2
+Uri: http://192.168.163.135/media/vendor/fontawesome-free/webfonts/fa-regular-400.woff2?v=896727
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\fontawesome-free\webfonts\fa-regular-400.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.231.128/media/vendor/fontawesome-free/webfonts/fa-solid-900.ttf?v=269f97
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\fontawesome-free\webfonts\fa-solid-900.ttf
+Uri: http://192.168.163.135/media/vendor/fontawesome-free/webfonts/fa-solid-900.ttf?v=269f97
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\fontawesome-free\webfonts\fa-solid-900.ttf
 Content Type: font/ttf
 
-Uri: http://192.168.231.128/media/vendor/fontawesome-free/webfonts/fa-solid-900.woff2?v=4a6591
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\fontawesome-free\webfonts\fa-solid-900.woff2
+Uri: http://192.168.163.135/media/vendor/fontawesome-free/webfonts/fa-solid-900.woff2?v=4a6591
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\fontawesome-free\webfonts\fa-solid-900.woff2
 Content Type: font/woff2
 
-Uri: http://192.168.231.128/media/vendor/joomla-custom-elements/css/joomla-alert.min.css?0.4.1
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\joomla-custom-elements\css\joomla-alert.min.css
+Uri: http://192.168.163.135/media/vendor/joomla-custom-elements/css/joomla-alert.min.css?0.4.1
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\joomla-custom-elements\css\joomla-alert.min.css
 Content Type: text/css
 
-Uri: http://192.168.231.128/media/vendor/jquery/js/jquery.min.js?3.7.1
-File Name: D:\Backup\Site\192.168.231.128\media\vendor\jquery\js\jquery.min.js
+Uri: http://192.168.163.135/media/vendor/jquery/js/jquery.min.js?3.7.1
+File Name: D:\Siti GitHub\192.168.163.135\media\vendor\jquery\js\jquery.min.js
 Content Type: text/javascript
 
-Uri: http://192.168.231.128/plancia-crc-griglia-per-mappa-universale-punti-e-valori.html
-File Name: D:\Backup\Site\192.168.231.128\plancia-crc-griglia-per-mappa-universale-punti-e-valori.html
+Uri: http://192.168.163.135/plancia-crc-griglia-per-mappa-universale-punti-e-valori.html
+File Name: D:\Siti GitHub\192.168.163.135\plancia-crc-griglia-per-mappa-universale-punti-e-valori.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/profondimetri/profondimetri-15km.html
-File Name: D:\Backup\Site\192.168.231.128\profondimetri\profondimetri-15km.html
+Uri: http://192.168.163.135/profondimetri/profondimetri-15km.html
+File Name: D:\Siti GitHub\192.168.163.135\profondimetri\profondimetri-15km.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/stardard-per-crc/abbruzzo-griglia-crc-per-punti.html
-File Name: D:\Backup\Site\192.168.231.128\stardard-per-crc\abbruzzo-griglia-crc-per-punti.html
+Uri: http://192.168.163.135/stardard-per-crc/abbruzzo-griglia-crc-per-punti.html
+File Name: D:\Siti GitHub\192.168.163.135\stardard-per-crc\abbruzzo-griglia-crc-per-punti.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/stardard-per-crc/calabria-griglia-crc-per-punti.html
-File Name: D:\Backup\Site\192.168.231.128\stardard-per-crc\calabria-griglia-crc-per-punti.html
+Uri: http://192.168.163.135/stardard-per-crc/calabria-griglia-crc-per-punti.html
+File Name: D:\Siti GitHub\192.168.163.135\stardard-per-crc\calabria-griglia-crc-per-punti.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/stardard-per-crc/griglia-a-punti-con-valori-prc.html
-File Name: D:\Backup\Site\192.168.231.128\stardard-per-crc\griglia-a-punti-con-valori-prc.html
+Uri: http://192.168.163.135/stardard-per-crc/griglia-a-punti-con-valori-prc.html
+File Name: D:\Siti GitHub\192.168.163.135\stardard-per-crc\griglia-a-punti-con-valori-prc.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/stardard-per-crc/griglia-per-mappa-universale.html
-File Name: D:\Backup\Site\192.168.231.128\stardard-per-crc\griglia-per-mappa-universale.html
+Uri: http://192.168.163.135/stardard-per-crc/griglia-per-mappa-universale.html
+File Name: D:\Siti GitHub\192.168.163.135\stardard-per-crc\griglia-per-mappa-universale.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/stardard-per-crc/griglia-per-valori-con-prc.html
-File Name: D:\Backup\Site\192.168.231.128\stardard-per-crc\griglia-per-valori-con-prc.html
+Uri: http://192.168.163.135/stardard-per-crc/griglia-per-valori-con-prc.html
+File Name: D:\Siti GitHub\192.168.163.135\stardard-per-crc\griglia-per-valori-con-prc.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/stardard-per-crc/home.html
-File Name: D:\Backup\Site\192.168.231.128\stardard-per-crc\home.html
+Uri: http://192.168.163.135/stardard-per-crc/home.html
+File Name: D:\Siti GitHub\192.168.163.135\stardard-per-crc\home.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/stardard-per-crc/italia-3-misto.html
-File Name: D:\Backup\Site\192.168.231.128\stardard-per-crc\italia-3-misto.html
+Uri: http://192.168.163.135/stardard-per-crc/italia-3-misto.html
+File Name: D:\Siti GitHub\192.168.163.135\stardard-per-crc\italia-3-misto.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/stardard-per-crc/mappa-dell-abbruzzo-x-mobile.html
-File Name: D:\Backup\Site\192.168.231.128\stardard-per-crc\mappa-dell-abbruzzo-x-mobile.html
+Uri: http://192.168.163.135/stardard-per-crc/mappa-dell-abbruzzo-x-mobile.html
+File Name: D:\Siti GitHub\192.168.163.135\stardard-per-crc\mappa-dell-abbruzzo-x-mobile.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/stardard-per-crc/mappa-della-calabria-x-mobile.html
-File Name: D:\Backup\Site\192.168.231.128\stardard-per-crc\mappa-della-calabria-x-mobile.html
+Uri: http://192.168.163.135/stardard-per-crc/mappa-della-calabria-x-mobile.html
+File Name: D:\Siti GitHub\192.168.163.135\stardard-per-crc\mappa-della-calabria-x-mobile.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/stardard-per-crc/mappa-della-sicilia-x-mobile.html
-File Name: D:\Backup\Site\192.168.231.128\stardard-per-crc\mappa-della-sicilia-x-mobile.html
+Uri: http://192.168.163.135/stardard-per-crc/mappa-della-sicilia-x-mobile.html
+File Name: D:\Siti GitHub\192.168.163.135\stardard-per-crc\mappa-della-sicilia-x-mobile.html
 Content Type: text/html
 
-Uri: http://192.168.231.128/templates/shaper_helixultimate/images/menu-bg.jpg
-File Name: D:\Backup\Site\192.168.231.128\templates\shaper_helixultimate\images\menu-bg.jpg
+Uri: http://192.168.163.135/templates/shaper_helixultimate/images/menu-bg.jpg
+File Name: D:\Siti GitHub\192.168.163.135\templates\shaper_helixultimate\images\menu-bg.jpg
 Content Type: image/jpeg
 
-Uri: http://192.168.231.128/templates/shaper_helixultimate/js/lazysizes.min.js
-File Name: D:\Backup\Site\192.168.231.128\templates\shaper_helixultimate\js\lazysizes.min.js
+Uri: http://192.168.163.135/templates/shaper_helixultimate/js/lazysizes.min.js
+File Name: D:\Siti GitHub\192.168.163.135\templates\shaper_helixultimate\js\lazysizes.min.js
 Content Type: text/javascript
 
 Uri: https://cdn.jsdelivr.net/npm/chart.js
-File Name: D:\Backup\Site\192.168.231.128\npm\chart.js
+File Name: D:\Siti GitHub\192.168.163.135\npm\chart.js
 Content Type: application/javascript
 
 Uri: https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js
-File Name: D:\Backup\Site\192.168.231.128\npm\chart.js@3.7.1\dist\chart.min.js
+File Name: D:\Siti GitHub\192.168.163.135\npm\chart.js@3.7.1\dist\chart.min.js
 Content Type: application/javascript
 
 Uri: https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js
-File Name: D:\Backup\Site\192.168.231.128\ajax\libs\Chart.js\3.7.0\chart.min.js
+File Name: D:\Siti GitHub\192.168.163.135\ajax\libs\Chart.js\3.7.0\chart.min.js
 Content Type: application/javascript
 
 Uri: https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js
-File Name: D:\Backup\Site\192.168.231.128\ajax\libs\Chart.js\3.9.1\chart.min.js
+File Name: D:\Siti GitHub\192.168.163.135\ajax\libs\Chart.js\3.9.1\chart.min.js
 Content Type: application/javascript
 
 Uri: https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js
-File Name: D:\Backup\Site\192.168.231.128\ajax\libs\Chart.js\4.4.1\chart.umd.min.js
+File Name: D:\Siti GitHub\192.168.163.135\ajax\libs\Chart.js\4.4.1\chart.umd.min.js
 Content Type: application/javascript
 
 Uri: https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js
-File Name: D:\Backup\Site\192.168.231.128\ajax\libs\chartjs-plugin-annotation\3.0.1\chartjs-plugin-annotation.min.js
+File Name: D:\Siti GitHub\192.168.163.135\ajax\libs\chartjs-plugin-annotation\3.0.1\chartjs-plugin-annotation.min.js
 Content Type: application/javascript
 
 Uri: https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js
-File Name: D:\Backup\Site\192.168.231.128\ajax\libs\chartjs-plugin-datalabels\2.2.0\chartjs-plugin-datalabels.min.js
+File Name: D:\Siti GitHub\192.168.163.135\ajax\libs\chartjs-plugin-datalabels\2.2.0\chartjs-plugin-datalabels.min.js
 Content Type: application/javascript
 
 Uri: https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js
-File Name: D:\Backup\Site\192.168.231.128\ajax\libs\html2canvas\1.4.1\html2canvas.min.js
+File Name: D:\Siti GitHub\192.168.163.135\ajax\libs\html2canvas\1.4.1\html2canvas.min.js
 Content Type: application/javascript
 
 Uri: https://html2canvas.hertzen.com/dist/html2canvas.min.js
-File Name: D:\Backup\Site\192.168.231.128\dist\html2canvas.min.js
+File Name: D:\Siti GitHub\192.168.163.135\dist\html2canvas.min.js
 Content Type: application/javascript
 
