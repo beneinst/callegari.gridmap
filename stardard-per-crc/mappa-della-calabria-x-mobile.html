@@ -29,7 +29,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.135\/","base":"","baseFull":"http:\/\/192.168.163.135\/"},"csrf.token":"efa9e43eb01c66f68f8a86fe3cf75a43"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"MOD_FINDER_SEARCH_VALUE":"Cerca &hellip;","COM_FINDER_SEARCH_FORM_LIST_LABEL":"Search Results","JLIB_JS_AJAX_ERROR_OTHER":"Si è verificato un errore durante il recupero dei dati JSON: codice di stato HTTP %s.","JLIB_JS_AJAX_ERROR_PARSE":"Si è verificato un errore di analisi durante l'elaborazione dei seguenti dati JSON:<br><code style=\"color:inherit;white-space:pre-wrap;padding:0;margin:0;border:0;background:inherit;\">%s<\/code>","ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"finder-search":{"url":"\/component\/finder\/?task=suggestions.suggest&format=json&tmpl=component&Itemid=119"},"system.paths":{"root":"","rootFull":"http:\/\/192.168.163.135\/","base":"","baseFull":"http:\/\/192.168.163.135\/"},"csrf.token":"7d6591a1e9aeb9050579ab8ac5297b46"}</script>
 	<script src="../media/system/js/core.min.js?2cb912"></script>
 	<script src="../media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="../media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -372,8 +372,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mappa Grid Personalizzata con Punti e Valori</title>
-   <style>
-   body {
+
+  <style>
+body {
     font-family: Arial, sans-serif;
     padding: 20px;
     margin: 0;
@@ -389,14 +390,12 @@
 .custom-grid-map {
     position: relative;
     width: 100%;
-    max-width: 2900px; /* Dimensione massima ridotta */
-    aspect-ratio: 1700 / 1400; /* Rapporto d'aspetto per ridurre l'altezza */
+    max-width: 2900px; /* Dimensioni del secondo CSS */
+    aspect-ratio: 1700 / 1400; /* Rapporto d'aspetto del secondo CSS */
     border: 2px solid #848b79;
     overflow: hidden;
     z-index: 1;
-    /* Allinea la mappa a sinistra margin-left: 0; */
 }
-
 
 .custom-grid-map img {
     width: 100%;
@@ -404,51 +403,61 @@
     object-fit: cover;
 }
 
+#mapImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
 .grid-line {
     position: absolute;
     border-color: #438D80;
     border-style: dashed;
+    z-index: 2;
 }
 
 .grid-line.vertical {
-    border-width: 0 1px;
+    border-width: 0 1px 0 0;
     top: 0;
     bottom: 0;
+    width: 1px;
 }
 
 .grid-line.horizontal {
-    border-width: 1px 0;
+    border-width: 0 0 1px 0;
     left: 0;
     right: 0;
+    height: 1px;
 }
 
 .label-col, .label-row {
     position: absolute;
-    font-size: 1.1vw; /* Responsive font size */
-    background: rgba(245, 245, 220, 0.4);
-    padding: 2px 10px;
+    font-size: 14px; /* Stile del primo CSS */
+    background: rgba(245, 245, 220, 0.8); /* Stile del primo CSS */
+    padding: 2px 6px; /* Stile del primo CSS */
     font-weight: bold;
-    color: rgba(220, 20, 60, 0.7);
+    color: rgba(220, 20, 60, 0.9); /* Stile del primo CSS */
     white-space: nowrap;
     text-align: center;
-    z-index: 2; /* Leggermente sopra la mappa */
+    z-index: 3;
+    border-radius: 3px; /* Stile del primo CSS */
 }
 
 .label-col {
-    top: 0;
-    width: 3.5%; /* Responsive width */
+    top: 5px; /* Stile del primo CSS */
     transform: translateX(-50%);
 }
 
 .label-row {
-    left: 0;
-    padding-left: 10px;
-    top: 50%;
+    left: 5px; /* Stile del primo CSS */
     transform: translateY(-50%);
-    padding-right: 10px;
 }
 
-#pointsContainer, #valuesContainer {
+#gridContainer, #labelsContainer, #pointsContainer, #valuesContainer {
     position: absolute;
     top: 0;
     left: 0;
@@ -461,116 +470,127 @@
     border-radius: 50%;
     border: 2px solid;
     transform: translate(-50%, -50%);
+    z-index: 4;
 }
 
-.point.small { width: 1vw; height: 1vw; }
-.point.medium { width: 1.5vw; height: 1.5vw; }
-.point.large { width: 2vw; height: 2vw; }
+.point.small { width: 10px; height: 10px; } /* Dimensioni del primo CSS */
+.point.medium { width: 15px; height: 15px; } /* Dimensioni del primo CSS */
+.point.large { width: 20px; height: 20px; } /* Dimensioni del primo CSS */
 
 .value-box {
     position: absolute;
-    background-color: rgba(254, 254, 249, 0.6);
+    background-color: rgba(254, 254, 249, 0.9); /* Stile del primo CSS */
     border: 2px dotted #517f7a;
-    padding: 2px 6px;
-    font-size: 1vw; /* Responsive font size */
+    padding: 4px 8px; /* Stile del primo CSS */
+    font-size: 12px; /* Stile del primo CSS */
     font-weight: bold;
     transform: translate(-50%, -50%);
-    z-index: 25;
+    z-index: 4;
     text-align: center;
-    padding-bottom: 8px;
-}
-
-.value-box::after {
-    content: '';
-    display: block;
-    height: 10px;
+    border-radius: 4px; /* Stile del primo CSS */
+    line-height: 1.2; /* Stile del primo CSS */
 }
 
 #controls {
     display: flex;
+    flex-direction: row;
     gap: 10px;
     width: 100%;
-    max-width: 1727px;
-    flex-wrap: wrap;
+    max-width: 1200px;
+    align-items: center;
     justify-content: center;
-    z-index: 10; /* Assicurati che i controlli abbiano un livello superiore alla mappa */
-    position: absolute;
-}
-
-/* Per schermi larghi */
-@media screen and (min-width: 900px) {
-    .container {
-        display: flex;
-        justify-content: flex-start; /* Allinea tutto a sinistra */
-        gap: 20px;
-    }
-
-    .custom-grid-map {
-        width: calc(100% - 220px); /* Riduci la larghezza per lasciare spazio ai controlli */
-        max-width: 1200px; /* Dimensione massima ridotta */
-        margin-left: 0; /* Allinea la mappa a sinistra */
-    }
-
- #controls {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    justify-content: center; /* Centra i controlli */
-    align-items: center; /* Allinea verticalmente */
-    flex-wrap: nowrap; /* Mantiene i controlli su una sola riga */
-    z-index: 10; /* Assicurati che i controlli siano sopra la mappa */
+    flex-wrap: wrap;
+    z-index: 10;
     position: relative;
-    margin-top: 20px; /* Distanza dall'immagine */
+    order: -1; /* Controlli sopra l'immagine */
 }
 
 input {
-    flex-grow: 1;
+    flex: 1;
+    min-width: 150px;
     max-width: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
-    padding: 10px;
-    flex-grow: 0;
-    max-width: 150px; /* Limita la dimensione massima dei pulsanti */
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    min-width: 100px;
 }
 
 button.bg-blue { background-color: #007bff; }
 button.bg-red { background-color: #dc3545; }
 button.bg-green { background-color: #28a745; }
 
+/* Per schermi larghi */
+@media screen and (min-width: 900px) {
+    .custom-grid-map {
+        width: calc(100% - 220px);
+        max-width: 1200px; /* Dimensione del secondo CSS */
+        margin-left: 0;
+    }
+
+    #controls {
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        margin-top: 20px;
+    }
+
+    input {
+        flex-grow: 1;
+        max-width: 200px;
+    }
+
+    button {
+        flex-grow: 0;
+        max-width: 150px;
+    }
+}
+
 /* Per schermi piccoli */
 @media screen and (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
     #controls {
-        flex-wrap: wrap; /* Per i piccoli schermi, permetti il wrapping dei controlli */
-        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 10px;
+        max-width: 95vw;
+    }
+    
+    .label-col, .label-row {
+        font-size: 12px; /* Stile del primo CSS per mobile */
     }
 }
 
 /* Per schermi molto piccoli */
 @media screen and (max-width: 480px) {
+    .container {
+        flex-direction: column;
+    }
+    
     #controls {
-        flex-direction: column; /* Disposizione verticale per i piccoli schermi */
+        flex-direction: column;
         width: 100%;
+        gap: 8px;
     }
 
-    button, input {
-        width: 100%; /* Occupano tutta la larghezza per i dispositivi mobili */
+    input, button {
+        width: 100%;
         max-width: none;
+        min-width: auto;
     }
 }
-
-
-button {
-    cursor: pointer;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-button.bg-blue { background-color: #007bff; }
-button.bg-red { background-color: #dc3545; }
-button.bg-green { background-color: #28a745; }
 
 #alertDialog {
     position: fixed;
@@ -579,22 +599,27 @@ button.bg-green { background-color: #28a745; }
     transform: translate(-50%, -50%);
     padding: 20px;
     background: white;
-    border: 1px solid black;
+    border: 2px solid #333; /* Stile del primo CSS */
+    border-radius: 8px; /* Stile del primo CSS */
     display: none;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Stile del primo CSS */
 }
 
-.alert-content { text-align: center; }
+.alert-content { 
+    text-align: center; 
+}
 
 .alert-action {
-    background: blue;
+    background: #007bff; /* Stile del primo CSS */
     color: white;
     border: none;
-    padding: 10px;
+    padding: 10px 20px; /* Stile del primo CSS */
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
 }
-
-</style>
+  </style>
 </head>
 <body>
   <div class="container">
@@ -622,7 +647,7 @@ button.bg-green { background-color: #28a745; }
         </div>
     </div>
 
-    <script src="../ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+ <script src="../ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         const gridSizeX = 13;
         const gridSizeY = 10;
