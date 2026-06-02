@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="it-it" dir="ltr">
 	
-<!-- Mirrored from datasisma.local/stardard-per-crc/griglia-per-valori-con-prc.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jun 2026 12:04:16 GMT -->
+<!-- Mirrored from datasisma.local/stardard-per-crc/griglia-per-valori-con-prc.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jun 2026 14:11:21 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
 		
@@ -30,7 +30,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"ff84cb71ad798d41323b1b84fa681bcc"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"a65dcae328058921edc1dee6d5e97b43"}</script>
 	<script src="../media/system/js/core.min23b9.js?a3d8f8"></script>
 	<script src="../media/vendor/jquery/js/jquery.min8a0c.js?3.7.1"></script>
 	<script src="../media/legacy/js/jquery-noconflict.min1fec.js?504da4"></script>
@@ -57,6 +57,61 @@
 	<script src="../components/com_sppagebuilder/assets/js/addons/text_block.js"></script>
 	<script src="../cache/com_templates/templates/shaper_helixultimate/a389b878476f072b6c51a2d1962afb96.js"></script>
 	<script src="../templates/shaper_helixultimate/js/lazysizes.min.js"></script>
+	<script>document.addEventListener('click', function(e) {
+    // Intercetta solo i bottoni con id "downloadImage"
+    const btn = e.target.closest('#downloadImage');
+    if (!btn) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const gridMap = document.querySelector('.custom-grid-map');
+    if (!gridMap) return;
+
+    // Feedback visivo mentre elabora
+    const originalText = btn.textContent;
+    btn.textContent = '⏳ Elaborazione...';
+    btn.disabled = true;
+
+    html2canvas(gridMap, {
+        useCORS: true,
+        allowTaint: true,
+        scale: 2,
+        logging: false
+    }).then(canvas => {
+        const dataURL = canvas.toDataURL('image/png');
+
+        // Tentativo download diretto
+        const link = document.createElement('a');
+        link.download = 'Mappa.html';
+        link.href = dataURL;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Fallback: se dopo 1 secondo non ha scaricato, apri nuova tab
+        setTimeout(() => {
+            const win = window.open('', '_blank');
+            if (win) {
+                win.document.write(
+                    '<!DOCTYPE html><html><head><title>Mappa.png</title></head><body style="margin:0;background:#222;text-align:center">' +
+                    '<p style="color:#fff;font-family:Arial;padding:10px">⬇️ Tasto destro → <strong>Salva immagine come...</strong></p>' +
+                    '<img data-src="' + dataURL + '" style="max-width:100%;display:block;margin:auto" class="lazyload" />' +
+                    '</body></html>'
+                );
+                win.document.close();
+            }
+        }, 800);
+
+    }).catch(err => {
+        console.error('Download fallito:', err);
+        alert('Errore durante il download. Riprova.');
+    }).finally(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+    });
+
+}, true); // true = capture phase, intercetta prima di Joomla</script>
 	<script>template="shaper_helixultimate";</script>
 	<meta property="article:author" content="Gerardo D'Orrico"/>
 	<meta property="article:published_time" content="2024-08-13 20:24:26"/>
@@ -579,5 +634,5 @@
 					<a href="#" class="sp-scroll-up" aria-label="Scroll to top"><span class="fas fa-angle-up" aria-hidden="true"></span></a>
 					</body>
 
-<!-- Mirrored from datasisma.local/stardard-per-crc/griglia-per-valori-con-prc.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jun 2026 12:04:16 GMT -->
+<!-- Mirrored from datasisma.local/stardard-per-crc/griglia-per-valori-con-prc.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jun 2026 14:11:21 GMT -->
 </html>
