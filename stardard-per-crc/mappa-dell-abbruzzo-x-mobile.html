@@ -788,7 +788,7 @@ button.bg-green { background-color: #28a745; }
 
                 tempCanvas.toBlob(function(blob) {
                     let link = document.createElement('a');
-                    link.download = 'Mappa_Abruzzo.html';
+                    link.download = 'Mappa_Abruzzo.png';
                     link.href = URL.createObjectURL(blob);
                     link.click();
                 }, 'image/png');

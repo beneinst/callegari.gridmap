@@ -809,7 +809,7 @@ if (value.startsWith('6')) {
                 scale: 2
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = 'Mappa_Universale.html';
+                link.download = 'Mappa_Universale.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             }).catch(error => {

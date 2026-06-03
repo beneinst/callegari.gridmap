@@ -759,7 +759,7 @@ function renderItems() {
         // Scarica l'immagine come PNG
         tempCanvas.toBlob(function(blob) {
             let link = document.createElement('a');
-            link.download = 'Mappa_Italia_Misto.html';
+            link.download = 'Mappa_Italia_Misto.png';
             link.href = URL.createObjectURL(blob);
             link.click();
         }, 'image/png');

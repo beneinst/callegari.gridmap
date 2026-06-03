@@ -953,7 +953,7 @@ function downloadChart() {
         useCORS: true
     }).then(function(newCanvas) {
         const link = document.createElement('a');
-        link.download = 'grafico_area_profondita_valore_fks_4K.html';
+        link.download = 'grafico_area_profondita_valore_fks_4K.png';
         link.href = newCanvas.toDataURL('image/png', 1.0);
         link.click();
     }).catch(error => {

@@ -961,7 +961,7 @@ button.bg-teal  { background-color: #17a2b8; }
             }).then(function(canvas) {
                 var dataURL = canvas.toDataURL('image/png');
                 var link = document.createElement('a');
-                link.download = 'Mappa_Universale.html';
+                link.download = 'Mappa_Universale.png';
                 link.href = dataURL;
                 document.body.appendChild(link);
                 link.click();

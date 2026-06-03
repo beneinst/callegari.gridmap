@@ -789,7 +789,7 @@ const maxHeight = 1080 * 4;
 
                 tempCanvas.toBlob(function(blob) {
                     let link = document.createElement('a');
-                    link.download = 'Mappa_Campania.html';
+                    link.download = 'Mappa_Campania.png';
                     link.href = URL.createObjectURL(blob);
                     link.click();
                 }, 'image/png');

@@ -813,7 +813,7 @@ button.bg-green { background-color: #28a745; }
 
                 tempCanvas.toBlob(function(blob) {
                     let link = document.createElement('a');
-                    link.download = 'Mappa_Calabria.html';
+                    link.download = 'Mappa_Calabria.png';
                     link.href = URL.createObjectURL(blob);
                     link.click();
                 }, 'image/png');

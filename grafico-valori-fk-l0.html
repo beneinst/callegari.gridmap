@@ -678,7 +678,7 @@
           // Crea link di download
           const dataUrl = downloadCanvas.toDataURL('image/jpeg', 1.0);
           const link = document.createElement('a');
-          link.download = 'grafico-fk.html';
+          link.download = 'grafico-fk.jpg';
           link.href = dataUrl;
           document.body.appendChild(link); // Aggiungi il link al DOM
           link.click();
