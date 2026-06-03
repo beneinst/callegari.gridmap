@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="it-it" dir="ltr">
 	
-<!-- Mirrored from datasisma.local/stardard-per-crc/home.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jun 2026 14:29:42 GMT -->
+<!-- Mirrored from datasisma.local/stardard-per-crc/home.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2026 03:36:48 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
 		
@@ -30,7 +30,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"cadab76827d4e70bf96a89087a1b891d"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"59ab9a593d34edb732ed243c2e186d35"}</script>
 	<script src="../media/system/js/core.min23b9.js?a3d8f8"></script>
 	<script src="../media/vendor/jquery/js/jquery.min8a0c.js?3.7.1"></script>
 	<script src="../media/legacy/js/jquery-noconflict.min1fec.js?504da4"></script>
@@ -57,58 +57,6 @@
 	<script src="../components/com_sppagebuilder/assets/js/addons/text_block.js"></script>
 	<script src="../cache/com_templates/templates/shaper_helixultimate/a389b878476f072b6c51a2d1962afb96.js"></script>
 	<script src="../templates/shaper_helixultimate/js/lazysizes.min.js"></script>
-	<script>document.getElementById('downloadImage').addEventListener('click', async function(e) {
-    e.preventDefault();
-    const btn = e.target;
-    const gridMap = document.querySelector('.custom-grid-map');
-    if (!gridMap) return;
-
-    const originalText = btn.textContent;
-    btn.textContent = '⏳ Elaborazione...';
-    btn.disabled = true;
-
-    try {
-        // Primo tentativo: esportazione pulita (richiede CORS sulle immagini)
-        const canvas = await html2canvas(gridMap, {
-            useCORS: true,
-            allowTaint: false,   // ← fondamentale per poter esportare
-            scale: 2,
-            logging: false
-        });
-        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.download = 'Mappa.html';
-        link.href = url;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
-    } catch (err) {
-        console.warn('Esportazione diretta fallita, apro finestra di fallback:', err);
-        // Fallback: nuova finestra con l'immagine (utile se ci sono CORS bloccati)
-        const fallbackCanvas = await html2canvas(gridMap, {
-            useCORS: true,
-            allowTaint: true,    // accetta immagini tainted
-            scale: 2,
-            logging: false
-        });
-        const dataURL = fallbackCanvas.toDataURL('image/png'); // potrebbe comunque fallire se tainted, ma proviamo
-        const win = window.open('', '_blank');
-        if (win) {
-            win.document.write(
-                '<!DOCTYPE html><html><head><title>Mappa.png</title></head><body style="margin:0;background:#222;text-align:center">' +
-                '<p style="color:#fff;font-family:Arial;padding:10px">⬇️ Tasto destro → <strong>Salva immagine come...</strong></p>' +
-                '<img data-src="' + dataURL + '" style="max-width:100%;display:block;margin:auto" class="lazyload" />' +
-                '</body></html>'
-            );
-            win.document.close();
-        }
-    } finally {
-        btn.textContent = originalText;
-        btn.disabled = false;
-    }
-});</script>
 	<script>template="shaper_helixultimate";</script>
 	<meta property="article:author" content="Gerardo D'Orrico"/>
 	<meta property="article:published_time" content="2024-08-13 03:13:45"/>
@@ -847,7 +795,7 @@ drawGrid();
     </script>
 </body>
 
-<!-- Mirrored from datasisma.local/stardard-per-crc/home.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jun 2026 14:29:43 GMT -->
+<!-- Mirrored from datasisma.local/stardard-per-crc/home.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2026 03:36:49 GMT -->
 </html></div>
 </div></div></div></div></div></div></div></div></div></section><section id="section-id-1726038678020" class="sppb-section" ><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1726038678017"><div id="column-id-1726038678017" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-1_E79ZQ8yIbGoTYEbGrsW" class="sppb-addon-wrapper  addon-root-image"><div id="sppb-addon-1_E79ZQ8yIbGoTYEbGrsW" class="clearfix  "     ><div class="sppb-addon sppb-addon-single-image   sppb-addon-image-shape"><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img  class="sppb-img-responsive  lazyload" data-src="https://beneinst.github.io/callegari.gridmap/images/posizionamento1.png"  alt="Image" title=""   /></div></div></div></div></div><div id="sppb-addon-wrapper-kygvt90-LUSYTBg_TtbMt" class="sppb-addon-wrapper  addon-root-empty-space"><div id="sppb-addon-kygvt90-LUSYTBg_TtbMt" class="clearfix  "     ><div class="sppb-empty-space  clearfix"></div></div></div><div id="sppb-addon-wrapper-4xTartfuwJJbu3Dg9-up0" class="sppb-addon-wrapper  addon-root-image"><div id="sppb-addon-4xTartfuwJJbu3Dg9-up0" class="clearfix  "     ><div class="sppb-addon sppb-addon-single-image   sppb-addon-image-shape"><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img  class="sppb-img-responsive  lazyload" data-src="https://beneinst.github.io/callegari.gridmap/images/Beneinst.png"  alt="Image" title=""   /></div></div></div></div></div><div id="sppb-addon-wrapper-yLEpBTWZTeJQ_T9-pDJrk" class="sppb-addon-wrapper  addon-root-empty-space"><div id="sppb-addon-yLEpBTWZTeJQ_T9-pDJrk" class="clearfix  "     ><div class="sppb-empty-space  clearfix"></div></div></div></div></div></div><div class="sppb-row-column  " id="column-wrap-id-1726038678018"><div id="column-id-1726038678018" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-zKvpISL4QEk5I4zrq-fBc" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-zKvpISL4QEk5I4zrq-fBc" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><h3 class="sppb-addon-title">Didascalia</h3><div class="sppb-addon-content  "><p style="text-align:justify;"></p><p style="text-align:justify;">Ogni punto è posizionato in una cella numerata a partire dall'alto a sinistra, con i numeri che aumentano verso destra e poi verso il basso. Oltre alla posizione, i punti hanno una dimensione indicata da un numero intero: 1 rappresenta un punto piccolo, 2 un punto di dimensione media e 3 un punto grande.</p><p style="text-align:justify;"></p></div></div></div></div><div id="sppb-addon-wrapper-_iiD9exxc8knEl5GR2fqW" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-_iiD9exxc8knEl5GR2fqW" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><div class="sppb-addon-content  "><p style="text-align:justify;">L'inserimento del <strong>colore</strong> dei punti è determinato dal primo numero (iniziale, es. 7820 sarà un punto rosso) di FKS: <strong>1-5</strong> Giallo, <strong>6</strong> Blu, <strong>7</strong> Rosso, <strong>8</strong> Arancione.</p><p style="text-align:justify;"></p></div></div></div></div><div id="sppb-addon-wrapper-0-ZGfnD9MP9JyL_q2mWIX" class="sppb-addon-wrapper  addon-root-image"><div id="sppb-addon-0-ZGfnD9MP9JyL_q2mWIX" class="clearfix  "     ><div class="sppb-addon sppb-addon-single-image   sppb-addon-image-shape"><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img  class="sppb-img-responsive  lazyload" data-src="https://beneinst.github.io/callegari.gridmap/images/coar1.png"  alt="Image" title=""   /></div></div></div></div></div><div id="sppb-addon-wrapper-ZdTRsXMlGHiiL3841CLi4" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-ZdTRsXMlGHiiL3841CLi4" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><div class="sppb-addon-content  "><p style="text-align:justify;"></p><p style="text-align:justify;"></p><p style="text-align:justify;">L'inserimento dei <strong>valori</strong> avviene tramite il pulsante successivo: Aggiungi Valore es. <strong>a1,7820,45</strong>.</p></div></div></div></div></div></div></div><div class="sppb-row-column  " id="column-wrap-id-1726038678019"><div id="column-id-1726038678019" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-jNNR4DcehFQ2R_HQb_ih7" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-jNNR4DcehFQ2R_HQb_ih7" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><h3 class="sppb-addon-title">Es. a1,7820,3,2</h3><div class="sppb-addon-content  "><p></p><p><span style="mso-bidi-font-family:Calibri; mso-bidi-theme-font:minor-latin;">●</span> <strong>a1:</strong> Coordinate della cella</p><p class="MsoNormal"><span style="mso-bidi-font-family:Calibri; mso-bidi-theme-font:minor-latin;">●</span> <strong>7820:</strong> Valore FKS che determina anche il colore del punto</p><p class="MsoNormal"><span style="mso-bidi-font-family:Calibri; mso-bidi-theme-font:minor-latin;">●</span> <strong>3:</strong> Posizione in alto a destra del punto</p><p class="MsoNormal"><span style="mso-bidi-font-family:Calibri; mso-bidi-theme-font:minor-latin;">●</span> <strong>2:</strong> Dimensione media del punto</p></div></div></div></div><div id="sppb-addon-wrapper-j035dPz3Csvqs3h5FJIeQ" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-j035dPz3Csvqs3h5FJIeQ" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><h3 class="sppb-addon-title"><br>Dimensioni della Griglia</h3><div class="sppb-addon-content  "><p style="text-align:justify;"></p><p style="text-align:justify;">Le dimensioni di ogni singola cella nella griglia sono di: <strong>80 Km</strong> per lato.</p></div></div></div></div></div></div></div></div></div></section><section id="section-id-1726042909014" class="sppb-section" ><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1726042909012"><div id="column-id-1726042909012" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-1728973146043" class="sppb-addon-wrapper  addon-root-image"><div id="sppb-addon-1728973146043" class="clearfix  "     ><div class="sppb-addon sppb-addon-single-image   sppb-addon-image-shape"><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img  class="sppb-img-responsive  lazyload" data-src="https://beneinst.github.io/callegari.gridmap/images/screen.png"  alt="Image" title=""   /></div></div></div></div></div><div id="sppb-addon-wrapper-Yxkhj4WkN775E3VJGGTPF" class="sppb-addon-wrapper  addon-root-empty-space"><div id="sppb-addon-Yxkhj4WkN775E3VJGGTPF" class="clearfix  "     ><div class="sppb-empty-space  clearfix"></div></div></div></div></div></div><div class="sppb-row-column  " id="column-wrap-id-1726042909013"><div id="column-id-1726042909013" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-Co2IeQu1mzVQ2AGOnBS6p" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-Co2IeQu1mzVQ2AGOnBS6p" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><div class="sppb-addon-content  "><p style="text-align:justify;"></p><p style="text-align:justify;"></p><p style="text-align:justify;">Per una visualizzazione ottimale della mappa su notebook e schermi più piccoli, <a href="italia-3-misto.html">Clicca Qui</a></p></div></div></div></div></div></div></div></div></div></section><section id="section-id-1723583145647" class="sppb-section" ><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1723583145646"><div id="column-id-1723583145646" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-u71t5NV0iA61zMddtFqKM" class="sppb-addon-wrapper  addon-root-divider"><div id="sppb-addon-u71t5NV0iA61zMddtFqKM" class="clearfix  "     ><div class="sppb-addon-divider-wrap divider-position"><div class="sppb-divider sppb-divider-border " role="none"></div></div></div></div></div></div></div></div></div></section><section id="section-id-1724084785701" class="sppb-section" ><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1724084785700"><div id="column-id-1724084785700" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-1724314091873" class="sppb-addon-wrapper  addon-root-module"><div id="sppb-addon-1724314091873" class="clearfix  "     ><div class="sppb-addon sppb-addon-module "><div class="sppb-addon-content">
 <div id="mod-custom123" class="mod-custom custom">
