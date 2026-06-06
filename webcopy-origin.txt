@@ -1,5 +1,5 @@
 Uri: http://datasisma.local/
-File Name: C:\Downloaded Web Sites\datasisma.local\index-1.htm
+File Name: C:\Downloaded Web Sites\datasisma.local\index.htm
 Content Type: text/html
 
 Uri: http://datasisma.local/analisi-delle-aree-per-profondità.html
@@ -11,31 +11,31 @@ File Name: C:\Downloaded Web Sites\datasisma.local\cache\com_templates\templates
 Content Type: text/javascript
 
 Uri: http://datasisma.local/cache/com_templates/templates/shaper_helixultimate/fb817c72c8b2deba9a3408628bfaf71f.css
-File Name: C:\Downloaded Web Sites\datasisma.local\cache\com_templates\templates\shaper_helixultimate\fb817c72c8b2deba9a3408628bfaf71f-1.css
+File Name: C:\Downloaded Web Sites\datasisma.local\cache\com_templates\templates\shaper_helixultimate\fb817c72c8b2deba9a3408628bfaf71f.css
 Content Type: text/css
 
 Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/animate.min.css?e330c48656444406579e9a67ad27107f
-File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\animate.min-1.css
+File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
 
 Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/dynamic-content.css?e330c48656444406579e9a67ad27107f
-File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\dynamic-content-1.css
+File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\dynamic-content.css
 Content Type: text/css
 
 Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?e330c48656444406579e9a67ad27107f
-File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\font-awesome-6.min-1.css
+File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
 Content Type: text/css
 
 Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?e330c48656444406579e9a67ad27107f
-File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\font-awesome-v4-shims-1.css
+File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
 Content Type: text/css
 
 Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/magnific-popup.css
-File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\magnific-popup-1.css
+File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\magnific-popup.css
 Content Type: text/css
 
 Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/sppagebuilder.css?e330c48656444406579e9a67ad27107f
-File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\sppagebuilder-1.css
+File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\sppagebuilder.css
 Content Type: text/css
 
 Uri: http://datasisma.local/components/com_sppagebuilder/assets/js/addons/image.js
@@ -135,7 +135,7 @@ File Name: C:\Downloaded Web Sites\datasisma.local\griglia-faglie\faglie-attive-
 Content Type: text/html
 
 Uri: http://datasisma.local/images/world-154527_1280.png
-File Name: C:\Downloaded Web Sites\datasisma.local\images\world-154527_1280-1.png
+File Name: C:\Downloaded Web Sites\datasisma.local\images\world-154527_1280.png
 Content Type: image/png
 
 Uri: http://datasisma.local/mappa-estesa-della-basilicata.html
@@ -163,7 +163,7 @@ File Name: C:\Downloaded Web Sites\datasisma.local\mappa-plancia-crc-della-pugli
 Content Type: text/html
 
 Uri: http://datasisma.local/mappa-plancia-crc-della-sicilia.html
-File Name: C:\Downloaded Web Sites\datasisma.local\mappa-plancia-crc-della-sicilia-1.html
+File Name: C:\Downloaded Web Sites\datasisma.local\mappa-plancia-crc-della-sicilia.html
 Content Type: text/html
 
 Uri: http://datasisma.local/media-giornaliera-delle-fk.html
@@ -263,7 +263,7 @@ File Name: C:\Downloaded Web Sites\datasisma.local\media\vendor\fontawesome-free
 Content Type: font/woff2
 
 Uri: http://datasisma.local/media/vendor/joomla-custom-elements/css/joomla-alert.min.css?0.4.1
-File Name: C:\Downloaded Web Sites\datasisma.local\media\vendor\joomla-custom-elements\css\joomla-alert.min-1.css
+File Name: C:\Downloaded Web Sites\datasisma.local\media\vendor\joomla-custom-elements\css\joomla-alert.min.css
 Content Type: text/css
 
 Uri: http://datasisma.local/media/vendor/jquery/js/jquery.min.js?3.7.1
@@ -271,7 +271,7 @@ File Name: C:\Downloaded Web Sites\datasisma.local\media\vendor\jquery\js\jquery
 Content Type: text/javascript
 
 Uri: http://datasisma.local/plancia-crc-griglia-per-mappa-universale-punti-e-valori.html
-File Name: C:\Downloaded Web Sites\datasisma.local\plancia-crc-griglia-per-mappa-universale-punti-e-valori-1.html
+File Name: C:\Downloaded Web Sites\datasisma.local\plancia-crc-griglia-per-mappa-universale-punti-e-valori.html
 Content Type: text/html
 
 Uri: http://datasisma.local/profondimetri/profondimetri-15km.html
@@ -287,7 +287,7 @@ File Name: C:\Downloaded Web Sites\datasisma.local\stardard-per-crc\calabria-gri
 Content Type: text/html
 
 Uri: http://datasisma.local/stardard-per-crc/griglia-a-punti-con-valori-prc.html
-File Name: C:\Downloaded Web Sites\datasisma.local\stardard-per-crc\griglia-a-punti-con-valori-prc-1.html
+File Name: C:\Downloaded Web Sites\datasisma.local\stardard-per-crc\griglia-a-punti-con-valori-prc.html
 Content Type: text/html
 
 Uri: http://datasisma.local/stardard-per-crc/griglia-per-mappa-universale.html
@@ -332,6 +332,10 @@ Content Type: image/jpeg
 
 Uri: https://beneinst.github.io/callegari.gridmap/images/Italy-CRC2.jpg
 File Name: C:\Downloaded Web Sites\datasisma.local\callegari.gridmap\images\Italy-CRC2.jpg
+Content Type: image/jpeg
+
+Uri: https://beneinst.github.io/callegari.gridmap/images/mappaitalia.jpg
+File Name: C:\Downloaded Web Sites\datasisma.local\callegari.gridmap\images\mappaitalia.jpg
 Content Type: image/jpeg
 
 Uri: https://cdn.jsdelivr.net/npm/chart.js
