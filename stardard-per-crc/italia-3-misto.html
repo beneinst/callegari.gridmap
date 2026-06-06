@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="it-it" dir="ltr">
 	
-<!-- Mirrored from datasisma.local/stardard-per-crc/italia-3-misto.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2026 03:36:32 GMT -->
+<!-- Mirrored from datasisma.local/stardard-per-crc/italia-3-misto.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2026 21:49:09 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
 		
@@ -30,7 +30,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"59ab9a593d34edb732ed243c2e186d35"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"a5f0317aa0accf5e9ecfd2b732d261cc"}</script>
 	<script src="../media/system/js/core.min23b9.js?a3d8f8"></script>
 	<script src="../media/vendor/jquery/js/jquery.min8a0c.js?3.7.1"></script>
 	<script src="../media/legacy/js/jquery-noconflict.min1fec.js?504da4"></script>
@@ -46,7 +46,7 @@
 	<script src="../media/vendor/bootstrap/js/tab.min9b16.js?5.3.8" type="module"></script>
 	<script src="../media/vendor/bootstrap/js/toast.min9b16.js?5.3.8" type="module"></script>
 	<script src="../media/system/js/showon.min8da8.js?e51227" type="module"></script>
-	<script src="../media/mod_menu/js/menu.minc406.js?9c4b21" type="module"></script>
+	<script src="../media/mod_menu/js/menu.min8bac.js?e1403e" type="module"></script>
 	<script src="../media/system/js/messages.minee3c.js?9a4811" type="module"></script>
 	<script src="../components/com_sppagebuilder/assets/js/common.js"></script>
 	<script src="../components/com_sppagebuilder/assets/js/dynamic-contentd893.js?e330c48656444406579e9a67ad27107f"></script>
@@ -384,21 +384,12 @@
 
 .grid-line {
     position: absolute;
-    border-color: #438D80;
+    border-color: rgba(67, 141, 128, 0.5);
     border-style: dashed;
 }
 
-.grid-line.vertical {
-    border-width: 0 1px;
-    top: 0;
-    bottom: 0;
-}
-
-.grid-line.horizontal {
-    border-width: 1px 0;
-    left: 0;
-    right: 0;
-}
+.grid-line.vertical  { border-width: 0 1px; top: 0; bottom: 0; }
+.grid-line.horizontal{ border-width: 1px 0; left: 0; right: 0; }
 
 .label-col, .label-row {
     position: absolute;
@@ -412,26 +403,13 @@
     z-index: 2;
 }
 
-.label-col {
-    top: 0;
-    width: 3.5%;
-    transform: translateX(-50%);
-}
+.label-col { top: 0; width: 3.5%; transform: translateX(-50%); }
+.label-row { left: 0; padding-left: 10px; top: 50%; transform: translateY(-50%); padding-right: 10px; }
 
-.label-row {
-    left: 0;
-    padding-left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding-right: 10px;
-}
-
-#pointsContainer, #valuesContainer {
+#pointsContainer, #valuesContainer, #labelsContainer {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
 }
 
 .point {
@@ -439,6 +417,7 @@
     border-radius: 50%;
     border: 2px solid;
     transform: translate(-50%, -50%);
+    z-index: 4;
 }
 
 .point.small   { width: 1vw;   height: 1vw; }
@@ -446,6 +425,38 @@
 .point.large   { width: 2vw;   height: 2vw; }
 .point.xlarge  { width: 2.5vw; height: 2.5vw; }
 .point.xxlarge { width: 3vw;   height: 3vw; }
+
+/* ── Etichetta punto ── */
+.point-label {
+    position: absolute;
+    transform: translateX(-50%);
+    z-index: 5;
+    text-align: center;
+    pointer-events: none;
+}
+
+.point-label .label-text {
+    display: inline-block;
+    background: white;
+    border: 1px solid #666;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 0.85vw;
+    font-weight: bold;
+    color: #222;
+    white-space: nowrap;
+    line-height: 1.3;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+
+.point-label .label-arrow {
+    display: block;
+    text-align: center;
+    font-size: 0.9vw;
+    color: #444;
+    line-height: 1;
+    margin-top: 1px;
+}
 
 .value-box {
     position: absolute;
@@ -460,11 +471,7 @@
     padding-bottom: 8px;
 }
 
-.value-box::after {
-    content: '';
-    display: block;
-    height: 10px;
-}
+.value-box::after { content: ''; display: block; height: 10px; }
 
 /* ── Barre controlli ── */
 #barTop {
@@ -491,7 +498,6 @@
     padding: 8px 10px;
 }
 
-/* Info coordinate fisse */
 #geoInfo {
     background: linear-gradient(135deg, #eef6ff, #ddeeff);
     border: 2px solid #5599cc;
@@ -503,10 +509,7 @@
     white-space: nowrap;
 }
 
-#geoInfo strong {
-    color: #28264d;
-    font-size: 11px;
-}
+#geoInfo strong { color: #28264d; font-size: 11px; }
 
 input[type="text"] {
     padding: 7px 8px;
@@ -543,8 +546,7 @@ button.bg-teal  { background-color: #17a2b8; }
 
 #alertDialog {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
     background: white;
@@ -571,6 +573,8 @@ button.bg-teal  { background-color: #17a2b8; }
     #barTop, #barBottom { flex-direction: column; align-items: stretch; }
     input[type="text"], button { width: 100%; }
     #geoInfo { white-space: normal; }
+    .point-label .label-text { font-size: 2.5vw; }
+    .point-label .label-arrow { font-size: 2.8vw; }
 }
 </style>
 </head>
@@ -579,22 +583,24 @@ button.bg-teal  { background-color: #17a2b8; }
 
     <!-- ═══ BARRA SUPERIORE: Coordinate N/E ═══ -->
     <div id="barTop">
-        <!-- Riquadro info coordinate fisse -->
         <div id="geoInfo">
             <strong>📐 Bounding Box mappa:</strong><br>
-            N 47.3° → 34.7° &nbsp;|&nbsp; E 5.8° → 19.7°
+            N 50.2° → 34.5° &nbsp;|&nbsp; E 4.8° → 20.5°
         </div>
         <span class="input-section-label">📍 Punto N/E:</span>
         <input type="text" id="inputPointGeo"
                placeholder="FKS,dim(1-5),N,E  es: 7820,2,44.22,11.34"
-               style="flex:1; min-width:220px;">
+               style="flex:1; min-width:200px;">
+        <input type="text" id="inputLabelGeo"
+               placeholder="Etichetta (opzionale)"
+               style="flex:1; min-width:130px;">
         <button id="addPointGeo" class="bg-teal">Aggiungi Punto N/E</button>
     </div>
 
     <!-- ═══ MAPPA ═══ -->
     <div class="custom-grid-map">
         <img data-src="https://beneinst.github.io/callegari.gridmap/images/pianta-italia_oknew3.jpg"
-             alt="Mappa dell'Italia"  class="lazyload" />
+             alt="Mappa dell'Italia" crossorigin="anonymous"  class="lazyload" />
         <div id="gridContainer"></div>
         <div id="labelsContainer"></div>
         <div id="pointsContainer"></div>
@@ -606,17 +612,20 @@ button.bg-teal  { background-color: #17a2b8; }
         <span class="input-section-label">🔢 Cella:</span>
         <input type="text" id="inputPoint"
                placeholder="Punto (es. A1,650,5,2)"
-               style="flex:1; min-width:160px;">
+               style="flex:1; min-width:150px;">
+        <input type="text" id="inputLabelCell"
+               placeholder="Etichetta (opzionale)"
+               style="flex:1; min-width:130px;">
         <input type="text" id="inputValue"
                placeholder="Valore (es. A1,5430,55)"
-               style="flex:1; min-width:160px;">
+               style="flex:1; min-width:150px;">
         <button id="addPoint"       class="bg-blue">Aggiungi Punto</button>
         <button id="addValue"       class="bg-blue">Aggiungi Valore</button>
         <button id="removeLastItem" class="bg-red">Rimuovi Ultimo</button>
         <button id="downloadImage"  class="bg-green">Scarica Immagine</button>
     </div>
 
-  </div><!-- /container -->
+  </div>
 
   <div id="alertDialog">
     <div class="alert-content">
@@ -629,136 +638,106 @@ button.bg-teal  { background-color: #17a2b8; }
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
 
-    // ── Configurazione griglia ──────────────────────────────────────
-    const gridSizeX = 12;
-    const gridSizeY = 15;
-    const letters   = 'ABCDEFGHIJKLMNO';
+    const gridSizeX = 14;
+    const gridSizeY = 17;
+    const letters   = 'ABCDEFGHIJKLMN';
 
-    // ── Bounding box FISSO della mappa pianta-italia_oknew.jpg ──────
-    const MAP_N_MAX =  47.3;
-    const MAP_N_MIN =  34.7;
-    const MAP_E_MIN =   5.8;
-    const MAP_E_MAX =  19.7;
+    const MAP_N_MAX = 50.2;
+    const MAP_N_MIN = 34.5;
+    const MAP_E_MIN =  4.8;
+    const MAP_E_MAX = 20.5;
 
     let items = [];
 
     // ── Disegna griglia ─────────────────────────────────────────────
     function drawGrid() {
-        const gridContainer   = document.getElementById('gridContainer');
-        const labelsContainer = document.getElementById('labelsContainer');
+        const gc = document.getElementById('gridContainer');
+        const lc = document.getElementById('labelsContainer');
 
         for (let i = 0; i <= gridSizeX; i++) {
-            const line = document.createElement('div');
-            line.className = 'grid-line vertical';
-            line.style.left = `${(i / gridSizeX) * 100}%`;
-            gridContainer.appendChild(line);
+            const l = document.createElement('div');
+            l.className = 'grid-line vertical';
+            l.style.left = `${(i / gridSizeX) * 100}%`;
+            gc.appendChild(l);
         }
-
         for (let i = 0; i <= gridSizeY; i++) {
-            const line = document.createElement('div');
-            line.className = 'grid-line horizontal';
-            line.style.top = `${(i / gridSizeY) * 100}%`;
-            gridContainer.appendChild(line);
+            const l = document.createElement('div');
+            l.className = 'grid-line horizontal';
+            l.style.top = `${(i / gridSizeY) * 100}%`;
+            gc.appendChild(l);
         }
-
         letters.split('').forEach((letter, i) => {
-            const label = document.createElement('div');
-            label.className = 'label-col';
-            label.style.left = `${(i + 0.5) / gridSizeX * 100}%`;
-            label.textContent = letter;
-            labelsContainer.appendChild(label);
+            const lb = document.createElement('div');
+            lb.className = 'label-col';
+            lb.style.left = `${(i + 0.5) / gridSizeX * 100}%`;
+            lb.textContent = letter;
+            lc.appendChild(lb);
         });
-
         for (let i = 1; i <= gridSizeY; i++) {
-            const label = document.createElement('div');
-            label.className = 'label-row';
-            label.style.top = `${((i - 0.5) / gridSizeY) * 100}%`;
-            label.textContent = i;
-            labelsContainer.appendChild(label);
+            const lb = document.createElement('div');
+            lb.className = 'label-row';
+            lb.style.top = `${((i - 0.5) / gridSizeY) * 100}%`;
+            lb.textContent = i;
+            lc.appendChild(lb);
         }
     }
 
-    // ── Colore dal valore FKS (condiviso) ───────────────────────────
+    // ── Colore FKS ──────────────────────────────────────────────────
     function getColorFromValue(value) {
         let color, borderColor;
-        if (value.startsWith('6')) {
-            color = '#00bfff'; borderColor = '#0077be';
-        } else if (value.startsWith('7')) {
-            color = 'red';     borderColor = '#8b0000';
-        } else if (value.startsWith('8')) {
-            color = 'orange';  borderColor = '#ff8c00';
-        } else if (['9','10','11','12','13'].some(p => value.startsWith(p))) {
-            color = '#348017'; borderColor = '#2a6b12';
-        } else {
-            color = 'yellow';  borderColor = '#ffd700';
-        }
+        if      (value.startsWith('6'))  { color = '#00bfff'; borderColor = '#0077be'; }
+        else if (value.startsWith('7'))  { color = 'red';     borderColor = '#8b0000'; }
+        else if (value.startsWith('8'))  { color = 'orange';  borderColor = '#ff8c00'; }
+        else if (['9','10','11','12','13'].some(p => value.startsWith(p)))
+                                         { color = '#348017'; borderColor = '#2a6b12'; }
+        else                             { color = 'yellow';  borderColor = '#ffd700'; }
         return { color, borderColor };
     }
 
-    // ── Classe dimensione punto (1-5) ───────────────────────────────
     const SIZE_CLASSES = ['small', 'medium', 'large', 'xlarge', 'xxlarge'];
 
-    // ── Aggiungi punto con coordinate geografiche N/E ───────────────
+    // ── Aggiungi punto N/E ──────────────────────────────────────────
     function addPointGeo() {
-        const raw   = document.getElementById('inputPointGeo').value.trim();
-        // Formato: FKS,dimensione(1-5),N,E
-        const match = raw.match(/^(\d+),([1-5]),(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/i);
+        const raw      = document.getElementById('inputPointGeo').value.trim();
+        const etichetta = document.getElementById('inputLabelGeo').value.trim();
+        const match    = raw.match(/^(\d+),([1-5]),(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/i);
 
         if (!match) {
             showAlert('Formato non valido.\nUsa: FKS,Dimensione(1-5),N,E\nEs: 7820,2,44.22,11.34');
             return;
         }
 
-        const value = match[1];
-        const size  = parseInt(match[2]);
-        const nVal  = parseFloat(match[3]);
-        const eVal  = parseFloat(match[4]);
-
-        // Conversione coordinate → percentuale pixel sul canvas
+        const value = match[1], size = parseInt(match[2]);
+        const nVal  = parseFloat(match[3]), eVal = parseFloat(match[4]);
         const leftPct = ((eVal - MAP_E_MIN) / (MAP_E_MAX - MAP_E_MIN)) * 100;
         const topPct  = ((MAP_N_MAX - nVal)  / (MAP_N_MAX - MAP_N_MIN)) * 100;
 
         if (leftPct < 0 || leftPct > 100 || topPct < 0 || topPct > 100) {
-            showAlert(
-                `Coordinate fuori dalla mappa.\n` +
-                `N deve essere tra ${MAP_N_MIN} e ${MAP_N_MAX}\n` +
-                `E deve essere tra ${MAP_E_MIN} e ${MAP_E_MAX}`
-            );
+            showAlert(`Coordinate fuori dalla mappa.\nN tra ${MAP_N_MIN} e ${MAP_N_MAX}\nE tra ${MAP_E_MIN} e ${MAP_E_MAX}`);
             return;
         }
 
         const { color, borderColor } = getColorFromValue(value);
-
-        items.push({
-            type: 'pointGeo',
-            leftPct,
-            topPct,
-            color,
-            borderColor,
-            value,
-            size,
-            label: `N=${nVal} E=${eVal}`
-        });
-
+        items.push({ type:'pointGeo', leftPct, topPct, color, borderColor, value, size, etichetta, geoLabel:`N=${nVal} E=${eVal}` });
         renderItems();
         document.getElementById('inputPointGeo').value = '';
+        document.getElementById('inputLabelGeo').value = '';
     }
 
     // ── Aggiungi punto per cella ────────────────────────────────────
     function addPoint() {
         const pointInput = document.getElementById('inputPoint').value.toUpperCase();
-        const pointMatch = pointInput.match(/^([A-O]\d{1,2}),(\d+),(\d),(\d)$/);
-        
+        const etichetta  = document.getElementById('inputLabelCell').value.trim();
+        const pointMatch = pointInput.match(/^([A-N]\d{1,2}),(\d+),(\d),(\d)$/);
+
         if (!pointMatch) {
-            showAlert('Formato non valido per il punto.\nUsa: Area,Valore,Posizione(1-9),Dimensione(1-5)\nEs: A1,650,5,2');
+            showAlert('Formato non valido.\nUsa: Area,Valore,Posizione(1-9),Dim(1-5)\nEs: A1,7820,5,2');
             return;
         }
 
         const [, area, value, position, size] = pointMatch;
-        const col         = area[0];
-        const row         = parseInt(area.slice(1));
-        const positionNum = parseInt(position);
-        const sizeNum     = parseInt(size);
+        const col = area[0], row = parseInt(area.slice(1));
+        const positionNum = parseInt(position), sizeNum = parseInt(size);
 
         if (row < 1 || row > gridSizeY || letters.indexOf(col) === -1 ||
             positionNum < 1 || positionNum > 9 || sizeNum < 1 || sizeNum > 5) {
@@ -767,162 +746,180 @@ button.bg-teal  { background-color: #17a2b8; }
         }
 
         const { color, borderColor } = getColorFromValue(value);
-
-        items.push({ type: 'point', area, position: positionNum, color, borderColor, value, size: sizeNum });
+        items.push({ type:'point', area, position:positionNum, color, borderColor, value, size:sizeNum, etichetta });
         renderItems();
-        document.getElementById('inputPoint').value = '';
+        document.getElementById('inputPoint').value    = '';
+        document.getElementById('inputLabelCell').value = '';
     }
 
     // ── Aggiungi valore per cella ───────────────────────────────────
     function addValue() {
         const valueInput = document.getElementById('inputValue').value.toUpperCase();
-        const valueMatch = valueInput.match(/^([A-O]\d{1,2}),(\d+),(\d+)$/);
-        
-        if (!valueMatch) {
-            showAlert('Formato non valido per il valore.\nUsa: Area,Valore1,Valore2\nEs: A1,5430,55');
-            return;
-        }
+        const valueMatch = valueInput.match(/^([A-N]\d{1,2}),(\d+),(\d+)$/);
+
+        if (!valueMatch) { showAlert('Formato non valido.\nUsa: Area,Valore1,Valore2\nEs: A1,5430,55'); return; }
 
         const [, area, value1, value2] = valueMatch;
-        const col = area[0];
-        const row = parseInt(area.slice(1));
+        const col = area[0], row = parseInt(area.slice(1));
 
         if (row < 1 || row > gridSizeY || letters.indexOf(col) === -1) {
-            showAlert('Area non valida. Controlla la lettera della colonna e il numero di riga.');
-            return;
+            showAlert('Area non valida.'); return;
         }
 
-        items.push({ type: 'value', area, value1, value2 });
+        items.push({ type:'value', area, value1, value2 });
         renderItems();
         document.getElementById('inputValue').value = '';
     }
 
-    // ── Offset posizione per punti a cella ──────────────────────────
-    function getPositionOffset(position) {
-        const offsets = {
-            1: {x: 0.25, y: 0.25}, 2: {x: 0.5, y: 0.25}, 3: {x: 0.75, y: 0.25},
-            4: {x: 0.25, y: 0.5},  5: {x: 0.5, y: 0.5},  6: {x: 0.75, y: 0.5},
-            7: {x: 0.25, y: 0.75}, 8: {x: 0.5, y: 0.75}, 9: {x: 0.75, y: 0.75}
-        };
-        return offsets[position];
+    function getPositionOffset(p) {
+        const o = {1:{x:.25,y:.25},2:{x:.5,y:.25},3:{x:.75,y:.25},
+                   4:{x:.25,y:.5}, 5:{x:.5,y:.5}, 6:{x:.75,y:.5},
+                   7:{x:.25,y:.75},8:{x:.5,y:.75},9:{x:.75,y:.75}};
+        return o[p];
     }
 
-    // ── Renderizza tutti gli elementi ───────────────────────────────
+    // ── Crea etichetta DOM sopra il punto ───────────────────────────
+    function createLabelEl(testo, leftPct, topPct) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'point-label';
+        wrapper.style.left = `${leftPct}%`;
+        // Posiziona sopra il punto: sposta su di ~3vw per lasciare spazio
+        wrapper.style.top  = `calc(${topPct}% - 3.5vw)`;
+
+        const span = document.createElement('span');
+        span.className   = 'label-text';
+        span.textContent = testo;
+
+        const arrow = document.createElement('span');
+        arrow.className   = 'label-arrow';
+        arrow.textContent = '∨';
+
+        wrapper.appendChild(span);
+        wrapper.appendChild(arrow);
+        return wrapper;
+    }
+
+    // ── Render ──────────────────────────────────────────────────────
     function renderItems() {
-        const pointsContainer = document.getElementById('pointsContainer');
-        const valuesContainer = document.getElementById('valuesContainer');
-        pointsContainer.innerHTML = '';
-        valuesContainer.innerHTML = '';
+        const pc = document.getElementById('pointsContainer');
+        const vc = document.getElementById('valuesContainer');
+        pc.innerHTML = ''; vc.innerHTML = '';
 
         items.forEach(item => {
 
-            // Punto geografico N/E
+            // ── Punto geografico N/E ──
             if (item.type === 'pointGeo') {
+                // Etichetta (sopra il punto)
+                if (item.etichetta) {
+                    pc.appendChild(createLabelEl(item.etichetta, item.leftPct, item.topPct));
+                }
+                // Punto
                 const el = document.createElement('div');
-                el.className = `point ${SIZE_CLASSES[item.size - 1] || 'medium'}`;
+                el.className = `point ${SIZE_CLASSES[item.size-1]||'medium'}`;
                 el.style.backgroundColor = item.color;
                 el.style.borderColor     = item.borderColor;
                 el.style.left = `${item.leftPct}%`;
                 el.style.top  = `${item.topPct}%`;
-                el.title = `${item.label} — FKS ${item.value}`;
-                pointsContainer.appendChild(el);
+                el.title = `${item.geoLabel} — FKS ${item.value}`;
+                pc.appendChild(el);
                 return;
             }
 
-            // Punto / valore per cella
-            const col      = item.area[0];
-            const row      = parseInt(item.area.slice(1));
-            const colIndex = letters.indexOf(col);
+            // ── Punto / valore per cella ──
+            const col = item.area[0], row = parseInt(item.area.slice(1));
+            const ci  = letters.indexOf(col);
 
             if (item.type === 'point') {
-                const offset = getPositionOffset(item.position);
-                const left   = `${((colIndex + offset.x) / gridSizeX) * 100}%`;
-                const top    = `${((row - 1 + offset.y) / gridSizeY) * 100}%`;
+                const off   = getPositionOffset(item.position);
+                const leftP = ((ci  + off.x) / gridSizeX) * 100;
+                const topP  = ((row - 1 + off.y) / gridSizeY) * 100;
 
+                // Etichetta
+                if (item.etichetta) {
+                    pc.appendChild(createLabelEl(item.etichetta, leftP, topP));
+                }
+                // Punto
                 const el = document.createElement('div');
-                el.className = `point ${SIZE_CLASSES[item.size - 1] || 'medium'}`;
+                el.className = `point ${SIZE_CLASSES[item.size-1]||'medium'}`;
                 el.style.backgroundColor = item.color;
                 el.style.borderColor     = item.borderColor;
-                el.style.left = left;
-                el.style.top  = top;
+                el.style.left = `${leftP}%`;
+                el.style.top  = `${topP}%`;
                 el.title = `${item.area}: ${item.value}`;
-                pointsContainer.appendChild(el);
+                pc.appendChild(el);
 
             } else if (item.type === 'value') {
-                const left = `${((colIndex + 0.5) / gridSizeX) * 100}%`;
-                const top  = `${((row - 0.5) / gridSizeY) * 100}%`;
-
                 const el = document.createElement('div');
                 el.className  = 'value-box';
                 el.innerHTML  = `${item.value1}<br>${item.value2}`;
-                el.style.left = left;
-                el.style.top  = top;
-                valuesContainer.appendChild(el);
+                el.style.left = `${((ci + 0.5) / gridSizeX) * 100}%`;
+                el.style.top  = `${((row - 0.5) / gridSizeY) * 100}%`;
+                vc.appendChild(el);
             }
         });
     }
 
     // ── Rimuovi ultimo ──────────────────────────────────────────────
     function removeLastItem() {
-        if (items.length > 0) {
-            items.pop();
-            renderItems();
-        } else {
-            showAlert('Non ci sono elementi da rimuovere.');
-        }
+        if (items.length > 0) { items.pop(); renderItems(); }
+        else showAlert('Non ci sono elementi da rimuovere.');
     }
 
-    // ── Scarica immagine ────────────────────────────────────────────
+    // ── Download: nasconde griglia e label, poi le ripristina ───────
     function downloadImage() {
-        var btn     = document.getElementById('downloadImage');
-        var gridMap = document.querySelector('.custom-grid-map');
+        var btn      = document.getElementById('downloadImage');
+        var gridMap  = document.querySelector('.custom-grid-map');
         var origText = btn.textContent;
         btn.textContent = '⏳ Elaborazione...';
         btn.disabled = true;
 
-        html2canvas(gridMap, {
-            useCORS: true,
-            allowTaint: true,
-            scale: 2,
-            logging: false
-        }).then(function(canvas) {
+        // Nascondi griglia e etichette celle prima del rendering
+        var gridContainer   = document.getElementById('gridContainer');
+        var labelsContainer = document.getElementById('labelsContainer');
+        gridContainer.style.display   = 'none';
+        labelsContainer.style.display = 'none';
+
+        html2canvas(gridMap, { useCORS:true, allowTaint:true, scale:2, logging:false })
+        .then(function(canvas) {
             var dataURL = canvas.toDataURL('image/png');
             var link = document.createElement('a');
-            link.download = 'Mappa_Italia.png';
+            link.download = 'Mappa_Italia3.html';
             link.href = dataURL;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }).catch(function(err) {
             console.error('Errore download:', err);
-            showAlert('Errore durante il download dell\'immagine.');
+            showAlert('Errore durante il download.');
         }).finally(function() {
+            // Ripristina griglia e label sempre, anche in caso di errore
+            gridContainer.style.display   = '';
+            labelsContainer.style.display = '';
             btn.textContent = origText;
             btn.disabled = false;
         });
     }
 
-    // ── Mostra alert ────────────────────────────────────────────────
+    // ── Alert ───────────────────────────────────────────────────────
     function showAlert(message) {
         document.getElementById('alertMessage').textContent = message;
         document.getElementById('alertDialog').style.display = 'block';
     }
 
-    // ── Event listeners ─────────────────────────────────────────────
-    // ── Event listeners protetti ─────────────────────────────────
+    // ── Event listeners protetti ────────────────────────────────────
     function safe(id, evt, fn) { var el = document.getElementById(id); if (el) el.addEventListener(evt, fn); }
-    safe('addPointGeo',    'click',  addPointGeo);
-    safe('addPoint',       'click',  addPoint);
-    safe('addValue',       'click',  addValue);
-    safe('removeLastItem', 'click',  removeLastItem);
-    safe('downloadImage',  'click',  downloadImage);
+    safe('addPointGeo',    'click', addPointGeo);
+    safe('addPoint',       'click', addPoint);
+    safe('addValue',       'click', addValue);
+    safe('removeLastItem', 'click', removeLastItem);
+    safe('downloadImage',  'click', downloadImage);
     safe('alertOk', 'click', function() { document.getElementById('alertDialog').style.display = 'none'; });
 
     drawGrid();
   </script>
 </body>
 
-<!-- Mirrored from datasisma.local/stardard-per-crc/italia-3-misto.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jun 2026 03:36:33 GMT -->
+<!-- Mirrored from datasisma.local/stardard-per-crc/italia-3-misto.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jun 2026 21:49:10 GMT -->
 </html></div>
 </div></div></div></div></div></div></div></div></div></section><section id="section-id-1726039355432" class="sppb-section" ><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1726039355429"><div id="column-id-1726039355429" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-IfX9N6uCejVZsoOySyLWD" class="sppb-addon-wrapper  addon-root-image"><div id="sppb-addon-IfX9N6uCejVZsoOySyLWD" class="clearfix  "     ><div class="sppb-addon sppb-addon-single-image   sppb-addon-image-shape"><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img  class="sppb-img-responsive  lazyload" data-src="https://beneinst.github.io/callegari.gridmap/images/posizionamento1.png"  alt="Image" title=""   /></div></div></div></div></div><div id="sppb-addon-wrapper-gUs_swenDfuR8n2i70USV" class="sppb-addon-wrapper  addon-root-empty-space"><div id="sppb-addon-gUs_swenDfuR8n2i70USV" class="clearfix  "     ><div class="sppb-empty-space  clearfix"></div></div></div></div></div></div><div class="sppb-row-column  " id="column-wrap-id-1726039355430"><div id="column-id-1726039355430" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-Ka_6Z6mXXnIPN8ncC3CZe" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-Ka_6Z6mXXnIPN8ncC3CZe" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><h3 class="sppb-addon-title">Didascalia</h3><div class="sppb-addon-content  "><p style="text-align:justify;"></p><p style="text-align:justify;">Ogni punto è posizionato in una cella numerata a partire dall'alto a sinistra, con i numeri che aumentano verso destra e poi verso il basso. Oltre alla posizione, i punti hanno una dimensione indicata da un numero intero: 1 rappresenta un punto piccolo, 2 un punto di dimensione media e 3 un punto grande.</p><p style="text-align:justify;"></p></div></div></div></div><div id="sppb-addon-wrapper-8h4md5PMS_e6WovDwtnOz" class="sppb-addon-wrapper  addon-root-image"><div id="sppb-addon-8h4md5PMS_e6WovDwtnOz" class="clearfix  "     ><div class="sppb-addon sppb-addon-single-image   sppb-addon-image-shape"><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img  class="sppb-img-responsive  lazyload" data-src="https://beneinst.github.io/callegari.gridmap/images/Gemini13.png"  alt="Image" title=""   /></div></div></div></div></div><div id="sppb-addon-wrapper-1745564134426" class="sppb-addon-wrapper  addon-root-empty-space"><div id="sppb-addon-1745564134426" class="clearfix  "     ><div class="sppb-empty-space  clearfix"></div></div></div><div id="sppb-addon-wrapper-ZVwGN-HRrgOstfn3jf4Ov" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-ZVwGN-HRrgOstfn3jf4Ov" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><div class="sppb-addon-content  "><p style="text-align:justify;">L'inserimento del <strong>colore</strong> dei punti è determinato dal primo numero (iniziale, es. 7820 sarà un punto rosso) di FKS: <strong>1-5</strong> Giallo, <strong>6</strong> Blu, <strong>7</strong> Rosso, <strong>8</strong> Arancione.</p><p style="text-align:justify;"></p></div></div></div></div><div id="sppb-addon-wrapper-lzmHn1n9n1U572-Eccd1D" class="sppb-addon-wrapper  addon-root-image"><div id="sppb-addon-lzmHn1n9n1U572-Eccd1D" class="clearfix  "     ><div class="sppb-addon sppb-addon-single-image   sppb-addon-image-shape"><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img  class="sppb-img-responsive  lazyload" data-src="https://beneinst.github.io/callegari.gridmap/images/coar1.png"  alt="Image" title=""   /></div></div></div></div></div><div id="sppb-addon-wrapper-C6JeBpM6LR1FQ8yP2xPzF" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-C6JeBpM6LR1FQ8yP2xPzF" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><div class="sppb-addon-content  "><p style="text-align:justify;"></p><p style="text-align:justify;"></p><p style="text-align:justify;">L'inserimento dei <strong>valori</strong> avviene tramite il pulsante successivo: Aggiungi Valore es. <strong>a1,7820,45</strong>.</p></div></div></div></div></div></div></div><div class="sppb-row-column  " id="column-wrap-id-1745564395868"><div id="column-id-1745564395868" class="sppb-column " ><div class="sppb-column-addons"></div></div></div><div class="sppb-row-column  " id="column-wrap-id-1726039355431"><div id="column-id-1726039355431" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-8z4mnH0k7lz4wqlYWHQw7" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-8z4mnH0k7lz4wqlYWHQw7" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><h3 class="sppb-addon-title">Es. a1,7820,3,2</h3><div class="sppb-addon-content  "><p></p><p><span style="mso-bidi-font-family:Calibri; mso-bidi-theme-font:minor-latin;">●</span> <strong>a1:</strong> Coordinate della cella</p><p class="MsoNormal"><span style="mso-bidi-font-family:Calibri; mso-bidi-theme-font:minor-latin;">●</span> <strong>7820:</strong> Valore FKS che determina anche il colore del punto</p><p class="MsoNormal"><span style="mso-bidi-font-family:Calibri; mso-bidi-theme-font:minor-latin;">●</span> <strong>3:</strong> Posizione in alto a destra del punto</p><p class="MsoNormal"><span style="mso-bidi-font-family:Calibri; mso-bidi-theme-font:minor-latin;">●</span> <strong>2:</strong> Dimensione media del punto</p></div></div></div></div><div id="sppb-addon-wrapper-nA1M1HHzAw3jLZtXjInAD" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-nA1M1HHzAw3jLZtXjInAD" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><h3 class="sppb-addon-title"><br>Dimensioni della Griglia</h3><div class="sppb-addon-content  "><p style="text-align:justify;"></p><p style="text-align:justify;">Le dimensioni di ogni singola cella nella griglia sono di: <strong>74,5 Km</strong> per lato.</p></div></div></div></div></div></div></div></div></div></section><section id="section-id-1726042991734" class="sppb-section" ><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1726042991732"><div id="column-id-1726042991732" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-1728973267122" class="sppb-addon-wrapper  addon-root-image"><div id="sppb-addon-1728973267122" class="clearfix  "     ><div class="sppb-addon sppb-addon-single-image   sppb-addon-image-shape"><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img  class="sppb-img-responsive  lazyload" data-src="https://beneinst.github.io/callegari.gridmap/images/screen.png"  alt="Image" title=""   /></div></div></div></div></div></div></div></div><div class="sppb-row-column  " id="column-wrap-id-1726042991733"><div id="column-id-1726042991733" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-eLlybCmZYlyi2wjuX3iN8" class="sppb-addon-wrapper  addon-root-empty-space"><div id="sppb-addon-eLlybCmZYlyi2wjuX3iN8" class="clearfix  "     ><div class="sppb-empty-space  clearfix"></div></div></div><div id="sppb-addon-wrapper-6n33A87yq6IDinkNUPFzL" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-6n33A87yq6IDinkNUPFzL" class="clearfix  "     ><div class="sppb-addon sppb-addon-text-block " ><div class="sppb-addon-content  "><p style="text-align:justify;">Per visualizzare la mappa dell'Italia a schermo intero, ideale per realizzare screenshot o filmati, <a href="home.html">clicca qui</a>.</p>
 </div></div></div></div></div></div></div></div></div></section><section id="section-id-1724084785701" class="sppb-section" ><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1724084785700"><div id="column-id-1724084785700" class="sppb-column " ><div class="sppb-column-addons"><div id="sppb-addon-wrapper-1724314091873" class="sppb-addon-wrapper  addon-root-module"><div id="sppb-addon-1724314091873" class="clearfix  "     ><div class="sppb-addon sppb-addon-module "><div class="sppb-addon-content">
