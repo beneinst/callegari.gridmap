@@ -27,7 +27,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"9292af78404e0c5bc105ca7e2f63572e"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"e30cf7d144036e904602c7211534f19c"}</script>
 	<script src="media/system/js/core.min.js?a3d8f8"></script>
 	<script src="media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -340,15 +340,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mappa Grid Personalizzata con Punti e Valori</title>
-   <style>
-     
-  body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    margin: 0;
-}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
 
- .container {
+        .container {
             display: flex;
             flex-direction: row;
             align-items: flex-start;
@@ -358,682 +357,739 @@
             justify-content: center;
         }
 
-.custom-grid-map {
-    position: relative;
-    width: 547px;
-    height: 898px;
-    border: 2px solid #848b79;
-    overflow: hidden;
-}
+        .custom-grid-map {
+            position: relative;
+            width: 547px;
+            height: 898px;
+            border: 2px solid #848b79;
+            overflow: hidden;
+        }
 
-#mapImage {
+        #mapImage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        @media screen and (min-width: 900px) {
+            .custom-grid-map {
+                width: 530px;
+                height: 898px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .grid-line {
+            position: absolute;
+            border-color: #438D80;
+            border-style: dashed;
+            z-index: 2;
+        }
+        .grid-line.vertical {
+            border-width: 0 1px 0 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+        }
+        .grid-line.horizontal {
+            border-width: 0 0 1px 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+        }
+
+        .label-col, .label-row {
+            position: absolute;
+            font-size: 14px;
+            background: rgba(245, 245, 220, 0.8);
+            padding: 2px 6px;
+            font-weight: bold;
+            color: rgba(220, 20, 60, 0.9);
+            white-space: nowrap;
+            text-align: center;
+            z-index: 3;
+            border-radius: 3px;
+        }
+        .label-col {
+            top: 5px;
+            transform: translateX(-50%);
+        }
+        .label-row {
+            left: 5px;
+            transform: translateY(-50%);
+        }
+
+        #gridContainer, #labelsContainer, #pointsContainer, #valuesContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Punto circolare standard */
+        .point {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            transition: all 0.1s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+        .point.small { width: 10px; height: 10px; }
+        .point.medium { width: 15px; height: 15px; }
+        .point.large { width: 20px; height: 20px; }
+
+        /* Segnaposto FKS (quadrato fisso) */
+        .fks-marker {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border: 2px solid;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            cursor: pointer;
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        /* Etichetta punto */
+        .point-label {
+            position: absolute;
+            transform: translateX(-50%);
+            z-index: 5;
+            text-align: center;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1;
+        }
+        .point-label .label-text {
+            display: inline-block;
+            background: white;
+            border: 1px solid #999;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #222;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-family: sans-serif;
+            line-height: 1;
+        }
+        .point-label .label-arrow {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            line-height: 1;
+            margin-top: -3px;
+            text-shadow: 0 1px 0 white;
+        }
+
+        .value-box {
+            position: absolute;
+            background-color: rgba(254, 254, 249, 0.9);
+            border: 2px dotted #517f7a;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            text-align: center;
+            border-radius: 4px;
+            line-height: 1.2;
+        }
+
+        #controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 260px;
+            align-items: stretch;
+            z-index: 10;
+            position: relative;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        button.bg-blue  { background-color: #007bff; }
+        button.bg-red   { background-color: #dc3545; }
+        button.bg-green { background-color: #28a745; }
+        button.bg-teal  { background-color: #17a2b8; }
+
+        @media screen and (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            #controls {
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            .custom-grid-map {
+                width: 90vw;
+                height: calc(90vw * 1.69);
+            }
+            .label-col, .label-row { font-size: 12px; }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container { flex-direction: column; }
+            #controls { flex-direction: column; width: 100%; }
+            button, input, select { width: 100%; }
+        }
+
+        #alertDialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 8px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .alert-content { text-align: center; }
+        .alert-action {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #imageUpload { display: none; }
+        #uploadLabel {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        #uploadLabel:hover { background-color: #45a049; }
+
+        #geoConfig {
+            background: linear-gradient(135deg, #eef6ff, #ddeeff);
+            border: 2px solid #5599cc;
+            border-radius: 8px;
+            padding: 10px 12px;
+            box-sizing: border-box;
+        }
+        #geoConfig .geo-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #28264d;
+            margin-bottom: 8px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        #geoConfig .geo-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 6px;
+            align-items: center;
+        }
+        #geoConfig .geo-row label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #444;
+            min-width: 52px;
+            white-space: nowrap;
+        }
+        #geoConfig .geo-row input {
+            flex: 1;
+            padding: 5px 7px;
+            font-size: 12px;
+            border: 1px solid #99bbdd;
+            border-radius: 4px;
+            background: white;
+            width: auto;
+        }
+        #geoConfig .geo-hint {
+            font-size: 10px;
+            color: #667;
+            text-align: center;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .input-separator {
+            border: none;
+            border-top: 2px dashed #bbb;
+            margin: 2px 0;
+            width: 100%;
+        }
+        .input-section-label {
+            font-size: 10px;
+            font-weight: bold;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+            margin: 0;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            margin: 5px 0;
+        }
+        .radio-group label {
+            font-size: 12px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+      
+/* Segnaposto FKS con immagine a puntatore */
+.fks-marker-img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-}
-
-/* Per schermi larghi */
-@media screen and (min-width: 900px) {
-    .custom-grid-map {
-        width: 530px;
-        height: 898px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-.grid-line {
-    position: absolute;
-    border-color: #438D80;
-    border-style: dashed;
-    z-index: 2;
-}
-
-.grid-line.vertical {
-    border-width: 0 1px 0 0;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-}
-
-.grid-line.horizontal {
-    border-width: 0 0 1px 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-}
-
-.label-col, .label-row {
-    position: absolute;
-    font-size: 14px;
-    background: rgba(245, 245, 220, 0.8);
-    padding: 2px 6px;
-    font-weight: bold;
-    color: rgba(220, 20, 60, 0.9);
-    white-space: nowrap;
-    text-align: center;
-    z-index: 3;
-    border-radius: 3px;
-}
-
-.label-col {
-    top: 5px;
-    transform: translateX(-50%);
-}
-
-.label-row {
-    left: 5px;
-    transform: translateY(-50%);
-}
-
-#gridContainer, #labelsContainer, #pointsContainer, #valuesContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.point {
-    position: absolute;
-    border-radius: 50%;
-    border: 2px solid;
+    width: 36px;
+    height: 36px;
     transform: translate(-50%, -50%);
     z-index: 4;
-}
-
-.point.small { width: 10px; height: 10px; }
-.point.medium { width: 15px; height: 15px; }
-.point.large { width: 20px; height: 20px; }
-
-.value-box {
-    position: absolute;
-    background-color: rgba(254, 254, 249, 0.9);
-    border: 2px dotted #517f7a;
-    padding: 4px 8px;
-    font-size: 12px;
-    font-weight: bold;
-    transform: translate(-50%, -50%);
-    z-index: 4;
-    text-align: center;
-    border-radius: 4px;
-    line-height: 1.2;
-}
-
-#controls {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 250px;
-    align-items: stretch;
-    z-index: 10;
-    position: relative;
-}
-
-input {
-    width: 100%;
-    max-width: none;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button {
-    padding: 10px 15px;
     cursor: pointer;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
 }
-
-button.bg-blue  { background-color: #007bff; }
-button.bg-red   { background-color: #dc3545; }
-button.bg-green { background-color: #28a745; }
-button.bg-teal  { background-color: #17a2b8; }
-
-/* Per schermi piccoli */
-@media screen and (max-width: 900px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    #controls {
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-    
-    .custom-grid-map {
-        width: 90vw;
-        height: calc(90vw * 1.69);
-    }
-    
-    .label-col, .label-row {
-        font-size: 12px;
-    }
-}
-
-/* Per schermi molto piccoli */
-@media screen and (max-width: 480px) {
-    .container {
-        flex-direction: column;
-    }
-    
-    #controls {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    button, input {
-        width: 100%;
-        max-width: none;
-    }
-}
-
-#alertDialog {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background: white;
-    border: 2px solid #333;
-    border-radius: 8px;
-    display: none;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
-.alert-content { 
-    text-align: center; 
-}
-
-.alert-action {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-#imageUpload {
-    display: none;
-}
-        
-#uploadLabel {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-#uploadLabel:hover {
-    background-color: #45a049;
-}
-
-/* ── Pannello configurazione coordinate geografiche ── */
-#geoConfig {
-    background: linear-gradient(135deg, #eef6ff, #ddeeff);
-    border: 2px solid #5599cc;
-    border-radius: 8px;
-    padding: 10px 12px;
-    box-sizing: border-box;
-}
-
-#geoConfig .geo-title {
-    font-size: 12px;
-    font-weight: bold;
-    color: #28264d;
-    margin-bottom: 8px;
-    text-align: center;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-#geoConfig .geo-row {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 6px;
-    align-items: center;
-}
-
-#geoConfig .geo-row label {
-    font-size: 11px;
-    font-weight: bold;
-    color: #444;
-    min-width: 52px;
-    white-space: nowrap;
-}
-
-#geoConfig .geo-row input {
-    flex: 1;
-    padding: 5px 7px;
-    font-size: 12px;
-    border: 1px solid #99bbdd;
-    border-radius: 4px;
-    background: white;
-    width: auto;
-}
-
-#geoConfig .geo-hint {
-    font-size: 10px;
-    color: #667;
-    text-align: center;
-    margin-top: 4px;
-    font-style: italic;
-}
-
-/* Separatori visivi tra sezioni */
-.input-separator {
-    border: none;
-    border-top: 2px dashed #bbb;
-    margin: 2px 0;
-    width: 100%;
-}
-
-.input-section-label {
-    font-size: 10px;
-    font-weight: bold;
-    color: #555;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-align: center;
-    margin: 0;
-}
-
-</style>
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div id="controls">
+<div class="container">
+    <div id="controls">
 
-            <!-- ═══ CONFIGURAZIONE COORDINATE MAPPA ═══ -->
-            <div id="geoConfig">
-                <div class="geo-title">📐 Coordinate Mappa</div>
-                <div class="geo-row">
-                    <label>N max:</label>
-                    <input type="number" id="nMax" step="0.01" placeholder="es. 47.10" value="47.10">
-                </div>
-                <div class="geo-row">
-                    <label>N min:</label>
-                    <input type="number" id="nMin" step="0.01" placeholder="es. 35.49" value="35.49">
-                </div>
-                <div class="geo-row">
-                    <label>E min:</label>
-                    <input type="number" id="eMin" step="0.01" placeholder="es. 6.60" value="6.60">
-                </div>
-                <div class="geo-row">
-                    <label>E max:</label>
-                    <input type="number" id="eMax" step="0.01" placeholder="es. 18.50" value="18.50">
-                </div>
-                <div class="geo-hint">Gradi decimali dei bordi della mappa caricata</div>
-            </div>
-
-            <!-- ═══ PUNTO CON COORDINATE N/E ═══ -->
-            <div class="input-section-label">📍 Punto per Coordinate N/E</div>
-            <input type="text" id="inputPointGeo" placeholder="FKS,dim,N,E  (es. 7820,2,44.22,11.34)">
-            <button id="addPointGeo" class="bg-teal">Aggiungi Punto N/E</button>
-
-            <hr class="input-separator">
-
-            <!-- ═══ PUNTO / VALORE PER CELLA ═══ -->
-            <div class="input-section-label">🔢 Punto per Cella</div>
-            <input type="text" id="inputPoint" placeholder="Punto (es. A1,650,5,2)">
-            <input type="text" id="inputValue" placeholder="Valore (es. A1,5430,55)">
-            <button id="addPoint" class="bg-blue">Aggiungi Punto</button>
-            <button id="addValue" class="bg-blue">Aggiungi Valore</button>
-
-            <hr class="input-separator">
-
-            <button id="removeLastItem" class="bg-red">Rimuovi Ultimo</button>
-            <button id="downloadImage" class="bg-green">Scarica Immagine</button>
-            <input type="file" id="imageUpload" accept="image/*">
-            <label for="imageUpload" id="uploadLabel">Carica Nuova Immagine</label>
+        <!-- Configurazione coordinate mappa -->
+        <div id="geoConfig">
+            <div class="geo-title">📐 Coordinate Mappa</div>
+            <div class="geo-row"><label>N max:</label><input type="number" id="nMax" step="0.01" value="47.10"></div>
+            <div class="geo-row"><label>N min:</label><input type="number" id="nMin" step="0.01" value="35.49"></div>
+            <div class="geo-row"><label>E min:</label><input type="number" id="eMin" step="0.01" value="6.60"></div>
+            <div class="geo-row"><label>E max:</label><input type="number" id="eMax" step="0.01" value="18.50"></div>
+            <div class="geo-hint">Gradi decimali dei bordi della mappa</div>
+           <!-- Offset verticale e pulsanti -->
+        <div style="display: flex; gap: 6px; align-items: center;">
+            <label style="font-size:12px;">Offset Y (%):</label>
+            <input type="number" id="verticalOffsetInput" step="0.1" value="0" style="flex:1;">
+        </div>
         </div>
 
-        <div class="custom-grid-map">
-            <img id="mapImage" data-src="https://beneinst.github.io/callegari.gridmap/images/CRC-uni.jpg" alt="Mappa dell'Italia" class="lazyload">
-            <div id="gridContainer"></div>
-            <div id="labelsContainer"></div>
-            <div id="pointsContainer"></div>
-            <div id="valuesContainer"></div>
+        <!-- Selettore tipo punto -->
+        <div class="radio-group">
+            <span style="font-size:12px;">Tipo punto:</span>
+            <label><input type="radio" name="pointType" value="circle" checked=""> ⚪ Cerchio</label>
+            <label><input type="radio" name="pointType" value="fks"> 🔲 Segnaposto FKS</label>
         </div>
-    </div>
-    
-    <div id="alertDialog">
-        <div class="alert-content">
-            <h2 class="alert-title">Errore</h2>
-            <p id="alertMessage"></p>
-            <button id="alertOk" class="alert-action">OK</button>
-        </div>
+
+        <!-- Punto per coordinate N/E -->
+        <div class="input-section-label">📍 Punto per Coordinate N/E</div>
+        <input type="text" id="inputPointGeo" placeholder="FKS,dim,N,E  (es. 7820,2,44.22,11.34)">
+        <input type="text" id="inputLabelGeo" placeholder="Etichetta (opzionale)">
+        <button id="addPointGeo" class="bg-teal">Aggiungi Punto N/E</button>
+
+        <hr class="input-separator">
+
+        <!-- Punto per cella -->
+        <div class="input-section-label">🔢 Punto per Cella</div>
+        <input type="text" id="inputPoint" placeholder="Punto (es. A1,650,5,2)">
+        <input type="text" id="inputLabelCell" placeholder="Etichetta (opzionale)">
+        <input type="text" id="inputValue" placeholder="Valore (es. A1,5430,55)">
+        <button id="addPoint" class="bg-blue">Aggiungi Punto</button>
+        <button id="addValue" class="bg-blue">Aggiungi Valore</button>
+
+        <hr class="input-separator">
+
+       
+        <button id="removeLastItem" class="bg-red">Rimuovi Ultimo</button>
+        <button id="downloadImage" class="bg-green">Scarica Immagine</button>
+        <input type="file" id="imageUpload" accept="image/*">
+        <label for="imageUpload" id="uploadLabel">📷 Carica Immagine</label>
     </div>
 
-    <script src="ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script>
-        let items = [];
-        
-        // Configurazione griglia
-        const gridSizeX = 17; // Righe A-Q
-        const gridSizeY = 9;  // Colonne 0-8
-        const letters = 'ABCDEFGHIJKLMNOPQ';
+    <div class="custom-grid-map">
+        <img id="mapImage" data-src="https://beneinst.github.io/callegari.gridmap/images/CRC-uni.jpg" alt="Mappa" class="lazyload">
+        <div id="gridContainer"></div>
+        <div id="labelsContainer"></div>
+        <div id="pointsContainer"></div>
+        <div id="valuesContainer"></div>
+    </div>
+</div>
 
-        // ── Gestione caricamento immagine ──────────────────────────────
-        function handleImageUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('mapImage').src = e.target.result;
+<div id="alertDialog">
+    <div class="alert-content">
+        <h2 class="alert-title">Errore</h2>
+        <p id="alertMessage"></p>
+        <button id="alertOk" class="alert-action">OK</button>
+    </div>
+</div>
+
+<script src="ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+    let items = [];
+    const gridSizeX = 17; // righe A-Q
+    const gridSizeY = 9;  // colonne 0-8
+    const letters = 'ABCDEFGHIJKLMNOPQ';
+    let verticalOffset = 0;
+
+  const pinIcon = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"%3E%3Cpath fill="%23e74c3c" stroke="%23c0392b" stroke-width="1" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/%3E%3C/svg%3E';
+
+    // ---- Helper ----
+   function getColorFromValue(value) {
+    let color, borderColor;
+    if (value.startsWith('6')) {
+        color = '#00bfff';      // azzurro
+        borderColor = '#0077be';
+    } else if (value.startsWith('7')) {
+        color = 'red';          // rosso
+        borderColor = '#8b0000';
+    } else if (value.startsWith('8')) {
+        color = 'orange';       // arancione
+        borderColor = '#ff8c00';
+    } else if (['9','10','11','12','13'].some(p => value.startsWith(p))) {
+        color = '#6fbf6f';      // verde chiaro (prima #348017)
+        borderColor = '#3d8f3d'; // bordo verde scuro ma più chiaro dell'originale
+    } else {
+        color = 'yellow';       // giallo
+        borderColor = '#ffd700';
+    }
+    return { color, borderColor };
+}
+  function getColoredPinSVG(fillColor, strokeColor) {
+    // Converte i colori in formato esadecimale se necessario (accetta qualsiasi stringa CSS)
+    // SVG richiede URL encoding per # e spazi
+    const fillEnc = encodeURIComponent(fillColor);
+    const strokeEnc = encodeURIComponent(strokeColor);
+    return `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"%3E%3Cpath fill="${fillEnc}" stroke="${strokeEnc}" stroke-width="1.2" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/%3E%3C/svg%3E`;
+}
+
+    function createLabelEl(testo, leftPct, topPct) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'point-label';
+        wrapper.style.left = `${leftPct}%`;
+        wrapper.style.top = `calc(${topPct}% - 38px)`;
+        wrapper.style.transform = 'translateX(-50%)';
+        const span = document.createElement('span');
+        span.className = 'label-text';
+        span.textContent = testo;
+        const arrow = document.createElement('span');
+        arrow.className = 'label-arrow';
+        arrow.textContent = '▼';
+        wrapper.appendChild(span);
+        wrapper.appendChild(arrow);
+        return wrapper;
+    }
+
+    // Crea elemento punto in base al tipo (circle / fks)
+   function createMarkerElement(type, size, color, borderColor, leftPct, topPct, title) {
+    let el;
+    if (type === 'circle') {
+        el = document.createElement('div');
+        el.className = `point ${['small','medium','large'][size-1] || 'medium'}`;
+        el.style.backgroundColor = color;
+        el.style.borderColor = borderColor;
+    } else { // fks marker: immagine SVG colorata
+        el = document.createElement('img');
+        el.className = 'fks-marker-img';
+        el.src = getColoredPinSVG(color, borderColor);
+        el.alt = 'segnaposto FKS';
+    }
+    el.style.left = `${leftPct}%`;
+    el.style.top = `${topPct}%`;
+    el.title = title;
+    return el;
+}
+  
+    // ---- Gestione immagini ----
+    function handleImageUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                const img = document.getElementById('mapImage');
+                img.onload = () => {
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
                 };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // ── Disegna la griglia ─────────────────────────────────────────
-        function drawGrid() {
-            const gridContainer   = document.getElementById('gridContainer');
-            const labelsContainer = document.getElementById('labelsContainer');
-            
-            gridContainer.innerHTML   = '';
-            labelsContainer.innerHTML = '';
-
-            // Linee verticali (colonne numeriche 0-8)
-            for (let i = 0; i <= gridSizeY; i++) {
-                const line = document.createElement('div');
-                line.className = 'grid-line vertical';
-                line.style.left = `${(i / gridSizeY) * 100}%`;
-                gridContainer.appendChild(line);
-            }
-
-            // Linee orizzontali (righe lettere A-Q)
-            for (let i = 0; i <= gridSizeX; i++) {
-                const line = document.createElement('div');
-                line.className = 'grid-line horizontal';
-                line.style.top = `${(i / gridSizeX) * 100}%`;
-                gridContainer.appendChild(line);
-            }
-
-            // Etichette colonne (0-8) in alto
-            for (let i = 0; i < gridSizeY; i++) {
-                const label = document.createElement('div');
-                label.className = 'label-col';
-                label.style.left = `${((i + 0.5) / gridSizeY) * 100}%`;
-                label.textContent = i;
-                labelsContainer.appendChild(label);
-            }
-
-            // Etichette righe (A-Q) a sinistra
-            for (let i = 0; i < gridSizeX; i++) {
-                const label = document.createElement('div');
-                label.className = 'label-row';
-                label.style.top = `${((i + 0.5) / gridSizeX) * 100}%`;
-                label.textContent = letters[i];
-                labelsContainer.appendChild(label);
-            }
-        }
-
-        // ── Colore dal valore FKS (comune a entrambi i sistemi) ────────
-        function getColorFromValue(value) {
-            let color, borderColor;
-            if (value.startsWith('6')) {
-                color = '#00bfff'; borderColor = '#0077be';
-            } else if (value.startsWith('7')) {
-                color = 'red';     borderColor = '#8b0000';
-            } else if (value.startsWith('8')) {
-                color = 'orange';  borderColor = '#ff8c00';
-            } else if (['9','10','11','12','13'].some(p => value.startsWith(p))) {
-                color = '#348017'; borderColor = '#2a6b12';
-            } else {
-                color = 'yellow';  borderColor = '#ffd700';
-            }
-            return { color, borderColor };
-        }
-
-        // ── Aggiungi punto con coordinate geografiche N/E ──────────────
-        function addPointGeo() {
-            const raw = document.getElementById('inputPointGeo').value.trim();
-            // Formato: FKS,dimensione,N,E  es: 7820,2,44.22,11.34
-            const match = raw.match(/^(\d+),([1-3]),(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/i);
-
-            if (!match) {
-                showAlert('Formato non valido per Punto N/E.\nUsa: FKS,Dimensione(1-3),N,E\nEs: 7820,2,44.22,11.34');
-                return;
-            }
-
-            const value = match[1];
-            const size  = parseInt(match[2]);
-            const nVal  = parseFloat(match[3]);
-            const eVal  = parseFloat(match[4]);
-
-            // Leggi configurazione mappa
-            const nMax = parseFloat(document.getElementById('nMax').value);
-            const nMin = parseFloat(document.getElementById('nMin').value);
-            const eMin = parseFloat(document.getElementById('eMin').value);
-            const eMax = parseFloat(document.getElementById('eMax').value);
-
-            if (isNaN(nMax) || isNaN(nMin) || isNaN(eMin) || isNaN(eMax)) {
-                showAlert('Configura prima le coordinate della mappa (N max, N min, E min, E max).');
-                return;
-            }
-            if (nMax <= nMin) { showAlert('N max deve essere maggiore di N min.'); return; }
-            if (eMax <= eMin) { showAlert('E max deve essere maggiore di E min.'); return; }
-
-            // Conversione coordinate → percentuale pixel
-            // left: E interpola tra eMin..eMax → 0%..100%
-            // top:  N inversamente tra nMax..nMin → 0%..100%
-            const leftPct = ((eVal - eMin) / (eMax - eMin)) * 100;
-            const topPct  = ((nMax - nVal) / (nMax - nMin)) * 100;
-
-            if (leftPct < 0 || leftPct > 100 || topPct < 0 || topPct > 100) {
-                showAlert(`Coordinate fuori dalla mappa configurata.\nN deve essere tra ${nMin} e ${nMax}\nE deve essere tra ${eMin} e ${eMax}`);
-                return;
-            }
-
-            const { color, borderColor } = getColorFromValue(value);
-
-            items.push({
-                type: 'pointGeo',
-                leftPct,
-                topPct,
-                color,
-                borderColor,
-                value,
-                size,
-                label: `N=${nVal} E=${eVal}`
-            });
-
-            renderItems();
-            document.getElementById('inputPointGeo').value = '';
-        }
-
-        // ── Aggiungi punto per cella ───────────────────────────────────
-        function addPoint() {
-            const pointInput = document.getElementById('inputPoint').value.toUpperCase().trim();
-            const pointMatch = pointInput.match(/^([A-Q][0-8]),(\d+),([1-9]),([1-3])$/);
-            
-            if (!pointMatch) {
-                showAlert('Formato non valido per il punto. Usa: Lettera+Numero,Valore,Posizione(1-9),Dimensione(1-3) (es. A1,650,5,2)');
-                return;
-            }
-
-            const [, area, value, position, size] = pointMatch;
-            const { color, borderColor } = getColorFromValue(value);
-
-            items.push({ 
-                type: 'point', 
-                area, 
-                position: parseInt(position), 
-                color, 
-                borderColor, 
-                value, 
-                size: parseInt(size)
-            });
-            
-            renderItems();
-            document.getElementById('inputPoint').value = '';
-        }
-
-        // ── Aggiungi valore per cella ──────────────────────────────────
-        function addValue() {
-            const valueInput = document.getElementById('inputValue').value.toUpperCase().trim();
-            const valueMatch = valueInput.match(/^([A-Q][0-8]),(\d+),(\d+)$/);
-            
-            if (!valueMatch) {
-                showAlert('Formato non valido per il valore. Usa: Lettera+Numero,Valore1,Valore2 (es. A1,5430,55)');
-                return;
-            }
-
-            const [, area, value1, value2] = valueMatch;
-            items.push({ type: 'value', area, value1, value2 });
-            
-            renderItems();
-            document.getElementById('inputValue').value = '';
-        }
-
-        // ── Calcola offset posizione per i punti a cella ──────────────
-        function getPositionOffset(position) {
-            const offsets = {
-                1: {x: 0.25, y: 0.25}, 2: {x: 0.5, y: 0.25}, 3: {x: 0.75, y: 0.25},
-                4: {x: 0.25, y: 0.5},  5: {x: 0.5, y: 0.5},  6: {x: 0.75, y: 0.5},
-                7: {x: 0.25, y: 0.75}, 8: {x: 0.5, y: 0.75}, 9: {x: 0.75, y: 0.75}
+                img.src = e.target.result;
             };
-            return offsets[position] || {x: 0.5, y: 0.5};
+            reader.readAsDataURL(file);
         }
+    }
 
-        // ── Renderizza tutti gli elementi ──────────────────────────────
-        function renderItems() {
-            const pointsContainer = document.getElementById('pointsContainer');
-            const valuesContainer = document.getElementById('valuesContainer');
-            
-            pointsContainer.innerHTML = '';
-            valuesContainer.innerHTML = '';
-
-            items.forEach(item => {
-
-                // Punto con coordinate geografiche N/E
-                if (item.type === 'pointGeo') {
-                    const el = document.createElement('div');
-                    el.className = `point ${['small', 'medium', 'large'][item.size - 1] || 'medium'}`;
-                    el.style.backgroundColor = item.color;
-                    el.style.borderColor     = item.borderColor;
-                    el.style.left = `${item.leftPct}%`;
-                    el.style.top  = `${item.topPct}%`;
-                    el.title = `${item.label} — FKS ${item.value}`;
-                    pointsContainer.appendChild(el);
-                    return;
-                }
-
-                // Punto/valore per cella (sistema originale)
-                const col      = item.area[0];
-                const row      = parseInt(item.area.slice(1));
-                const colIndex = letters.indexOf(col);
-                
-                if (item.type === 'point') {
-                    const offset = getPositionOffset(item.position);
-                    const left   = `${((row + offset.x) / gridSizeY) * 100}%`;
-                    const top    = `${((colIndex + offset.y) / gridSizeX) * 100}%`;
-
-                    const el = document.createElement('div');
-                    el.className = `point ${['small', 'medium', 'large'][item.size - 1] || 'medium'}`;
-                    el.style.backgroundColor = item.color;
-                    el.style.borderColor     = item.borderColor;
-                    el.style.left = left;
-                    el.style.top  = top;
-                    el.title = `${item.area}: ${item.value}`;
-                    pointsContainer.appendChild(el);
-                    
-                } else if (item.type === 'value') {
-                    const left = `${((row + 0.5) / gridSizeY) * 100}%`;
-                    const top  = `${((colIndex + 0.5) / gridSizeX) * 100}%`;
-
-                    const el = document.createElement('div');
-                    el.className = 'value-box';
-                    el.innerHTML  = `${item.value1}<br>${item.value2}`;
-                    el.style.left = left;
-                    el.style.top  = top;
-                    valuesContainer.appendChild(el);
-                }
-            });
+    // ---- Griglia ----
+    function drawGrid() {
+        const gc = document.getElementById('gridContainer');
+        const lc = document.getElementById('labelsContainer');
+        gc.innerHTML = ''; lc.innerHTML = '';
+        for (let i = 0; i <= gridSizeY; i++) {
+            const line = document.createElement('div');
+            line.className = 'grid-line vertical';
+            line.style.left = `${(i / gridSizeY) * 100}%`;
+            gc.appendChild(line);
         }
+        for (let i = 0; i <= gridSizeX; i++) {
+            const line = document.createElement('div');
+            line.className = 'grid-line horizontal';
+            line.style.top = `${(i / gridSizeX) * 100}%`;
+            gc.appendChild(line);
+        }
+        for (let i = 0; i < gridSizeY; i++) {
+            const label = document.createElement('div');
+            label.className = 'label-col';
+            label.style.left = `${((i + 0.5) / gridSizeY) * 100}%`;
+            label.textContent = i;
+            lc.appendChild(label);
+        }
+        for (let i = 0; i < gridSizeX; i++) {
+            const label = document.createElement('div');
+            label.className = 'label-row';
+            label.style.top = `${((i + 0.5) / gridSizeX) * 100}%`;
+            label.textContent = letters[i];
+            lc.appendChild(label);
+        }
+    }
 
-        // ── Rimuovi ultimo elemento ────────────────────────────────────
-        function removeLastItem() {
-            if (items.length > 0) {
-                items.pop();
-                renderItems();
-            } else {
-                showAlert('Non ci sono elementi da rimuovere.');
+    // ---- Aggiungi punto geografico ----
+    function addPointGeo() {
+        const raw = document.getElementById('inputPointGeo').value.trim();
+        const etichetta = document.getElementById('inputLabelGeo').value.trim();
+        const match = raw.match(/^(\d+),([1-3]),(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/i);
+        if (!match) {
+            showAlert('Formato non valido. Es: 7820,2,44.22,11.34');
+            return;
+        }
+        const value = match[1], size = parseInt(match[2]);
+        const nVal = parseFloat(match[3]), eVal = parseFloat(match[4]);
+        const nMax = parseFloat(document.getElementById('nMax').value);
+        const nMin = parseFloat(document.getElementById('nMin').value);
+        const eMin = parseFloat(document.getElementById('eMin').value);
+        const eMax = parseFloat(document.getElementById('eMax').value);
+        if (isNaN(nMax+nMin+eMin+eMax)) { showAlert('Configura coordinate mappa.'); return; }
+        if (nMax <= nMin || eMax <= eMin) { showAlert('Valori max/min non validi.'); return; }
+
+        let leftPct = ((eVal - eMin) / (eMax - eMin)) * 100;
+        let topPct = ((nMax - nVal) / (nMax - nMin)) * 100;
+        if (leftPct < 0 || leftPct > 100 || topPct < 0 || topPct > 100) {
+            showAlert(`Coordinate fuori mappa. N tra ${nMin} e ${nMax}, E tra ${eMin} e ${eMax}`);
+            return;
+        }
+        // applica offset verticale
+        topPct += verticalOffset;
+        topPct = Math.min(100, Math.max(0, topPct));
+
+        const pointType = document.querySelector('input[name="pointType"]:checked').value;
+        const { color, borderColor } = getColorFromValue(value);
+        items.push({
+            type: 'pointGeo',
+            leftPct, topPct, color, borderColor, value, size, etichetta,
+            geoLabel: `N=${nVal} E=${eVal}`,
+            markerType: pointType
+        });
+        renderItems();
+        document.getElementById('inputPointGeo').value = '';
+        document.getElementById('inputLabelGeo').value = '';
+    }
+
+    // ---- Aggiungi punto per cella ----
+    function addPoint() {
+        const pointInput = document.getElementById('inputPoint').value.toUpperCase().trim();
+        const etichetta = document.getElementById('inputLabelCell').value.trim();
+        const pointMatch = pointInput.match(/^([A-Q][0-8]),(\d+),([1-9]),([1-3])$/);
+        if (!pointMatch) {
+            showAlert('Formato punto cella errato. Es: A1,650,5,2');
+            return;
+        }
+        const [, area, value, position, size] = pointMatch;
+        const row = parseInt(area.slice(1));
+        const colChar = area[0];
+        if (row < 0 || row >= gridSizeY || !letters.includes(colChar)) {
+            showAlert('Area non valida');
+            return;
+        }
+        const pointType = document.querySelector('input[name="pointType"]:checked').value;
+        const { color, borderColor } = getColorFromValue(value);
+        items.push({
+            type: 'point',
+            area, position: parseInt(position), color, borderColor,
+            value, size: parseInt(size), etichetta, markerType: pointType
+        });
+        renderItems();
+        document.getElementById('inputPoint').value = '';
+        document.getElementById('inputLabelCell').value = '';
+    }
+
+    // ---- Aggiungi valore (solo testo) ----
+    function addValue() {
+        const valInput = document.getElementById('inputValue').value.toUpperCase().trim();
+        const valMatch = valInput.match(/^([A-Q][0-8]),(\d+),(\d+)$/);
+        if (!valMatch) {
+            showAlert('Formato valore errato. Es: A1,5430,55');
+            return;
+        }
+        const [, area, v1, v2] = valMatch;
+        items.push({ type: 'value', area, value1: v1, value2: v2 });
+        renderItems();
+        document.getElementById('inputValue').value = '';
+    }
+
+    function getPositionOffset(p) {
+        const o = { 1:{x:.25,y:.25},2:{x:.5,y:.25},3:{x:.75,y:.25},
+                    4:{x:.25,y:.5},5:{x:.5,y:.5},6:{x:.75,y:.5},
+                    7:{x:.25,y:.75},8:{x:.5,y:.75},9:{x:.75,y:.75} };
+        return o[p];
+    }
+
+    // ---- Render ----
+    function renderItems() {
+        const pc = document.getElementById('pointsContainer');
+        const vc = document.getElementById('valuesContainer');
+        pc.innerHTML = ''; vc.innerHTML = '';
+        items.forEach(item => {
+            if (item.type === 'pointGeo') {
+                if (item.etichetta) {
+                    pc.appendChild(createLabelEl(item.etichetta, item.leftPct, item.topPct));
+                }
+                const marker = createMarkerElement(
+                    item.markerType || 'circle',
+                    item.size,
+                    item.color,
+                    item.borderColor,
+                    item.leftPct,
+                    item.topPct,
+                    `${item.geoLabel} — FKS ${item.value}`
+                );
+                pc.appendChild(marker);
+                return;
             }
-        }
+            if (item.type === 'point') {
+                const colIndex = letters.indexOf(item.area[0]);
+                const row = parseInt(item.area.slice(1));
+                const off = getPositionOffset(item.position);
+                const leftPct = ((row + off.x) / gridSizeY) * 100;
+                const topPct = ((colIndex + off.y) / gridSizeX) * 100;
+                if (item.etichetta) {
+                    pc.appendChild(createLabelEl(item.etichetta, leftPct, topPct));
+                }
+                const marker = createMarkerElement(
+                    item.markerType || 'circle',
+                    item.size,
+                    item.color,
+                    item.borderColor,
+                    leftPct,
+                    topPct,
+                    `${item.area}: ${item.value}`
+                );
+                pc.appendChild(marker);
+            } else if (item.type === 'value') {
+                const colIndex = letters.indexOf(item.area[0]);
+                const row = parseInt(item.area.slice(1));
+                const left = `${((row + 0.5) / gridSizeY) * 100}%`;
+                const top = `${((colIndex + 0.5) / gridSizeX) * 100}%`;
+                const el = document.createElement('div');
+                el.className = 'value-box';
+                el.innerHTML = `${item.value1}<br>${item.value2}`;
+                el.style.left = left;
+                el.style.top = top;
+                vc.appendChild(el);
+            }
+        });
+    }
 
-        // ── Scarica immagine ───────────────────────────────────────────
-        function downloadImage() {
-            var btn     = document.getElementById('downloadImage');
-            var gridMap = document.querySelector('.custom-grid-map');
-            var origText = btn.textContent;
-            btn.textContent = '⏳ Elaborazione...';
-            btn.disabled = true;
+    function removeLastItem() {
+        if (items.length) { items.pop(); renderItems(); }
+        else showAlert('Nessun elemento da rimuovere.');
+    }
 
-            html2canvas(gridMap, {
-                useCORS: true,
-                allowTaint: true,
-                scale: 2,
-                logging: false
-            }).then(function(canvas) {
-                var dataURL = canvas.toDataURL('image/png');
-                var link = document.createElement('a');
+    function downloadImage() {
+        const btn = document.getElementById('downloadImage');
+        const gridMap = document.querySelector('.custom-grid-map');
+        const origText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = '⏳ Elaborazione...';
+        const gc = document.getElementById('gridContainer');
+        const lc = document.getElementById('labelsContainer');
+        gc.style.display = 'none';
+        lc.style.display = 'none';
+        html2canvas(gridMap, { useCORS: true, allowTaint: true, scale: 2, logging: false })
+            .then(canvas => {
+                const link = document.createElement('a');
                 link.download = 'Mappa_Universale.png';
-                link.href = dataURL;
-                document.body.appendChild(link);
+                link.href = canvas.toDataURL('image/png');
                 link.click();
-                document.body.removeChild(link);
-            }).catch(function(err) {
-                console.error('Errore download:', err);
-                showAlert('Errore durante il download dell\'immagine.');
-            }).finally(function() {
+            })
+            .catch(err => { console.error(err); showAlert('Errore download.'); })
+            .finally(() => {
+                gc.style.display = '';
+                lc.style.display = '';
                 btn.textContent = origText;
                 btn.disabled = false;
             });
-        }
+    }
 
-        // ── Mostra alert ───────────────────────────────────────────────
-        function showAlert(message) {
-            document.getElementById('alertMessage').textContent = message;
-            document.getElementById('alertDialog').style.display = 'block';
-        }
+    function showAlert(msg) {
+        document.getElementById('alertMessage').textContent = msg;
+        document.getElementById('alertDialog').style.display = 'block';
+    }
 
-        // ── Event listeners ────────────────────────────────────────────
-        // ── Event listeners protetti ─────────────────────────────────
-        function safe(id, evt, fn) { var el = document.getElementById(id); if (el) el.addEventListener(evt, fn); }
-        safe('addPointGeo',    'click',  addPointGeo);
-        safe('addPoint',       'click',  addPoint);
-        safe('addValue',       'click',  addValue);
-        safe('removeLastItem', 'click',  removeLastItem);
-        safe('downloadImage',  'click',  downloadImage);
-        safe('imageUpload',    'change', handleImageUpload);
-        safe('alertOk', 'click', function() { document.getElementById('alertDialog').style.display = 'none'; });
+    function safe(id, evt, fn) {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener(evt, fn);
+    }
 
-        // ── Inizializza griglia ────────────────────────────────────────
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', drawGrid);
-        } else {
-            drawGrid();
-        }
-    </script>
+    // Inizializzazione
+    safe('addPointGeo', 'click', addPointGeo);
+    safe('addPoint', 'click', addPoint);
+    safe('addValue', 'click', addValue);
+    safe('removeLastItem', 'click', removeLastItem);
+    safe('downloadImage', 'click', downloadImage);
+    safe('imageUpload', 'change', handleImageUpload);
+    safe('alertOk', 'click', () => document.getElementById('alertDialog').style.display = 'none');
+
+    // Offset verticale
+    const offsetInput = document.getElementById('verticalOffsetInput');
+    if (offsetInput) {
+        offsetInput.addEventListener('input', e => { verticalOffset = parseFloat(e.target.value) || 0; });
+    }
+
+    drawGrid();
+</script>
 </body>
 </html></div>
 </div></div></div></div></div></div></div></div></div></section><section id="section-id-1780381454297" class="sppb-section"><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1780381454296"><div id="column-id-1780381454296" class="sppb-column "><div class="sppb-column-addons"><div id="sppb-addon-wrapper-h1Ja9nHLx-c69B9UZcF4p" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-h1Ja9nHLx-c69B9UZcF4p" class="clearfix  "><div class="sppb-addon sppb-addon-text-block "><h4 class="sppb-addon-title">Didascalia</h4><div class="sppb-addon-content  "><p></p></div></div></div></div></div></div></div></div></div></section><section id="section-id-1726039355432" class="sppb-section"><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1726039355429"><div id="column-id-1726039355429" class="sppb-column "><div class="sppb-column-addons"><div id="sppb-addon-wrapper-IfX9N6uCejVZsoOySyLWD" class="sppb-addon-wrapper  addon-root-image"><div id="sppb-addon-IfX9N6uCejVZsoOySyLWD" class="clearfix  "><div class="sppb-addon sppb-addon-single-image   sppb-addon-image-shape"><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img class="sppb-img-responsive  lazyload" data-src="https://beneinst.github.io/callegari.gridmap/images/posizionamento1.png" alt="Image" title=""></div></div></div></div></div><div id="sppb-addon-wrapper-gUs_swenDfuR8n2i70USV" class="sppb-addon-wrapper  addon-root-empty-space"><div id="sppb-addon-gUs_swenDfuR8n2i70USV" class="clearfix  "><div class="sppb-empty-space  clearfix"></div></div></div><div id="sppb-addon-wrapper-N_z2XG0ciFy28K3xPTgDP" class="sppb-addon-wrapper  addon-root-image"><div id="sppb-addon-N_z2XG0ciFy28K3xPTgDP" class="clearfix  "><div class="sppb-addon sppb-addon-single-image   sppb-addon-image-shape"><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img class="sppb-img-responsive  lazyload" data-src="https://beneinst.github.io/callegari.gridmap/images/Beneinst.png" alt="Image" title="" width="254" height="54"></div></div></div></div></div></div></div></div><div class="sppb-row-column  " id="column-wrap-id-1726039355430"><div id="column-id-1726039355430" class="sppb-column "><div class="sppb-column-addons"><div id="sppb-addon-wrapper-Nxn13GlDnTm589i7dnz3P" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-Nxn13GlDnTm589i7dnz3P" class="clearfix  "><div class="sppb-addon sppb-addon-text-block "><div class="sppb-addon-content  "><p style="text-align:justify;"><strong>Sistema a Cella:</strong></p><p style="text-align:justify;">Ogni punto è posizionato in una cella identificata da una lettera (colonna) e un numero (riga), ad esempio A1. Le colonne vanno da sinistra a destra con le lettere dell'alfabeto, le righe dall'alto verso il basso con numeri crescenti. All'interno di ogni cella il punto può occupare una delle 9 posizioni (3×3), numerate da sinistra a destra e dall'alto verso il basso: 1 in alto a sinistra, 5 al centro, 9 in basso a destra. La dimensione è indicata da un numero intero: 1 = piccolo, 2 = medio, 3 = grande.</p><p style="text-align:justify;"><strong>Formato: Cella,ValoreFKS,Posizione(1-9),Dimensione(1-3)</strong></p><p style="text-align:justify;"><em>Esempio: C4,7820,5,2 → cella C4, valore 7820 (rosso), posizione centrale, dimensione media</em></p></div></div></div></div></div></div></div><div class="sppb-row-column  " id="column-wrap-id-1726039355431"><div id="column-id-1726039355431" class="sppb-column "><div class="sppb-column-addons"><div id="sppb-addon-wrapper-yo24NRI6HdaTsPFkezqGq" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-yo24NRI6HdaTsPFkezqGq" class="clearfix  "><div class="sppb-addon sppb-addon-text-block "><div class="sppb-addon-content  "><p style="text-align:justify;"><strong>Sistema Coordinate N/E:</strong></p><p style="text-align:justify;">I punti vengono posizionati sulla mappa usando le coordinate geografiche decimali WGS84. La longitudine E (Est) determina la posizione orizzontale, la latitudine N (Nord) quella verticale. Il sistema calcola automaticamente la posizione in pixel tramite interpolazione sui bordi configurati della mappa. La dimensione funziona come sopra: 1 = piccolo, 2 = medio, 3 = grande.</p><p style="text-align:justify;"><strong>Formato: ValoreFKS,Dimensione(1-3),N,E</strong></p><p style="text-align:justify;"><em>Esempio: 7820,2,41.90,12.48 → valore 7820 (rosso), dimensione media, Roma (41.90°N, 12.48°E)</em></p></div></div></div></div><div id="sppb-addon-wrapper-c_JbaTkg-i0QGQBNBOZNA" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-c_JbaTkg-i0QGQBNBOZNA" class="clearfix  "><div class="sppb-addon sppb-addon-text-block "><div class="sppb-addon-content  "><p style="text-align:justify;">L'inserimento del <strong>colore</strong> dei punti è determinato dal primo numero (iniziale, es. 7820 sarà un punto rosso) di FKS: <strong>1-5</strong> Giallo, <strong>6</strong> Blu, <strong>7</strong> Rosso, <strong>8</strong> Arancione, <strong>9-13</strong> Verde.</p><p style="text-align:justify;"></p></div></div></div></div><div id="sppb-addon-wrapper-feZYH1pmbU1aXYAqTysDG" class="sppb-addon-wrapper  addon-root-image"><div id="sppb-addon-feZYH1pmbU1aXYAqTysDG" class="clearfix  "><div class="sppb-addon sppb-addon-single-image   sppb-addon-image-shape"><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img class="sppb-img-responsive  lazyload" data-src="https://beneinst.github.io/callegari.gridmap/images/IconePunti.png" alt="Image" title=""></div></div></div></div></div></div></div></div></div></div></section><section id="section-id-1780381454299" class="sppb-section"><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1780381454298"><div id="column-id-1780381454298" class="sppb-column "><div class="sppb-column-addons"><div id="sppb-addon-wrapper-1780381565003" class="sppb-addon-wrapper  addon-root-divider"><div id="sppb-addon-1780381565003" class="clearfix  "><div class="sppb-addon-divider-wrap divider-position"><div class="sppb-divider sppb-divider-border " role="none"></div></div></div></div></div></div></div></div></div></section><section id="section-id-1780376939510" class="sppb-section"><div class="sppb-row-container"><div class="sppb-row"><div class="sppb-row-column  " id="column-wrap-id-1780376939508"><div id="column-id-1780376939508" class="sppb-column "><div class="sppb-column-addons"><div id="sppb-addon-wrapper-v2EKDRbeyxiIq8TZuO-Ao" class="sppb-addon-wrapper  addon-root-text-block"><div id="sppb-addon-v2EKDRbeyxiIq8TZuO-Ao" class="clearfix  "><div class="sppb-addon sppb-addon-text-block "><h5 class="sppb-addon-title">Bounding Box</h5><div class="sppb-addon-content  "><p></p><p>Mappa <strong>Italy-CRC2.jpg</strong>:</p><ul><li><strong>N max</strong> (superiore — Monaco/Monaco/München) <strong>48.2°</strong> N</li><li><strong>N min</strong> (inferiore — sotto Sfax/Tunisia) <strong>32.8°</strong> N</li><li><strong>E min</strong> (sinistro — taglio a sinistra di Monaco/Constantine) <strong>5.5°</strong> E</li><li><strong>E max</strong> (destro — taglio est, visibile "S" di Serbia/Montenegro) <strong>18.8°</strong> E</li></ul><p></p><p></p>
