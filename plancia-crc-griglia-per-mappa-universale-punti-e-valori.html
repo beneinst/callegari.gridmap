@@ -27,7 +27,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"e30cf7d144036e904602c7211534f19c"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"2b21b11b20b2ca148613471b1472a8e8"}</script>
 	<script src="media/system/js/core.min.js?a3d8f8"></script>
 	<script src="media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -432,7 +432,6 @@
             height: 100%;
         }
 
-        /* Punto circolare standard */
         .point {
             position: absolute;
             border-radius: 50%;
@@ -447,17 +446,16 @@
         .point.medium { width: 15px; height: 15px; }
         .point.large { width: 20px; height: 20px; }
 
-        /* Segnaposto FKS (quadrato fisso) */
-        .fks-marker {
+        /* Segnaposto FKS con immagine a puntatore */
+        .fks-marker-img {
             position: absolute;
-            width: 18px;
-            height: 18px;
-            border: 2px solid;
+            width: 36px;
+            height: 36px;
             transform: translate(-50%, -50%);
             z-index: 4;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
             cursor: pointer;
-            background-color: rgba(255,255,255,0.2);
+            object-fit: contain;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
         }
 
         /* Etichetta punto */
@@ -477,7 +475,7 @@
             background: white;
             border: 1px solid #999;
             border-radius: 6px;
-            padding: 6px 12px;
+            padding: 3px 12px 18px 12px;   /* padding-bottom maggiore */
             font-size: 12px;
             font-weight: bold;
             color: #222;
@@ -491,7 +489,7 @@
             font-size: 14px;
             color: #555;
             line-height: 1;
-            margin-top: -3px;
+            margin-top: -5px;
             text-shadow: 0 1px 0 white;
         }
 
@@ -513,7 +511,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            width: 260px;
+            width: 280px;
             align-items: stretch;
             z-index: 10;
             position: relative;
@@ -677,18 +675,19 @@
             font-weight: normal;
             cursor: pointer;
         }
-      
-/* Segnaposto FKS con immagine a puntatore */
-.fks-marker-img {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    transform: translate(-50%, -50%);
-    z-index: 4;
-    cursor: pointer;
-    object-fit: contain;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
-}
+        .offset-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .offset-group label {
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .offset-group input {
+            flex: 1;
+        }
     </style>
 </head>
 <body>
@@ -703,18 +702,23 @@
             <div class="geo-row"><label>E min:</label><input type="number" id="eMin" step="0.01" value="6.60"></div>
             <div class="geo-row"><label>E max:</label><input type="number" id="eMax" step="0.01" value="18.50"></div>
             <div class="geo-hint">Gradi decimali dei bordi della mappa</div>
-           <!-- Offset verticale e pulsanti -->
-        <div style="display: flex; gap: 6px; align-items: center;">
-            <label style="font-size:12px;">Offset Y (%):</label>
-            <input type="number" id="verticalOffsetInput" step="0.1" value="0" style="flex:1;">
-        </div>
         </div>
 
         <!-- Selettore tipo punto -->
         <div class="radio-group">
             <span style="font-size:12px;">Tipo punto:</span>
             <label><input type="radio" name="pointType" value="circle" checked=""> ⚪ Cerchio</label>
-            <label><input type="radio" name="pointType" value="fks"> 🔲 Segnaposto FKS</label>
+            <label><input type="radio" name="pointType" value="fks"> 📍 Segnaposto FKS</label>
+        </div>
+
+        <!-- Offset orizzontale e verticale -->
+        <div class="offset-group">
+            <label>Offset X (%):</label>
+            <input type="number" id="horizontalOffsetInput" step="0.1" value="0">
+        </div>
+        <div class="offset-group">
+            <label>Offset Y (%):</label>
+            <input type="number" id="verticalOffsetInput" step="0.1" value="0">
         </div>
 
         <!-- Punto per coordinate N/E -->
@@ -735,7 +739,6 @@
 
         <hr class="input-separator">
 
-       
         <button id="removeLastItem" class="bg-red">Rimuovi Ultimo</button>
         <button id="downloadImage" class="bg-green">Scarica Immagine</button>
         <input type="file" id="imageUpload" accept="image/*">
@@ -766,76 +769,69 @@
     const gridSizeY = 9;  // colonne 0-8
     const letters = 'ABCDEFGHIJKLMNOPQ';
     let verticalOffset = 0;
+    let horizontalOffset = 0;
 
-  const pinIcon = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"%3E%3Cpath fill="%23e74c3c" stroke="%23c0392b" stroke-width="1" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/%3E%3C/svg%3E';
-
-    // ---- Helper ----
-   function getColorFromValue(value) {
-    let color, borderColor;
-    if (value.startsWith('6')) {
-        color = '#00bfff';      // azzurro
-        borderColor = '#0077be';
-    } else if (value.startsWith('7')) {
-        color = 'red';          // rosso
-        borderColor = '#8b0000';
-    } else if (value.startsWith('8')) {
-        color = 'orange';       // arancione
-        borderColor = '#ff8c00';
-    } else if (['9','10','11','12','13'].some(p => value.startsWith(p))) {
-        color = '#6fbf6f';      // verde chiaro (prima #348017)
-        borderColor = '#3d8f3d'; // bordo verde scuro ma più chiaro dell'originale
-    } else {
-        color = 'yellow';       // giallo
-        borderColor = '#ffd700';
+    // ---- Helper per colori ----
+    function getColorFromValue(value) {
+        let color, borderColor;
+        if (value.startsWith('6'))      { color = '#00bfff'; borderColor = '#0077be'; }
+        else if (value.startsWith('7')) { color = 'red';     borderColor = '#8b0000'; }
+        else if (value.startsWith('8')) { color = 'orange';  borderColor = '#ff8c00'; }
+        else if (['9','10','11','12','13'].some(p => value.startsWith(p))) { color = '#6fbf6f'; borderColor = '#3d8f3d'; }
+        else                            { color = 'yellow';  borderColor = '#ffd700'; }
+        return { color, borderColor };
     }
-    return { color, borderColor };
-}
-  function getColoredPinSVG(fillColor, strokeColor) {
-    // Converte i colori in formato esadecimale se necessario (accetta qualsiasi stringa CSS)
-    // SVG richiede URL encoding per # e spazi
-    const fillEnc = encodeURIComponent(fillColor);
-    const strokeEnc = encodeURIComponent(strokeColor);
-    return `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"%3E%3Cpath fill="${fillEnc}" stroke="${strokeEnc}" stroke-width="1.2" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/%3E%3C/svg%3E`;
-}
 
+    // Genera puntatore SVG colorato
+    function getColoredPinSVG(fillColor, strokeColor) {
+        const fillEnc = encodeURIComponent(fillColor);
+        const strokeEnc = encodeURIComponent(strokeColor);
+        return `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"%3E%3Cpath fill="${fillEnc}" stroke="${strokeEnc}" stroke-width="1.2" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/%3E%3C/svg%3E`;
+    }
+
+    // Crea elemento punto (cerchio o puntatore)
+    function createMarkerElement(type, size, color, borderColor, leftPct, topPct, title) {
+        let el;
+        if (type === 'circle') {
+            el = document.createElement('div');
+            el.className = `point ${['small','medium','large'][size-1] || 'medium'}`;
+            el.style.backgroundColor = color;
+            el.style.borderColor = borderColor;
+        } else {
+            el = document.createElement('img');
+            el.className = 'fks-marker-img';
+            el.src = getColoredPinSVG(color, borderColor);
+            el.alt = 'segnaposto FKS';
+        }
+        el.style.left = `${leftPct}%`;
+        el.style.top = `${topPct}%`;
+        el.title = title;
+        return el;
+    }
+
+    // Crea etichetta
     function createLabelEl(testo, leftPct, topPct) {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'point-label';
-        wrapper.style.left = `${leftPct}%`;
-        wrapper.style.top = `calc(${topPct}% - 38px)`;
-        wrapper.style.transform = 'translateX(-50%)';
-        const span = document.createElement('span');
-        span.className = 'label-text';
-        span.textContent = testo;
-        const arrow = document.createElement('span');
-        arrow.className = 'label-arrow';
-        arrow.textContent = '▼';
-        wrapper.appendChild(span);
-        wrapper.appendChild(arrow);
-        return wrapper;
-    }
-
-    // Crea elemento punto in base al tipo (circle / fks)
-   function createMarkerElement(type, size, color, borderColor, leftPct, topPct, title) {
-    let el;
-    if (type === 'circle') {
-        el = document.createElement('div');
-        el.className = `point ${['small','medium','large'][size-1] || 'medium'}`;
-        el.style.backgroundColor = color;
-        el.style.borderColor = borderColor;
-    } else { // fks marker: immagine SVG colorata
-        el = document.createElement('img');
-        el.className = 'fks-marker-img';
-        el.src = getColoredPinSVG(color, borderColor);
-        el.alt = 'segnaposto FKS';
-    }
-    el.style.left = `${leftPct}%`;
-    el.style.top = `${topPct}%`;
-    el.title = title;
-    return el;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'point-label';
+    wrapper.style.left = `${leftPct}%`;
+    // Ancoraggio al punto: l'etichetta sale dal basso del punto
+    wrapper.style.bottom = `calc(100% - ${topPct}% + 20px)`;
+    wrapper.style.transform = 'translateX(-50%)';
+    
+    const span = document.createElement('span');
+    span.className = 'label-text';
+    span.textContent = testo;
+    
+    const arrow = document.createElement('span');
+    arrow.className = 'label-arrow';
+    arrow.textContent = '▼';
+    
+    wrapper.appendChild(span);
+    wrapper.appendChild(arrow);
+    return wrapper;
 }
-  
-    // ---- Gestione immagini ----
+
+    // ---- Caricamento immagine ----
     function handleImageUpload(event) {
         const file = event.target.files[0];
         if (file) {
@@ -910,8 +906,10 @@
             showAlert(`Coordinate fuori mappa. N tra ${nMin} e ${nMax}, E tra ${eMin} e ${eMax}`);
             return;
         }
-        // applica offset verticale
+        // Applica offset orizzontale e verticale
+        leftPct += horizontalOffset;
         topPct += verticalOffset;
+        leftPct = Math.min(100, Math.max(0, leftPct));
         topPct = Math.min(100, Math.max(0, topPct));
 
         const pointType = document.querySelector('input[name="pointType"]:checked').value;
@@ -955,7 +953,7 @@
         document.getElementById('inputLabelCell').value = '';
     }
 
-    // ---- Aggiungi valore (solo testo) ----
+    // ---- Aggiungi valore testuale ----
     function addValue() {
         const valInput = document.getElementById('inputValue').value.toUpperCase().trim();
         const valMatch = valInput.match(/^([A-Q][0-8]),(\d+),(\d+)$/);
@@ -1002,8 +1000,9 @@
                 const colIndex = letters.indexOf(item.area[0]);
                 const row = parseInt(item.area.slice(1));
                 const off = getPositionOffset(item.position);
-                const leftPct = ((row + off.x) / gridSizeY) * 100;
-                const topPct = ((colIndex + off.y) / gridSizeX) * 100;
+                let leftPct = ((row + off.x) / gridSizeY) * 100;
+                let topPct = ((colIndex + off.y) / gridSizeX) * 100;
+                // Per i punti su cella NON applichiamo offset globali (solo per punti geografici)
                 if (item.etichetta) {
                     pc.appendChild(createLabelEl(item.etichetta, leftPct, topPct));
                 }
@@ -1082,11 +1081,11 @@
     safe('imageUpload', 'change', handleImageUpload);
     safe('alertOk', 'click', () => document.getElementById('alertDialog').style.display = 'none');
 
-    // Offset verticale
-    const offsetInput = document.getElementById('verticalOffsetInput');
-    if (offsetInput) {
-        offsetInput.addEventListener('input', e => { verticalOffset = parseFloat(e.target.value) || 0; });
-    }
+    // Offset listeners
+    const hOff = document.getElementById('horizontalOffsetInput');
+    const vOff = document.getElementById('verticalOffsetInput');
+    if (hOff) hOff.addEventListener('input', e => { horizontalOffset = parseFloat(e.target.value) || 0; });
+    if (vOff) vOff.addEventListener('input', e => { verticalOffset = parseFloat(e.target.value) || 0; });
 
     drawGrid();
 </script>
