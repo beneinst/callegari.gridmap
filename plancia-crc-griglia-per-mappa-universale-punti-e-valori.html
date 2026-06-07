@@ -27,7 +27,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"2b21b11b20b2ca148613471b1472a8e8"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"744fe4a70d16be1946e70295527c58ed"}</script>
 	<script src="media/system/js/core.min.js?a3d8f8"></script>
 	<script src="media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -489,7 +489,7 @@
             font-size: 14px;
             color: #555;
             line-height: 1;
-            margin-top: -5px;
+            margin-top: -8px;
             text-shadow: 0 1px 0 white;
         }
 
@@ -815,7 +815,7 @@
     wrapper.className = 'point-label';
     wrapper.style.left = `${leftPct}%`;
     // Ancoraggio al punto: l'etichetta sale dal basso del punto
-    wrapper.style.bottom = `calc(100% - ${topPct}% + 20px)`;
+    wrapper.style.bottom = `calc(100% - ${topPct}% + 33px)`;
     wrapper.style.transform = 'translateX(-50%)';
     
     const span = document.createElement('span');
@@ -1037,30 +1037,26 @@
     }
 
     function downloadImage() {
-        const btn = document.getElementById('downloadImage');
-        const gridMap = document.querySelector('.custom-grid-map');
-        const origText = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = '⏳ Elaborazione...';
-        const gc = document.getElementById('gridContainer');
-        const lc = document.getElementById('labelsContainer');
-        gc.style.display = 'none';
-        lc.style.display = 'none';
-        html2canvas(gridMap, { useCORS: true, allowTaint: true, scale: 2, logging: false })
-            .then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'Mappa_Universale.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            })
-            .catch(err => { console.error(err); showAlert('Errore download.'); })
-            .finally(() => {
-                gc.style.display = '';
-                lc.style.display = '';
-                btn.textContent = origText;
-                btn.disabled = false;
-            });
-    }
+    const btn = document.getElementById('downloadImage');
+    const gridMap = document.querySelector('.custom-grid-map');
+    const origText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '⏳ Elaborazione...';
+    
+    // Non nascondere più la griglia e le etichette dei bordi
+    html2canvas(gridMap, { useCORS: true, allowTaint: true, scale: 2, logging: false })
+        .then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'Mappa_Universale.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        })
+        .catch(err => { console.error(err); showAlert('Errore download.'); })
+        .finally(() => {
+            btn.textContent = origText;
+            btn.disabled = false;
+        });
+}
 
     function showAlert(msg) {
         document.getElementById('alertMessage').textContent = msg;
