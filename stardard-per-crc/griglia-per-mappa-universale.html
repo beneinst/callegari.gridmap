@@ -27,7 +27,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"305afd74ddfe003f8ad8ee87f6f193bd"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"fb0034fc2a8facfc024cee493b9bdd0f"}</script>
 	<script src="../media/system/js/core.min.js?a3d8f8"></script>
 	<script src="../media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="../media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -604,36 +604,204 @@ button.bg-teal  { background-color: #17a2b8; }
     cursor: pointer; border-radius: 5px; font-weight: bold; font-size: 13px;
 }
 #uploadLabel:hover { background-color: #45a049; }
+
+/* Contenitore principale della barra */
+.top-bar-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 12px 16px;
+    background-color: #f8f9fa; /* O il colore di sfondo che preferisci */
+    border-bottom: 1px solid #dee2e6;
+    align-items: flex-start;
+}
+
+/* Gruppi logici (Mappa, Offset, Punto) */
+.config-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.offset-group {
+    border-left: 1px solid #ccc;
+    padding-left: 20px;
+}
+
+.point-group {
+    margin-left: auto; /* Spinge il gruppo a destra se c'è spazio */
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Intestazioni dei gruppi */
+.group-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4px;
+}
+
+.geo-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.geo-hint {
+    font-size: 0.7rem;
+    color: #666;
+    font-style: italic;
+}
+
+.input-section-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Righe di campi input */
+.fields-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.point-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Singolo campo */
+.geo-field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.geo-field label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Stili input */
+.geo-field input[type="number"] {
+    width: 70px;
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.input-small {
+    width: 65px !important;
+}
+
+.input-flex {
+    flex: 2;
+    min-width: 180px;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.input-flex-sm {
+    flex: 1;
+    min-width: 120px;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* Bottone */
+.btn-teal {
+    padding: 6px 14px;
+    background-color: #0d9488; /* Tailwind teal-600 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.btn-teal:hover {
+    background-color: #0f766e; /* Tailwind teal-700 */
+}
 </style>
 </head>
 <body>
     <div class="container">
 
-        <!-- ═══ BARRA SUPERIORE: Coordinate N/E ═══ -->
-        <div id="barTop">
-            <div id="geoConfig">
-                <div class="geo-title">📐 Coordinate Mappa</div>
-              <div class="geo-hint">Gradi decimali bordi mappa</div>
-            </div>
-              
-                <div class="geo-field"><label>N max:</label><input type="number" id="nMax" step="0.01" value="47.10" placeholder="47.10"></div>
-                <div class="geo-field"><label>N min:</label><input type="number" id="nMin" step="0.01" value="35.49" placeholder="35.49"></div>
-                <div class="geo-field"><label>E min:</label><input type="number" id="eMin" step="0.01" value="6.60" placeholder="6.60"></div>
-                <div class="geo-field"><label>E max:</label><input type="number" id="eMax" step="0.01" value="18.50" placeholder="18.50"></div>
-              <div class="geo-field" style="margin-left: 10px;">
-    <label>Offset Y (%):</label>
-    <input type="number" id="verticalOffset" step="0.1" value="0" style="width:70px;">
-</div>
-                
-            <span class="input-section-label">📍 N/E:</span>
-            <input type="text" id="inputPointGeo" placeholder="FKS,dim,N,E  es: 7820,2,44.22,11.34" style="flex:1; min-width:190px;">
-            <input type="text" id="inputLabelGeo" placeholder="Etichetta (opzionale)" style="flex:1; min-width:130px;">
-            <button id="addPointGeo" class="bg-teal">Aggiungi Punto N/E</button>
+      <!-- ═══ BARRA SUPERIORE: Coordinate e Configurazione ═══ -->
+<div id="barTop" class="top-bar-container">
+    
+    <!-- GRUPPO 1: Limiti della Mappa -->
+    <div class="config-group">
+        <div class="group-header">
+            <div class="geo-title">📐 Coordinate Mappa</div>
+            <div class="geo-hint">Gradi decimali bordi</div>
         </div>
+        <div class="fields-row">
+            <div class="geo-field">
+                <label for="nMax">N max:</label>
+                <input type="number" id="nMax" step="0.01" value="47.10" placeholder="47.10">
+            </div>
+            <div class="geo-field">
+                <label for="nMin">N min:</label>
+                <input type="number" id="nMin" step="0.01" value="35.49" placeholder="35.49">
+            </div>
+            <div class="geo-field">
+                <label for="eMin">E min:</label>
+                <input type="number" id="eMin" step="0.01" value="6.60" placeholder="6.60">
+            </div>
+            <div class="geo-field">
+                <label for="eMax">E max:</label>
+                <input type="number" id="eMax" step="0.01" value="18.50" placeholder="18.50">
+            </div>
+        </div>
+    </div>
+
+    <!-- GRUPPO 2: Offset (Spostamento Griglia) -->
+    <div class="config-group offset-group">
+        <div class="group-header">
+            <div class="geo-title">🔄 Offset Griglia</div>
+            <div class="geo-hint">Correzione in %</div>
+        </div>
+        <div class="fields-row">
+            <div class="geo-field">
+                <label for="verticalOffset" title="Spostamento verticale (Asse Y / Nord)">Offset Y (N):</label>
+                <input type="number" id="verticalOffset" step="0.1" value="0" class="input-small">
+            </div>
+            <div class="geo-field">
+                <label for="horizontalOffset" title="Spostamento orizzontale (Asse X / Est)">Offset X (E):</label>
+                <input type="number" id="horizontalOffset" step="0.1" value="0" class="input-small">
+            </div>
+        </div>
+    </div>
+
+    <!-- GRUPPO 3: Inserimento Punto -->
+    <div class="config-group point-group">
+        <div class="group-header">
+            <span class="input-section-label">📍 Aggiungi Punto N/E</span>
+        </div>
+        <div class="fields-row point-row">
+            <input type="text" id="inputPointGeo" placeholder="FKS,dim,N,E (es: 7820,2,44.22,11.34)" class="input-flex">
+            <input type="text" id="inputLabelGeo" placeholder="Etichetta (opz.)" class="input-flex-sm">
+            <button id="addPointGeo" class="btn-teal">Aggiungi</button>
+        </div>
+    </div>
+
+</div>
 
         <!-- ═══ MAPPA ═══ -->
         <div class="custom-grid-map">
-            <img id="mapImage" data-src="https://beneinst.github.io/callegari.gridmap/images/pianta-italia-uni1.jpg" crossorigin="anonymous" alt="Mappa" class="lazyload">
+            <img id="mapImage" data-src="https://beneinst.github.io/callegari.gridmap/images/mappaitalia.jpg" crossorigin="anonymous" alt="Mappa" class="lazyload">
             <div id="gridContainer"></div>
             <div id="labelsContainer"></div>
             <div id="pointsContainer"></div>
@@ -795,7 +963,7 @@ function addPointGeo() {
     if (eMax <= eMin) { showAlert('E max deve essere > E min.'); return; }
 
     // X: longitudine → lineare (Mercatore non distorce l'asse E)
-    const leftPct = ((eVal - eMin) / (eMax - eMin)) * 100;
+    let leftPct = ((eVal - eMin) / (eMax - eMin)) * 100;
 
     // Y: latitudine → proiezione Web Mercatore (come Google Maps)
     const yMax = mercatorY(nMax);
@@ -808,9 +976,13 @@ function addPointGeo() {
         return;
     }
 
-    const offset = parseFloat(document.getElementById('verticalOffset').value) || 0;
-    topPct = topPct + offset;
-    topPct = Math.min(100, Math.max(0, topPct));
+    // Con questo:
+    const offsetY = parseFloat(document.getElementById('verticalOffset').value) || 0;
+    const offsetX = parseFloat(document.getElementById('horizontalOffset').value) || 0;
+    topPct  = topPct  + offsetY;
+    leftPct = leftPct + offsetX;
+    topPct  = Math.min(100, Math.max(0, topPct));
+    leftPct = Math.min(100, Math.max(0, leftPct));
 
     const { color, borderColor } = getColorFromValore(value);
     items.push({ type:'pointGeo', leftPct, topPct, color, borderColor, value, size, etichetta, geoLabel:`N=${nVal} E=${eVal}` });
