@@ -27,7 +27,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"9a5c303fbe9046a6e233a31e30eb35db"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"305afd74ddfe003f8ad8ee87f6f193bd"}</script>
 	<script src="../media/system/js/core.min.js?a3d8f8"></script>
 	<script src="../media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="../media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -812,7 +812,7 @@ function addPointGeo() {
     topPct = topPct + offset;
     topPct = Math.min(100, Math.max(0, topPct));
 
-    const { color, borderColor } = getColorFromValue(value);
+    const { color, borderColor } = getColorFromValore(value);
     items.push({ type:'pointGeo', leftPct, topPct, color, borderColor, value, size, etichetta, geoLabel:`N=${nVal} E=${eVal}` });
     renderItems();
     document.getElementById('inputPointGeo').value = '';
@@ -840,7 +840,7 @@ function addPointGeo() {
                 return;
             }
 
-            const { color, borderColor } = getColorFromValue(value);
+            const { color, borderColor } = getColorFromValore(value);
             items.push({ type:'point', area, position:positionNum, color, borderColor, value, size:sizeNum, etichetta });
             renderItems();
             document.getElementById('inputPoint').value     = '';
