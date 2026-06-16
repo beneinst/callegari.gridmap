@@ -14,19 +14,19 @@ Uri: http://datasisma.local/cache/com_templates/templates/shaper_helixultimate/f
 File Name: C:\Downloaded Web Sites\datasisma.local\cache\com_templates\templates\shaper_helixultimate\fb817c72c8b2deba9a3408628bfaf71f.css
 Content Type: text/css
 
-Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/animate.min.css?e330c48656444406579e9a67ad27107f
+Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/animate.min.css?143fb2b8f5d98f82feb246ecc61db33d
 File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\animate.min.css
 Content Type: text/css
 
-Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/dynamic-content.css?e330c48656444406579e9a67ad27107f
+Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/dynamic-content.css?143fb2b8f5d98f82feb246ecc61db33d
 File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\dynamic-content.css
 Content Type: text/css
 
-Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?e330c48656444406579e9a67ad27107f
+Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/font-awesome-6.min.css?143fb2b8f5d98f82feb246ecc61db33d
 File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\font-awesome-6.min.css
 Content Type: text/css
 
-Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?e330c48656444406579e9a67ad27107f
+Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/font-awesome-v4-shims.css?143fb2b8f5d98f82feb246ecc61db33d
 File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\font-awesome-v4-shims.css
 Content Type: text/css
 
@@ -34,7 +34,7 @@ Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/magnific-pop
 File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\magnific-popup.css
 Content Type: text/css
 
-Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/sppagebuilder.css?e330c48656444406579e9a67ad27107f
+Uri: http://datasisma.local/components/com_sppagebuilder/assets/css/sppagebuilder.css?143fb2b8f5d98f82feb246ecc61db33d
 File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\css\sppagebuilder.css
 Content Type: text/css
 
@@ -50,7 +50,7 @@ Uri: http://datasisma.local/components/com_sppagebuilder/assets/js/common.js
 File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\js\common.js
 Content Type: text/javascript
 
-Uri: http://datasisma.local/components/com_sppagebuilder/assets/js/dynamic-content.js?e330c48656444406579e9a67ad27107f
+Uri: http://datasisma.local/components/com_sppagebuilder/assets/js/dynamic-content.js?143fb2b8f5d98f82feb246ecc61db33d
 File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\js\dynamic-content.js
 Content Type: text/javascript
 
@@ -58,11 +58,11 @@ Uri: http://datasisma.local/components/com_sppagebuilder/assets/js/jquery.magnif
 File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\js\jquery.magnific-popup.min.js
 Content Type: text/javascript
 
-Uri: http://datasisma.local/components/com_sppagebuilder/assets/js/jquery.parallax.js?e330c48656444406579e9a67ad27107f
+Uri: http://datasisma.local/components/com_sppagebuilder/assets/js/jquery.parallax.js?143fb2b8f5d98f82feb246ecc61db33d
 File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\js\jquery.parallax.js
 Content Type: text/javascript
 
-Uri: http://datasisma.local/components/com_sppagebuilder/assets/js/sppagebuilder.js?e330c48656444406579e9a67ad27107f
+Uri: http://datasisma.local/components/com_sppagebuilder/assets/js/sppagebuilder.js?143fb2b8f5d98f82feb246ecc61db33d
 File Name: C:\Downloaded Web Sites\datasisma.local\components\com_sppagebuilder\assets\js\sppagebuilder.js
 Content Type: text/javascript
 
@@ -170,7 +170,7 @@ Uri: http://datasisma.local/media-giornaliera-delle-fk.html
 File Name: C:\Downloaded Web Sites\datasisma.local\media-giornaliera-delle-fk.html
 Content Type: text/html
 
-Uri: http://datasisma.local/media/com_wrapper/js/iframe-height.min.js?e1403e
+Uri: http://datasisma.local/media/com_wrapper/js/iframe-height.min.js?7799de
 File Name: C:\Downloaded Web Sites\datasisma.local\media\com_wrapper\js\iframe-height.min.js
 Content Type: text/javascript
 
@@ -178,7 +178,7 @@ Uri: http://datasisma.local/media/legacy/js/jquery-noconflict.min.js?504da4
 File Name: C:\Downloaded Web Sites\datasisma.local\media\legacy\js\jquery-noconflict.min.js
 Content Type: text/javascript
 
-Uri: http://datasisma.local/media/mod_menu/js/menu.min.js?e1403e
+Uri: http://datasisma.local/media/mod_menu/js/menu.min.js?7799de
 File Name: C:\Downloaded Web Sites\datasisma.local\media\mod_menu\js\menu.min.js
 Content Type: text/javascript
 
