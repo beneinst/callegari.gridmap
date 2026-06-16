@@ -27,7 +27,7 @@
 	<style>.menu.nav-pills > li > a, .menu.nav-pills > li > span, .menu.nav-pills .sp-dropdown li.sp-menu-item > a{font-family: 'Tahoma', sans-serif;font-size: 17px;text-decoration: none;}
 </style>
 	<style>#sp-footer{ background-color:#EEF3F8; }</style>
-<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"fb0034fc2a8facfc024cee493b9bdd0f"}</script>
+<script type="application/json" class="joomla-script-options new">{"data":{"breakpoints":{"tablet":991,"mobile":480},"header":{"stickyOffset":"100"}},"joomla.jtext":{"ERROR":"Errore","MESSAGE":"Messaggio","NOTICE":"Avviso","WARNING":"Attenzione","JCLOSE":"Chiudi","JOK":"OK","JOPEN":"Apri"},"system.paths":{"root":"","rootFull":"http:\/\/datasisma.local\/","base":"","baseFull":"http:\/\/datasisma.local\/"},"csrf.token":"4af24fe6f30f467c80240c8b48ec132b"}</script>
 	<script src="../media/system/js/core.min.js?a3d8f8"></script>
 	<script src="../media/vendor/jquery/js/jquery.min.js?3.7.1"></script>
 	<script src="../media/legacy/js/jquery-noconflict.min.js?504da4"></script>
@@ -936,6 +936,22 @@ button.bg-teal  { background-color: #17a2b8; }
             return Math.log(Math.tan(Math.PI / 4 + latRad / 2));
         }
 
+      function correctTopPct(t) {
+    const correction = -0.13891 + 0.16111 * t;
+    return t + correction;
+}
+
+function correctLeftPct(l) {
+    const linear = 0.20305 + (-0.41869) * l;
+    const southBoost = l > 0.50 ? (l - 0.50) * 0.549 : 0;
+    
+    // Correzione aggiuntiva zona ovest (Milano area)
+    // -88px = -0.03492 a l=0.40159, zero a l=0.49921
+    const westFix = l < 0.49921 ? (0.49921 - l) * (-0.3564) : 0;
+    
+    return l + linear + southBoost + westFix;
+}
+
        // ── Aggiungi punto N/E ─────────────────────────────────────────
 function addPointGeo() {
     const raw       = document.getElementById('inputPointGeo').value.trim();
@@ -963,13 +979,12 @@ function addPointGeo() {
     if (eMax <= eMin) { showAlert('E max deve essere > E min.'); return; }
 
     // X: longitudine → lineare (Mercatore non distorce l'asse E)
-    let leftPct = ((eVal - eMin) / (eMax - eMin)) * 100;
+   let leftPct = correctLeftPct((eVal - eMin) / (eMax - eMin)) * 100;
 
-    // Y: latitudine → proiezione Web Mercatore (come Google Maps)
-    const yMax = mercatorY(nMax);
-    const yMin = mercatorY(nMin);
-    const yVal = mercatorY(nVal);
-    let topPct = (yMax - yVal) / (yMax - yMin) * 100;
+const yMax = mercatorY(nMax);
+const yMin = mercatorY(nMin);
+const yVal = mercatorY(nVal);
+let topPct = correctTopPct((yMax - yVal) / (yMax - yMin)) * 100;
 
     if (leftPct < 0 || leftPct > 100 || topPct < 0 || topPct > 100) {
         showAlert(`Coordinate fuori dalla mappa.\nN tra ${nMin} e ${nMax} — E tra ${eMin} e ${eMax}`);
