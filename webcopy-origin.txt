@@ -106,6 +106,10 @@ Uri: http://datasisma.local/corr-fks-fkr-profondità.html
 File Name: C:\Downloaded Web Sites\datasisma.local\corr-fks-fkr-profondità.html
 Content Type: text/html
 
+Uri: http://datasisma.local/estesa-grande-mappa-it-google-3d.html
+File Name: C:\Downloaded Web Sites\datasisma.local\estesa-grande-mappa-it-google-3d.html
+Content Type: text/html
+
 Uri: http://datasisma.local/fks-fkr-per-area/grafico-valori-fkr.html
 File Name: C:\Downloaded Web Sites\datasisma.local\fks-fkr-per-area\grafico-valori-fkr.html
 Content Type: text/html
