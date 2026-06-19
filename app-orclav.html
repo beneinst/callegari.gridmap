@@ -433,9 +433,9 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       const isLinear = document.getElementById('transitionType').value === 'linear';
 
       const introPauseSec = 12;
-      const introAltitude = 4700000;
+      const introAltitude = 4400000;
       const centerLat = 42.5, centerLon = 12.5;
-      const finalAltitude = 4700000;
+      const finalAltitude = 4400000;
 
       const totalSec = introPauseSec + flightSec + (parsedPoints.length * staySec) + ((parsedPoints.length - 1) * flightSec) + flightSec;
       const totalFrames = Math.ceil(totalSec * fps);
