@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Earth Studio & Tour Generator – Icone e Colorazione Sismica</title>
-  <!-- Tailwind CSS -->
+  <title>Google Earth Studio & Tour Generator – Multi-Scala Colorazione</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Leaflet CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
@@ -18,7 +16,6 @@
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col">
 
-  <!-- Header -->
   <header class="bg-gray-800 border-b border-gray-700 py-4 px-6 flex items-center justify-between">
     <div class="flex items-center space-x-3">
       <svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -26,30 +23,33 @@
       </svg>
       <div>
         <h1 class="text-xl font-bold tracking-tight">Earth Studio Animator & KML Tour Helper</h1>
-        <p class="text-xs text-gray-400">Icone pre/post sisma e colorazione per magnitudo – Zero rimbalzi</p>
+        <p class="text-xs text-gray-400">Multi-scala: Sismica (0-40+) · FKS Cagliari (1000-15000) · Magnitudo Richter</p>
       </div>
     </div>
-    <span class="bg-indigo-900 text-indigo-300 text-xs px-2.5 py-1 rounded-full font-semibold">V2.4 Stabile</span>
+    <span class="bg-indigo-900 text-indigo-300 text-xs px-2.5 py-1 rounded-full font-semibold">V3.0 Multi-Scala</span>
   </header>
 
-  <!-- Main Content Grid -->
   <main class="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 p-6">
     
-    <!-- Colonna Sinistra -->
     <div class="lg:col-span-5 flex flex-col space-y-6">
       
-      <!-- Box Input -->
       <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-xl flex flex-col space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-semibold flex items-center gap-2">
             <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
             Inserisci i tuoi Dati
           </h2>
-          <button id="loadDemoBtn" class="text-xs text-indigo-400 hover:text-indigo-300 underline">Carica Esempio (Sud Italia con Valori)</button>
+          <button id="loadDemoBtn" class="text-xs text-indigo-400 hover:text-indigo-300 underline">Carica Esempio</button>
+        </div>
+        <div class="bg-gray-900 p-2 rounded-lg text-[11px] text-gray-400 border border-gray-700">
+          <strong class="text-gray-300">Formati accettati (tutti equivalenti):</strong><br>
+          • <code class="text-indigo-300">lat, lon, nome, Valore X</code><br>
+          • <code class="text-indigo-300">nome, lat, lon, Valore X</code><br>
+          • <code class="text-indigo-300">Valore X, lat, lon, nome</code><br>
+          • Oppure incolla direttamente un <strong>KML</strong>
         </div>
         <div>
-          <label class="block text-xs text-gray-400 mb-1">Formato: lat, lon, nome [Valore X] oppure nome, lat, lon, Valore X</label>
-          <textarea id="coordsInput" class="w-full h-44 bg-gray-900 border border-gray-700 rounded-lg p-3 text-xs font-mono text-gray-300 focus:outline-none focus:border-indigo-500 custom-scrollbar" placeholder="Esempi:&#10;38.1157, 13.3614, Palermo, Valore 3.2&#10;M2, 37.22, 11.36, Valore 34&#10;... oppure incolla KML"></textarea>
+          <textarea id="coordsInput" class="w-full h-44 bg-gray-900 border border-gray-700 rounded-lg p-3 text-xs font-mono text-gray-300 focus:outline-none focus:border-indigo-500 custom-scrollbar" placeholder="Esempi:&#10;38.1157, 13.3614, Palermo, Valore 3.2&#10;M2, 37.22, 11.36, Valore 34&#10;Valore 7500, 40.15, 15.85, Parco Cilento&#10;... oppure incolla KML"></textarea>
         </div>
         <div class="grid grid-cols-2 gap-4">
           <button id="parseBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2">
@@ -62,27 +62,37 @@
         </div>
       </div>
 
-      <!-- Parametri Animazione e Stile -->
+      <!-- NUOVO: Selettore Scala Colori -->
       <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-xl flex flex-col space-y-4">
         <h2 class="text-lg font-semibold flex items-center gap-2">
           <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
+          Scala di Colorazione (scegli il sistema)
+        </h2>
+        <div>
+          <label class="block text-xs text-gray-400 mb-1">Tipo di scala da applicare ai valori:</label>
+          <select id="colorScaleSelect" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-sm focus:outline-none">
+            <option value="sismica" selected>🟦 Scala Sismica Italia (0 – 40+)</option>
+            <option value="fks">🟨 Scala FKS Cagliari (1.000 – 15.000)</option>
+            <option value="richter">🟥 Magnitudo Richter (0 – 10+)</option>
+          </select>
+        </div>
+        <!-- Legenda dinamica -->
+        <div id="legendBox" class="bg-gray-900 p-3 rounded-lg text-xs flex flex-wrap gap-x-4 gap-y-1 items-center border border-gray-700">
+          <!-- Popolato dinamicamente -->
+        </div>
+      </div>
+
+      <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-xl flex flex-col space-y-4">
+        <h2 class="text-lg font-semibold flex items-center gap-2">
+          <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span>
           Impostazioni Video & Stile Punti
         </h2>
         <div>
           <label class="block text-xs text-gray-400 mb-1">Stile icone sulla mappa:</label>
           <select id="iconStyleSelect" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-sm focus:outline-none">
-            <option value="pre" selected>🔵 Pre‑Terremoto (cerchio colorato numerato)</option>
-            <option value="post">🔴 Post‑Terremoto (puntatore sismico)</option>
+            <option value="pre" selected>🔵 Cerchio colorato numerato</option>
+            <option value="post">🔴 Puntatore sismico (goccia)</option>
           </select>
-        </div>
-        <div class="bg-gray-900 p-3 rounded-lg text-xs flex flex-wrap gap-x-4 gap-y-1 items-center">
-          <span class="text-gray-400">Colore per magnitudo:</span>
-          <span class="inline-flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-full" style="background:#bae6fd;"></span> ≤5</span>
-          <span class="inline-flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-full" style="background:#7dd3fc;"></span> 6‑10</span>
-          <span class="inline-flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-full" style="background:#86efac;"></span> 11‑20</span>
-          <span class="inline-flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-full" style="background:#fde047;"></span> 21‑30</span>
-          <span class="inline-flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-full" style="background:#fb923c;"></span> 31‑40</span>
-          <span class="inline-flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-full" style="background:#ef4444;"></span> &gt;40</span>
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div>
@@ -95,8 +105,8 @@
           <div>
             <label class="block text-xs text-gray-400 mb-1">Stile Movimento:</label>
             <select id="transitionType" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-sm focus:outline-none">
-              <option value="linear" selected>Lineare (Zero Errori / No Rimbalzi)</option>
-              <option value="smooth">Morbido Smussato (Rallenta ai punti)</option>
+              <option value="linear" selected>Lineare (Zero Rimbalzi)</option>
+              <option value="smooth">Morbido Smussato</option>
             </select>
           </div>
         </div>
@@ -112,29 +122,28 @@
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs text-gray-400 mb-1">Altitudine Telecamera (metri):</label>
+            <label class="block text-xs text-gray-400 mb-1">Altitudine Telecamera (m):</label>
             <input type="number" id="cameraAlt" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-sm focus:outline-none" value="160000" min="500" step="5000">
           </div>
           <div>
-            <label class="block text-xs text-gray-400 mb-1">Inclinazione (Tilt/Pitch°):</label>
-            <input type="number" id="cameraTilt" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-sm focus:outline-none" value="0" min="0" max="85" placeholder="0 = zenitale">
+            <label class="block text-xs text-gray-400 mb-1">Inclinazione (Tilt°):</label>
+            <input type="number" id="cameraTilt" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-sm focus:outline-none" value="0" min="0" max="85">
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Colonna Destra -->
     <div class="lg:col-span-7 flex flex-col space-y-6">
       <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-xl flex flex-col space-y-4">
         <h2 class="text-lg font-semibold flex items-center gap-2">
-          <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span>
+          <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">4</span>
           Anteprima Percorso & Punti Rilevati
         </h2>
         <div id="map" class="rounded-lg border border-gray-700 overflow-hidden z-10"></div>
         <div class="bg-gray-900 p-3 rounded-lg border border-gray-700">
           <div class="flex items-center justify-between mb-2">
             <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Punti nel Percorso (<span id="pointCount">0</span>):</span>
-            <span class="text-xs text-indigo-400 font-mono">Durata totale stimata: <span id="totalDurationVal">0</span> frame (<span id="totalSecVal">0</span> secondi)</span>
+            <span class="text-xs text-indigo-400 font-mono">Durata: <span id="totalDurationVal">0</span> frame (<span id="totalSecVal">0</span> sec)</span>
           </div>
           <div id="pointsList" class="flex flex-wrap gap-2 max-h-24 overflow-y-auto custom-scrollbar p-1">
             <span class="text-xs text-gray-500 italic">Nessun punto caricato.</span>
@@ -142,31 +151,30 @@
         </div>
       </div>
 
-      <!-- Download -->
       <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-xl flex flex-col space-y-4">
         <h2 class="text-lg font-semibold flex items-center gap-2">
-          <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">4</span>
+          <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">5</span>
           Genera ed Esporta per Google Earth
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-gray-950 p-4 rounded-lg border border-gray-800 flex flex-col justify-between">
             <div>
-              <h3 class="text-sm font-bold text-indigo-400 mb-1">PROGETTO PER EARTH STUDIO (.esp)</h3>
-              <p class="text-xs text-gray-400 mb-4">Coordinate ricalcolate, transizioni calibrate per annullare i rimbalzi.</p>
+              <h3 class="text-sm font-bold text-indigo-400 mb-1">PROGETTO EARTH STUDIO (.esp)</h3>
+              <p class="text-xs text-gray-400 mb-4">Coordinate ricalcolate, transizioni calibrate.</p>
             </div>
             <button id="downloadEspBtn" disabled class="w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-not-allowed flex items-center justify-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-              Scarica Progetto .esp
+              Scarica .esp
             </button>
           </div>
           <div class="bg-gray-950 p-4 rounded-lg border border-gray-800 flex flex-col justify-between">
             <div>
-              <h3 class="text-sm font-bold text-emerald-400 mb-1">KML CON COMPONTENTE TEMPORALE (.kml)</h3>
-              <p class="text-xs text-gray-400 mb-4">Timestamp sequenziale: i punti appaiono solo al passaggio della telecamera.</p>
+              <h3 class="text-sm font-bold text-emerald-400 mb-1">KML SEQUENZIALE (.kml)</h3>
+              <p class="text-xs text-gray-400 mb-4">Timestamp + colori in base alla scala scelta.</p>
             </div>
             <button id="downloadKmlBtn" disabled class="w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-not-allowed flex items-center justify-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-              Scarica KML Sequenziale
+              Scarica KML
             </button>
           </div>
         </div>
@@ -179,12 +187,8 @@
   </div>
 
   <script>
-    // Controllo silenzioso di Leaflet
     const leafletAvailable = (typeof L !== 'undefined');
-
-    let map;
-    let markersGroup;
-    let pathLine;
+    let map, markersGroup, pathLine;
     let parsedPoints = [];
     let currentZoom = 6;
 
@@ -202,18 +206,170 @@ Agrigento, 37.3110, 13.5765, Valore 42.0
 Siracusa, 37.0755, 15.2866, Valore 17.0
 Trapani, 38.0150, 12.5150, Valore 4.0`;
 
-    function getColorForValue(val) {
+    // ============================================================
+    // TRE SISTEMI DI COLORAZIONE
+    // ============================================================
+
+    // 1) Scala Sismica Italia (0 – 40+)
+    function getColorSismica(val) {
       if (val === undefined || val === null) return '#6b7280';
-      if (val <= 5) return '#bae6fd';
-      if (val <= 10) return '#7dd3fc';
-      if (val <= 20) return '#86efac';
-      if (val <= 30) return '#fde047';
-      if (val <= 40) return '#fb923c';
-      return '#ef4444';
+      if (val <= 5)  return '#bae6fd'; // celeste chiaro
+      if (val <= 10) return '#7dd3fc'; // celeste
+      if (val <= 20) return '#86efac'; // verde chiaro
+      if (val <= 30) return '#fde047'; // giallo
+      if (val <= 40) return '#fb923c'; // arancione
+      return '#ef4444'; // rosso
     }
 
+    // 2) Scala FKS Cagliari (1000 – 15000)
+    function getColorFKS(val) {
+      if (val === undefined || val === null) return '#6b7280';
+      if (val <= 5999) return '#fde047'; // giallo
+      if (val <= 6999) return '#7dd3fc'; // celeste
+      if (val <= 7999) return '#fb923c'; // arancione
+      if (val <= 9000) return '#ef4444'; // rosso
+      return '#22c55e'; // verde
+    }
+
+    // 3) Magnitudo Richter (0 – 10+)
+    function getColorRichter(val) {
+      if (val === undefined || val === null) return '#6b7280';
+      if (val < 2)  return '#e5e7eb'; // grigio chiaro (micro)
+      if (val < 3)  return '#bae6fd'; // azzurro
+      if (val < 4)  return '#86efac'; // verde
+      if (val < 5)  return '#fde047'; // giallo
+      if (val < 6)  return '#fb923c'; // arancione
+      if (val < 7)  return '#ef4444'; // rosso
+      if (val < 8)  return '#b91c1c'; // rosso scuro
+      return '#a855f7'; // viola (catastrofico)
+    }
+
+    // Funzione dispatcher che sceglie la scala in base al selettore
+    function getColorForValue(val) {
+      const scale = document.getElementById('colorScaleSelect').value;
+      if (scale === 'fks') return getColorFKS(val);
+      if (scale === 'richter') return getColorRichter(val);
+      return getColorSismica(val);
+    }
+
+    // Definizioni delle legende per ogni scala
+    const LEGENDS = {
+      sismica: [
+        { color: '#bae6fd', label: '≤5' },
+        { color: '#7dd3fc', label: '6–10' },
+        { color: '#86efac', label: '11–20' },
+        { color: '#fde047', label: '21–30' },
+        { color: '#fb923c', label: '31–40' },
+        { color: '#ef4444', label: '>40' }
+      ],
+      fks: [
+        { color: '#fde047', label: '≤5.999' },
+        { color: '#7dd3fc', label: '6.000–6.999' },
+        { color: '#fb923c', label: '7.000–7.999' },
+        { color: '#ef4444', label: '8.000–9.000' },
+        { color: '#22c55e', label: '>9.000' }
+      ],
+      richter: [
+        { color: '#e5e7eb', label: '<2 (Micro)' },
+        { color: '#bae6fd', label: '2–3' },
+        { color: '#86efac', label: '3–4' },
+        { color: '#fde047', label: '4–5' },
+        { color: '#fb923c', label: '5–6' },
+        { color: '#ef4444', label: '6–7' },
+        { color: '#b91c1c', label: '7–8' },
+        { color: '#a855f7', label: '>8' }
+      ]
+    };
+
+    const SCALE_NAMES = {
+      sismica: 'Sismica Italia',
+      fks: 'FKS Cagliari',
+      richter: 'Magnitudo Richter'
+    };
+
+    function updateLegend() {
+      const scale = document.getElementById('colorScaleSelect').value;
+      const legendBox = document.getElementById('legendBox');
+      const items = LEGENDS[scale];
+      const title = SCALE_NAMES[scale];
+      legendBox.innerHTML = `<span class="text-gray-400 w-full mb-1 block"><strong class="text-gray-200">${title}:</strong></span>` +
+        items.map(it => `
+          <span class="inline-flex items-center gap-1">
+            <span class="inline-block w-3 h-3 rounded-full" style="background:${it.color};"></span>
+            ${it.label}
+          </span>
+        `).join('');
+    }
+
+    // ============================================================
+    // GENERAZIONE STILI KML DINAMICI
+    // ============================================================
+    function getKmlStyleId(val) {
+      const scale = document.getElementById('colorScaleSelect').value;
+      if (scale === 'fks') {
+        if (val === undefined || val === null) return 'styleNA';
+        if (val <= 5999) return 'style1';
+        if (val <= 6999) return 'style2';
+        if (val <= 7999) return 'style3';
+        if (val <= 9000) return 'style4';
+        return 'style5';
+      }
+      if (scale === 'richter') {
+        if (val === undefined || val === null) return 'styleNA';
+        if (val < 2) return 'style1';
+        if (val < 3) return 'style2';
+        if (val < 4) return 'style3';
+        if (val < 5) return 'style4';
+        if (val < 6) return 'style5';
+        if (val < 7) return 'style6';
+        if (val < 8) return 'style7';
+        return 'style8';
+      }
+      // sismica
+      if (val === undefined || val === null) return 'styleNA';
+      if (val <= 5)  return 'style1';
+      if (val <= 10) return 'style2';
+      if (val <= 20) return 'style3';
+      if (val <= 30) return 'style4';
+      if (val <= 40) return 'style5';
+      return 'style6';
+    }
+
+    function generateKmlStylesBlock() {
+      const scale = document.getElementById('colorScaleSelect').value;
+      const items = LEGENDS[scale];
+      // KML usa colore in formato AABBGGRR (hex invertito)
+      function hexToKml(hex) {
+        const h = hex.replace('#', '');
+        return 'ff' + h.substring(4, 6) + h.substring(2, 4) + h.substring(0, 2);
+      }
+      let styles = '';
+      items.forEach((it, idx) => {
+        const kmlColor = hexToKml(it.color);
+        styles += `    <Style id="style${idx+1}">
+      <IconStyle>
+        <color>${kmlColor}</color>
+        <scale>1.3</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
+      </IconStyle>
+      <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
+    </Style>\n`;
+      });
+      styles += `    <Style id="styleNA">
+      <IconStyle>
+        <color>ff808080</color>
+        <scale>1.3</scale>
+        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
+      </IconStyle>
+      <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
+    </Style>\n`;
+      return styles;
+    }
+
+    // ============================================================
+    // INIT
+    // ============================================================
     window.onload = function() {
-      // Inizializza mappa solo se Leaflet è disponibile
       if (leafletAvailable) {
         map = L.map('map').setView([40.0, 15.0], 6);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -226,10 +382,11 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         markersGroup = L.layerGroup().addTo(map);
         pathLine = L.polyline([], {color: '#6366f1', weight: 3, dashArray: '5, 10'}).addTo(map);
       } else {
-        document.getElementById('map').innerHTML = '<div style="color:white; text-align:center; padding:50px;">Mappa non disponibile (Leaflet non caricato).<br>Le altre funzioni sono attive.</div>';
+        document.getElementById('map').innerHTML = '<div style="color:white; text-align:center; padding:50px;">Mappa non disponibile.</div>';
       }
 
-      // Listener pulsanti
+      updateLegend();
+
       document.getElementById('loadDemoBtn').addEventListener('click', () => {
         document.getElementById('coordsInput').value = demoData;
         showToast("Dati demo caricati!");
@@ -240,6 +397,12 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       document.getElementById('downloadKmlBtn').addEventListener('click', generateAndDownloadKml);
       document.getElementById('iconStyleSelect').addEventListener('change', function() {
         if (leafletAvailable) drawMapElements();
+      });
+      // Aggiorna legenda e ridisegna quando cambia la scala
+      document.getElementById('colorScaleSelect').addEventListener('change', function() {
+        updateLegend();
+        if (leafletAvailable && parsedPoints.length > 0) drawMapElements();
+        showToast("Scala colorazione cambiata: " + SCALE_NAMES[this.value]);
       });
     };
 
@@ -255,11 +418,11 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       parsedPoints = [];
       if (leafletAvailable) {
         markersGroup.clearLayers();
-        if(pathLine) pathLine.setLatLngs([]);
+        if (pathLine) pathLine.setLatLngs([]);
       }
       updatePointsUI();
       disableDownloadBtns();
-      showToast("Tutti i dati e i marker sono stati azzerati.");
+      showToast("Tutti i dati azzerati.");
     }
 
     function disableDownloadBtns() {
@@ -276,6 +439,9 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       document.getElementById('downloadKmlBtn').className = "w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
     }
 
+    // ============================================================
+    // PARSER UNIFICATO - gestisce tutti e 3 i formati di input
+    // ============================================================
     function parseInput() {
       const inputText = document.getElementById('coordsInput').value.trim();
       if (!inputText) {
@@ -310,28 +476,48 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         lines.forEach((line, idx) => {
           if (!line.trim()) return;
           let parts = line.split(/[,;\t]+/).map(p => p.trim());
-          let lat, lon, name, value = null;
-          const firstIsNum = !isNaN(parseFloat(parts[0]));
-          if (firstIsNum && parts.length >= 2) {
-            lat = parseFloat(parts[0]);
-            lon = parseFloat(parts[1]);
-            name = parts[2] || `Punto ${idx+1}`;
-            for (let i=3; i<parts.length; i++) {
-              const m = parts[i].match(/valore\s*(\d+(\.\d+)?)/i);
-              if (m) { value = parseFloat(m[1]); break; }
+
+          // Riconoscimento "Valore X" in QUALSIASI posizione
+          let value = null;
+          let valueIdx = -1;
+          for (let i = 0; i < parts.length; i++) {
+            const m = parts[i].match(/valore\s*(\d+(\.\d+)?)/i);
+            if (m) {
+              value = parseFloat(m[1]);
+              valueIdx = i;
+              break;
             }
-          } else if (!firstIsNum && parts.length >= 3) {
-            name = parts[0];
-            lat = parseFloat(parts[1]);
-            lon = parseFloat(parts[2]);
-            for (let i=3; i<parts.length; i++) {
-              const m = parts[i].match(/valore\s*(\d+(\.\d+)?)/i);
-              if (m) { value = parseFloat(m[1]); break; }
+          }
+          // Rimuoviamo la parte "valore" per facilitare il parsing
+          let cleanParts = parts.filter((_, i) => i !== valueIdx);
+
+          let lat, lon, name;
+          // Trova le coordinate: cerchiamo la prima coppia di numeri validi (lat/lon)
+          let coordIdx = -1;
+          for (let i = 0; i < cleanParts.length - 1; i++) {
+            const a = parseFloat(cleanParts[i]);
+            const b = parseFloat(cleanParts[i+1]);
+            if (!isNaN(a) && !isNaN(b) &&
+                a >= -90 && a <= 90 &&
+                b >= -180 && b <= 180) {
+              lat = a;
+              lon = b;
+              coordIdx = i;
+              break;
             }
-          } else return;
-          if (!isNaN(lat) && !isNaN(lon)) parsedPoints.push({ lat, lon, name, value });
+          }
+
+          if (coordIdx === -1) return; // nessuna coord valida
+
+          // Il nome è tutto ciò che non è coord né valore
+          const nameParts = cleanParts.filter((_, i) => i !== coordIdx && i !== coordIdx + 1);
+          name = nameParts.join(' ').trim() || `Punto ${idx+1}`;
+
+          if (!isNaN(lat) && !isNaN(lon)) {
+            parsedPoints.push({ lat, lon, name, value });
+          }
         });
-        showToast(`Testo elaborato! ${parsedPoints.length} punti.`);
+        showToast(`Testo elaborato! ${parsedPoints.length} punti. (Scala: ${SCALE_NAMES[document.getElementById('colorScaleSelect').value]})`);
       }
 
       if (parsedPoints.length > 0) {
@@ -362,14 +548,14 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       document.getElementById('totalSecVal').innerText = totalSec.toFixed(1);
 
       parsedPoints.forEach((pt, index) => {
-        const valStr = pt.value !== undefined ? ` [${pt.value}]` : '';
-        const item = document.createElement('span');
-        item.className = "bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded-md border border-gray-600 flex items-center gap-1.5";
-        item.innerHTML = `
-          <span class="bg-indigo-500 text-white font-mono rounded w-4 h-4 flex items-center justify-center text-[9px]">${index + 1}</span>
-          <strong>${pt.name}</strong> <span class="text-gray-400">(${pt.lat.toFixed(4)}, ${pt.lon.toFixed(4)})${valStr}</span>`;
-        container.appendChild(item);
-      });
+  const color = getColorForValue(pt.value);
+  const item = document.createElement('span');
+  item.className = "bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded-md border border-gray-600 flex items-center gap-1.5";
+  item.innerHTML = `
+    <span class="text-white font-mono rounded w-4 h-4 flex items-center justify-center text-[9px]" style="background:${color};">${index + 1}</span>
+    <strong>${pt.name}</strong> <span class="text-gray-400">(${pt.lat.toFixed(4)}, ${pt.lon.toFixed(4)})</span>`;
+  container.appendChild(item);
+});
     }
 
     function drawMapElements() {
@@ -389,14 +575,10 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
           const size = baseSize;
           const html = `<div style="
             background-color:${color}; 
-            width:${size}px; 
-            height:${size}px; 
+            width:${size}px; height:${size}px; 
             border-radius:50%; 
-            display:flex; 
-            align-items:center; 
-            justify-content:center; 
-            color:white; 
-            font-weight:bold; 
+            display:flex; align-items:center; justify-content:center; 
+            color:white; font-weight:bold; 
             font-size:${Math.round(size * 0.45)}px; 
             border:2px solid white; 
             box-shadow:0 0 6px rgba(0,0,0,0.5);
@@ -412,9 +594,9 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         }
 
         const marker = L.marker(latlng, { icon }).addTo(markersGroup);
-        const valInfo = pt.value !== undefined ? `Magnitudo: ${pt.value}` : '';
-        marker.bindPopup(`<strong>${index+1}. ${pt.name}</strong><br>Lat: ${pt.lat}<br>Lon: ${pt.lon}${valInfo ? '<br>'+valInfo : ''}`);
-      });
+
+marker.bindPopup(`<strong>${index+1}. ${pt.name}</strong><br>Lat: ${pt.lat}<br>Lon: ${pt.lon}`);     
+	 });
 
       if (pathLine) pathLine.setLatLngs(latlngs);
       if (latlngs.length > 0) {
@@ -422,7 +604,9 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       }
     }
 
-    // Funzioni di generazione ESP e KML
+    // ============================================================
+    // GENERAZIONE ESP (invariata, funziona con qualsiasi scala)
+    // ============================================================
     function generateAndDownloadEsp() {
       if (parsedPoints.length === 0) return;
       const fps = parseInt(document.getElementById('fpsSelect').value);
@@ -432,10 +616,10 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       const cameraTilt = parseFloat(document.getElementById('cameraTilt').value);
       const isLinear = document.getElementById('transitionType').value === 'linear';
 
-      const introPauseSec = 12;
-      const introAltitude = 4400000;
+      const introPauseSec = 8;
+      const introAltitude = 4300000;
       const centerLat = 42.5, centerLon = 12.5;
-      const finalAltitude = 4400000;
+      const finalAltitude = 4300000;
 
       const totalSec = introPauseSec + flightSec + (parsedPoints.length * staySec) + ((parsedPoints.length - 1) * flightSec) + flightSec;
       const totalFrames = Math.ceil(totalSec * fps);
@@ -523,10 +707,11 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       rotXKeyframes[rotXKeyframes.length - 1].time = 1;
       rotYKeyframes[rotYKeyframes.length - 1].time = 1;
 
+      const scaleName = SCALE_NAMES[document.getElementById('colorScaleSelect').value];
       const espJson = {
         modelVersion: 18,
         settings: {
-          name: "Volo Sismico Italia – Zoom Spaziale Finale",
+          name: `Volo ${scaleName} – Zoom Spaziale Finale`,
           frameRate: fps,
           dimensions: { width: 1920, height: 1080 },
           duration: totalFrames,
@@ -538,12 +723,9 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
           duration: totalFrames,
           attributes: [
             {
-              type: "cameraGroup",
-              inTimeline: true,
+              type: "cameraGroup", inTimeline: true,
               attributes: [
-                {
-                  type: "cameraPositionGroup",
-                  inTimeline: true,
+                { type: "cameraPositionGroup", inTimeline: true,
                   attributes: [
                     { type: "longitude", value: { relative: normCenterLon }, keyframes: lonKeyframes, inTimeline: true },
                     { type: "latitude", value: { relative: normCenterLat }, keyframes: latKeyframes, inTimeline: true },
@@ -571,112 +753,45 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         playbackManager: { range: { start: 0, end: totalFrames } }
       };
 
-      triggerDownload(JSON.stringify(espJson, null, 2), "progetto_earth_sismico_con_zoom_finale.esp");
-      showToast("ESP con zoom spaziale finale (50.000 km) generato!");
+      triggerDownload(JSON.stringify(espJson, null, 2), `progetto_earth_${scaleName.replace(/\s+/g,'_')}.esp`);
+      showToast(`ESP (${scaleName}) generato!`);
     }
 
-    function getKmlStyleId(val) {
-      if (val === undefined || val === null) return 'seismicStyleNA';
-      if (val <= 5) return 'seismicStyle1';
-      if (val <= 10) return 'seismicStyle2';
-      if (val <= 20) return 'seismicStyle3';
-      if (val <= 30) return 'seismicStyle4';
-      if (val <= 40) return 'seismicStyle5';
-      return 'seismicStyle6';
-    }
-
+    // ============================================================
+    // GENERAZIONE KML CON STILI DINAMICI
+    // ============================================================
     function generateAndDownloadKml() {
       if (parsedPoints.length === 0) return;
       const staySec = parseFloat(document.getElementById('stayDuration').value);
       const flightSec = parseFloat(document.getElementById('flightDuration').value);
       const introPauseSec = 8;
+      const scaleName = SCALE_NAMES[document.getElementById('colorScaleSelect').value];
       let currentTime = new Date("2026-06-18T10:00:00Z");
       currentTime.setSeconds(currentTime.getSeconds() + introPauseSec + flightSec);
 
       let placemarksStr = '';
-      parsedPoints.forEach((pt, index) => {
-        const timeISO = currentTime.toISOString();
-        const valDesc = pt.value !== undefined ? ` - Magnitudo ${pt.value}` : '';
-        const styleId = getKmlStyleId(pt.value);
-        placemarksStr += `    <Placemark>
-      <name>${index + 1}. ${pt.name}${valDesc}</name>
-      <TimeStamp>
-        <when>${timeISO}</when>
-      </TimeStamp>
-      <styleUrl>#${styleId}</styleUrl>
-      <Point>
-        <coordinates>${pt.lon},${pt.lat},0</coordinates>
-      </Point>
-    </Placemark>\n`;
-        currentTime.setSeconds(currentTime.getSeconds() + staySec + flightSec);
-      });
+parsedPoints.forEach((pt, index) => {
+  const timeISO = currentTime.toISOString();
+  const styleId = getKmlStyleId(pt.value);
+  placemarksStr += `    <Placemark>
+    <name>${index + 1}. ${pt.name}</name>
+    <TimeStamp><when>${timeISO}</when></TimeStamp>
+    <styleUrl>#${styleId}</styleUrl>
+    <Point><coordinates>${pt.lon},${pt.lat},0</coordinates></Point>
+  </Placemark>\n`;
+  currentTime.setSeconds(currentTime.getSeconds() + staySec + flightSec);
+});
 
       const kmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
   <Document>
-    <name>Monitoraggio Sismico Sequenziale - Italia</name>
-    <description>I punti appaiono uno alla volta sincronizzati con il volo temporale. Icona standard, colore per fascia di magnitudo.</description>
-    <Style id="seismicStyle1">
-      <IconStyle>
-        <color>fffde6ba</color>
-        <scale>1.3</scale>
-        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
-      </IconStyle>
-      <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
-    </Style>
-    <Style id="seismicStyle2">
-      <IconStyle>
-        <color>fffcd37d</color>
-        <scale>1.3</scale>
-        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
-      </IconStyle>
-      <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
-    </Style>
-    <Style id="seismicStyle3">
-      <IconStyle>
-        <color>ffacef86</color>
-        <scale>1.3</scale>
-        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
-      </IconStyle>
-      <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
-    </Style>
-    <Style id="seismicStyle4">
-      <IconStyle>
-        <color>ff47e0fd</color>
-        <scale>1.3</scale>
-        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
-      </IconStyle>
-      <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
-    </Style>
-    <Style id="seismicStyle5">
-      <IconStyle>
-        <color>ff3c92fb</color>
-        <scale>1.3</scale>
-        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
-      </IconStyle>
-      <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
-    </Style>
-    <Style id="seismicStyle6">
-      <IconStyle>
-        <color>ff4444ef</color>
-        <scale>1.3</scale>
-        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
-      </IconStyle>
-      <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
-    </Style>
-    <Style id="seismicStyleNA">
-      <IconStyle>
-        <color>ff808080</color>
-        <scale>1.3</scale>
-        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
-      </IconStyle>
-      <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
-    </Style>
-${placemarksStr}  </Document>
+    <name>Monitoraggio ${scaleName} - Sequenziale</name>
+    <description>Scala applicata: ${scaleName}. I punti appaiono sincronizzati con il volo.</description>
+${generateKmlStylesBlock()}${placemarksStr}  </Document>
 </kml>`;
 
-      triggerDownload(kmlContent, "terremoti_sequenziali.kml");
-      showToast("KML Temporizzato pronto, colorato per magnitudo!");
+      triggerDownload(kmlContent, `monitoraggio_${scaleName.replace(/\s+/g,'_')}.kml`);
+      showToast(`KML (${scaleName}) pronto!`);
     }
 
     function triggerDownload(content, filename) {
