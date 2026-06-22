@@ -559,50 +559,59 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
     }
 
     function drawMapElements() {
-      if (!leafletAvailable) return;
-      markersGroup.clearLayers();
-      const latlngs = [];
-      const styleMode = document.getElementById('iconStyleSelect').value;
-      const baseSize = Math.max(6, 48 - (currentZoom - 2) * 3);
+  if (!leafletAvailable) return;
+  markersGroup.clearLayers();
+  const latlngs = [];
+  const styleMode = document.getElementById('iconStyleSelect').value;
+  const baseSize = Math.max(6, 48 - (currentZoom - 2) * 3);
+  const SMALL_FACTOR = 0.68; // Riduzione del 35%
 
-      parsedPoints.forEach((pt, index) => {
-        const latlng = [pt.lat, pt.lon];
-        latlngs.push(latlng);
-        const color = getColorForValue(pt.value);
-        let icon;
+  parsedPoints.forEach((pt, index) => {
+    const latlng = [pt.lat, pt.lon];
+    latlngs.push(latlng);
+    const color = getColorForValue(pt.value);
+    let icon;
 
-        if (styleMode === 'pre') {
-          const size = baseSize;
-          const html = `<div style="
-            background-color:${color}; 
-            width:${size}px; height:${size}px; 
-            border-radius:50%; 
-            display:flex; align-items:center; justify-content:center; 
-            color:white; font-weight:bold; 
-            font-size:${Math.round(size * 0.45)}px; 
-            border:2px solid white; 
-            box-shadow:0 0 6px rgba(0,0,0,0.5);
-          ">${index + 1}</div>`;
-          icon = L.divIcon({ html, className: '', iconSize: [size, size], iconAnchor: [size/2, size/2] });
-        } else {
-          const scale = baseSize / 20;
-          const dropHtml = `<div style="position:relative; width:0; height:0;">
-            <div style="position:absolute; top:0; left:-10px; width:20px; height:24px; background-color:${color}; clip-path: polygon(50% 0%, 0% 65%, 0% 100%, 100% 100%, 100% 65%); border:2px solid white; box-shadow:0 0 6px rgba(0,0,0,0.5); transform: scale(${scale});"></div>
-            <div style="position:absolute; top:3px; left:-6px; color:white; font-size:12px; font-weight:bold; width:12px; text-align:center; transform: scale(${scale});">⚡</div>
-          </div>`;
-          icon = L.divIcon({ html: dropHtml, className: '', iconSize: [0, 0], iconAnchor: [0, 0] });
-        }
-
-        const marker = L.marker(latlng, { icon }).addTo(markersGroup);
-
-marker.bindPopup(`<strong>${index+1}. ${pt.name}</strong><br>Lat: ${pt.lat}<br>Lon: ${pt.lon}`);     
-	 });
-
-      if (pathLine) pathLine.setLatLngs(latlngs);
-      if (latlngs.length > 0) {
-        map.fitBounds(L.latLngBounds(latlngs), { padding: [40, 40] });
-      }
+    if (styleMode === 'pre') {
+      // CERCHIO COLORATO - ridotto del 35%
+      const size = baseSize * SMALL_FACTOR;
+      const fontSize = Math.round(size * 0.45);
+      const html = `<div style="
+        background-color:${color}; 
+        width:${size}px; height:${size}px; 
+        border-radius:50%; 
+        display:flex; align-items:center; justify-content:center; 
+        color:white; font-weight:bold; 
+        font-size:${fontSize}px; 
+        border:1.5px solid white; 
+        box-shadow:0 0 4px rgba(0,0,0,0.5);
+      ">${index + 1}</div>`;
+      icon = L.divIcon({ html, className: '', iconSize: [size, size], iconAnchor: [size/2, size/2] });
+    } else {
+      // PUNTATORE SISMICO - ridotto del 35%
+      const scaledBase = 20 * SMALL_FACTOR;  // 13px invece di 20px
+      const scaledHeight = 24 * SMALL_FACTOR; // 15.6px invece di 24px
+      const scale = baseSize / 20;
+      const finalW = scaledBase * scale;
+      const finalH = scaledHeight * scale;
+      const fontSize = Math.round(12 * SMALL_FACTOR * scale);
+      
+      const dropHtml = `<div style="position:relative; width:0; height:0;">
+        <div style="position:absolute; top:0; left:-${finalW/2}px; width:${finalW}px; height:${finalH}px; background-color:${color}; clip-path: polygon(50% 0%, 0% 65%, 0% 100%, 100% 100%, 100% 65%); border:1.5px solid white; box-shadow:0 0 4px rgba(0,0,0,0.5);"></div>
+        <div style="position:absolute; top:${3*scale*SMALL_FACTOR}px; left:-${finalW*0.3}px; color:white; font-size:${fontSize}px; font-weight:bold; width:${finalW*0.6}px; text-align:center;">⚡</div>
+      </div>`;
+      icon = L.divIcon({ html: dropHtml, className: '', iconSize: [0, 0], iconAnchor: [0, 0] });
     }
+
+    const marker = L.marker(latlng, { icon }).addTo(markersGroup);
+    marker.bindPopup(`<strong>${index+1}. ${pt.name}</strong><br>Lat: ${pt.lat}<br>Lon: ${pt.lon}`);     
+  });
+
+  if (pathLine) pathLine.setLatLngs(latlngs);
+  if (latlngs.length > 0) {
+    map.fitBounds(L.latLngBounds(latlngs), { padding: [40, 40] });
+  }
+}
 
     // ============================================================
     // GENERAZIONE ESP (invariata, funziona con qualsiasi scala)
