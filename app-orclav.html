@@ -442,92 +442,127 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
     // ============================================================
     // PARSER UNIFICATO - gestisce tutti e 3 i formati di input
     // ============================================================
-    function parseInput() {
-      const inputText = document.getElementById('coordsInput').value.trim();
-      if (!inputText) {
-        showToast("Inserisci del testo prima di elaborare!");
-        return;
-      }
-      parsedPoints = [];
-      if (leafletAvailable) markersGroup.clearLayers();
+   // ============================================================
+// PARSER UNIFICATO - gestisce tutti e 3 i formati di input
+// ============================================================
+function parseInput() {
+  const inputText = document.getElementById('coordsInput').value.trim();
+  if (!inputText) {
+    showToast("Inserisci del testo prima di elaborare!");
+    return;
+  }
+  parsedPoints = [];
+  if (leafletAvailable) markersGroup.clearLayers();
 
-      if (inputText.includes('<kml') || inputText.includes('<Placemark>')) {
-        try {
-          const parser = new DOMParser();
-          const xmlDoc = parser.parseFromString(inputText, "text/xml");
-          const placemarks = xmlDoc.getElementsByTagName("Placemark");
-          for (let i = 0; i < placemarks.length; i++) {
-            const pm = placemarks[i];
-            const name = pm.getElementsByTagName("name")[0]?.textContent.trim() || `Punto ${i+1}`;
-            const coords = pm.getElementsByTagName("coordinates")[0]?.textContent.trim().split(',');
-            if (coords && coords.length >= 2) {
-              const lon = parseFloat(coords[0]);
-              const lat = parseFloat(coords[1]);
-              if (!isNaN(lat) && !isNaN(lon)) parsedPoints.push({ lat, lon, name });
-            }
-          }
-          showToast(`KML elaborato! ${parsedPoints.length} punti.`);
-        } catch(e) {
-          showToast("Errore nel parsing KML.");
-          return;
+  if (inputText.includes('<kml') || inputText.includes('<Placemark>')) {
+    try {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(inputText, "text/xml");
+      const placemarks = xmlDoc.getElementsByTagName("Placemark");
+      for (let i = 0; i < placemarks.length; i++) {
+        const pm = placemarks[i];
+        const name = pm.getElementsByTagName("name")[0]?.textContent.trim() || `Punto ${i+1}`;
+        const coords = pm.getElementsByTagName("coordinates")[0]?.textContent.trim().split(',');
+        if (coords && coords.length >= 2) {
+          const lon = parseFloat(coords[0]);
+          const lat = parseFloat(coords[1]);
+          if (!isNaN(lat) && !isNaN(lon)) parsedPoints.push({ lat, lon, name });
         }
-      } else {
-        const lines = inputText.split('\n');
-        lines.forEach((line, idx) => {
-          if (!line.trim()) return;
-          let parts = line.split(/[,;\t]+/).map(p => p.trim());
-
-          // Riconoscimento "Valore X" in QUALSIASI posizione
-          let value = null;
-          let valueIdx = -1;
-          for (let i = 0; i < parts.length; i++) {
-            const m = parts[i].match(/valore\s*(\d+(\.\d+)?)/i);
-            if (m) {
-              value = parseFloat(m[1]);
-              valueIdx = i;
-              break;
-            }
-          }
-          // Rimuoviamo la parte "valore" per facilitare il parsing
-          let cleanParts = parts.filter((_, i) => i !== valueIdx);
-
-          let lat, lon, name;
-          // Trova le coordinate: cerchiamo la prima coppia di numeri validi (lat/lon)
-          let coordIdx = -1;
-          for (let i = 0; i < cleanParts.length - 1; i++) {
-            const a = parseFloat(cleanParts[i]);
-            const b = parseFloat(cleanParts[i+1]);
-            if (!isNaN(a) && !isNaN(b) &&
-                a >= -90 && a <= 90 &&
-                b >= -180 && b <= 180) {
-              lat = a;
-              lon = b;
-              coordIdx = i;
-              break;
-            }
-          }
-
-          if (coordIdx === -1) return; // nessuna coord valida
-
-          // Il nome è tutto ciò che non è coord né valore
-          const nameParts = cleanParts.filter((_, i) => i !== coordIdx && i !== coordIdx + 1);
-          name = nameParts.join(' ').trim() || `Punto ${idx+1}`;
-
-          if (!isNaN(lat) && !isNaN(lon)) {
-            parsedPoints.push({ lat, lon, name, value });
-          }
-        });
-        showToast(`Testo elaborato! ${parsedPoints.length} punti. (Scala: ${SCALE_NAMES[document.getElementById('colorScaleSelect').value]})`);
       }
-
-      if (parsedPoints.length > 0) {
-        updatePointsUI();
-        if (leafletAvailable) drawMapElements();
-        enableDownloadBtns();
-      } else {
-        showToast("Nessun punto valido trovato.");
-      }
+      showToast(`KML elaborato! ${parsedPoints.length} punti.`);
+    } catch(e) {
+      showToast("Errore nel parsing KML.");
+      return;
     }
+  } else {
+    const lines = inputText.split('\n');
+    lines.forEach((line, idx) => {
+      if (!line.trim()) return;
+      let parts = line.split(/[,;\t]+/).map(p => p.trim());
+
+      // Riconoscimento "Valore X" in QUALSIASI posizione
+      let value = null;
+      let valueIdx = -1;
+      for (let i = 0; i < parts.length; i++) {
+        const m = parts[i].match(/valore\s*(\d+(\.\d+)?)/i);
+        if (m) {
+          value = parseFloat(m[1]);
+          valueIdx = i;
+          break;
+        }
+      }
+      // Rimuoviamo la parte "valore" per facilitare il parsing
+      let cleanParts = parts.filter((_, i) => i !== valueIdx);
+
+      let lat, lon, name;
+      // Trova le coordinate: cerchiamo numeri decimali (con punto) che siano coordinate valide
+      // Questo evita di prendere "09" e "03" dalla data
+      let coordIdx = -1;
+      for (let i = 0; i < cleanParts.length - 1; i++) {
+        const a = parseFloat(cleanParts[i]);
+        const b = parseFloat(cleanParts[i+1]);
+        // Controlliamo che siano numeri decimali (hanno il punto) O che siano nell'intervallo corretto
+        // e che non siano orari (contengono :)
+        const partA = cleanParts[i];
+        const partB = cleanParts[i+1];
+        
+        // Saltiamo se sembrano date o orari
+        if (partA.match(/^\d{1,2}\/\d{1,2}$/) || partA.match(/^\d{1,2}:\d{2}$/)) continue;
+        if (partB.match(/^\d{1,2}\/\d{1,2}$/) || partB.match(/^\d{1,2}:\d{2}$/)) continue;
+        
+        if (!isNaN(a) && !isNaN(b) &&
+            a >= 36 && a <= 47 &&  // Italia è tra 36 e 47 latitudine
+            b >= 6 && b <= 19) {   // Italia è tra 6 e 19 longitudine
+          lat = a;
+          lon = b;
+          coordIdx = i;
+          break;
+        }
+      }
+      
+      // Se non troviamo coordinate italiane, proviamo una ricerca più generica
+      if (coordIdx === -1) {
+        for (let i = 0; i < cleanParts.length - 1; i++) {
+          const a = parseFloat(cleanParts[i]);
+          const b = parseFloat(cleanParts[i+1]);
+          const partA = cleanParts[i];
+          const partB = cleanParts[i+1];
+          
+          if (partA.match(/^\d{1,2}\/\d{1,2}$/) || partA.match(/^\d{1,2}:\d{2}$/)) continue;
+          if (partB.match(/^\d{1,2}\/\d{1,2}$/) || partB.match(/^\d{1,2}:\d{2}$/)) continue;
+          
+          if (!isNaN(a) && !isNaN(b) &&
+              a >= -90 && a <= 90 &&
+              b >= -180 && b <= 180) {
+            lat = a;
+            lon = b;
+            coordIdx = i;
+            break;
+          }
+        }
+      }
+
+      if (coordIdx === -1) return; // nessuna coord valida
+
+      // Il nome è tutto ciò che non è coord né valore
+      const nameParts = cleanParts.filter((_, i) => i !== coordIdx && i !== coordIdx + 1);
+      name = nameParts.join(' ').trim() || `Punto ${idx+1}`;
+
+      if (!isNaN(lat) && !isNaN(lon)) {
+        parsedPoints.push({ lat, lon, name, value });
+      }
+    });
+    showToast(`Testo elaborato! ${parsedPoints.length} punti. (Scala: ${SCALE_NAMES[document.getElementById('colorScaleSelect').value]})`);
+  }
+
+  if (parsedPoints.length > 0) {
+    updatePointsUI();
+    if (leafletAvailable) drawMapElements();
+    enableDownloadBtns();
+  } else {
+    showToast("Nessun punto valido trovato.");
+  }
+}
 
     function updatePointsUI() {
       const container = document.getElementById('pointsList');
