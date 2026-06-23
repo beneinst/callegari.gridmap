@@ -625,10 +625,10 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       const cameraTilt = parseFloat(document.getElementById('cameraTilt').value);
       const isLinear = document.getElementById('transitionType').value === 'linear';
 
-      const introPauseSec = 8;
-      const introAltitude = 4300000;
+      const introPauseSec = 16;
+      const introAltitude = 4200000;
       const centerLat = 42.5, centerLon = 12.5;
-      const finalAltitude = 4300000;
+      const finalAltitude = 4200000;
 
       const totalSec = introPauseSec + flightSec + (parsedPoints.length * staySec) + ((parsedPoints.length - 1) * flightSec) + flightSec;
       const totalFrames = Math.ceil(totalSec * fps);
@@ -773,7 +773,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       if (parsedPoints.length === 0) return;
       const staySec = parseFloat(document.getElementById('stayDuration').value);
       const flightSec = parseFloat(document.getElementById('flightDuration').value);
-      const introPauseSec = 8;
+      const introPauseSec = 16;
       const scaleName = SCALE_NAMES[document.getElementById('colorScaleSelect').value];
       let currentTime = new Date("2026-06-18T10:00:00Z");
       currentTime.setSeconds(currentTime.getSeconds() + introPauseSec + flightSec);
