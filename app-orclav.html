@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
     #map { height: 400px; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
@@ -140,6 +141,10 @@
           Anteprima Percorso & Punti Rilevati
         </h2>
         <div id="map" class="rounded-lg border border-gray-700 overflow-hidden z-10"></div>
+        <button id="downloadMapBtn" disabled class="w-full bg-cyan-600 hover:bg-cyan-700 disabled:bg-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed text-white py-2 px-4 rounded-lg font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          <span id="downloadMapBtnText">📸 Scarica Mappa come PNG</span>
+        </button>
         <div class="bg-gray-900 p-3 rounded-lg border border-gray-700">
           <div class="flex items-center justify-between mb-2">
             <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Punti nel Percorso (<span id="pointCount">0</span>):</span>
@@ -210,41 +215,37 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
     // TRE SISTEMI DI COLORAZIONE
     // ============================================================
 
-    // 1) Scala Sismica Italia (0 – 40+)
     function getColorSismica(val) {
       if (val === undefined || val === null) return '#6b7280';
-      if (val <= 5)  return '#bae6fd'; // celeste chiaro
-      if (val <= 10) return '#7dd3fc'; // celeste
-      if (val <= 20) return '#86efac'; // verde chiaro
-      if (val <= 30) return '#fde047'; // giallo
-      if (val <= 40) return '#fb923c'; // arancione
-      return '#ef4444'; // rosso
+      if (val <= 5)  return '#bae6fd';
+      if (val <= 10) return '#7dd3fc';
+      if (val <= 20) return '#86efac';
+      if (val <= 30) return '#fde047';
+      if (val <= 40) return '#fb923c';
+      return '#ef4444';
     }
 
-    // 2) Scala FKS Cagliari (1000 – 15000)
     function getColorFKS(val) {
       if (val === undefined || val === null) return '#6b7280';
-      if (val <= 5999) return '#fde047'; // giallo
-      if (val <= 6999) return '#7dd3fc'; // celeste
-      if (val <= 7999) return '#fb923c'; // arancione
-      if (val <= 9000) return '#ef4444'; // rosso
-      return '#22c55e'; // verde
+      if (val <= 5999) return '#fde047';
+      if (val <= 6999) return '#7dd3fc';
+      if (val <= 7999) return '#fb923c';
+      if (val <= 9000) return '#ef4444';
+      return '#22c55e';
     }
 
-    // 3) Magnitudo Richter (0 – 10+)
     function getColorRichter(val) {
       if (val === undefined || val === null) return '#6b7280';
-      if (val < 2)  return '#e5e7eb'; // grigio chiaro (micro)
-      if (val < 3)  return '#bae6fd'; // azzurro
-      if (val < 4)  return '#86efac'; // verde
-      if (val < 5)  return '#fde047'; // giallo
-      if (val < 6)  return '#fb923c'; // arancione
-      if (val < 7)  return '#ef4444'; // rosso
-      if (val < 8)  return '#b91c1c'; // rosso scuro
-      return '#a855f7'; // viola (catastrofico)
+      if (val < 2)  return '#e5e7eb';
+      if (val < 3)  return '#bae6fd';
+      if (val < 4)  return '#86efac';
+      if (val < 5)  return '#fde047';
+      if (val < 6)  return '#fb923c';
+      if (val < 7)  return '#ef4444';
+      if (val < 8)  return '#b91c1c';
+      return '#a855f7';
     }
 
-    // Funzione dispatcher che sceglie la scala in base al selettore
     function getColorForValue(val) {
       const scale = document.getElementById('colorScaleSelect').value;
       if (scale === 'fks') return getColorFKS(val);
@@ -252,7 +253,6 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       return getColorSismica(val);
     }
 
-    // Definizioni delle legende per ogni scala
     const LEGENDS = {
       sismica: [
         { color: '#bae6fd', label: '≤5' },
@@ -338,7 +338,6 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
     function generateKmlStylesBlock() {
       const scale = document.getElementById('colorScaleSelect').value;
       const items = LEGENDS[scale];
-      // KML usa colore in formato AABBGGRR (hex invertito)
       function hexToKml(hex) {
         const h = hex.replace('#', '');
         return 'ff' + h.substring(4, 6) + h.substring(2, 4) + h.substring(0, 2);
@@ -373,7 +372,9 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       if (leafletAvailable) {
         map = L.map('map').setView([40.0, 15.0], 6);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; OpenStreetMap contributors'
+          attribution: '&copy; OpenStreetMap contributors',
+          crossOrigin: 'anonymous',
+          detectRetina: false
         }).addTo(map);
         map.on('zoomend', function() {
           currentZoom = map.getZoom();
@@ -384,7 +385,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       } else {
         document.getElementById('map').innerHTML = '<div style="color:white; text-align:center; padding:50px;">Mappa non disponibile.</div>';
       }
-
+      document.getElementById('downloadMapBtn').addEventListener('click', downloadMapImage);
       updateLegend();
 
       document.getElementById('loadDemoBtn').addEventListener('click', () => {
@@ -398,7 +399,6 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       document.getElementById('iconStyleSelect').addEventListener('change', function() {
         if (leafletAvailable) drawMapElements();
       });
-      // Aggiorna legenda e ridisegna quando cambia la scala
       document.getElementById('colorScaleSelect').addEventListener('change', function() {
         updateLegend();
         if (leafletAvailable && parsedPoints.length > 0) drawMapElements();
@@ -430,6 +430,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       document.getElementById('downloadEspBtn').className = "w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm cursor-not-allowed flex items-center justify-center gap-2";
       document.getElementById('downloadKmlBtn').disabled = true;
       document.getElementById('downloadKmlBtn').className = "w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm cursor-not-allowed flex items-center justify-center gap-2";
+      document.getElementById('downloadMapBtn').disabled = true;
     }
 
     function enableDownloadBtns() {
@@ -437,132 +438,121 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       document.getElementById('downloadEspBtn').className = "w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
       document.getElementById('downloadKmlBtn').disabled = false;
       document.getElementById('downloadKmlBtn').className = "w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
+      document.getElementById('downloadMapBtn').disabled = false;
     }
 
     // ============================================================
-    // PARSER UNIFICATO - gestisce tutti e 3 i formati di input
+    // PARSER UNIFICATO
     // ============================================================
-   // ============================================================
-// PARSER UNIFICATO - gestisce tutti e 3 i formati di input
-// ============================================================
-function parseInput() {
-  const inputText = document.getElementById('coordsInput').value.trim();
-  if (!inputText) {
-    showToast("Inserisci del testo prima di elaborare!");
-    return;
-  }
-  parsedPoints = [];
-  if (leafletAvailable) markersGroup.clearLayers();
-
-  if (inputText.includes('<kml') || inputText.includes('<Placemark>')) {
-    try {
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(inputText, "text/xml");
-      const placemarks = xmlDoc.getElementsByTagName("Placemark");
-      for (let i = 0; i < placemarks.length; i++) {
-        const pm = placemarks[i];
-        const name = pm.getElementsByTagName("name")[0]?.textContent.trim() || `Punto ${i+1}`;
-        const coords = pm.getElementsByTagName("coordinates")[0]?.textContent.trim().split(',');
-        if (coords && coords.length >= 2) {
-          const lon = parseFloat(coords[0]);
-          const lat = parseFloat(coords[1]);
-          if (!isNaN(lat) && !isNaN(lon)) parsedPoints.push({ lat, lon, name });
-        }
+    function parseInput() {
+      const inputText = document.getElementById('coordsInput').value.trim();
+      if (!inputText) {
+        showToast("Inserisci del testo prima di elaborare!");
+        return;
       }
-      showToast(`KML elaborato! ${parsedPoints.length} punti.`);
-    } catch(e) {
-      showToast("Errore nel parsing KML.");
-      return;
-    }
-  } else {
-    const lines = inputText.split('\n');
-    lines.forEach((line, idx) => {
-      if (!line.trim()) return;
-      let parts = line.split(/[,;\t]+/).map(p => p.trim());
+      parsedPoints = [];
+      if (leafletAvailable) markersGroup.clearLayers();
 
-      // Riconoscimento "Valore X" in QUALSIASI posizione
-      let value = null;
-      let valueIdx = -1;
-      for (let i = 0; i < parts.length; i++) {
-        const m = parts[i].match(/valore\s*(\d+(\.\d+)?)/i);
-        if (m) {
-          value = parseFloat(m[1]);
-          valueIdx = i;
-          break;
-        }
-      }
-      // Rimuoviamo la parte "valore" per facilitare il parsing
-      let cleanParts = parts.filter((_, i) => i !== valueIdx);
-
-      let lat, lon, name;
-      // Trova le coordinate: cerchiamo numeri decimali (con punto) che siano coordinate valide
-      // Questo evita di prendere "09" e "03" dalla data
-      let coordIdx = -1;
-      for (let i = 0; i < cleanParts.length - 1; i++) {
-        const a = parseFloat(cleanParts[i]);
-        const b = parseFloat(cleanParts[i+1]);
-        // Controlliamo che siano numeri decimali (hanno il punto) O che siano nell'intervallo corretto
-        // e che non siano orari (contengono :)
-        const partA = cleanParts[i];
-        const partB = cleanParts[i+1];
-        
-        // Saltiamo se sembrano date o orari
-        if (partA.match(/^\d{1,2}\/\d{1,2}$/) || partA.match(/^\d{1,2}:\d{2}$/)) continue;
-        if (partB.match(/^\d{1,2}\/\d{1,2}$/) || partB.match(/^\d{1,2}:\d{2}$/)) continue;
-        
-        if (!isNaN(a) && !isNaN(b) &&
-            a >= 36 && a <= 47 &&  // Italia è tra 36 e 47 latitudine
-            b >= 6 && b <= 19) {   // Italia è tra 6 e 19 longitudine
-          lat = a;
-          lon = b;
-          coordIdx = i;
-          break;
-        }
-      }
-      
-      // Se non troviamo coordinate italiane, proviamo una ricerca più generica
-      if (coordIdx === -1) {
-        for (let i = 0; i < cleanParts.length - 1; i++) {
-          const a = parseFloat(cleanParts[i]);
-          const b = parseFloat(cleanParts[i+1]);
-          const partA = cleanParts[i];
-          const partB = cleanParts[i+1];
-          
-          if (partA.match(/^\d{1,2}\/\d{1,2}$/) || partA.match(/^\d{1,2}:\d{2}$/)) continue;
-          if (partB.match(/^\d{1,2}\/\d{1,2}$/) || partB.match(/^\d{1,2}:\d{2}$/)) continue;
-          
-          if (!isNaN(a) && !isNaN(b) &&
-              a >= -90 && a <= 90 &&
-              b >= -180 && b <= 180) {
-            lat = a;
-            lon = b;
-            coordIdx = i;
-            break;
+      if (inputText.includes('<kml') || inputText.includes('<Placemark>')) {
+        try {
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(inputText, "text/xml");
+          const placemarks = xmlDoc.getElementsByTagName("Placemark");
+          for (let i = 0; i < placemarks.length; i++) {
+            const pm = placemarks[i];
+            const name = pm.getElementsByTagName("name")[0]?.textContent.trim() || `Punto ${i+1}`;
+            const coords = pm.getElementsByTagName("coordinates")[0]?.textContent.trim().split(',');
+            if (coords && coords.length >= 2) {
+              const lon = parseFloat(coords[0]);
+              const lat = parseFloat(coords[1]);
+              if (!isNaN(lat) && !isNaN(lon)) parsedPoints.push({ lat, lon, name });
+            }
           }
+          showToast(`KML elaborato! ${parsedPoints.length} punti.`);
+        } catch(e) {
+          showToast("Errore nel parsing KML.");
+          return;
         }
+      } else {
+        const lines = inputText.split('\n');
+        lines.forEach((line, idx) => {
+          if (!line.trim()) return;
+          let parts = line.split(/[,;\t]+/).map(p => p.trim());
+
+          let value = null;
+          let valueIdx = -1;
+          for (let i = 0; i < parts.length; i++) {
+            const m = parts[i].match(/valore\s*(\d+(\.\d+)?)/i);
+            if (m) {
+              value = parseFloat(m[1]);
+              valueIdx = i;
+              break;
+            }
+          }
+          let cleanParts = parts.filter((_, i) => i !== valueIdx);
+
+          let lat, lon, name;
+          let coordIdx = -1;
+          for (let i = 0; i < cleanParts.length - 1; i++) {
+            const a = parseFloat(cleanParts[i]);
+            const b = parseFloat(cleanParts[i+1]);
+            const partA = cleanParts[i];
+            const partB = cleanParts[i+1];
+            
+            if (partA.match(/^\d{1,2}\/\d{1,2}$/) || partA.match(/^\d{1,2}:\d{2}$/)) continue;
+            if (partB.match(/^\d{1,2}\/\d{1,2}$/) || partB.match(/^\d{1,2}:\d{2}$/)) continue;
+            
+            if (!isNaN(a) && !isNaN(b) &&
+                a >= 36 && a <= 47 &&
+                b >= 6 && b <= 19) {
+              lat = a;
+              lon = b;
+              coordIdx = i;
+              break;
+            }
+          }
+          
+          if (coordIdx === -1) {
+            for (let i = 0; i < cleanParts.length - 1; i++) {
+              const a = parseFloat(cleanParts[i]);
+              const b = parseFloat(cleanParts[i+1]);
+              const partA = cleanParts[i];
+              const partB = cleanParts[i+1];
+              
+              if (partA.match(/^\d{1,2}\/\d{1,2}$/) || partA.match(/^\d{1,2}:\d{2}$/)) continue;
+              if (partB.match(/^\d{1,2}\/\d{1,2}$/) || partB.match(/^\d{1,2}:\d{2}$/)) continue;
+              
+              if (!isNaN(a) && !isNaN(b) &&
+                  a >= -90 && a <= 90 &&
+                  b >= -180 && b <= 180) {
+                lat = a;
+                lon = b;
+                coordIdx = i;
+                break;
+              }
+            }
+          }
+
+          if (coordIdx === -1) return;
+
+          const nameParts = cleanParts.filter((_, i) => i !== coordIdx && i !== coordIdx + 1);
+          name = nameParts.join(' ').trim() || `Punto ${idx+1}`;
+
+          if (!isNaN(lat) && !isNaN(lon)) {
+            parsedPoints.push({ lat, lon, name, value });
+          }
+        });
+        showToast(`Testo elaborato! ${parsedPoints.length} punti. (Scala: ${SCALE_NAMES[document.getElementById('colorScaleSelect').value]})`);
       }
 
-      if (coordIdx === -1) return; // nessuna coord valida
-
-      // Il nome è tutto ciò che non è coord né valore
-      const nameParts = cleanParts.filter((_, i) => i !== coordIdx && i !== coordIdx + 1);
-      name = nameParts.join(' ').trim() || `Punto ${idx+1}`;
-
-      if (!isNaN(lat) && !isNaN(lon)) {
-        parsedPoints.push({ lat, lon, name, value });
+      if (parsedPoints.length > 0) {
+        updatePointsUI();
+        if (leafletAvailable) drawMapElements();
+        enableDownloadBtns();
+      } else {
+        showToast("Nessun punto valido trovato.");
       }
-    });
-    showToast(`Testo elaborato! ${parsedPoints.length} punti. (Scala: ${SCALE_NAMES[document.getElementById('colorScaleSelect').value]})`);
-  }
-
-  if (parsedPoints.length > 0) {
-    updatePointsUI();
-    if (leafletAvailable) drawMapElements();
-    enableDownloadBtns();
-  } else {
-    showToast("Nessun punto valido trovato.");
-  }
-}
+    }
 
     function updatePointsUI() {
       const container = document.getElementById('pointsList');
@@ -583,73 +573,225 @@ function parseInput() {
       document.getElementById('totalSecVal').innerText = totalSec.toFixed(1);
 
       parsedPoints.forEach((pt, index) => {
-  const color = getColorForValue(pt.value);
-  const item = document.createElement('span');
-  item.className = "bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded-md border border-gray-600 flex items-center gap-1.5";
-  item.innerHTML = `
-    <span class="text-white font-mono rounded w-4 h-4 flex items-center justify-center text-[9px]" style="background:${color};">${index + 1}</span>
-    <strong>${pt.name}</strong> <span class="text-gray-400">(${pt.lat.toFixed(4)}, ${pt.lon.toFixed(4)})</span>`;
-  container.appendChild(item);
-});
+        const color = getColorForValue(pt.value);
+        const item = document.createElement('span');
+        item.className = "bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded-md border border-gray-600 flex items-center gap-1.5";
+        item.innerHTML = `
+          <span class="text-white font-mono rounded w-4 h-4 flex items-center justify-center text-[9px]" style="background:${color};">${index + 1}</span>
+          <strong>${pt.name}</strong> <span class="text-gray-400">(${pt.lat.toFixed(4)}, ${pt.lon.toFixed(4)})</span>`;
+        container.appendChild(item);
+      });
     }
 
     function drawMapElements() {
-  if (!leafletAvailable) return;
-  markersGroup.clearLayers();
-  const latlngs = [];
-  const styleMode = document.getElementById('iconStyleSelect').value;
-  const baseSize = Math.max(6, 48 - (currentZoom - 2) * 3);
-  const SMALL_FACTOR = 0.68; // Riduzione del 35%
+      if (!leafletAvailable) return;
+      markersGroup.clearLayers();
+      const latlngs = [];
+      const styleMode = document.getElementById('iconStyleSelect').value;
+      const baseSize = Math.max(6, 48 - (currentZoom - 2) * 3);
+      const SMALL_FACTOR = 0.68;
 
-  parsedPoints.forEach((pt, index) => {
-    const latlng = [pt.lat, pt.lon];
-    latlngs.push(latlng);
-    const color = getColorForValue(pt.value);
-    let icon;
+      parsedPoints.forEach((pt, index) => {
+        const latlng = [pt.lat, pt.lon];
+        latlngs.push(latlng);
+        const color = getColorForValue(pt.value);
+        let icon;
 
-    if (styleMode === 'pre') {
-      // CERCHIO COLORATO - ridotto del 35%
-      const size = baseSize * SMALL_FACTOR;
-      const fontSize = Math.round(size * 0.45);
-      const html = `<div style="
-        background-color:${color}; 
-        width:${size}px; height:${size}px; 
-        border-radius:50%; 
-        display:flex; align-items:center; justify-content:center; 
-        color:white; font-weight:bold; 
-        font-size:${fontSize}px; 
-        border:1.5px solid white; 
-        box-shadow:0 0 4px rgba(0,0,0,0.5);
-      ">${index + 1}</div>`;
-      icon = L.divIcon({ html, className: '', iconSize: [size, size], iconAnchor: [size/2, size/2] });
-    } else {
-      // PUNTATORE SISMICO - ridotto del 35%
-      const scaledBase = 20 * SMALL_FACTOR;  // 13px invece di 20px
-      const scaledHeight = 24 * SMALL_FACTOR; // 15.6px invece di 24px
-      const scale = baseSize / 20;
-      const finalW = scaledBase * scale;
-      const finalH = scaledHeight * scale;
-      const fontSize = Math.round(12 * SMALL_FACTOR * scale);
+        if (styleMode === 'pre') {
+          const size = baseSize * SMALL_FACTOR;
+          const fontSize = Math.round(size * 0.50);
+          const html = `<div style="
+            background-color:${color}; 
+            width:${size}px; height:${size}px; 
+            border-radius:50%; 
+            display:flex; align-items:center; justify-content:center; 
+            color:white; font-weight:bold; font-family:monospace;
+            font-size:${fontSize}px; line-height:${size}px;
+            border:2px solid white; 
+            box-shadow:0 2px 6px rgba(0,0,0,0.6);
+            box-sizing:border-box;
+          ">${index + 1}</div>`;
+          icon = L.divIcon({ 
+            html: html, 
+            className: '', 
+            iconSize: [size, size], 
+            iconAnchor: [size/2, size/2]
+          });
+        } else {
+          const scaledBase = 20 * SMALL_FACTOR;
+          const scaledHeight = 24 * SMALL_FACTOR;
+          const scale = baseSize / 20;
+          const finalW = scaledBase * scale;
+          const finalH = scaledHeight * scale;
+          const fontSize = Math.round(12 * SMALL_FACTOR * scale);
+          
+          const dropHtml = `<div style="position:relative; width:${finalW}px; height:${finalH}px;">
+            <div style="position:absolute; top:0; left:0; width:${finalW}px; height:${finalH}px; background-color:${color}; clip-path: polygon(50% 0%, 0% 65%, 0% 100%, 100% 100%, 100% 65%); border:2px solid white; box-shadow:0 2px 6px rgba(0,0,0,0.6);"></div>
+            <div style="position:absolute; top:${finalH*0.25}px; left:0; color:white; font-size:${fontSize}px; font-weight:bold; width:${finalW}px; text-align:center; line-height:1;">${index + 1}</div>
+          </div>`;
+          icon = L.divIcon({ 
+            html: dropHtml, 
+            className: '', 
+            iconSize: [finalW, finalH], 
+            iconAnchor: [finalW/2, finalH/2]
+          });
+        }
+
+        const marker = L.marker(latlng, { icon }).addTo(markersGroup);
+        marker.bindPopup(`<strong>${index+1}. ${pt.name}</strong><br>Lat: ${pt.lat}<br>Lon: ${pt.lon}`);     
+      });
+
+      if (pathLine) {
+        pathLine.setLatLngs(latlngs);
+        pathLine.bringToBack();
+      }
       
-      const dropHtml = `<div style="position:relative; width:0; height:0;">
-        <div style="position:absolute; top:0; left:-${finalW/2}px; width:${finalW}px; height:${finalH}px; background-color:${color}; clip-path: polygon(50% 0%, 0% 65%, 0% 100%, 100% 100%, 100% 65%); border:1.5px solid white; box-shadow:0 0 4px rgba(0,0,0,0.5);"></div>
-        <div style="position:absolute; top:${3*scale*SMALL_FACTOR}px; left:-${finalW*0.3}px; color:white; font-size:${fontSize}px; font-weight:bold; width:${finalW*0.6}px; text-align:center;">⚡</div>
-      </div>`;
-      icon = L.divIcon({ html: dropHtml, className: '', iconSize: [0, 0], iconAnchor: [0, 0] });
+      if (latlngs.length > 0) {
+        map.fitBounds(L.latLngBounds(latlngs), { padding: [40, 40] });
+      }
     }
 
-    const marker = L.marker(latlng, { icon }).addTo(markersGroup);
-    marker.bindPopup(`<strong>${index+1}. ${pt.name}</strong><br>Lat: ${pt.lat}<br>Lon: ${pt.lon}`);     
-  });
+    // ============================================================
+    // SCARICA MAPPA COME IMMAGINE PNG (VERSIONE CORRETTA)
+    // ============================================================
+    function downloadMapImage() {
+      if (parsedPoints.length === 0) {
+        showToast("Elabora prima i dati per avere punti sulla mappa!");
+        return;
+      }
 
-  if (pathLine) pathLine.setLatLngs(latlngs);
-  if (latlngs.length > 0) {
-    map.fitBounds(L.latLngBounds(latlngs), { padding: [40, 40] });
-  }
-}
+      const btn = document.getElementById('downloadMapBtn');
+      const btnText = document.getElementById('downloadMapBtnText');
+      const originalText = btnText.innerText;
+      btn.disabled = true;
+      btnText.innerText = "⏳ Generazione immagine...";
+
+      const mapElement = document.getElementById('map');
+      const rect = mapElement.getBoundingClientRect();
+      const width = rect.width;
+      const height = rect.height;
+
+      // Nascondi marker e linea per catturare solo lo sfondo
+      markersGroup.eachLayer(layer => {
+        if (layer._icon) layer._icon.style.display = 'none';
+      });
+      if (pathLine && pathLine._path) {
+        pathLine._path.style.display = 'none';
+      }
+
+      // Cattura lo sfondo della mappa (tile + eventuali altri layer)
+      html2canvas(mapElement, {
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#111827',
+        scale: 2,
+        logging: false,
+        foreignObjectRendering: false,
+        imageTimeout: 15000,
+        onclone: function(clonedDoc) {
+          const clonedMap = clonedDoc.getElementById('map');
+          if (clonedMap) {
+            clonedMap.style.height = height + 'px';
+            clonedMap.style.width = width + 'px';
+          }
+        }
+      }).then(canvasBg => {
+        // Ripristina marker e linea
+        markersGroup.eachLayer(layer => {
+          if (layer._icon) layer._icon.style.display = '';
+        });
+        if (pathLine && pathLine._path) {
+          pathLine._path.style.display = '';
+        }
+
+        // Crea canvas finale con le stesse dimensioni (scalato)
+        const finalCanvas = document.createElement('canvas');
+        finalCanvas.width = canvasBg.width;
+        finalCanvas.height = canvasBg.height;
+        const ctx = finalCanvas.getContext('2d');
+
+        // Disegna lo sfondo
+        ctx.drawImage(canvasBg, 0, 0);
+
+        const scale = 2; // deve corrispondere al valore usato in html2canvas
+
+        // --- Disegna la linea ---
+        if (parsedPoints.length > 1) {
+          ctx.beginPath();
+          const first = map.latLngToContainerPoint([parsedPoints[0].lat, parsedPoints[0].lon]);
+          ctx.moveTo(first.x * scale, first.y * scale);
+          for (let i = 1; i < parsedPoints.length; i++) {
+            const pt = map.latLngToContainerPoint([parsedPoints[i].lat, parsedPoints[i].lon]);
+            ctx.lineTo(pt.x * scale, pt.y * scale);
+          }
+          ctx.strokeStyle = '#6366f1';
+          ctx.lineWidth = 3 * scale;
+          ctx.setLineDash([5 * scale, 10 * scale]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        // --- Disegna i marker (cerchi + numeri) ---
+        const baseSize = Math.max(6, 48 - (currentZoom - 2) * 3) * 0.68;
+        parsedPoints.forEach((pt, index) => {
+          const pos = map.latLngToContainerPoint([pt.lat, pt.lon]);
+          const x = pos.x * scale;
+          const y = pos.y * scale;
+          const color = getColorForValue(pt.value);
+          const radius = (baseSize * scale) / 2;
+
+          // Cerchio
+          ctx.beginPath();
+          ctx.arc(x, y, radius, 0, 2 * Math.PI);
+          ctx.fillStyle = color;
+          ctx.fill();
+          ctx.strokeStyle = 'white';
+          ctx.lineWidth = 2 * scale;
+          ctx.stroke();
+
+          // Numero
+          ctx.fillStyle = 'white';
+          ctx.font = `bold ${Math.round(baseSize * 0.6 * scale)}px monospace`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(index + 1, x, y);
+        });
+
+        // Converti e scarica
+        finalCanvas.toBlob(function(blob) {
+          if (!blob) {
+            throw new Error("Blob non generata");
+          }
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          const timestamp = new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
+          link.download = `mappa_punti_${timestamp}.png`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+          btn.disabled = false;
+          btnText.innerText = originalText;
+          showToast(`Mappa scaricata! (${parsedPoints.length} punti)`);
+        }, 'image/png');
+      }).catch(err => {
+        console.error("Errore cattura mappa:", err);
+        // Ripristina marker e linea in caso di errore
+        markersGroup.eachLayer(layer => {
+          if (layer._icon) layer._icon.style.display = '';
+        });
+        if (pathLine && pathLine._path) {
+          pathLine._path.style.display = '';
+        }
+        btn.disabled = false;
+        btnText.innerText = originalText;
+        showToast("❌ Errore: " + err.message);
+      });
+    }
 
     // ============================================================
-    // GENERAZIONE ESP (invariata, funziona con qualsiasi scala)
+    // GENERAZIONE ESP
     // ============================================================
     function generateAndDownloadEsp() {
       if (parsedPoints.length === 0) return;
@@ -661,11 +803,12 @@ function parseInput() {
       const isLinear = document.getElementById('transitionType').value === 'linear';
 
       const introPauseSec = 16;
+      const outroPauseSec = 16;
       const introAltitude = 4200000;
       const centerLat = 42.5, centerLon = 12.5;
       const finalAltitude = 4200000;
 
-      const totalSec = introPauseSec + flightSec + (parsedPoints.length * staySec) + ((parsedPoints.length - 1) * flightSec) + flightSec;
+      const totalSec = introPauseSec + flightSec + (parsedPoints.length * staySec) + ((parsedPoints.length - 1) * flightSec) + flightSec + outroPauseSec;
       const totalFrames = Math.ceil(totalSec * fps);
 
       const maxAltRange = 65117481, minAltRange = -500;
@@ -745,6 +888,14 @@ function parseInput() {
       rotXKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: cameraTilt });
       rotYKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: 0 });
 
+      currentSec += outroPauseSec;
+      timeNorm = currentSec / totalSec;
+      lonKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: normLastLon });
+      latKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: normLastLat });
+      altKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: finalAltRel });
+      rotXKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: cameraTilt });
+      rotYKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: 0 });
+
       lonKeyframes[lonKeyframes.length - 1].time = 1;
       latKeyframes[latKeyframes.length - 1].time = 1;
       altKeyframes[altKeyframes.length - 1].time = 1;
@@ -769,7 +920,8 @@ function parseInput() {
             {
               type: "cameraGroup", inTimeline: true,
               attributes: [
-                { type: "cameraPositionGroup", inTimeline: true,
+                {
+                  type: "cameraPositionGroup", inTimeline: true,
                   attributes: [
                     { type: "longitude", value: { relative: normCenterLon }, keyframes: lonKeyframes, inTimeline: true },
                     { type: "latitude", value: { relative: normCenterLat }, keyframes: latKeyframes, inTimeline: true },
@@ -802,7 +954,7 @@ function parseInput() {
     }
 
     // ============================================================
-    // GENERAZIONE KML CON STILI DINAMICI
+    // GENERAZIONE KML
     // ============================================================
     function generateAndDownloadKml() {
       if (parsedPoints.length === 0) return;
@@ -814,17 +966,17 @@ function parseInput() {
       currentTime.setSeconds(currentTime.getSeconds() + introPauseSec + flightSec);
 
       let placemarksStr = '';
-parsedPoints.forEach((pt, index) => {
-  const timeISO = currentTime.toISOString();
-  const styleId = getKmlStyleId(pt.value);
-  placemarksStr += `    <Placemark>
+      parsedPoints.forEach((pt, index) => {
+        const timeISO = currentTime.toISOString();
+        const styleId = getKmlStyleId(pt.value);
+        placemarksStr += `    <Placemark>
     <name>${index + 1}. ${pt.name}</name>
     <TimeStamp><when>${timeISO}</when></TimeStamp>
     <styleUrl>#${styleId}</styleUrl>
     <Point><coordinates>${pt.lon},${pt.lat},0</coordinates></Point>
   </Placemark>\n`;
-  currentTime.setSeconds(currentTime.getSeconds() + staySec + flightSec);
-});
+        currentTime.setSeconds(currentTime.getSeconds() + staySec + flightSec);
+      });
 
       const kmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
