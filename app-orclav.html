@@ -9,10 +9,13 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
-    #map { height: 400px; }
+    #map { height: 1080px; width: 1920px; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: #1f2937; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 3px; }
+    .leaflet-tile {
+      image-rendering: pixelated;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col">
@@ -150,6 +153,29 @@
             <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Punti nel Percorso (<span id="pointCount">0</span>):</span>
             <span class="text-xs text-indigo-400 font-mono">Durata: <span id="totalDurationVal">0</span> frame (<span id="totalSecVal">0</span> sec)</span>
           </div>
+          
+          <!-- NUOVO: Barra di selezione rapida -->
+          <div class="flex flex-wrap gap-2 mb-2">
+            <button id="selectAllBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-3 py-1 rounded-md transition-colors">
+              ✓ Tutti
+            </button>
+            <button id="deselectAllBtn" class="bg-gray-600 hover:bg-gray-500 text-white text-xs px-3 py-1 rounded-md transition-colors">
+              ✗ Nessuno
+            </button>
+            <button id="selectNorthBtn" class="bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-1 rounded-md transition-colors">
+              🧭 Solo Nord
+            </button>
+            <button id="selectCenterBtn" class="bg-yellow-600 hover:bg-yellow-700 text-white text-xs px-3 py-1 rounded-md transition-colors">
+              🧭 Solo Centro
+            </button>
+            <button id="selectSouthBtn" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1 rounded-md transition-colors">
+              🧭 Solo Sud
+            </button>
+            <span class="text-xs text-gray-400 ml-auto flex items-center">
+              Volo: <span id="selectedCount" class="text-indigo-400 font-mono ml-1">0/0</span> punti
+            </span>
+          </div>
+          
           <div id="pointsList" class="flex flex-wrap gap-2 max-h-24 overflow-y-auto custom-scrollbar p-1">
             <span class="text-xs text-gray-500 italic">Nessun punto caricato.</span>
           </div>
@@ -404,6 +430,56 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         if (leafletAvailable && parsedPoints.length > 0) drawMapElements();
         showToast("Scala colorazione cambiata: " + SCALE_NAMES[this.value]);
       });
+      
+      // Pulsanti selezione rapida
+      document.getElementById('selectAllBtn').addEventListener('click', () => {
+        document.querySelectorAll('.point-checkbox').forEach(cb => cb.checked = true);
+        updateSelectedCount();
+        updatePointsUI();
+        updateDownloadButtonsState();
+        showToast("Tutti i punti selezionati per il volo");
+      });
+
+      document.getElementById('deselectAllBtn').addEventListener('click', () => {
+        document.querySelectorAll('.point-checkbox').forEach(cb => cb.checked = false);
+        updateSelectedCount();
+        updatePointsUI();
+        updateDownloadButtonsState();
+        showToast("Nessun punto selezionato");
+      });
+
+      document.getElementById('selectNorthBtn').addEventListener('click', () => {
+        parsedPoints.forEach((pt, idx) => {
+          const cb = document.querySelector(`.point-checkbox[data-index="${idx}"]`);
+          if (cb) cb.checked = pt.lat > 44; // Nord Italia
+        });
+        updateSelectedCount();
+        updatePointsUI();
+        updateDownloadButtonsState();
+        showToast("Selezionati solo punti del Nord Italia (lat > 44°)");
+      });
+
+      document.getElementById('selectCenterBtn').addEventListener('click', () => {
+        parsedPoints.forEach((pt, idx) => {
+          const cb = document.querySelector(`.point-checkbox[data-index="${idx}"]`);
+          if (cb) cb.checked = pt.lat >= 41 && pt.lat <= 44; // Centro Italia
+        });
+        updateSelectedCount();
+        updatePointsUI();
+        updateDownloadButtonsState();
+        showToast("Selezionati solo punti del Centro Italia (41°-44°)");
+      });
+
+      document.getElementById('selectSouthBtn').addEventListener('click', () => {
+        parsedPoints.forEach((pt, idx) => {
+          const cb = document.querySelector(`.point-checkbox[data-index="${idx}"]`);
+          if (cb) cb.checked = pt.lat < 41; // Sud Italia
+        });
+        updateSelectedCount();
+        updatePointsUI();
+        updateDownloadButtonsState();
+        showToast("Selezionati solo punti del Sud Italia (lat < 41°)");
+      });
     };
 
     function showToast(msg) {
@@ -439,6 +515,39 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       document.getElementById('downloadKmlBtn').disabled = false;
       document.getElementById('downloadKmlBtn').className = "w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
       document.getElementById('downloadMapBtn').disabled = false;
+    }
+    
+    // NUOVA FUNZIONE: Aggiorna stato pulsanti download
+    function updateDownloadButtonsState() {
+      const selectedPoints = getSelectedPoints();
+      if (selectedPoints.length > 0) {
+        enableDownloadBtns();
+      } else {
+        disableDownloadBtns();
+      }
+    }
+
+    // NUOVA FUNZIONE: Restituisce solo i punti selezionati
+    function getSelectedPoints() {
+      const checkboxes = document.querySelectorAll('.point-checkbox:checked');
+      const selected = [];
+      checkboxes.forEach(cb => {
+        const idx = parseInt(cb.dataset.index);
+        if (parsedPoints[idx]) {
+          selected.push(parsedPoints[idx]);
+        }
+      });
+      return selected;
+    }
+
+    // NUOVA FUNZIONE: Aggiorna il contatore punti selezionati
+    function updateSelectedCount() {
+      const selectedCount = document.querySelectorAll('.point-checkbox:checked').length;
+      const totalCount = parsedPoints.length;
+      const countEl = document.getElementById('selectedCount');
+      if (countEl) {
+        countEl.innerText = `${selectedCount}/${totalCount}`;
+      }
     }
 
     // ============================================================
@@ -562,25 +671,42 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         container.innerHTML = `<span class="text-xs text-gray-500 italic">Nessun punto caricato.</span>`;
         document.getElementById('totalDurationVal').innerText = "0";
         document.getElementById('totalSecVal').innerText = "0";
+        updateSelectedCount();
         return;
       }
       const fps = parseInt(document.getElementById('fpsSelect').value);
       const staySec = parseFloat(document.getElementById('stayDuration').value);
       const flightSec = parseFloat(document.getElementById('flightDuration').value);
-      const totalSec = (parsedPoints.length * staySec) + ((parsedPoints.length - 1) * flightSec);
+      
+      // Calcola durata basata sui punti SELEZIONATI
+      const selectedPoints = getSelectedPoints();
+      const totalSec = (selectedPoints.length * staySec) + (Math.max(0, selectedPoints.length - 1) * flightSec);
       const totalFrames = Math.ceil(totalSec * fps);
       document.getElementById('totalDurationVal').innerText = totalFrames;
       document.getElementById('totalSecVal').innerText = totalSec.toFixed(1);
 
       parsedPoints.forEach((pt, index) => {
         const color = getColorForValue(pt.value);
-        const item = document.createElement('span');
-        item.className = "bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded-md border border-gray-600 flex items-center gap-1.5";
+        const item = document.createElement('label');
+        item.className = "bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded-md border border-gray-600 flex items-center gap-1.5 cursor-pointer hover:bg-gray-600 transition-colors";
         item.innerHTML = `
-          <span class="text-white font-mono rounded w-4 h-4 flex items-center justify-center text-[9px]" style="background:${color};">${index + 1}</span>
-          <strong>${pt.name}</strong> <span class="text-gray-400">(${pt.lat.toFixed(4)}, ${pt.lon.toFixed(4)})</span>`;
+          <input type="checkbox" class="point-checkbox" data-index="${index}" checked 
+                 style="width:14px; height:14px; accent-color:${color}; cursor:pointer;">
+          <span class="text-black font-mono rounded w-4 h-4 flex items-center justify-center text-[9px]" style="background:${color};">${index + 1}</span>
+          <strong>${pt.name}</strong> <span class="text-gray-400">(${pt.lat.toFixed(2)}, ${pt.lon.toFixed(2)})</span>`;
         container.appendChild(item);
       });
+      
+      // Aggiungi listener ai checkbox
+      document.querySelectorAll('.point-checkbox').forEach(cb => {
+        cb.addEventListener('change', function() {
+          updateSelectedCount();
+          updatePointsUI(); // Ricalcola durata
+          updateDownloadButtonsState();
+        });
+      });
+      
+      updateSelectedCount();
     }
 
     function drawMapElements() {
@@ -605,7 +731,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
             width:${size}px; height:${size}px; 
             border-radius:50%; 
             display:flex; align-items:center; justify-content:center; 
-            color:white; font-weight:bold; font-family:monospace;
+            color:black; font-weight:bold; font-family:monospace;
             font-size:${fontSize}px; line-height:${size}px;
             border:2px solid white; 
             box-shadow:0 2px 6px rgba(0,0,0,0.6);
@@ -627,7 +753,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
           
           const dropHtml = `<div style="position:relative; width:${finalW}px; height:${finalH}px;">
             <div style="position:absolute; top:0; left:0; width:${finalW}px; height:${finalH}px; background-color:${color}; clip-path: polygon(50% 0%, 0% 65%, 0% 100%, 100% 100%, 100% 65%); border:2px solid white; box-shadow:0 2px 6px rgba(0,0,0,0.6);"></div>
-            <div style="position:absolute; top:${finalH*0.25}px; left:0; color:white; font-size:${fontSize}px; font-weight:bold; width:${finalW}px; text-align:center; line-height:1;">${index + 1}</div>
+            <div style="position:absolute; top:${finalH*0.25}px; left:0; color:black; font-size:${fontSize}px; font-weight:bold; width:${finalW}px; text-align:center; line-height:1;">${index + 1}</div>
           </div>`;
           icon = L.divIcon({ 
             html: dropHtml, 
@@ -750,7 +876,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
           ctx.stroke();
 
           // Numero
-          ctx.fillStyle = 'white';
+          ctx.fillStyle = 'black'; // NUMERI IN NERO
           ctx.font = `bold ${Math.round(baseSize * 0.6 * scale)}px monospace`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
@@ -791,10 +917,15 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
     }
 
     // ============================================================
-    // GENERAZIONE ESP
+    // GENERAZIONE ESP (USA PUNTI SELEZIONATI)
     // ============================================================
     function generateAndDownloadEsp() {
-      if (parsedPoints.length === 0) return;
+      const selectedPoints = getSelectedPoints();
+      if (selectedPoints.length === 0) {
+        showToast("Seleziona almeno un punto per il volo!");
+        return;
+      }
+      
       const fps = parseInt(document.getElementById('fpsSelect').value);
       const staySec = parseFloat(document.getElementById('stayDuration').value);
       const flightSec = parseFloat(document.getElementById('flightDuration').value);
@@ -808,7 +939,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       const centerLat = 42.5, centerLon = 12.5;
       const finalAltitude = 4200000;
 
-      const totalSec = introPauseSec + flightSec + (parsedPoints.length * staySec) + ((parsedPoints.length - 1) * flightSec) + flightSec + outroPauseSec;
+      const totalSec = introPauseSec + flightSec + (selectedPoints.length * staySec) + ((selectedPoints.length - 1) * flightSec) + flightSec + outroPauseSec;
       const totalFrames = Math.ceil(totalSec * fps);
 
       const maxAltRange = 65117481, minAltRange = -500;
@@ -821,7 +952,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       const transFlight = isLinear ? transNone : { transitionIn: { x: -0.0333, y: -0.001, influence: 0.2, type: "auto" }, transitionOut: { x: 0.0333, y: 0.001, influence: 0.2, type: "auto" } };
 
       const normCenterLon = (centerLon + 180) / 360, normCenterLat = (centerLat + 90) / 180;
-      const normFirstLon = (parsedPoints[0].lon + 180) / 360, normFirstLat = (parsedPoints[0].lat + 90) / 180;
+      const normFirstLon = (selectedPoints[0].lon + 180) / 360, normFirstLat = (selectedPoints[0].lat + 90) / 180;
 
       lonKeyframes.push({ time: 0, value: normCenterLon, ...transNone });
       latKeyframes.push({ time: 0, value: normCenterLat, ...transNone });
@@ -845,8 +976,8 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       rotXKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: cameraTilt });
       rotYKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: 0 });
 
-      for (let i = 0; i < parsedPoints.length; i++) {
-        const pt = parsedPoints[i];
+      for (let i = 0; i < selectedPoints.length; i++) {
+        const pt = selectedPoints[i];
         const normLon = (pt.lon + 180) / 360, normLat = (pt.lat + 90) / 180;
         if (i === 0) {
           if (staySec > 0) {
@@ -878,7 +1009,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         }
       }
 
-      const lastPoint = parsedPoints[parsedPoints.length - 1];
+      const lastPoint = selectedPoints[selectedPoints.length - 1];
       const normLastLon = (lastPoint.lon + 180) / 360, normLastLat = (lastPoint.lat + 90) / 180;
       currentSec += flightSec;
       timeNorm = currentSec / totalSec;
@@ -906,7 +1037,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       const espJson = {
         modelVersion: 18,
         settings: {
-          name: `Volo ${scaleName} – Zoom Spaziale Finale`,
+          name: `Volo ${scaleName} – ${selectedPoints.length} punti selezionati`,
           frameRate: fps,
           dimensions: { width: 1920, height: 1080 },
           duration: totalFrames,
@@ -949,15 +1080,20 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         playbackManager: { range: { start: 0, end: totalFrames } }
       };
 
-      triggerDownload(JSON.stringify(espJson, null, 2), `progetto_earth_${scaleName.replace(/\s+/g,'_')}.esp`);
-      showToast(`ESP (${scaleName}) generato!`);
+      triggerDownload(JSON.stringify(espJson, null, 2), `progetto_earth_${scaleName.replace(/\s+/g,'_')}_${selectedPoints.length}punti.esp`);
+      showToast(`ESP generato! Volo su ${selectedPoints.length} punti selezionati`);
     }
 
     // ============================================================
-    // GENERAZIONE KML
+    // GENERAZIONE KML (USA PUNTI SELEZIONATI)
     // ============================================================
     function generateAndDownloadKml() {
-      if (parsedPoints.length === 0) return;
+      const selectedPoints = getSelectedPoints();
+      if (selectedPoints.length === 0) {
+        showToast("Seleziona almeno un punto per il KML!");
+        return;
+      }
+      
       const staySec = parseFloat(document.getElementById('stayDuration').value);
       const flightSec = parseFloat(document.getElementById('flightDuration').value);
       const introPauseSec = 16;
@@ -966,7 +1102,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       currentTime.setSeconds(currentTime.getSeconds() + introPauseSec + flightSec);
 
       let placemarksStr = '';
-      parsedPoints.forEach((pt, index) => {
+      selectedPoints.forEach((pt, index) => {
         const timeISO = currentTime.toISOString();
         const styleId = getKmlStyleId(pt.value);
         placemarksStr += `    <Placemark>
@@ -981,13 +1117,13 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       const kmlContent = `<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
   <Document>
-    <name>Monitoraggio ${scaleName} - Sequenziale</name>
-    <description>Scala applicata: ${scaleName}. I punti appaiono sincronizzati con il volo.</description>
+    <name>Monitoraggio ${scaleName} - ${selectedPoints.length} punti selezionati</name>
+    <description>Scala applicata: ${scaleName}. Volo sincronizzato su ${selectedPoints.length} punti.</description>
 ${generateKmlStylesBlock()}${placemarksStr}  </Document>
 </kml>`;
 
-      triggerDownload(kmlContent, `monitoraggio_${scaleName.replace(/\s+/g,'_')}.kml`);
-      showToast(`KML (${scaleName}) pronto!`);
+      triggerDownload(kmlContent, `monitoraggio_${scaleName.replace(/\s+/g,'_')}_${selectedPoints.length}punti.kml`);
+      showToast(`KML pronto! ${selectedPoints.length} punti sincronizzati`);
     }
 
     function triggerDownload(content, filename) {
