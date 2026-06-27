@@ -4,15 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google Earth Studio & Tour Generator – Multi-Scala Colorazione</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+  </script>
   <style>
-    #map { height: 1080px; width: 1920px; }
-    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: #1f2937; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 3px; }
+    #map {
+      height: 1080px;
+      width: 1920px;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #1f2937;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #4b5563;
+      border-radius: 3px;
+    }
     .leaflet-tile {
       image-rendering: pixelated;
     }
@@ -27,16 +40,16 @@
       </svg>
       <div>
         <h1 class="text-xl font-bold tracking-tight">Earth Studio Animator & KML Tour Helper</h1>
-        <p class="text-xs text-gray-400">Multi-scala: Sismica (0-40+) · FKS Cagliari (1000-15000) · Magnitudo Richter</p>
+        <p class="text-xs text-gray-400">Multi-scala: Sismica (0–40+) · FKS Cagliari (1000–15000) · Magnitudo Richter</p>
       </div>
     </div>
     <span class="bg-indigo-900 text-indigo-300 text-xs px-2.5 py-1 rounded-full font-semibold">V3.3 KML Tutti colorati</span>
   </header>
 
   <main class="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 p-6">
-    
+
     <div class="lg:col-span-5 flex flex-col space-y-6">
-      
+
       <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-xl flex flex-col space-y-4">
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-semibold flex items-center gap-2">
@@ -57,7 +70,9 @@
         </div>
         <div class="grid grid-cols-2 gap-4">
           <button id="parseBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+            </svg>
             Elabora Dati
           </button>
           <button id="clearBtn" class="bg-gray-700 hover:bg-gray-600 text-gray-200 py-2 px-4 rounded-lg font-medium text-sm transition-colors">
@@ -142,7 +157,9 @@
         </h2>
         <div id="map" class="rounded-lg border border-gray-700 overflow-hidden z-10"></div>
         <button id="downloadMapBtn" disabled class="w-full bg-cyan-600 hover:bg-cyan-700 disabled:bg-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed text-white py-2 px-4 rounded-lg font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
           <span id="downloadMapBtnText">📸 Scarica Mappa come PNG</span>
         </button>
         <div class="bg-gray-900 p-3 rounded-lg border border-gray-700">
@@ -150,7 +167,7 @@
             <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Punti nel Percorso (<span id="pointCount">0</span>):</span>
             <span class="text-xs text-indigo-400 font-mono">Durata: <span id="totalDurationVal">0</span> frame (<span id="totalSecVal">0</span> sec)</span>
           </div>
-          
+
           <!-- Barra di selezione rapida -->
           <div class="flex flex-wrap gap-2 mb-2">
             <button id="selectAllBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-3 py-1 rounded-md transition-colors">✓ Tutti</button>
@@ -162,7 +179,7 @@
               Volo: <span id="selectedCount" class="text-indigo-400 font-mono ml-1">0/0</span> punti
             </span>
           </div>
-          
+
           <div id="pointsList" class="flex flex-wrap gap-2 max-h-24 overflow-y-auto custom-scrollbar p-1">
             <span class="text-xs text-gray-500 italic">Nessun punto caricato.</span>
           </div>
@@ -182,7 +199,9 @@
               <p class="text-xs text-gray-400">(nessun KML incorporato)</p>
             </div>
             <button id="downloadEspBtn" disabled class="w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-not-allowed flex items-center justify-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              </svg>
               Scarica .esp
             </button>
           </div>
@@ -193,7 +212,9 @@
               <p class="text-xs text-gray-400">Tutti colorati in base al valore</p>
             </div>
             <button id="downloadAllKmlBtn" disabled class="w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-not-allowed flex items-center justify-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              </svg>
               KML Tutti
             </button>
           </div>
@@ -204,7 +225,9 @@
               <p class="text-xs text-gray-400">Solo punti selezionati</p>
             </div>
             <button id="downloadKmlBtn" disabled class="w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-not-allowed flex items-center justify-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              </svg>
               KML Volo
             </button>
           </div>
@@ -224,29 +247,30 @@
     let currentZoom = 6;
 
     const demoData = `Palermo, 38.1157, 13.3614, Valore 3.2
-Catania, 37.5079, 15.0830, Valore 8.5
-Messina, 38.1938, 15.5540, Valore 12.0
-Cosenza, 39.3000, 16.2500, Valore 22.0
-Potenza, 40.6333, 15.8000, Valore 18.5
-Bari, 41.1253, 16.8667, Valore 5.2
-Napoli, 40.8518, 14.2681, Valore 28.0
-Campobasso, 41.5610, 14.6680, Valore 15.0
-Brindisi, 40.4000, 17.9667, Valore 6.8
-Parco Cilento, 40.1500, 15.8500, Valore 35.0
-Agrigento, 37.3110, 13.5765, Valore 42.0
-Siracusa, 37.0755, 15.2866, Valore 17.0
-Trapani, 38.0150, 12.5150, Valore 4.0`;
+    Catania, 37.5079, 15.0830, Valore 8.5
+    Messina, 38.1938, 15.5540, Valore 12.0
+    Cosenza, 39.3000, 16.2500, Valore 22.0
+    Potenza, 40.6333, 15.8000, Valore 18.5
+    Bari, 41.1253, 16.8667, Valore 5.2
+    Napoli, 40.8518, 14.2681, Valore 28.0
+    Campobasso, 41.5610, 14.6680, Valore 15.0
+    Brindisi, 40.4000, 17.9667, Valore 6.8
+    Parco Cilento, 40.1500, 15.8500, Valore 35.0
+    Agrigento, 37.3110, 13.5765, Valore 42.0
+    Siracusa, 37.0755, 15.2866, Valore 17.0
+    Trapani, 38.0150, 12.5150, Valore 4.0`;
 
     // ------------------ COLORI ------------------
     function getColorSismica(val) {
       if (val === undefined || val === null) return '#6b7280';
-      if (val <= 5)  return '#bae6fd';
+      if (val <= 5) return '#bae6fd';
       if (val <= 10) return '#7dd3fc';
       if (val <= 20) return '#86efac';
       if (val <= 30) return '#fde047';
       if (val <= 40) return '#fb923c';
       return '#ef4444';
     }
+
     function getColorFKS(val) {
       if (val === undefined || val === null) return '#6b7280';
       if (val <= 5999) return '#fde047';
@@ -255,17 +279,19 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       if (val <= 9000) return '#ef4444';
       return '#22c55e';
     }
+
     function getColorRichter(val) {
       if (val === undefined || val === null) return '#6b7280';
-      if (val < 2)  return '#e5e7eb';
-      if (val < 3)  return '#bae6fd';
-      if (val < 4)  return '#86efac';
-      if (val < 5)  return '#fde047';
-      if (val < 6)  return '#fb923c';
-      if (val < 7)  return '#ef4444';
-      if (val < 8)  return '#b91c1c';
+      if (val < 2) return '#e5e7eb';
+      if (val < 3) return '#bae6fd';
+      if (val < 4) return '#86efac';
+      if (val < 5) return '#fde047';
+      if (val < 6) return '#fb923c';
+      if (val < 7) return '#ef4444';
+      if (val < 8) return '#b91c1c';
       return '#a855f7';
     }
+
     function getColorForValue(val) {
       const scale = document.getElementById('colorScaleSelect').value;
       if (scale === 'fks') return getColorFKS(val);
@@ -313,11 +339,11 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       const title = SCALE_NAMES[scale];
       legendBox.innerHTML = `<span class="text-gray-400 w-full mb-1 block"><strong class="text-gray-200">${title}:</strong></span>` +
         items.map(it => `
-          <span class="inline-flex items-center gap-1">
-            <span class="inline-block w-3 h-3 rounded-full" style="background:${it.color};"></span>
-            ${it.label}
-          </span>
-        `).join('');
+            <span class="inline-flex items-center gap-1">
+              <span class="inline-block w-3 h-3 rounded-full" style="background:${it.color};"></span>
+              ${it.label}
+            </span>
+          `).join('');
     }
 
     // ------------------ KML STYLES ------------------
@@ -349,7 +375,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       }
       // sismica
       if (val === undefined || val === null) return 'styleNA';
-      if (val <= 5)  return 'style1';
+      if (val <= 5) return 'style1';
       if (val <= 10) return 'style2';
       if (val <= 20) return 'style3';
       if (val <= 30) return 'style4';
@@ -364,22 +390,22 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       items.forEach((it, idx) => {
         const kmlColor = hexToKml(it.color);
         styles += `    <Style id="style${idx+1}">
-      <IconStyle>
-        <color>${kmlColor}</color>
-        <scale>1.3</scale>
-        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
-      </IconStyle>
-      <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
-    </Style>\n`;
+          <IconStyle>
+            <color>${kmlColor}</color>
+            <scale>1.3</scale>
+            <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
+          </IconStyle>
+          <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
+        </Style>\n`;
       });
       styles += `    <Style id="styleNA">
-      <IconStyle>
-        <color>ff808080</color>
-        <scale>1.3</scale>
-        <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
-      </IconStyle>
-      <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
-    </Style>\n`;
+          <IconStyle>
+            <color>ff808080</color>
+            <scale>1.3</scale>
+            <Icon><href>http://maps.google.com/mapfiles/kml/shapes/target.png</href></Icon>
+          </IconStyle>
+          <LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle>
+        </Style>\n`;
       return styles;
     }
 
@@ -397,7 +423,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
           drawMapElements();
         });
         markersGroup = L.layerGroup().addTo(map);
-        pathLine = L.polyline([], {color: '#6366f1', weight: 3, dashArray: '5, 10'}).addTo(map);
+        pathLine = L.polyline([], { color: '#6366f1', weight: 3, dashArray: '5, 10' }).addTo(map);
       } else {
         document.getElementById('map').innerHTML = '<div style="color:white; text-align:center; padding:50px;">Mappa non disponibile.</div>';
       }
@@ -421,7 +447,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         if (leafletAvailable && parsedPoints.length > 0) drawMapElements();
         showToast("Scala colorazione cambiata: " + SCALE_NAMES[this.value]);
       });
-      
+
       // Pulsanti selezione
       document.getElementById('selectAllBtn').addEventListener('click', () => {
         document.querySelectorAll('.point-checkbox').forEach(cb => cb.checked = true);
@@ -489,20 +515,24 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
     }
 
     function disableDownloadBtns() {
-      ['downloadEspBtn','downloadAllKmlBtn','downloadKmlBtn','downloadMapBtn'].forEach(id => {
+      ['downloadEspBtn', 'downloadAllKmlBtn', 'downloadKmlBtn', 'downloadMapBtn'].forEach(id => {
         const btn = document.getElementById(id);
         btn.disabled = true;
-        btn.className = "w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm cursor-not-allowed flex items-center justify-center gap-2";
+        btn.className =
+          "w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm cursor-not-allowed flex items-center justify-center gap-2";
       });
     }
 
     function enableDownloadBtns() {
       document.getElementById('downloadEspBtn').disabled = false;
-      document.getElementById('downloadEspBtn').className = "w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
+      document.getElementById('downloadEspBtn').className =
+        "w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
       document.getElementById('downloadAllKmlBtn').disabled = false;
-      document.getElementById('downloadAllKmlBtn').className = "w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
+      document.getElementById('downloadAllKmlBtn').className =
+        "w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
       document.getElementById('downloadKmlBtn').disabled = false;
-      document.getElementById('downloadKmlBtn').className = "w-full bg-yellow-600 hover:bg-yellow-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
+      document.getElementById('downloadKmlBtn').className =
+        "w-full bg-yellow-600 hover:bg-yellow-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
       document.getElementById('downloadMapBtn').disabled = false;
     }
 
@@ -510,18 +540,23 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       if (parsedPoints.length > 0) {
         // KML Tutti sempre abilitato
         document.getElementById('downloadAllKmlBtn').disabled = false;
-        document.getElementById('downloadAllKmlBtn').className = "w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
+        document.getElementById('downloadAllKmlBtn').className =
+          "w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
         if (getSelectedPoints().length > 0) {
           document.getElementById('downloadEspBtn').disabled = false;
-          document.getElementById('downloadEspBtn').className = "w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
+          document.getElementById('downloadEspBtn').className =
+            "w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
           document.getElementById('downloadKmlBtn').disabled = false;
-          document.getElementById('downloadKmlBtn').className = "w-full bg-yellow-600 hover:bg-yellow-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
+          document.getElementById('downloadKmlBtn').className =
+            "w-full bg-yellow-600 hover:bg-yellow-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
           document.getElementById('downloadMapBtn').disabled = false;
         } else {
           document.getElementById('downloadEspBtn').disabled = true;
-          document.getElementById('downloadEspBtn').className = "w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm cursor-not-allowed flex items-center justify-center gap-2";
+          document.getElementById('downloadEspBtn').className =
+            "w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm cursor-not-allowed flex items-center justify-center gap-2";
           document.getElementById('downloadKmlBtn').disabled = true;
-          document.getElementById('downloadKmlBtn').className = "w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm cursor-not-allowed flex items-center justify-center gap-2";
+          document.getElementById('downloadKmlBtn').className =
+            "w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm cursor-not-allowed flex items-center justify-center gap-2";
           document.getElementById('downloadMapBtn').disabled = true;
         }
       } else {
@@ -572,7 +607,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
             }
           }
           showToast(`KML elaborato! ${parsedPoints.length} punti.`);
-        } catch(e) {
+        } catch (e) {
           showToast("Errore nel parsing KML.");
           return;
         }
@@ -596,25 +631,31 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
           let coordIdx = -1;
           for (let i = 0; i < cleanParts.length - 1; i++) {
             const a = parseFloat(cleanParts[i]);
-            const b = parseFloat(cleanParts[i+1]);
+            const b = parseFloat(cleanParts[i + 1]);
             const partA = cleanParts[i];
-            const partB = cleanParts[i+1];
+            const partB = cleanParts[i + 1];
             if (partA.match(/^\d{1,2}\/\d{1,2}$/) || partA.match(/^\d{1,2}:\d{2}$/)) continue;
             if (partB.match(/^\d{1,2}\/\d{1,2}$/) || partB.match(/^\d{1,2}:\d{2}$/)) continue;
             if (!isNaN(a) && !isNaN(b) && a >= 36 && a <= 47 && b >= 6 && b <= 19) {
-              lat = a; lon = b; coordIdx = i; break;
+              lat = a;
+              lon = b;
+              coordIdx = i;
+              break;
             }
           }
           if (coordIdx === -1) {
             for (let i = 0; i < cleanParts.length - 1; i++) {
               const a = parseFloat(cleanParts[i]);
-              const b = parseFloat(cleanParts[i+1]);
+              const b = parseFloat(cleanParts[i + 1]);
               const partA = cleanParts[i];
-              const partB = cleanParts[i+1];
+              const partB = cleanParts[i + 1];
               if (partA.match(/^\d{1,2}\/\d{1,2}$/) || partA.match(/^\d{1,2}:\d{2}$/)) continue;
               if (partB.match(/^\d{1,2}\/\d{1,2}$/) || partB.match(/^\d{1,2}:\d{2}$/)) continue;
               if (!isNaN(a) && !isNaN(b) && a >= -90 && a <= 90 && b >= -180 && b <= 180) {
-                lat = a; lon = b; coordIdx = i; break;
+                lat = a;
+                lon = b;
+                coordIdx = i;
+                break;
               }
             }
           }
@@ -658,16 +699,17 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       parsedPoints.forEach((pt, index) => {
         const color = getColorForValue(pt.value);
         const item = document.createElement('label');
-        item.className = "bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded-md border border-gray-600 flex items-center gap-1.5 cursor-pointer hover:bg-gray-600 transition-colors";
+        item.className =
+          "bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded-md border border-gray-600 flex items-center gap-1.5 cursor-pointer hover:bg-gray-600 transition-colors";
         const shouldBeChecked = isFirstRender || previousSelection.has(index);
         item.innerHTML = `
-          <input type="checkbox" class="point-checkbox" data-index="${index}" ${shouldBeChecked ? 'checked' : ''} 
-                 style="width:14px; height:14px; accent-color:${color}; cursor:pointer;">
-          <span class="text-black font-mono rounded w-4 h-4 flex items-center justify-center text-[9px]" style="background:${color};">${index + 1}</span>
-          <strong>${pt.name}</strong> <span class="text-gray-400">(${pt.lat.toFixed(2)}, ${pt.lon.toFixed(2)})</span>`;
+            <input type="checkbox" class="point-checkbox" data-index="${index}" ${shouldBeChecked ? 'checked' : ''}
+                   style="width:14px; height:14px; accent-color:${color}; cursor:pointer;">
+            <span class="text-black font-mono rounded w-4 h-4 flex items-center justify-center text-[9px]" style="background:${color};">${index + 1}</span>
+            <strong>${pt.name}</strong> <span class="text-gray-400">(${pt.lat.toFixed(2)}, ${pt.lon.toFixed(2)})</span>`;
         container.appendChild(item);
       });
-      
+
       document.querySelectorAll('.point-checkbox').forEach(cb => {
         cb.addEventListener('change', function() {
           updateSelectedCount();
@@ -676,7 +718,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
           if (leafletAvailable) drawMapElements();
         });
       });
-      
+
       updateSelectedCount();
       updateDurationDisplay();
     }
@@ -711,7 +753,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         const latlng = [pt.lat, pt.lon];
         allLatlngs.push(latlng);
         if (selectedIndices.has(index)) selectedLatlngs.push(latlng);
-        
+
         const color = getColorForValue(pt.value);
         const isSelected = selectedIndices.has(index);
         let icon;
@@ -721,11 +763,13 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         if (styleMode === 'pre') {
           let html;
           if (isSelected) {
-            html = `<div style="background-color:${color}; width:${size}px; height:${size}px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold; font-family:monospace; font-size:${fontSize}px; border:2px solid white; box-shadow:0 2px 6px rgba(0,0,0,0.6); box-sizing:border-box;">${index + 1}</div>`;
+            html =
+              `<div style="background-color:${color}; width:${size}px; height:${size}px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold; font-family:monospace; font-size:${fontSize}px; border:2px solid white; box-shadow:0 2px 6px rgba(0,0,0,0.6); box-sizing:border-box;">${index + 1}</div>`;
           } else {
-            html = `<div style="background-color:transparent; width:${size}px; height:${size}px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:${color}; font-weight:bold; font-family:monospace; font-size:${fontSize}px; border:2px solid ${color}; box-shadow:0 2px 6px rgba(0,0,0,0.3); box-sizing:border-box; opacity:0.8;">${index + 1}</div>`;
+            html =
+              `<div style="background-color:transparent; width:${size}px; height:${size}px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:${color}; font-weight:bold; font-family:monospace; font-size:${fontSize}px; border:2px solid ${color}; box-shadow:0 2px 6px rgba(0,0,0,0.3); box-sizing:border-box; opacity:0.8;">${index + 1}</div>`;
           }
-          icon = L.divIcon({ html, className: '', iconSize: [size, size], iconAnchor: [size/2, size/2] });
+          icon = L.divIcon({ html, className: '', iconSize: [size, size], iconAnchor: [size / 2, size / 2] });
         } else {
           const scaledBase = 20 * SMALL_FACTOR;
           const scaledHeight = 24 * SMALL_FACTOR;
@@ -736,20 +780,23 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
           let dropHtml;
           if (isSelected) {
             dropHtml = `<div style="position:relative; width:${finalW}px; height:${finalH}px;">
-              <div style="position:absolute; top:0; left:0; width:${finalW}px; height:${finalH}px; background-color:${color}; clip-path: polygon(50% 0%, 0% 65%, 0% 100%, 100% 100%, 100% 65%); border:2px solid white; box-shadow:0 2px 6px rgba(0,0,0,0.6);"></div>
-              <div style="position:absolute; top:${finalH*0.25}px; left:0; color:black; font-size:${fontSize2}px; font-weight:bold; width:${finalW}px; text-align:center; line-height:1;">${index + 1}</div>
-            </div>`;
+                <div style="position:absolute; top:0; left:0; width:${finalW}px; height:${finalH}px; background-color:${color}; clip-path: polygon(50% 0%, 0% 65%, 0% 100%, 100% 100%, 100% 65%); border:2px solid white; box-shadow:0 2px 6px rgba(0,0,0,0.6);"></div>
+                <div style="position:absolute; top:${finalH*0.25}px; left:0; color:black; font-size:${fontSize2}px; font-weight:bold; width:${finalW}px; text-align:center; line-height:1;">${index + 1}</div>
+              </div>`;
           } else {
             dropHtml = `<div style="position:relative; width:${finalW}px; height:${finalH}px; opacity:0.8;">
-              <div style="position:absolute; top:0; left:0; width:${finalW}px; height:${finalH}px; background-color:transparent; clip-path: polygon(50% 0%, 0% 65%, 0% 100%, 100% 100%, 100% 65%); border:2px solid ${color}; box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>
-              <div style="position:absolute; top:${finalH*0.25}px; left:0; color:${color}; font-size:${fontSize2}px; font-weight:bold; width:${finalW}px; text-align:center; line-height:1;">${index + 1}</div>
-            </div>`;
+                <div style="position:absolute; top:0; left:0; width:${finalW}px; height:${finalH}px; background-color:transparent; clip-path: polygon(50% 0%, 0% 65%, 0% 100%, 100% 100%, 100% 65%); border:2px solid ${color}; box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>
+                <div style="position:absolute; top:${finalH*0.25}px; left:0; color:${color}; font-size:${fontSize2}px; font-weight:bold; width:${finalW}px; text-align:center; line-height:1;">${index + 1}</div>
+              </div>`;
           }
-          icon = L.divIcon({ html: dropHtml, className: '', iconSize: [finalW, finalH], iconAnchor: [finalW/2, finalH/2] });
+          icon = L.divIcon({ html: dropHtml, className: '', iconSize: [finalW, finalH], iconAnchor: [finalW / 2, finalH /
+              2] });
         }
 
         const marker = L.marker(latlng, { icon }).addTo(markersGroup);
-        marker.bindPopup(`<strong>${index+1}. ${pt.name}</strong><br>Lat: ${pt.lat}<br>Lon: ${pt.lon}<br>${isSelected ? '✅ Incluso nel volo' : '❌ Escluso dal volo'}`);
+        marker.bindPopup(
+          `<strong>${index+1}. ${pt.name}</strong><br>Lat: ${pt.lat}<br>Lon: ${pt.lon}<br>${isSelected ? '✅ Incluso nel volo' : '❌ Escluso dal volo'}`
+          );
       });
 
       if (pathLine) {
@@ -857,7 +904,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
           const url = URL.createObjectURL(blob);
           const link = document.createElement("a");
           link.href = url;
-          const timestamp = new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
+          const timestamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-');
           link.download = `mappa_punti_${timestamp}.png`;
           document.body.appendChild(link);
           link.click();
@@ -881,7 +928,7 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       });
     }
 
-    // ------------------ GENERAZIONE .esp (SOLO KEYFRAME, NO KML) ------------------
+    // ------------------ GENERAZIONE .esp (SKEYFRAME, NO KML) ------------------
     function generateAndDownloadEsp() {
       const selectedPoints = getSelectedPoints();
       if (selectedPoints.length === 0) {
@@ -896,23 +943,35 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       const cameraTilt = parseFloat(document.getElementById('cameraTilt').value);
       const isLinear = document.getElementById('transitionType').value === 'linear';
 
-      const introPauseSec = 16, outroPauseSec = 16;
-      const introAltitude = 4200000, finalAltitude = 4200000;
-      const centerLat = 42.5, centerLon = 12.5;
+      const introPauseSec = 16,
+        outroPauseSec = 16;
+      const introAltitude = 4200000,
+        finalAltitude = 4200000;
+      const centerLat = 42.5,
+        centerLon = 12.5;
 
-      const totalSec = introPauseSec + flightSec + (selectedPoints.length * staySec) + ((selectedPoints.length - 1) * flightSec) + flightSec + outroPauseSec;
+      const totalSec = introPauseSec + flightSec + (selectedPoints.length * staySec) + ((selectedPoints.length - 1) *
+        flightSec) + flightSec + outroPauseSec;
       const totalFrames = Math.ceil(totalSec * fps);
-      const maxAltRange = 65117481, minAltRange = -500;
+      const maxAltRange = 65117481,
+        minAltRange = -500;
       const introAltRel = (introAltitude - minAltRange) / (maxAltRange - minAltRange);
       const cruiseAltRel = (cruiseAlt - minAltRange) / (maxAltRange - minAltRange);
       const finalAltRel = (finalAltitude - minAltRange) / (maxAltRange - minAltRange);
 
-      const lonKeyframes = [], latKeyframes = [], altKeyframes = [], rotXKeyframes = [], rotYKeyframes = [];
+      const lonKeyframes = [],
+        latKeyframes = [],
+        altKeyframes = [],
+        rotXKeyframes = [],
+        rotYKeyframes = [];
       const transNone = { transitionIn: { influence: 0, type: "linear" }, transitionOut: { influence: 0, type: "linear" } };
-      const transFlight = isLinear ? transNone : { transitionIn: { x: -0.0333, y: -0.001, influence: 0.2, type: "auto" }, transitionOut: { x: 0.0333, y: 0.001, influence: 0.2, type: "auto" } };
+      const transFlight = isLinear ? transNone : { transitionIn: { x: -0.0333, y: -0.001, influence: 0.2,
+          type: "auto" }, transitionOut: { x: 0.0333, y: 0.001, influence: 0.2, type: "auto" } };
 
-      const normCenterLon = (centerLon + 180) / 360, normCenterLat = (centerLat + 90) / 180;
-      const normFirstLon = (selectedPoints[0].lon + 180) / 360, normFirstLat = (selectedPoints[0].lat + 90) / 180;
+      const normCenterLon = (centerLon + 180) / 360,
+        normCenterLat = (centerLat + 90) / 180;
+      const normFirstLon = (selectedPoints[0].lon + 180) / 360,
+        normFirstLat = (selectedPoints[0].lat + 90) / 180;
 
       lonKeyframes.push({ time: 0, value: normCenterLon, ...transNone });
       latKeyframes.push({ time: 0, value: normCenterLat, ...transNone });
@@ -938,7 +997,8 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
 
       for (let i = 0; i < selectedPoints.length; i++) {
         const pt = selectedPoints[i];
-        const normLon = (pt.lon + 180) / 360, normLat = (pt.lat + 90) / 180;
+        const normLon = (pt.lon + 180) / 360,
+          normLat = (pt.lat + 90) / 180;
         if (i === 0) {
           if (staySec > 0) {
             currentSec += staySec;
@@ -969,20 +1029,24 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
         }
       }
 
-      const lastPoint = selectedPoints[selectedPoints.length - 1];
-      const normLastLon = (lastPoint.lon + 180) / 360, normLastLat = (lastPoint.lat + 90) / 180;
+      // --- FIX: dopo l'ultimo punto, vola al centro dell'Italia con risalita ---
+      const normCenterLonFinal = (centerLon + 180) / 360;
+      const normCenterLatFinal = (centerLat + 90) / 180;
+
+      // Volo dall'ultimo punto al centro (con risalita)
       currentSec += flightSec;
       timeNorm = currentSec / totalSec;
-      lonKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: normLastLon, ...transFlight });
-      latKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: normLastLat, ...transFlight });
+      lonKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: normCenterLonFinal, ...transFlight });
+      latKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: normCenterLatFinal, ...transFlight });
       altKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: finalAltRel, ...transFlight });
       rotXKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: cameraTilt });
       rotYKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: 0 });
 
+      // Pausa finale al centro
       currentSec += outroPauseSec;
       timeNorm = currentSec / totalSec;
-      lonKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: normLastLon });
-      latKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: normLastLat });
+      lonKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: normCenterLonFinal });
+      latKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: normCenterLatFinal });
       altKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: finalAltRel });
       rotXKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: cameraTilt });
       rotYKeyframes.push({ time: Number(timeNorm.toFixed(6)), value: 0 });
@@ -1004,44 +1068,73 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
           timeFormat: "frames"
         },
         scenes: [{
-          world: { kmls: [] },  // <-- NESSUN KML INCORPORATO
+          world: { kmls: [] },
           animationModel: { roving: false, logarithmic: false, groupedPosition: true },
           duration: totalFrames,
-          attributes: [
-            {
-              type: "cameraGroup", inTimeline: true,
-              attributes: [
-                {
-                  type: "cameraPositionGroup", inTimeline: true,
-                  attributes: [
-                    { type: "longitude", value: { relative: normCenterLon }, keyframes: lonKeyframes, inTimeline: true },
-                    { type: "latitude", value: { relative: normCenterLat }, keyframes: latKeyframes, inTimeline: true },
-                    { type: "altitude", value: { maxValueRange: maxAltRange, minValueRange: minAltRange, relative: introAltRel, logarithmic: false }, keyframes: altKeyframes, inTimeline: true }
-                  ]
-                },
-                { type: "cameraTargetEffect", attributes: [ { type: "enabled", value: {} }, { type: "poi", attributes: [ { type: "longitudePOI", value: {} }, { type: "latitudePOI", value: {} }, { type: "altitudePOI", value: { maxValueRange: maxAltRange, minValueRange: minAltRange, logarithmic: false } } ] }, { type: "influence", value: {} } ] },
-                { type: "cameraRotationGroup", inTimeline: true, attributes: [ { type: "rotationX", value: {}, keyframes: rotXKeyframes, inTimeline: true }, { type: "rotationY", value: {}, keyframes: rotYKeyframes, inTimeline: true }, { type: "rotationZ", value: {} } ] },
-                { type: "cameraLensGroup", attributes: [ { type: "fov", value: {} }, { type: "exposure", value: {} }, { type: "aperture", value: {} }, { type: "minFocusLength", value: {} } ] }
-              ]
-            },
-            {
-              type: "environmentGroup",
-              attributes: [
-                { type: "sunGroup", attributes: [ { type: "sunVisibility", value: {} }, { type: "worldTime", value: { relative: 0.5 } } ] },
-                { type: "cloudGroup", attributes: [ { type: "cloudVisibility", value: {} }, { type: "cloudopacity", value: {} }, { type: "cloudheight", value: {} }, { type: "clouddate", value: { relative: 0.0006 } } ] },
-                { type: "starsPlanetsGroup", attributes: [ { type: "starsEnabled", value: {} } ] },
-                { type: "seawaterGroup", attributes: [ { type: "seawater", value: {} }, { type: "influence", value: { relative: 1 } } ] },
-                { type: "buildingsEnabled", value: {} }
-              ]
-            }
-          ]
+          attributes: [{
+            type: "cameraGroup",
+            inTimeline: true,
+            attributes: [{
+              type: "cameraPositionGroup",
+              inTimeline: true,
+              attributes: [{
+                type: "longitude",
+                value: { relative: normCenterLon },
+                keyframes: lonKeyframes,
+                inTimeline: true
+              }, {
+                type: "latitude",
+                value: { relative: normCenterLat },
+                keyframes: latKeyframes,
+                inTimeline: true
+              }, {
+                type: "altitude",
+                value: { maxValueRange: maxAltRange, minValueRange: minAltRange,
+                relative: introAltRel, logarithmic: false },
+                keyframes: altKeyframes,
+                inTimeline: true
+              }]
+            }, {
+              type: "cameraTargetEffect",
+              attributes: [{ type: "enabled", value: {} }, { type: "poi", attributes: [
+                { type: "longitudePOI", value: {} }, { type: "latitudePOI",
+                  value: {} }, { type: "altitudePOI", value: { maxValueRange: maxAltRange,
+                    minValueRange: minAltRange, logarithmic: false } }
+                ] }, { type: "influence", value: {} }]
+            }, {
+              type: "cameraRotationGroup",
+              inTimeline: true,
+              attributes: [{ type: "rotationX", value: {}, keyframes: rotXKeyframes,
+                inTimeline: true }, { type: "rotationY", value: {}, keyframes: rotYKeyframes,
+                  inTimeline: true }, { type: "rotationZ", value: {} }]
+            }, {
+              type: "cameraLensGroup",
+              attributes: [{ type: "fov", value: {} }, { type: "exposure",
+                value: {} }, { type: "aperture", value: {} },
+              { type: "minFocusLength", value: {} }]
+            }]
+          }, {
+            type: "environmentGroup",
+            attributes: [{ type: "sunGroup", attributes: [{ type: "sunVisibility",
+                value: {} }, { type: "worldTime", value: { relative: 0.5 } }] },
+            { type: "cloudGroup", attributes: [{ type: "cloudVisibility",
+                value: {} }, { type: "cloudopacity", value: {} },
+              { type: "cloudheight", value: {} }, { type: "clouddate",
+                value: { relative: 0.0006 } }
+              ] }, { type: "starsPlanetsGroup", attributes: [{ type: "starsEnabled",
+                  value: {} }] }, { type: "seawaterGroup", attributes: [
+                { type: "seawater", value: {} }, { type: "influence",
+                  value: { relative: 1 } }
+              ] }, { type: "buildingsEnabled", value: {} }]
+          }]
         }],
         cameraExport: { logarithmic: false, modelVersion: 2 },
         playbackManager: { range: { start: 0, end: totalFrames } }
       };
 
-      triggerDownload(JSON.stringify(espJson, null, 2), `progetto_earth_${scaleName.replace(/\s+/g,'_')}_${selectedPoints.length}punti.esp`);
-      showToast(`ESP generato! Volo su ${selectedPoints.length} punti selezionati (nessun KML incorporato)`);
+      triggerDownload(JSON.stringify(espJson, null, 2),
+        `progetto_earth_${scaleName.replace(/\s+/g,'_')}_${selectedPoints.length}punti.esp`);
+      showToast(`ESP generato! Volo su ${selectedPoints.length} punti selezionati + rientro al centro Italia.`);
     }
 
     // ------------------ GENERAZIONE KML TUTTI I PUNTI (STATICO, TUTTI COLORATI IN BASE AL VALORE) ------------------
@@ -1054,21 +1147,21 @@ Trapani, 38.0150, 12.5150, Valore 4.0`;
       const scaleName = SCALE_NAMES[document.getElementById('colorScaleSelect').value];
       let placemarksStr = '';
       parsedPoints.forEach((pt, idx) => {
-        const styleId = getKmlStyleId(pt.value);  // tutti usano lo stile basato sul valore
+        const styleId = getKmlStyleId(pt.value);
         placemarksStr += `    <Placemark>
-      <name>${idx+1}. ${pt.name}</name>
-      <styleUrl>#${styleId}</styleUrl>
-      <Point><coordinates>${pt.lon},${pt.lat},0</coordinates></Point>
-    </Placemark>\n`;
+          <name>${idx+1}. ${pt.name}</name>
+          <styleUrl>#${styleId}</styleUrl>
+          <Point><coordinates>${pt.lon},${pt.lat},0</coordinates></Point>
+        </Placemark>\n`;
       });
 
       const kmlContent = `<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
-  <Document>
-    <name>Tutti i punti - ${scaleName}</name>
-    <description>Scala: ${scaleName}. Tutti i punti colorati in base al valore.</description>
-${generateKmlStylesBlock()}${placemarksStr}  </Document>
-</kml>`;
+        <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+          <Document>
+            <name>Tutti i punti - ${scaleName}</name>
+            <description>Scala: ${scaleName}. Tutti i punti colorati in base al valore.</description>
+        ${generateKmlStylesBlock()}${placemarksStr}  </Document>
+        </kml>`;
 
       triggerDownload(kmlContent, `tutti_i_punti_${scaleName.replace(/\s+/g,'_')}.kml`);
       showToast(`KML con tutti i punti (${parsedPoints.length}) scaricato! Tutti colorati in base al valore.`);
@@ -1093,21 +1186,21 @@ ${generateKmlStylesBlock()}${placemarksStr}  </Document>
         const timeISO = currentTime.toISOString();
         const styleId = getKmlStyleId(pt.value);
         placemarksStr += `    <Placemark>
-    <name>${index + 1}. ${pt.name}</name>
-    <TimeStamp><when>${timeISO}</when></TimeStamp>
-    <styleUrl>#${styleId}</styleUrl>
-    <Point><coordinates>${pt.lon},${pt.lat},0</coordinates></Point>
-  </Placemark>\n`;
+          <name>${index + 1}. ${pt.name}</name>
+          <TimeStamp><when>${timeISO}</when></TimeStamp>
+          <styleUrl>#${styleId}</styleUrl>
+          <Point><coordinates>${pt.lon},${pt.lat},0</coordinates></Point>
+        </Placemark>\n`;
         currentTime.setSeconds(currentTime.getSeconds() + staySec + flightSec);
       });
 
       const kmlContent = `<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
-  <Document>
-    <name>Monitoraggio ${scaleName} - ${selectedPoints.length} punti selezionati</name>
-    <description>Scala applicata: ${scaleName}. Volo sincronizzato su ${selectedPoints.length} punti.</description>
-${generateKmlStylesBlock()}${placemarksStr}  </Document>
-</kml>`;
+        <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+          <Document>
+            <name>Monitoraggio ${scaleName} - ${selectedPoints.length} punti selezionati</name>
+            <description>Scala applicata: ${scaleName}. Volo sincronizzato su ${selectedPoints.length} punti.</description>
+        ${generateKmlStylesBlock()}${placemarksStr}  </Document>
+        </kml>`;
 
       triggerDownload(kmlContent, `punti_volo_${scaleName.replace(/\s+/g,'_')}_${selectedPoints.length}punti.kml`);
       showToast(`KML volo (${selectedPoints.length} punti con timestamp) scaricato!`);
