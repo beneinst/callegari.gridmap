@@ -43,7 +43,7 @@
         <p class="text-xs text-gray-400">Multi-scala: Sismica (0–40+) · FKS Cagliari (1000–15000) · Magnitudo Richter</p>
       </div>
     </div>
-    <span class="bg-indigo-900 text-indigo-300 text-xs px-2.5 py-1 rounded-full font-semibold">V3.4 Volo fisso N/C/S</span>
+    <span class="bg-indigo-900 text-indigo-300 text-xs px-2.5 py-1 rounded-full font-semibold">V3.3 KML Tutti colorati</span>
   </header>
 
   <main class="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 p-6">
@@ -147,45 +147,12 @@
           </div>
         </div>
       </div>
-
-      <!-- Modalità Volo Telecamera (.esp) -->
-      <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-xl flex flex-col space-y-4">
-        <h2 class="text-lg font-semibold flex items-center gap-2">
-          <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">4</span>
-          Modalità Volo Telecamera (.esp)
-        </h2>
-        <div class="flex flex-col gap-2">
-          <label class="flex items-center gap-2 text-sm cursor-pointer bg-gray-900 border border-gray-700 rounded-lg p-2 hover:border-indigo-500 transition-colors">
-            <input type="radio" name="flightMode" id="flightModeSelected" value="selected" checked class="accent-indigo-500 w-4 h-4">
-            <span><strong>Punti selezionati</strong> <span class="text-gray-400">— sistema attuale (usa i punti spuntati in lista, nell'ordine di invio)</span></span>
-          </label>
-          <label class="flex items-center gap-2 text-sm cursor-pointer bg-gray-900 border border-gray-700 rounded-lg p-2 hover:border-indigo-500 transition-colors">
-            <input type="radio" name="flightMode" id="flightModeFixed" value="fixed" class="accent-indigo-500 w-4 h-4">
-            <span><strong>Volo fisso a 3 punti</strong> <span class="text-gray-400">— Nord / Centro / Sud (coordinate fisse)</span></span>
-          </label>
-        </div>
-        <div id="fixedPointsBox" class="hidden bg-gray-900 p-3 rounded-lg border border-gray-700 space-y-2">
-          <p class="text-[11px] text-gray-400">Questi 3 punti <strong class="text-gray-300">non compaiono sulla mappa</strong> (né come marker né nella lista punti), ma la telecamera scende comunque su di essi nel file <code class="text-indigo-300">.esp</code> generato. Le coordinate sono fisse e modificabili nel codice sorgente (costante <code class="text-indigo-300">FIXED_POINTS</code>).</p>
-          <label class="flex items-center gap-2 text-xs cursor-pointer">
-            <input type="checkbox" id="fixedNord" class="fixed-point-checkbox accent-blue-500 w-4 h-4" checked>
-            🧭 <strong>Nord</strong> <span id="fixedNordCoords" class="text-gray-400 font-mono"></span>
-          </label>
-          <label class="flex items-center gap-2 text-xs cursor-pointer">
-            <input type="checkbox" id="fixedCentro" class="fixed-point-checkbox accent-yellow-500 w-4 h-4" checked>
-            🧭 <strong>Centro</strong> <span id="fixedCentroCoords" class="text-gray-400 font-mono"></span>
-          </label>
-          <label class="flex items-center gap-2 text-xs cursor-pointer">
-            <input type="checkbox" id="fixedSud" class="fixed-point-checkbox accent-red-500 w-4 h-4" checked>
-            🧭 <strong>Sud</strong> <span id="fixedSudCoords" class="text-gray-400 font-mono"></span>
-          </label>
-        </div>
-      </div>
     </div>
 
     <div class="lg:col-span-7 flex flex-col space-y-6">
       <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-xl flex flex-col space-y-4">
         <h2 class="text-lg font-semibold flex items-center gap-2">
-          <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">5</span>
+          <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">4</span>
           Anteprima Percorso & Punti Rilevati
         </h2>
         <div id="map" class="rounded-lg border border-gray-700 overflow-hidden z-10"></div>
@@ -221,7 +188,7 @@
 
       <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-xl flex flex-col space-y-4">
         <h2 class="text-lg font-semibold flex items-center gap-2">
-          <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">6</span>
+          <span class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">5</span>
           Genera ed Esporta per Google Earth
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -292,15 +259,6 @@
     Agrigento, 37.3110, 13.5765, Valore 42.0
     Siracusa, 37.0755, 15.2866, Valore 17.0
     Trapani, 38.0150, 12.5150, Valore 4.0`;
-
-    // ------------------ PUNTI FISSI (Nord / Centro / Sud) ------------------
-    // Coordinate modificabili qui: la telecamera scenderà su questi punti nel volo
-    // "fisso" del file .esp, ma NON compariranno mai come marker sulla mappa.
-    const FIXED_POINTS = {
-      nord: { lat: 45.4642, lon: 9.1900, name: "Nord Italia (fisso)" },
-      centro: { lat: 41.9028, lon: 12.4964, name: "Centro Italia (fisso)" },
-      sud: { lat: 38.1157, lon: 13.3614, name: "Sud Italia (fisso)" }
-    };
 
     // ------------------ COLORI ------------------
     function getColorSismica(val) {
@@ -472,24 +430,6 @@
       document.getElementById('downloadMapBtn').addEventListener('click', downloadMapImage);
       updateLegend();
 
-      // Punti fissi: mostra coordinate correnti (utile se modificate nel codice)
-      document.getElementById('fixedNordCoords').innerText = `(${FIXED_POINTS.nord.lat}, ${FIXED_POINTS.nord.lon})`;
-      document.getElementById('fixedCentroCoords').innerText = `(${FIXED_POINTS.centro.lat}, ${FIXED_POINTS.centro.lon})`;
-      document.getElementById('fixedSudCoords').innerText = `(${FIXED_POINTS.sud.lat}, ${FIXED_POINTS.sud.lon})`;
-
-      // Toggle modalità volo (selezionati vs fissi)
-      document.querySelectorAll('input[name="flightMode"]').forEach(radio => {
-        radio.addEventListener('change', function() {
-          const isFixed = document.getElementById('flightModeFixed').checked;
-          document.getElementById('fixedPointsBox').classList.toggle('hidden', !isFixed);
-          updateDownloadButtonsState();
-          showToast(isFixed ? "Modalità: volo fisso Nord/Centro/Sud" : "Modalità: punti selezionati (sistema attuale)");
-        });
-      });
-      document.querySelectorAll('.fixed-point-checkbox').forEach(cb => {
-        cb.addEventListener('change', updateDownloadButtonsState);
-      });
-
       document.getElementById('loadDemoBtn').addEventListener('click', () => {
         document.getElementById('coordsInput').value = demoData;
         showToast("Dati demo caricati!");
@@ -602,23 +542,18 @@
         document.getElementById('downloadAllKmlBtn').disabled = false;
         document.getElementById('downloadAllKmlBtn').className =
           "w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
-        // Il bottone .esp dipende dalla modalità: punti selezionati oppure punti fissi Nord/Centro/Sud
-        if (getEspFlightPoints().length > 0) {
+        if (getSelectedPoints().length > 0) {
           document.getElementById('downloadEspBtn').disabled = false;
           document.getElementById('downloadEspBtn').className =
             "w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
-        } else {
-          document.getElementById('downloadEspBtn').disabled = true;
-          document.getElementById('downloadEspBtn').className =
-            "w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm cursor-not-allowed flex items-center justify-center gap-2";
-        }
-        // Il KML "solo volo" e la mappa restano legati ai punti selezionati in lista (non ai punti fissi)
-        if (getSelectedPoints().length > 0) {
           document.getElementById('downloadKmlBtn').disabled = false;
           document.getElementById('downloadKmlBtn').className =
             "w-full bg-yellow-600 hover:bg-yellow-700 text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2";
           document.getElementById('downloadMapBtn').disabled = false;
         } else {
+          document.getElementById('downloadEspBtn').disabled = true;
+          document.getElementById('downloadEspBtn').className =
+            "w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm cursor-not-allowed flex items-center justify-center gap-2";
           document.getElementById('downloadKmlBtn').disabled = true;
           document.getElementById('downloadKmlBtn').className =
             "w-full bg-gray-700 text-gray-400 py-2.5 px-4 rounded-lg font-semibold text-sm cursor-not-allowed flex items-center justify-center gap-2";
@@ -637,26 +572,6 @@
         if (parsedPoints[idx]) selected.push(parsedPoints[idx]);
       });
       return selected;
-    }
-
-    // Restituisce true se la modalità volo fisso (Nord/Centro/Sud) è attiva
-    function isFixedFlightMode() {
-      const el = document.getElementById('flightModeFixed');
-      return el ? el.checked : false;
-    }
-
-    // Restituisce i punti fissi spuntati (Nord/Centro/Sud), nell'ordine geografico
-    function getFixedFlightPoints() {
-      const pts = [];
-      if (document.getElementById('fixedNord').checked) pts.push(FIXED_POINTS.nord);
-      if (document.getElementById('fixedCentro').checked) pts.push(FIXED_POINTS.centro);
-      if (document.getElementById('fixedSud').checked) pts.push(FIXED_POINTS.sud);
-      return pts;
-    }
-
-    // Restituisce i punti da usare per generare il file .esp, in base alla modalità scelta
-    function getEspFlightPoints() {
-      return isFixedFlightMode() ? getFixedFlightPoints() : getSelectedPoints();
     }
 
     function updateSelectedCount() {
@@ -1015,10 +930,9 @@
 
     // ------------------ GENERAZIONE .esp (SKEYFRAME, NO KML) ------------------
     function generateAndDownloadEsp() {
-      const fixedMode = isFixedFlightMode();
-      const selectedPoints = getEspFlightPoints();
+      const selectedPoints = getSelectedPoints();
       if (selectedPoints.length === 0) {
-        showToast(fixedMode ? "Seleziona almeno un punto fisso (Nord/Centro/Sud)!" : "Seleziona almeno un punto per il volo!");
+        showToast("Seleziona almeno un punto per il volo!");
         return;
       }
 
@@ -1144,12 +1058,10 @@
       rotYKeyframes[rotYKeyframes.length - 1].time = 1;
 
       const scaleName = SCALE_NAMES[document.getElementById('colorScaleSelect').value];
-      const modeLabel = fixedMode ? `Volo fisso Nord/Centro/Sud – ${selectedPoints.length} punti` :
-        `Volo ${scaleName} – ${selectedPoints.length} punti selezionati`;
       const espJson = {
         modelVersion: 18,
         settings: {
-          name: modeLabel,
+          name: `Volo ${scaleName} – ${selectedPoints.length} punti selezionati`,
           frameRate: fps,
           dimensions: { width: 1920, height: 1080 },
           duration: totalFrames,
@@ -1220,13 +1132,9 @@
         playbackManager: { range: { start: 0, end: totalFrames } }
       };
 
-      const espFilename = fixedMode ?
-        `progetto_earth_volo_fisso_NCS_${selectedPoints.length}punti.esp` :
-        `progetto_earth_${scaleName.replace(/\s+/g,'_')}_${selectedPoints.length}punti.esp`;
-      triggerDownload(JSON.stringify(espJson, null, 2), espFilename);
-      showToast(fixedMode ?
-        `ESP generato! Volo fisso su ${selectedPoints.length} punti (Nord/Centro/Sud) + rientro al centro Italia.` :
-        `ESP generato! Volo su ${selectedPoints.length} punti selezionati + rientro al centro Italia.`);
+      triggerDownload(JSON.stringify(espJson, null, 2),
+        `progetto_earth_${scaleName.replace(/\s+/g,'_')}_${selectedPoints.length}punti.esp`);
+      showToast(`ESP generato! Volo su ${selectedPoints.length} punti selezionati + rientro al centro Italia.`);
     }
 
     // ------------------ GENERAZIONE KML TUTTI I PUNTI (STATICO, TUTTI COLORATI IN BASE AL VALORE) ------------------
